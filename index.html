@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<meta name="description" content="Personal Portfolio and Journal of Nur Nabiha Ibtisam Binti Abd Hadi - IMD318 Individual Project">
+<title>Home | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ===================================================================== */
+  /* 1. JALUR UTILITY ATAS                                                 */
+  /* ===================================================================== */
+  .top-utility-strip {
+    background: #23070b;
+    border-bottom: 1px solid rgba(201, 166, 107, 0.35);
+    padding: 8px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 50;
+  }
+
+  .clock-date-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #f3ebe0;
+  }
+
+  .clock-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e7cb94;
+    box-shadow: 0 0 8px #e7cb94;
+    animation: dotBlink 1.5s infinite;
+  }
+
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.75); }
+  }
+
+  #liveDateDisplay { color: #e7cb94; }
+  #liveClockDisplay { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .home-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 330px;
+    min-width: 200px;
+  }
+
+  .home-search-field {
+    display: flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.07);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    border-radius: 999px;
+    padding: 4px 14px;
+  }
+
+  .home-search-field:focus-within {
+    background: rgba(245, 237, 224, 0.14);
+    border-color: #e7cb94;
+  }
+
+  .home-search-field svg {
+    color: #e7cb94;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .home-search-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f3ebe0;
+    font-family: "Jost", sans-serif;
+    font-size: .72rem;
+    letter-spacing: .05em;
+  }
+
+  .home-search-field input::placeholder {
+    color: rgba(231, 203, 148, 0.65);
+  }
+
+  .home-search-clear {
+    background: none;
+    border: none;
+    color: #e7cb94;
+    cursor: pointer;
+    font-size: .85rem;
+    display: none;
+    padding: 0 2px;
+  }
+
+  .home-search-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    background: #f5ede0;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    display: none;
+    max-height: 270px;
+    overflow-y: auto;
+    z-index: 99;
+    text-align: left;
+  }
+
+  .home-search-dropdown.open { display: block; }
+
+  .search-result-link {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(59, 16, 22, 0.12);
+  }
+
+  .search-result-link:hover { background: #e8dcc8; }
+
+  .search-result-link small {
+    display: block;
+    font-size: .52rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #7c5828;
+  }
+
+  .search-result-link strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.02rem;
+    color: #3b1016;
+  }
+
+  .lang-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-switch-btn {
+    background: transparent;
+    border: none;
+    color: #e7cb94;
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-switch-btn.active {
+    background: #e7cb94;
+    color: #23070b;
+    font-weight: 600;
+  }
+
+  /* ===================================================================== */
+  /* JALUR TEKS BERGERAK CREAM & BEIGE DI ATAS (MARQUEE TICKER)            */
+  /* ===================================================================== */
+  .beyha-marquee-strip {
+    background: linear-gradient(90deg, #f5ede0 0%, #ede0cc 50%, #f5ede0 100%);
+    border-top: 1px solid #c9a66b;
+    border-bottom: 1px solid #c9a66b;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    z-index: 15;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .beyha-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    animation: beyhaMarqueeMove 28s linear infinite;
+    font-size: .61rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #3b1016;
+  }
+
+  .beyha-marquee-strip:hover .beyha-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .beyha-marquee-track span.folio-mark {
+    color: #8f6528;
+    font-size: .86rem;
+  }
+
+  @keyframes beyhaMarqueeMove {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===================================================================== */
+  /* 2. HERO DENGAN GAMBAR "hero2" & FONT EMAS TERAPUNG                    */
+  /* ===================================================================== */
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 520px;
+    background-color: #330d18;
+    border-bottom: 1px solid rgba(201, 166, 107, 0.42);
+    overflow: hidden;
+  }
+
+  .hero-bg-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    filter: contrast(1.07) saturate(1.06) brightness(1.03);
+    z-index: 0;
+    animation: heroSlowZoom 16s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroSlowZoom {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.06); }
+  }
+
+  .hero-dark-tint {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(35, 8, 16, 0.44) 0%, rgba(25, 5, 11, 0.24) 65%, rgba(25, 5, 11, 0.50) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px 20px;
+    animation: heroFloatTitle 4.8s ease-in-out infinite;
+  }
+
+  @keyframes heroFloatTitle {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-9px); }
+  }
+
+  .hero-copy .kicker {
+    display: block;
+    font-size: .66rem;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: #f5ede0;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 14px rgba(15, 2, 6, 0.9);
+  }
+
+  .hero-copy h1 {
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(3.8rem, 8vw, 6.5rem);
+    font-weight: 400;
+    color: #e7cb94 !important;
+    line-height: 1.05;
+    margin: 0;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.85);
+  }
+
+  /* ===================================================================== */
+  /* 3. PENTAS 3D INTERAKTIF (DUA TONA: ROSE-BURGUNDY STAGE + DARK CARD)   */
+  /* ===================================================================== */
+  .stage-3d-universe {
+    position: relative;
+    /* Tona latar lebih cerah & hangat (Rose-Burgundy + Champagne Glow) seperti About */
+    background:
+      radial-gradient(circle at 75% 18%, rgba(176, 48, 84, 0.52) 0%, transparent 50%),
+      radial-gradient(circle at 22% 28%, rgba(231, 203, 148, 0.18) 0%, transparent 48%),
+      radial-gradient(circle at 50% 82%, rgba(145, 34, 65, 0.36) 0%, transparent 60%),
+      linear-gradient(180deg, #4a1425 0%, #380e1b 45%, #230710 100%);
+    color: #e6d2c0;
+    padding: 86px 5% 104px;
+    overflow: hidden;
+  }
+
+  #goldDustCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* --- BAHAGIAN 01: 3D GYROSCOPIC FLOATING DOSSIER + WAX SEAL --- */
+  .dossier-3d-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto 96px;
+    perspective: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gyro-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transform-style: preserve-3d;
+  }
+
+  .gyro-ring-1 {
+    width: 540px;
+    height: 540px;
+    border: 1px solid rgba(231, 203, 148, 0.28);
+    box-shadow: 0 0 40px rgba(212, 175, 106, 0.12);
+    animation: spinGyro1 24s linear infinite;
+  }
+
+  .gyro-ring-2 {
+    width: 450px;
+    height: 450px;
+    border: 1px dashed rgba(212, 175, 106, 0.38);
+    animation: spinGyro2 18s linear infinite reverse;
+  }
+
+  @keyframes spinGyro1 {
+    0%   { transform: rotateX(66deg) rotateY(-12deg) rotateZ(0deg); }
+    50%  { transform: rotateX(58deg) rotateY(14deg) rotateZ(180deg); }
+    100% { transform: rotateX(66deg) rotateY(-12deg) rotateZ(360deg); }
+  }
+
+  @keyframes spinGyro2 {
+    0%   { transform: rotateX(-62deg) rotateY(18deg) rotateZ(0deg); }
+    50%  { transform: rotateX(-70deg) rotateY(-14deg) rotateZ(180deg); }
+    100% { transform: rotateX(-62deg) rotateY(18deg) rotateZ(360deg); }
+  }
+
+  .dossier-float-shell {
+    width: 100%;
+    max-width: 790px;
+    animation: dossierIdleFloat 5.2s ease-in-out infinite;
+  }
+
+  @keyframes dossierIdleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .dossier-3d-card {
+    position: relative;
+    width: 100%;
+    padding: 48px 46px 44px;
+    /* Tona kad lebih gelap & pekat (Deep Espresso Mahogany) supaya timbul dari latar belakang */
+    background:
+      radial-gradient(circle at 20% 15%, rgba(231, 203, 148, 0.13) 0%, transparent 52%),
+      linear-gradient(155deg, rgba(36, 7, 15, 0.96) 0%, rgba(16, 3, 7, 0.99) 100%);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(231, 203, 148, 0.62);
+    border-radius: 18px;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+    box-shadow:
+      0 36px 76px rgba(0, 0, 0, 0.78),
+      0 0 38px rgba(231, 203, 148, 0.14),
+      0 0 0 1px rgba(231, 203, 148, 0.18) inset;
+  }
+
+  .dossier-3d-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(231, 203, 148, 0.32);
+    border-radius: 11px;
+    pointer-events: none;
+    transform: translateZ(12px);
+  }
+
+  .dossier-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    background: radial-gradient(circle at 50% 50%, rgba(231, 203, 148, 0.22), transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .dossier-3d-card:hover .dossier-glare {
+    opacity: 1;
+  }
+
+  .layer-z-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .58rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #dfc088;
+    background: rgba(231, 203, 148, 0.10);
+    border: 1px solid rgba(231, 203, 148, 0.42);
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+    transform: translateZ(42px);
+  }
+
+  .layer-z-title {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.24;
+    color: #edd5a7;
+    background: linear-gradient(135deg, #f7e7c4 0%, #e4c385 50%, #cfa359 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
+    margin: 0 0 18px;
+    transform: translateZ(65px);
+  }
+
+  .layer-z-body {
+    font-size: .98rem;
+    line-height: 1.92;
+    color: #e5d0be;
+    max-width: 640px;
+    margin: 0 auto 24px;
+    transform: translateZ(32px);
+  }
+
+  /* INTERACTIVE 3D WAX SEAL & UNFOLDING CREAM STATIONERY NOTE */
+  .wax-seal-trigger-wrap {
+    margin: 0 auto 24px;
+    transform: translateZ(54px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-wax-seal-btn {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    border: 2px solid #f5e2ba;
+    background: radial-gradient(circle at 32% 30%, #fff4db 0%, #e2bf79 58%, #a6782e 100%);
+    color: #350914;
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.55rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.65), 0 0 22px rgba(231, 203, 148, 0.35);
+    animation: waxSealPulse 3.2s ease-in-out infinite;
+    transition: transform 0.25s ease;
+  }
+
+  .home-wax-seal-btn:hover {
+    transform: scale(1.1) rotate(-6deg);
+  }
+
+  @keyframes waxSealPulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.07); }
+  }
+
+  .wax-seal-pill-hint {
+    display: inline-block;
+    padding: 5px 18px;
+    border-radius: 999px;
+    background: #f5ede0;
+    border: 1px solid #c9a66b;
+    color: #3b1016;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: .78rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .wax-seal-pill-hint:hover {
+    background: #e7cb94;
+    color: #23070b;
+  }
+
+  .unfolded-stationery-note {
+    max-width: 580px;
+    margin: 0 auto 24px;
+    background: linear-gradient(170deg, #fcf6ea 0%, #efe1c6 100%);
+    color: #2b0811;
+    border: 1px solid #c9a66b;
+    border-radius: 12px;
+    padding: 0 24px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateZ(44px) rotateX(-18deg);
+    transform-origin: top center;
+    transition: all 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.6);
+  }
+
+  .unfolded-stationery-note.open {
+    padding: 20px 24px;
+    max-height: 240px;
+    opacity: 1;
+    transform: translateZ(44px) rotateX(0deg);
+  }
+
+  .unfolded-stationery-note small {
+    display: block;
+    font-size: .52rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #7c5828;
+    margin-bottom: 6px;
+  }
+
+  .unfolded-stationery-note p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    margin: 0 0 8px;
+    color: #2b0811;
+  }
+
+  .unfolded-stationery-note span.note-sign {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.55rem;
+    color: #6b1529;
+  }
+
+  /* ===================================================================== */
+  /* SPOTIFY EMBED PLAYER FRAME                                            */
+  /* ===================================================================== */
+  .spotify-stage-frame {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(231, 203, 148, 0.32), rgba(35, 7, 11, 0.85));
+    border: 1px solid rgba(231, 203, 148, 0.45);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    transform: translateZ(48px);
+  }
+
+  .spotify-stage-frame iframe {
+    display: block;
+    border-radius: 12px;
+  }
+
+  /* --- BAHAGIAN 02: 3D REVOLVING CHAPTER CAROUSEL STAGE --- */
+  .carousel-3d-section {
+    position: relative;
+    z-index: 2;
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .stage-header-3d {
+    margin-bottom: 18px;
+  }
+
+  .stage-header-3d h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.1rem, 4vw, 3.1rem);
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #edd5a7;
+    background: linear-gradient(135deg, #f7e7c4 0%, #e4c385 52%, #cfa359 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 6px 0 8px;
+    filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.55));
+  }
+
+  .stage-hint-text {
+    font-size: .64rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #d7ba86;
+    margin: 0;
+  }
+
+  .carousel-3d-viewport {
+    position: relative;
+    width: 100%;
+    height: 410px;
+    perspective: 1350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+    animation: carouselStageBob 5.6s ease-in-out infinite;
+  }
+
+  @keyframes carouselStageBob {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-7px); }
+  }
+
+  .carousel-3d-viewport:active {
+    cursor: grabbing;
+  }
+
+  .carousel-3d-floor {
+    position: absolute;
+    bottom: 14px;
+    width: 540px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(231, 203, 148, 0.24) 0%, rgba(110, 30, 54, 0.14) 50%, transparent 75%);
+    border: 1px solid rgba(231, 203, 148, 0.22);
+    transform: rotateX(76deg);
+    pointer-events: none;
+  }
+
+  .carousel-3d-spinner {
+    position: relative;
+    width: 270px;
+    height: 335px;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .carousel-3d-spinner.dragging {
+    transition: none;
+  }
+
+  .chap-3d-panel {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #270710 0%, #140207 100%);
+    border: 1px solid rgba(231, 203, 148, 0.52);
+    border-top: 3px solid #e7cb94;
+    border-radius: 12px;
+    padding: 28px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.65);
+    backface-visibility: visible;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+  }
+
+  .chap-3d-panel::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(212, 175, 106, 0.26);
+    border-radius: 7px;
+    pointer-events: none;
+  }
+
+  .chap-3d-panel.is-front {
+    border-color: #f4dfb6;
+    box-shadow:
+      0 28px 60px rgba(0, 0, 0, 0.8),
+      0 0 32px rgba(231, 203, 148, 0.28);
+  }
+
+  .chap-3d-panel:not(.is-front) {
+    filter: brightness(0.76);
+  }
+
+  .chap-3d-panel:not(.is-front):hover {
+    filter: brightness(0.95);
+    border-color: #e7cb94;
+  }
+
+  .chap-3d-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(231, 203, 148, 0.25);
+  }
+
+  .chap-3d-roman {
+    font-family: "Pinyon Script", cursive;
+    font-size: 2.1rem;
+    color: #e7cb94;
+    line-height: 1;
+  }
+
+  .chap-3d-tag {
+    font-size: .54rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: #d7ba86;
+  }
+
+  .chap-3d-panel h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #f2dfb9;
+    margin: 14px 0 8px;
+  }
+
+  .chap-3d-panel p {
+    font-size: .88rem;
+    line-height: 1.68;
+    color: #e3cec0;
+    margin: 0;
+  }
+
+  .chap-3d-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 14px;
+    margin-top: 16px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, rgba(231, 203, 148, 0.16), rgba(231, 203, 148, 0.06));
+    border: 1px solid rgba(231, 203, 148, 0.45);
+    color: #e7cb94;
+    text-decoration: none;
+    font-size: .58rem;
+    font-weight: 500;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+  }
+
+  .chap-3d-btn:hover {
+    background: #e7cb94;
+    color: #23070b;
+  }
+
+  .carousel-3d-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .orbit-arrow-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(231, 203, 148, 0.1);
+    border: 1px solid rgba(231, 203, 148, 0.5);
+    color: #e7cb94;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+  }
+
+  .orbit-arrow-btn:hover {
+    background: #e7cb94;
+    color: #23070b;
+    transform: scale(1.08);
+  }
+
+  .orbit-dots-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(231, 203, 148, 0.28);
+  }
+
+  .orbit-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(231, 203, 148, 0.32);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s ease;
+  }
+
+  .orbit-dot.active {
+    width: 22px;
+    border-radius: 999px;
+    background: #e7cb94;
+  }
+
+  .view-mode-btn {
+    background: transparent;
+    border: 1px solid rgba(231, 203, 148, 0.45);
+    color: #e7cb94;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .view-mode-btn:hover {
+    background: rgba(231, 203, 148, 0.18);
+  }
+
+  .carousel-3d-viewport.grid-mode {
+    height: auto;
+    padding: 24px 0 10px;
+    cursor: default;
+    animation: none;
+  }
+
+  .carousel-3d-viewport.grid-mode .carousel-3d-floor {
+    display: none;
+  }
+
+  .carousel-3d-viewport.grid-mode .carousel-3d-spinner {
+    width: 100%;
+    max-width: 1020px;
+    height: auto;
+    transform: none !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .carousel-3d-viewport.grid-mode .chap-3d-panel {
+    position: relative;
+    transform: none !important;
+    filter: none !important;
+    min-height: 270px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .carousel-3d-viewport.grid-mode .chap-3d-panel:hover {
+    transform: translateY(-8px) rotateX(4deg) !important;
+    box-shadow: 0 24px 44px rgba(0, 0, 0, 0.75);
+  }
+
+  @media(max-width: 820px) {
+    .top-utility-strip { justify-content: center; }
+    .dossier-3d-card { padding: 38px 20px 32px; }
+    .gyro-ring-1 { width: 320px; height: 320px; }
+    .gyro-ring-2 { width: 260px; height: 260px; }
+    .carousel-3d-viewport { height: 380px; }
+    .carousel-3d-spinner { width: 235px; height: 315px; }
+    .carousel-3d-viewport.grid-mode .carousel-3d-spinner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="page-sheet">
+ <!-- JALUR UTILITY: CLOCK & DATE + SEARCH BAR + EN / BM -->
+ <div class="top-utility-strip">
+  <div class="clock-date-capsule" aria-label="Live Clock and Date">
+   <span class="clock-pulse-dot"></span>
+   <span id="liveDateDisplay">SUN, 22 NOV 2026</span>
+   <span>&bull;</span>
+   <span id="liveClockDisplay">05:00:00 PM</span>
+  </div>
+
+  <div class="home-search-box">
+   <div class="home-search-field">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <circle cx="11" cy="11" r="8"/>
+     <path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" id="homeSearchInput" placeholder="Search portfolio..." autocomplete="off">
+    <button type="button" class="home-search-clear" id="homeSearchClear" onclick="clearHomeSearch()">&times;</button>
+   </div>
+   <div class="home-search-dropdown" id="homeSearchDropdown"></div>
+  </div>
+
+  <div class="lang-pill-group" role="group" aria-label="Language Switcher">
+   <button type="button" class="lang-switch-btn active" data-lang="en" onclick="switchSiteLang('en')">EN</button>
+   <button type="button" class="lang-switch-btn" data-lang="bm" onclick="switchSiteLang('bm')">BM</button>
+  </div>
+ </div>
+
+ <!-- HEADER & NAVIGATION -->
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast" data-i18n="contrast">Contrast</button>
+   </div>
+  </div>
+  <nav aria-label="Main Navigation">
+   <a href="index.html" class="on" data-i18n="navHome">Home</a>
+   <a href="pages/about.html" data-i18n="navAbout">About</a>
+   <a href="pages/education.html" data-i18n="navEdu">Education</a>
+   <a href="pages/experience.html" data-i18n="navExp">Experience</a>
+   <a href="pages/family.html" data-i18n="navFam">Family</a>
+   <a href="pages/gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="pages/contact.html" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <!-- JALUR TEKS BERGERAK CREAM & BEIGE DI ATAS (MARQUEE TICKER) -->
+ <div class="beyha-marquee-strip" aria-label="Portfolio Highlights Ticker">
+  <div class="beyha-marquee-track" id="homeMarqueeTrack">
+   <span>INFORMATION MANAGEMENT STUDENT</span><span class="folio-mark">&sect;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span>
+   <span>PERSONAL PORTFOLIO &amp; JOURNAL</span><span class="folio-mark">&#10087;</span>
+   <span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span>
+   <!-- Ulang 2x supaya pusingan berterusan -->
+   <span>INFORMATION MANAGEMENT STUDENT</span><span class="folio-mark">&sect;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span>
+   <span>PERSONAL PORTFOLIO &amp; JOURNAL</span><span class="folio-mark">&#10087;</span>
+   <span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span>
+  </div>
+ </div>
+
+ <!-- HERO SECTION DENGAN GAMBAR "hero2" DI BELAKANG -->
+ <section class="hero">
+  <img class="hero-bg-photo" id="hero2BgImg" src="images/hero2.jpeg" alt="Vogue Roses Background">
+  <div class="hero-dark-tint"></div>
+  <div class="hero-copy">
+   <span class="kicker" data-i18n="heroKicker">Hi, Welcome to the Portfolio of</span>
+   <h1>Nabiha Ibtisam</h1>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- PENTAS 3D INTERAKTIF                                                -->
+ <!-- =================================================================== -->
+ <main class="stage-3d-universe">
+  <canvas id="goldDustCanvas"></canvas>
+
+  <!-- 01. 3D GYROSCOPIC FLOATING DOSSIER + INTERACTIVE WAX SEAL -->
+  <section class="dossier-3d-wrapper">
+   <div class="gyro-ring gyro-ring-1" aria-hidden="true"></div>
+   <div class="gyro-ring gyro-ring-2" aria-hidden="true"></div>
+
+   <div class="dossier-float-shell">
+    <div class="dossier-3d-card" id="dossier3dCard">
+     <div class="dossier-glare" id="dossierGlare"></div>
+     <span class="layer-z-badge" data-i18n="introKicker">&#10022; 01. Personal Portfolio &amp; Journal</span>
+     <h2 class="layer-z-title"><u style="text-decoration-color: #e7cb94; text-underline-offset: 6px;"><strong data-i18n="introHeading" style="font-weight: 700;">Curating Knowledge, Experiences &amp; Memories</strong></u></h2>
+     <p class="layer-z-body" data-i18n="introText">
+      Welcome to my personal space on the web. I am Nur Nabiha Ibtisam Binti Abd Hadi, a Diploma in Information Management student at Universiti Teknologi MARA (UiTM) Johor, Segamat Campus. This portfolio highlights my academic journey, leadership involvement, family roots in Mersing, and visual memories.
+     </p>
+
+     <!-- INTERACTIVE 3D WAX SEAL NOTE -->
+     <div class="wax-seal-trigger-wrap">
+      <button type="button" class="home-wax-seal-btn" onclick="toggleWelcomeNote()" aria-label="Unfold welcome note">N&amp;I</button>
+      <span class="wax-seal-pill-hint" onclick="toggleWelcomeNote()" data-i18n="waxHint">Click wax seal to unfold welcome note &sect;</span>
+     </div>
+
+     <div class="unfolded-stationery-note" id="homeWelcomeNote">
+      <small data-i18n="noteEyebrow">A Personal Note From Beyha</small>
+      <p data-i18n="noteBody">Thank you for visiting my 2026 digital journal. Feel free to drag the 3D carousel below or click any chapter to explore my academic milestones, hobbies, and cherished memories.</p>
+      <span class="note-sign">With warmth, Nabiha Ibtisam</span>
+     </div>
+
+     <!-- SPOTIFY EMBED PLAYER -->
+     <div class="spotify-stage-frame">
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2lpygKqzPFtItQ4ss3cgfb?utm_source=generator&si=84dc9318c47b4c37" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Featured Spotify Track"></iframe>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- 02. 3D REVOLVING CHAPTER CAROUSEL STAGE -->
+  <section class="carousel-3d-section">
+   <div class="stage-header-3d">
+    <span class="layer-z-badge" data-i18n="dirKicker">&#10022; 02. Interactive 3D Directory</span>
+    <h2 data-i18n="dirHeading">Explore Each Chapter</h2>
+    <p class="stage-hint-text" data-i18n="dragHint">Drag horizontally or use arrows to orbit in 3D space</p>
+   </div>
+
+   <div class="carousel-3d-viewport" id="carousel3dViewport">
+    <div class="carousel-3d-floor" aria-hidden="true"></div>
+
+    <div class="carousel-3d-spinner" id="carousel3dSpinner">
+     <article class="chap-3d-panel is-front" data-index="0">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">I</span>
+        <span class="chap-3d-tag" data-i18n="ch1">Chapter 01</span>
+       </div>
+       <h3 data-i18n="d1Title">About Me</h3>
+       <p data-i18n="d1Desc">Personal background, strengths, interests, and aspirations.</p>
+      </div>
+      <a href="pages/about.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+
+     <article class="chap-3d-panel" data-index="1">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">II</span>
+        <span class="chap-3d-tag" data-i18n="ch2">Chapter 02</span>
+       </div>
+       <h3 data-i18n="d2Title">Education</h3>
+       <p data-i18n="d2Desc">Academic milestones from school to UiTM Segamat.</p>
+      </div>
+      <a href="pages/education.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+
+     <article class="chap-3d-panel" data-index="2">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">III</span>
+        <span class="chap-3d-tag" data-i18n="ch3">Chapter 03</span>
+       </div>
+       <h3 data-i18n="d3Title">Experience</h3>
+       <p data-i18n="d3Desc">Co-curricular activities, teamwork, and practical skills.</p>
+      </div>
+      <a href="pages/experience.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+
+     <article class="chap-3d-panel" data-index="3">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">IV</span>
+        <span class="chap-3d-tag" data-i18n="ch4">Chapter 04</span>
+       </div>
+       <h3 data-i18n="d4Title">Family</h3>
+       <p data-i18n="d4Desc">The people I call home in Mersing, Johor.</p>
+      </div>
+      <a href="pages/family.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+
+     <article class="chap-3d-panel" data-index="4">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">V</span>
+        <span class="chap-3d-tag" data-i18n="ch5">Chapter 05</span>
+       </div>
+       <h3 data-i18n="d5Title">Gallery</h3>
+       <p data-i18n="d5Desc">Curated portraits, campus moments, and visual highlights.</p>
+      </div>
+      <a href="pages/gallery.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+
+     <article class="chap-3d-panel" data-index="5">
+      <div>
+       <div class="chap-3d-head">
+        <span class="chap-3d-roman">VI</span>
+        <span class="chap-3d-tag" data-i18n="ch6">Chapter 06</span>
+       </div>
+       <h3 data-i18n="d6Title">Contact</h3>
+       <p data-i18n="d6Desc">Get in touch via email, phone, or social platforms.</p>
+      </div>
+      <a href="pages/contact.html" class="chap-3d-btn" data-i18n="explore">Enter Chapter &rarr;</a>
+     </article>
+    </div>
+   </div>
+
+   <div class="carousel-3d-controls">
+    <button type="button" class="orbit-arrow-btn" onclick="stepCarousel3D(-1)" aria-label="Previous Chapter">&#8249;</button>
+    <div class="orbit-dots-bar" id="orbitDotsBar">
+     <button type="button" class="orbit-dot active" onclick="goToCarousel3D(0)" aria-label="Chapter 1"></button>
+     <button type="button" class="orbit-dot" onclick="goToCarousel3D(1)" aria-label="Chapter 2"></button>
+     <button type="button" class="orbit-dot" onclick="goToCarousel3D(2)" aria-label="Chapter 3"></button>
+     <button type="button" class="orbit-dot" onclick="goToCarousel3D(3)" aria-label="Chapter 4"></button>
+     <button type="button" class="orbit-dot" onclick="goToCarousel3D(4)" aria-label="Chapter 5"></button>
+     <button type="button" class="orbit-dot" onclick="goToCarousel3D(5)" aria-label="Chapter 6"></button>
+    </div>
+    <button type="button" class="orbit-arrow-btn" onclick="stepCarousel3D(1)" aria-label="Next Chapter">&#8250;</button>
+    <button type="button" class="view-mode-btn" id="toggle3dViewBtn" onclick="toggle3dGridMode()" data-i18n="viewAllBtn">Grid 3D View</button>
+   </div>
+  </section>
+ </main>
+
+ <!-- FOOTER LENGKAP DENGAN SITE MAP, DATES & ACCESSIBILITY SUPPORT -->
+ <footer>
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <!-- SITE MAP -->
+  <p style="margin: 10px 0; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;">
+   Site Map:
+   <a href="index.html">Home</a> &bull;
+   <a href="pages/about.html">About</a> &bull;
+   <a href="pages/education.html">Education</a> &bull;
+   <a href="pages/experience.html">Experience</a> &bull;
+   <a href="pages/family.html">Family</a> &bull;
+   <a href="pages/gallery.html">Gallery</a> &bull;
+   <a href="pages/contact.html">Contact</a>
+  </p>
+
+  <!-- CREATION, UPDATE & DATA COLLECTION DATES -->
+  <p style="font-size: .72rem; opacity: .88; margin: 6px 0;">
+   Created: 12 October 2026 &bull; Last Updated: 22 November 2026 &bull; Data Collected: October &ndash; November 2026
+  </p>
+
+  <!-- ACCESSIBILITY SUPPORT SOFTWARE LINK -->
+  <p style="font-size: .72rem; opacity: .88; margin: 6px 0;">
+   Accessibility Support: Compatible with <a href="https://www.nvaccess.org/" target="_blank" rel="noopener noreferrer">NVDA Screen Reader</a> &amp; <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">W3C WAI Guidelines</a>
+  </p>
+
+  <p data-i18n="footerCopy">&copy; 2026 Nur Nabiha Ibtisam Binti Abd Hadi &bull; Personal Portfolio &amp; Journal</p>
+  <p style="margin-top: 10px;"><a href="#top" data-i18n="backTop">Back to top &uarr;</a></p>
+ </footer>
+</div>
+
+<script>
+  // AUTO-FALLBACK UNTUK SAMBUNGAN FAIL hero2
+  (function () {
+    const heroImg = document.getElementById('hero2BgImg');
+    const heroPaths = ['images/hero2.jpeg', 'images/hero2.jpg', 'images/hero2.png', 'images/hero2.webp'];
+    let idx = 0;
+    heroImg.onerror = function () {
+      idx++;
+      if (idx < heroPaths.length) heroImg.src = heroPaths[idx];
+    };
+  })();
+
+  // TOGGLE NOTA MOHOR LILIN (WAX SEAL)
+  function toggleWelcomeNote() {
+    const note = document.getElementById('homeWelcomeNote');
+    if (note) note.classList.toggle('open');
+  }
+
+  // =====================================================================
+  // A. ZARAH DEBU EMAS 3D DI LATAR BELAKANG (CANVAS)
+  // =====================================================================
+  (function () {
+    const canvas = document.getElementById('goldDustCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.6,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: -Math.random() * 0.45 - 0.15,
+        alpha: Math.random() * 0.65 + 0.2
+      });
+    }
+
+    function animateDust() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+        if (p.x < -10) p.x = canvas.width + 10;
+        if (p.x > canvas.width + 10) p.x = -10;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(231, 203, 148, ${p.alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(animateDust);
+    }
+    animateDust();
+  })();
+
+  // =====================================================================
+  // B. 3D INTERACTIVE MOUSE TILT PADA KAD DOSSIER 01
+  // =====================================================================
+  (function () {
+    const card = document.getElementById('dossier3dCard');
+    const glare = document.getElementById('dossierGlare');
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -9;
+      const rotateY = ((x - centerX) / centerX) * 9;
+
+      card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      glare.style.background = `radial-gradient(circle at ${(x / rect.width) * 100}% ${(y / rect.height) * 100}%, rgba(231, 203, 148, 0.25), transparent 60%)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  })();
+
+  // =====================================================================
+  // C. 3D REVOLVING CYLINDRICAL CAROUSEL (6 CHAPTERS) + AUTO-ROTATE
+  // =====================================================================
+  const spinner = document.getElementById('carousel3dSpinner');
+  const viewport = document.getElementById('carousel3dViewport');
+  const panels = Array.from(document.querySelectorAll('.chap-3d-panel'));
+  const dots = Array.from(document.querySelectorAll('.orbit-dot'));
+  const totalPanels = panels.length;
+  const theta = 360 / totalPanels;
+  let currentAngle = 0;
+  let activeIndex = 0;
+  let isGridMode = false;
+  let isHoveringCarousel = false;
+
+  function layoutCarousel3D() {
+    const radius = window.innerWidth < 820 ? 275 : 375;
+    panels.forEach((panel, i) => {
+      const panelAngle = i * theta;
+      panel.style.transform = `rotateY(${panelAngle}deg) translateZ(${radius}px)`;
+    });
+    updateCarouselRotation();
+  }
+
+  function updateCarouselRotation() {
+    if (isGridMode) return;
+    spinner.style.transform = `translateZ(-140px) rotateY(${currentAngle}deg)`;
+
+    const normAngle = ((-currentAngle % 360) + 360) % 360;
+    activeIndex = Math.round(normAngle / theta) % totalPanels;
+
+    panels.forEach((p, idx) => {
+      p.classList.toggle('is-front', idx === activeIndex);
+    });
+    dots.forEach((d, idx) => {
+      d.classList.toggle('active', idx === activeIndex);
+    });
+  }
+
+  function stepCarousel3D(dir) {
+    if (isGridMode) return;
+    currentAngle -= dir * theta;
+    updateCarouselRotation();
+  }
+
+  function goToCarousel3D(targetIdx) {
+    if (isGridMode) return;
+    const diff = ((targetIdx - activeIndex + totalPanels + Math.floor(totalPanels / 2)) % totalPanels) - Math.floor(totalPanels / 2);
+    currentAngle -= diff * theta;
+    updateCarouselRotation();
+  }
+
+  function toggle3dGridMode() {
+    isGridMode = !isGridMode;
+    viewport.classList.toggle('grid-mode', isGridMode);
+    const btn = document.getElementById('toggle3dViewBtn');
+    const dict = i18nData[activeLang] || i18nData.en;
+    btn.textContent = isGridMode ? dict.orbitViewBtn : dict.viewAllBtn;
+    if (!isGridMode) layoutCarousel3D();
+  }
+
+  viewport.addEventListener('mouseenter', () => { isHoveringCarousel = true; });
+  viewport.addEventListener('mouseleave', () => { isHoveringCarousel = false; });
+
+  setInterval(() => {
+    if (!isGridMode && !isHoveringCarousel) {
+      stepCarousel3D(1);
+    }
+  }, 4500);
+
+  (function () {
+    let isDragging = false;
+    let startX = 0;
+    let startAngle = 0;
+
+    viewport.addEventListener('pointerdown', (e) => {
+      if (isGridMode || e.target.closest('a')) return;
+      isDragging = true;
+      startX = e.clientX;
+      startAngle = currentAngle;
+      spinner.classList.add('dragging');
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging || isGridMode) return;
+      const dx = e.clientX - startX;
+      currentAngle = startAngle + dx * 0.35;
+      spinner.style.transform = `translateZ(-140px) rotateY(${currentAngle}deg)`;
+    });
+
+    window.addEventListener('pointerup', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      spinner.classList.remove('dragging');
+      const snappedSteps = Math.round(currentAngle / theta);
+      currentAngle = snappedSteps * theta;
+      updateCarouselRotation();
+    });
+  })();
+
+  window.addEventListener('resize', layoutCarousel3D);
+  layoutCarousel3D();
+
+  // =====================================================================
+  // D. LIVE CLOCK & DATE (EN & BM ONLY)
+  // =====================================================================
+  let activeLang = 'en';
+
+  function runLiveClock() {
+    const now = new Date();
+    const locales = { en: 'en-GB', bm: 'ms-MY' };
+    document.getElementById('liveDateDisplay').textContent = now.toLocaleDateString(locales[activeLang] || 'en-GB', {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+    });
+    document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    });
+  }
+  setInterval(runLiveClock, 1000);
+  runLiveClock();
+
+  // =====================================================================
+  // E. LANGUAGE SWITCHER (EN / BM ONLY)
+  // =====================================================================
+  const marqueeByLang = {
+    en: `<span>INFORMATION MANAGEMENT STUDENT</span><span class="folio-mark">&sect;</span><span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>PERSONAL PORTFOLIO &amp; JOURNAL</span><span class="folio-mark">&#10087;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span><span>INFORMATION MANAGEMENT STUDENT</span><span class="folio-mark">&sect;</span><span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>PERSONAL PORTFOLIO &amp; JOURNAL</span><span class="folio-mark">&#10087;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span>`,
+    bm: `<span>PELAJAR PENGURUSAN MAKLUMAT</span><span class="folio-mark">&sect;</span><span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>PORTFOLIO &amp; JURNAL PERIBADI</span><span class="folio-mark">&#10087;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span><span>PELAJAR PENGURUSAN MAKLUMAT</span><span class="folio-mark">&sect;</span><span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>PORTFOLIO &amp; JURNAL PERIBADI</span><span class="folio-mark">&#10087;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&sect;</span>`
+  };
+
+  const i18nData = {
+    en: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Personal Journal",
+      contrast: "Contrast",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      searchPh: "Search portfolio...",
+      heroKicker: "Hi, Welcome to the Portfolio of",
+      introKicker: "✦ 01. Personal Portfolio & Journal",
+      introHeading: "Curating Knowledge, Experiences & Memories",
+      introText: "Welcome to my personal space on the web. I am Nur Nabiha Ibtisam Binti Abd Hadi, a Diploma in Information Management student at Universiti Teknologi MARA (UiTM) Johor, Segamat Campus. This portfolio highlights my academic journey, leadership involvement, family roots in Mersing, and visual memories.",
+      waxHint: "Click wax seal to unfold welcome note §",
+      noteEyebrow: "A Personal Note From Beyha",
+      noteBody: "Thank you for visiting my 2026 digital journal. Feel free to drag the 3D carousel below or click any chapter to explore my academic milestones, hobbies, and cherished memories.",
+      dirKicker: "✦ 02. Interactive 3D Directory",
+      dirHeading: "Explore Each Chapter",
+      dragHint: "Drag horizontally or use arrows to orbit in 3D space",
+      ch1: "Chapter 01",
+      ch2: "Chapter 02",
+      ch3: "Chapter 03",
+      ch4: "Chapter 04",
+      ch5: "Chapter 05",
+      ch6: "Chapter 06",
+      d1Title: "About Me",
+      d1Desc: "Personal background, strengths, interests, and aspirations.",
+      d2Title: "Education",
+      d2Desc: "Academic milestones from school to UiTM Segamat.",
+      d3Title: "Experience",
+      d3Desc: "Co-curricular activities, teamwork, and practical skills.",
+      d4Title: "Family",
+      d4Desc: "The people I call home in Mersing, Johor.",
+      d5Title: "Gallery",
+      d5Desc: "Curated portraits, campus moments, and visual highlights.",
+      d6Title: "Contact",
+      d6Desc: "Get in touch via email, phone, or social platforms.",
+      explore: "Enter Chapter →",
+      viewAllBtn: "Grid 3D View",
+      orbitViewBtn: "Orbit 3D View",
+      footerCopy: "© 2026 Nur Nabiha Ibtisam Binti Abd Hadi • Personal Portfolio & Journal",
+      backTop: "Back to top ↑"
+    },
+    bm: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Jurnal Peribadi",
+      contrast: "Kontras",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      searchPh: "Cari dalam portfolio...",
+      heroKicker: "Hai, Selamat Datang ke Portfolio",
+      introKicker: "✦ 01. Portfolio & Jurnal Peribadi",
+      introHeading: "Menghimpun Ilmu, Pengalaman & Memori",
+      introText: "Selamat datang ke ruang peribadi saya di web. Saya Nur Nabiha Ibtisam Binti Abd Hadi, pelajar Diploma Pengurusan Maklumat di Universiti Teknologi MARA (UiTM) Johor, Kampus Segamat. Portfolio ini memaparkan perjalanan akademik, penglibatan kepimpinan, asal usul keluarga di Mersing, serta memori visual saya.",
+      waxHint: "Klik mohor lilin untuk buka nota alu-aluan §",
+      noteEyebrow: "Nota Ringkas Daripada Beyha",
+      noteBody: "Terima kasih kerana melawat jurnal digital 2026 saya. Anda boleh memutar karusel 3D di bawah atau klik mana-mana bab untuk meneroka perjalanan akademik, minat, dan kenangan terindah saya.",
+      dirKicker: "✦ 02. Direktori Interaktif 3D",
+      dirHeading: "Terokai Setiap Bab",
+      dragHint: "Seret secara mendatar atau guna anak panah untuk memutar dalam ruang 3D",
+      ch1: "Bab 01",
+      ch2: "Bab 02",
+      ch3: "Bab 03",
+      ch4: "Bab 04",
+      ch5: "Bab 05",
+      ch6: "Bab 06",
+      d1Title: "Tentang Saya",
+      d1Desc: "Latar belakang peribadi, kekuatan, minat, dan aspirasi.",
+      d2Title: "Pendidikan",
+      d2Desc: "Pencapaian akademik dari bangku sekolah hingga ke UiTM Segamat.",
+      d3Title: "Pengalaman",
+      d3Desc: "Aktiviti kokurikulum, kerja berpasukan, dan kemahiran praktikal.",
+      d4Title: "Keluarga",
+      d4Desc: "Insan tersayang yang menjadi rumah saya di Mersing, Johor.",
+      d5Title: "Galeri",
+      d5Desc: "Potret pilihan, momen kampus, dan sorotan visual.",
+      d6Title: "Hubungi",
+      d6Desc: "Berhubung melalui e-mel, telefon, atau platform media sosial.",
+      explore: "Masuk Bab →",
+      viewAllBtn: "Paparan Grid 3D",
+      orbitViewBtn: "Paparan Orbit 3D",
+      footerCopy: "© 2026 Nur Nabiha Ibtisam Binti Abd Hadi • Portfolio & Jurnal Peribadi",
+      backTop: "Kembali ke atas ↑"
+    }
+  };
+
+  function switchSiteLang(lang) {
+    activeLang = lang;
+    try { localStorage.setItem('beyha_site_lang', lang); } catch (e) {}
+    document.querySelectorAll('.lang-switch-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    const dict = i18nData[lang] || i18nData.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+    const mTrack = document.getElementById('homeMarqueeTrack');
+    if (mTrack && marqueeByLang[lang]) {
+      mTrack.innerHTML = marqueeByLang[lang];
+    }
+    const viewBtn = document.getElementById('toggle3dViewBtn');
+    if (viewBtn) {
+      viewBtn.textContent = isGridMode ? dict.orbitViewBtn : dict.viewAllBtn;
+    }
+    document.getElementById('homeSearchInput').placeholder = dict.searchPh;
+    runLiveClock();
+  }
+
+  (function initSavedLang() {
+    const savedLang = localStorage.getItem('beyha_site_lang');
+    if (savedLang === 'bm' || savedLang === 'en') {
+      switchSiteLang(savedLang);
+    }
+  })();
+
+  // =====================================================================
+  // F. SEARCH BAR FUNCTIONALITY
+  // =====================================================================
+  const portfolioPages = [
+    { tag: "Home", title: "Home — 3D Interactive Portfolio Stage", url: "index.html", keys: "home index main start" },
+    { tag: "About", title: "About Me — Biodata, Hobbies, Spotify & Photos", url: "pages/about.html", keys: "about biodata hobbies music netflix badminton spotify photos beyha" },
+    { tag: "Education", title: "Education — UiTM Segamat (IM110)", url: "pages/education.html", keys: "education uitm segamat diploma school academic" },
+    { tag: "Experience", title: "Experience — Pejabat Daerah Mersing & Outreach", url: "pages/experience.html", keys: "experience internship mersing aplus outreach ldk booth" },
+    { tag: "Family", title: "Family — Parents, Siblings & Memories Storybook", url: "pages/family.html", keys: "family father mother siblings mersing johor raya syawal memories" },
+    { tag: "Gallery", title: "Gallery — Visual Highlights & Editorial 3×3 Grid", url: "pages/gallery.html", keys: "gallery photos portraits aesthetic campus visual 3d" },
+    { tag: "Contact", title: "Contact — 3D iPhone & Socials", url: "pages/contact.html", keys: "contact email phone whatsapp instagram tiktok cloudiebey" }
+  ];
+
+  const sInput = document.getElementById('homeSearchInput');
+  const sDrop = document.getElementById('homeSearchDropdown');
+  const sClear = document.getElementById('homeSearchClear');
+
+  sInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    sClear.style.display = q ? 'block' : 'none';
+    if (!q) {
+      sDrop.classList.remove('open');
+      return;
+    }
+    const hits = portfolioPages.filter(p =>
+      p.title.toLowerCase().includes(q) || p.keys.includes(q)
+    );
+    sDrop.innerHTML = hits.length
+      ? hits.map(h => `<a href="${h.url}" class="search-result-link"><small>${h.tag}</small><strong>${h.title}</strong></a>`).join('')
+      : `<div style="padding:12px;font-size:.75rem;color:#3b1016;text-align:center;">No matching page found.</div>`;
+    sDrop.classList.add('open');
+  });
+
+  function clearHomeSearch() {
+    sInput.value = '';
+    sClear.style.display = 'none';
+    sDrop.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.home-search-box')) sDrop.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
