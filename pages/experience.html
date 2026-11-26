@@ -1,0 +1,3725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<meta name="description" content="Personal portfolio and experience journal of Nur Nabiha Ibtisam Binti Abd Hadi (2024250178) for IMD318 Individual Project.">
+<title>Experience | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  :root {
+    --ivory-paper: #f7efe5;
+    --ivory-card: #fbf6ef;
+    --cream-ribbon: #f5ead8;
+    --cream-ribbon-light: #fcf6ec;
+    --burgundy-main: #591422;
+    --burgundy-dark: #360913;
+    --burgundy-light: #7a1e30;
+    --olive-main: #4c583e;
+    --olive-dark: #333c29;
+    --olive-soft: #6f7c5e;
+    --gold-antique: #b48d46;
+    --gold-bright: #e6c680;
+    --ink-espresso: #261215;
+    --ink-muted: #594346;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0 !important;
+    background: var(--ivory-paper) !important;
+    color: var(--ink-espresso) !important;
+    font-family: "Jost", sans-serif !important;
+    overflow-x: hidden;
+  }
+
+  /* High Contrast Accessibility Mode */
+  body.contrast {
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+  body.contrast .editorial-sheet,
+  body.contrast .experience-cream-marquee,
+  body.contrast .lace-frame-card,
+  body.contrast .emblem-itinerary-card,
+  body.contrast .keepsake-letter-card,
+  body.contrast .archival-pass-card,
+  body.contrast .cameo-skill-medallion,
+  body.contrast .gallery-oval-card,
+  body.contrast .video-chronicle-card {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffeb3b !important;
+    box-shadow: none !important;
+  }
+  body.contrast * { color: #ffffff !important; }
+
+  /* Full-Width Seamless Ivory Damask Editorial Sheet */
+  .editorial-sheet {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    background-color: var(--ivory-paper);
+    background-image:
+      radial-gradient(circle at 24px 24px, rgba(180, 141, 70, 0.08) 2px, transparent 0),
+      radial-gradient(circle at 72px 72px, rgba(89, 20, 34, 0.05) 2px, transparent 0);
+    background-size: 96px 96px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===================================================================== */
+  /* 1. TOP UTILITY STRIP & COHESIVE NAVBAR                                */
+  /* ===================================================================== */
+  .top-utility-strip {
+    background: var(--burgundy-dark);
+    border-bottom: 1.5px solid var(--gold-antique);
+    padding: 9px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 120;
+    color: var(--ivory-paper);
+  }
+
+  .clock-date-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 5px 15px;
+    border-radius: 999px;
+    background: rgba(247, 239, 229, 0.08);
+    border: 1px solid rgba(230, 198, 128, 0.45);
+    font-size: .64rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ivory-paper);
+  }
+
+  .clock-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 8px var(--gold-bright);
+    animation: softPulse 1.6s infinite;
+  }
+
+  @keyframes softPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  #liveDateDisplay { color: var(--gold-bright); font-weight: 500; }
+  #liveClockDisplay { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .home-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 320px;
+    min-width: 200px;
+  }
+
+  .home-search-field {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(230, 198, 128, 0.45);
+    border-radius: 999px;
+    padding: 5px 14px;
+  }
+
+  .home-search-field svg { color: var(--gold-bright); margin-right: 8px; flex-shrink: 0; }
+
+  .home-search-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--ivory-paper);
+    font-family: "Jost", sans-serif;
+    font-size: .75rem;
+  }
+
+  .home-search-field input::placeholder { color: rgba(247, 239, 229, 0.65); }
+
+  .home-search-clear {
+    background: none;
+    border: none;
+    color: var(--gold-bright);
+    cursor: pointer;
+    display: none;
+  }
+
+  .home-search-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: var(--burgundy-dark);
+    border: 1.5px solid var(--gold-antique);
+    border-radius: 12px;
+    box-shadow: 0 20px 44px rgba(38, 18, 21, 0.55);
+    display: none;
+    z-index: 150;
+    overflow: hidden;
+  }
+
+  .home-search-dropdown.open { display: block; }
+
+  .search-result-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(230, 198, 128, 0.16);
+  }
+  .search-result-link:hover { background: rgba(230, 198, 128, 0.14); }
+  .search-result-link small { display: block; font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-bright); }
+  .search-result-link strong { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--ivory-paper); }
+
+  .lang-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(230, 198, 128, 0.12);
+    border: 1px solid var(--gold-bright);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-switch-btn {
+    background: transparent;
+    border: none;
+    color: var(--gold-bright);
+    font-family: "Jost", sans-serif;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    padding: 4px 11px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-switch-btn.active {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  /* Cohesive Classic Header & Navigation */
+  .topbar {
+    background: var(--ivory-card) !important;
+    border-bottom: 1px solid rgba(180, 141, 70, 0.42) !important;
+    padding: 18px 4% 14px !important;
+    position: relative;
+    z-index: 100;
+  }
+
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .brand-sub {
+    font-size: .68rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    font-weight: 500;
+  }
+
+  .logo {
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-main {
+    font-family: "Cinzel", serif;
+    font-size: 2.15rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    color: var(--burgundy-main);
+    line-height: 1;
+  }
+
+  .logo-main i {
+    font-family: "Pinyon Script", cursive;
+    font-style: normal;
+    font-size: 2.4rem;
+    color: var(--gold-antique);
+  }
+
+  .logo-tag {
+    font-size: .62rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    margin-top: 4px;
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tools button {
+    background: var(--ivory-paper);
+    border: 1px solid rgba(180, 141, 70, 0.55);
+    color: var(--burgundy-main);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: "Jost", sans-serif;
+    font-size: .68rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tools button:hover {
+    background: var(--burgundy-main);
+    color: var(--ivory-paper);
+  }
+
+  .topbar nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    border-top: 1px solid rgba(180, 141, 70, 0.28);
+  }
+
+  .topbar nav a {
+    text-decoration: none;
+    color: var(--ink-espresso);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 6px 15px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+  }
+
+  .topbar nav a:hover {
+    color: var(--burgundy-main);
+    background: rgba(89, 20, 34, 0.06);
+    border-color: rgba(180, 141, 70, 0.45);
+  }
+
+  .topbar nav a.on {
+    background: var(--burgundy-main);
+    color: var(--ivory-paper);
+    border-color: var(--gold-antique);
+    box-shadow: 0 6px 16px rgba(89, 20, 34, 0.24);
+  }
+
+  /* ===================================================================== */
+  /* TOP WARM CREAM MOVING MARQUEE RIBBON                                  */
+  /* ===================================================================== */
+  .experience-cream-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, var(--cream-ribbon) 0%, var(--cream-ribbon-light) 50%, var(--cream-ribbon) 100%);
+    border-top: 1.5px solid var(--gold-antique);
+    border-bottom: 1.5px solid var(--gold-antique);
+    padding: 11px 0;
+    z-index: 95;
+    box-shadow: 0 4px 14px rgba(38, 18, 21, 0.08);
+  }
+
+  .experience-cream-marquee::before,
+  .experience-cream-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 56px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .experience-cream-marquee::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--cream-ribbon) 0%, transparent 100%);
+  }
+
+  .experience-cream-marquee::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--cream-ribbon) 0%, transparent 100%);
+  }
+
+  .cream-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: creamMarqueeScroll 34s linear infinite;
+    will-change: transform;
+  }
+
+  .experience-cream-marquee:hover .cream-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .cream-marquee-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 26px;
+    padding-right: 26px;
+    white-space: nowrap;
+  }
+
+  .cream-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Jost", sans-serif;
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #210e11;
+  }
+
+  .cream-marquee-item strong {
+    color: var(--burgundy-main);
+    font-weight: 700;
+  }
+
+  .cream-marquee-star {
+    color: var(--gold-antique);
+    font-size: .85rem;
+  }
+
+  @keyframes creamMarqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cream-marquee-track { animation: none; }
+  }
+
+  /* ===================================================================== */
+  /* 2. GLOBAL 3D ENGINE, INLINE EDITING & ANIMATIONS                      */
+  /* ===================================================================== */
+  [contenteditable="true"] {
+    outline: none;
+    border-radius: 4px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    cursor: text;
+  }
+
+  [contenteditable="true"]:hover {
+    box-shadow: 0 0 0 1px dashed rgba(180, 141, 70, 0.8);
+  }
+
+  [contenteditable="true"]:focus {
+    background: rgba(230, 198, 128, 0.24);
+    box-shadow: 0 0 0 1.5px var(--gold-antique);
+  }
+
+  .stage-3d {
+    perspective: 1400px;
+  }
+
+  .card-3d-tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  .card-3d-tilt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 248, 232, 0.22), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .card-3d-tilt:hover::after { opacity: 1; }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes chandelierSway {
+    0%, 100% { transform: rotate(-1.6deg); }
+    50% { transform: rotate(1.6deg); }
+  }
+
+  @keyframes curtainBreatheLeft {
+    0%, 100% { transform: translateX(-83%) skewX(-2deg); }
+    50% { transform: translateX(-80%) skewX(-3.2deg); }
+  }
+
+  @keyframes curtainBreatheRight {
+    0%, 100% { transform: translateX(83%) skewX(2deg); }
+    50% { transform: translateX(80%) skewX(3.2deg); }
+  }
+
+  /* ===================================================================== */
+  /* 3. THEATRICAL OPENING BURGUNDY VELVET CURTAINS & CHANDELIER HERO      */
+  /* ===================================================================== */
+  .curtain-hero-stage {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 50% 24%, rgba(255, 235, 190, 0.28) 0%, transparent 52%),
+      radial-gradient(ellipse at 50% 50%, #7d1b2e 0%, #4d0f1c 62%, #2c060e 100%);
+    color: var(--ivory-paper);
+    padding: 24px 5% 0;
+    overflow: hidden;
+    border-bottom: 3px solid var(--olive-main);
+  }
+
+  .curtain-folds-bg {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(24, 3, 8, 0.42) 0px,
+      rgba(130, 30, 50, 0.14) 26px,
+      rgba(24, 3, 8, 0.45) 52px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .theater-curtain-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 51%;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        #28050c 0px,
+        #681526 22px,
+        #420a15 44px,
+        #781b2e 66px,
+        #2b050d 88px
+      );
+    box-shadow: 0 0 48px rgba(15, 2, 5, 0.85);
+    z-index: 18;
+    pointer-events: none;
+    transition: transform 2.35s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  .theater-curtain-left {
+    left: 0;
+    transform-origin: top left;
+    transform: translateX(0%) skewX(0deg);
+    border-right: 3px solid var(--gold-bright);
+  }
+
+  .theater-curtain-right {
+    right: 0;
+    transform-origin: top right;
+    transform: translateX(0%) skewX(0deg);
+    border-left: 3px solid var(--gold-bright);
+  }
+
+  .curtain-center-crest {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 20;
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: rgba(34, 6, 12, 0.92);
+    border: 2px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: 1.05rem;
+    letter-spacing: .24em;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.7s ease, transform 0.9s ease;
+  }
+
+  .curtain-hero-stage.curtains-parted .theater-curtain-left {
+    transform: translateX(-83%) skewX(-2deg);
+    animation: curtainBreatheLeft 7s ease-in-out 2.4s infinite;
+  }
+
+  .curtain-hero-stage.curtains-parted .theater-curtain-right {
+    transform: translateX(83%) skewX(2deg);
+    animation: curtainBreatheRight 7s ease-in-out 2.4s infinite;
+  }
+
+  .curtain-hero-stage.curtains-parted .curtain-center-crest {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+
+  #heroCandleCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .hero-center-stage {
+    position: relative;
+    z-index: 5;
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .edit-ribbon-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 6px 18px;
+    border-radius: 999px;
+    background: rgba(34, 6, 12, 0.72);
+    border: 1px solid rgba(230, 198, 128, 0.45);
+    font-size: .64rem;
+    letter-spacing: .08em;
+    color: var(--gold-bright);
+    margin-bottom: 14px;
+  }
+
+  .btn-reset-mini {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+    border: none;
+    border-radius: 999px;
+    padding: 3px 11px;
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-reset-mini:hover { transform: scale(1.06); }
+
+  .btn-curtain-replay {
+    background: transparent;
+    color: var(--gold-bright);
+    border: 1px solid var(--gold-bright);
+    border-radius: 999px;
+    padding: 3px 11px;
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-curtain-replay:hover {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  .hero-chandelier-svg {
+    width: 148px;
+    height: 112px;
+    margin: 0 auto 6px;
+    display: block;
+    color: #fff4d4;
+    transform-origin: top center;
+    animation: chandelierSway 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(255, 232, 175, 0.85));
+  }
+
+  .hero-serif-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.04;
+    color: #fbf5ee;
+    text-shadow: 0 4px 20px rgba(20, 3, 7, 0.75);
+    margin: 0 0 8px;
+  }
+
+  .hero-serif-title .amp {
+    display: block;
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    color: var(--gold-bright);
+    line-height: 0.9;
+  }
+
+  .hero-date-slash {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+    letter-spacing: .16em;
+    color: var(--gold-bright);
+    margin: 6px 0 12px;
+  }
+
+  .hero-subtitle-note {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: rgba(251, 245, 238, 0.9);
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .olive-drape-pedestal {
+    position: relative;
+    z-index: 6;
+    max-width: 780px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #566346 0%, #3d4731 100%);
+    border-top: 2px solid var(--gold-bright);
+    border-left: 2px solid rgba(230, 198, 128, 0.5);
+    border-right: 2px solid rgba(230, 198, 128, 0.5);
+    border-radius: 26px 26px 0 0;
+    padding: 18px 26px 22px;
+    box-shadow: 0 -10px 35px rgba(20, 3, 7, 0.55);
+  }
+
+  .pedestal-meta-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    text-align: center;
+  }
+
+  .pedestal-meta-row small {
+    display: block;
+    font-size: .56rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 3px;
+  }
+
+  .pedestal-meta-row strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fbf5ee;
+  }
+
+  /* ===================================================================== */
+  /* 4. 3D OPENING OLIVE DOUBLE DOORS + LACE & SILK TULLE INVITATION CARD  */
+  /* ===================================================================== */
+  .editorial-grid-band {
+    padding: 64px 5% 48px;
+  }
+
+  .two-col-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 38px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .olive-doors-wrapper {
+    text-align: center;
+  }
+
+  .doors-arch-crown {
+    position: relative;
+    max-width: 390px;
+    margin: 0 auto;
+    padding-top: 28px;
+  }
+
+  .floral-arch-svg {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 370px;
+    height: 115px;
+    z-index: 15;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 14px rgba(38, 18, 21, 0.35));
+  }
+
+  .doors-3d-frame {
+    position: relative;
+    width: 100%;
+    height: 410px;
+    background: linear-gradient(180deg, #fbf6ef 0%, #efe4d6 100%);
+    border: 8px solid #3c4630;
+    border-radius: 16px 16px 4px 4px;
+    box-shadow:
+      0 0 0 2px var(--gold-antique),
+      0 24px 50px rgba(38, 18, 21, 0.28);
+    perspective: 1300px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .doors-interior-dossier {
+    position: absolute;
+    inset: 0;
+    padding: 36px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #fffdf9 0%, #f2e6d8 100%);
+    z-index: 1;
+  }
+
+  .doors-interior-dossier h3 {
+    font-family: "Cinzel", serif;
+    font-size: 1.25rem;
+    color: var(--burgundy-main);
+    margin: 0 0 8px;
+  }
+
+  .doors-interior-dossier p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.12rem;
+    line-height: 1.55;
+    color: var(--ink-espresso);
+    margin: 0 0 12px;
+  }
+
+  .interior-badge-olive {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--olive-main);
+    color: #fbf5ee;
+    font-size: .64rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .olive-door-leaf {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(180deg, #566346 0%, #465138 100%);
+    border: 1.5px solid #2f3725;
+    z-index: 5;
+    transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 18px 14px;
+    box-shadow: inset 0 0 18px rgba(24, 30, 18, 0.35);
+  }
+
+  .olive-door-left {
+    left: 0;
+    transform-origin: left center;
+    border-right: 1px solid #262d1e;
+  }
+
+  .olive-door-right {
+    right: 0;
+    transform-origin: right center;
+    border-left: 1px solid #262d1e;
+  }
+
+  .doors-3d-frame.is-open .olive-door-left {
+    transform: rotateY(-112deg);
+  }
+
+  .doors-3d-frame.is-open .olive-door-right {
+    transform: rotateY(112deg);
+  }
+
+  .door-molding-box {
+    border: 2px solid #38422c;
+    box-shadow:
+      inset 0 0 0 2px #687556,
+      0 2px 5px rgba(20, 25, 15, 0.3);
+    border-radius: 3px;
+  }
+
+  .molding-tall { height: 54%; }
+  .molding-short { height: 32%; }
+
+  .door-ribbon-tag {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: linear-gradient(180deg, #6e192a 0%, #470d19 100%);
+    color: var(--gold-bright);
+    border: 1.5px solid var(--gold-bright);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: .95rem;
+    box-shadow: 0 10px 22px rgba(24, 5, 9, 0.5);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+
+  .doors-3d-frame.is-open .door-ribbon-tag {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  .btn-door-toggle {
+    margin-top: 14px;
+    padding: 7px 20px;
+    border-radius: 999px;
+    background: var(--olive-main);
+    color: var(--ivory-paper);
+    border: 1px solid var(--gold-antique);
+    font-family: "Jost", sans-serif;
+    font-size: .64rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .btn-door-toggle:hover {
+    background: var(--burgundy-main);
+  }
+
+  /* RIGHT: Tilted Gold Frame with Burgundy Lace, Silk Tulle & Cameo Brooch */
+  .lace-tulle-stage {
+    position: relative;
+    padding: 18px;
+  }
+
+  .silk-tulle-veil {
+    position: absolute;
+    inset: 4px;
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.92) 0%, transparent 45%),
+      radial-gradient(circle at 12% 88%, rgba(255, 255, 255, 0.92) 0%, transparent 48%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(240, 229, 214, 0.45));
+    box-shadow: 0 18px 42px rgba(38, 18, 21, 0.14);
+    transform: rotate(2.5deg);
+    pointer-events: none;
+  }
+
+  .lace-frame-card {
+    position: relative;
+    background: var(--ivory-card);
+    border: 4px solid var(--gold-antique);
+    outline: 6px solid var(--burgundy-main);
+    border-radius: 18px;
+    padding: 32px 30px;
+    transform: rotate(-1.5deg);
+    box-shadow:
+      0 22px 48px rgba(38, 18, 21, 0.22),
+      inset 0 0 0 6px rgba(89, 20, 34, 0.08);
+  }
+
+  .cameo-brooch-medallion {
+    position: absolute;
+    top: -18px;
+    right: -14px;
+    width: 68px;
+    height: 82px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f5e6d3 0%, #d4be9e 70%, #8c6d3f 100%);
+    border: 4px solid var(--gold-antique);
+    box-shadow: 0 10px 22px rgba(38, 18, 21, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+  }
+
+  .lace-card-heading {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.95rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+    margin: 0 0 6px;
+  }
+
+  .lace-card-sub {
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+
+  .vintage-resp-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid;
+    gap: 10px;
+  }
+
+  .vintage-resp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.18rem;
+    line-height: 1.45;
+    color: var(--ink-espresso);
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(180, 141, 70, 0.45);
+  }
+
+  .vintage-resp-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .lace-num-dot {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--burgundy-main);
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: .68rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  /* ===================================================================== */
+  /* 5. SHEET-MUSIC SPOTIFY SOUNDTRACK PLAYER + BURGUNDY CALENDAR & CLOCK  */
+  /* ===================================================================== */
+  .music-calendar-band {
+    padding: 36px 5% 64px;
+  }
+
+  .music-cal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .sheet-music-backdrop {
+    position: relative;
+    padding: 24px 20px;
+    border-radius: 22px;
+    background:
+      repeating-linear-gradient(
+        180deg,
+        transparent 0px,
+        transparent 11px,
+        rgba(89, 20, 34, 0.14) 12px,
+        transparent 13px
+      ),
+      linear-gradient(135deg, #f3e6d5 0%, #e6d4bc 100%);
+    border: 1.5px solid rgba(180, 141, 70, 0.55);
+    box-shadow: 0 22px 48px rgba(38, 18, 21, 0.16);
+  }
+
+  .burgundy-player-card {
+    max-width: 390px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #681828 0%, #450c17 100%);
+    border: 2px solid var(--gold-antique);
+    border-radius: 20px;
+    padding: 16px 16px 18px;
+    text-align: center;
+    color: var(--ivory-paper);
+    box-shadow: 0 20px 42px rgba(38, 18, 21, 0.38);
+  }
+
+  .player-track-label {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.18rem;
+    color: var(--gold-bright);
+    margin: 0 0 12px;
+    display: block;
+  }
+
+  .spotify-frame-shell {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1.5px solid var(--gold-bright);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+    background: #191414;
+  }
+
+  /* RIGHT: Burgundy Calendar Draped in White Silk & Live Antique Clock */
+  .silk-calendar-wrapper {
+    position: relative;
+    padding: 24px 20px 30px;
+  }
+
+  .pleated-silk-aura {
+    position: absolute;
+    inset: 6px;
+    border-radius: 30px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.96) 0%, transparent 48%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.94) 0%, transparent 50%),
+      linear-gradient(145deg, #fffdf9 0%, #ede0cf 100%);
+    box-shadow: 0 22px 50px rgba(38, 18, 21, 0.16);
+    pointer-events: none;
+  }
+
+  .cal-rose-cluster {
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 96px;
+    height: 96px;
+    z-index: 15;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 14px rgba(38, 18, 21, 0.28));
+  }
+
+  .burgundy-calendar-card {
+    position: relative;
+    z-index: 8;
+    max-width: 340px;
+    margin: 0 auto;
+    background: linear-gradient(165deg, #681727 0%, #440b16 100%);
+    border: 2px solid var(--gold-antique);
+    border-radius: 14px;
+    padding: 24px 20px 26px;
+    color: var(--ivory-paper);
+    text-align: center;
+    box-shadow: 0 24px 48px rgba(38, 18, 21, 0.34);
+  }
+
+  .cal-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .cal-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(230, 198, 128, 0.16);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .cal-arrow:hover {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  .cal-title-combo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.32rem;
+    font-weight: 600;
+    color: var(--ivory-paper);
+  }
+
+  .cal-year-sel {
+    background: rgba(34, 6, 12, 0.8);
+    border: 1px solid var(--gold-bright);
+    border-radius: 6px;
+    color: var(--gold-bright);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .cal-days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    font-size: .76rem;
+    transition: opacity 0.18s ease;
+  }
+
+  .cal-days-grid.fading { opacity: 0.25; }
+
+  .cal-days-grid span.dow {
+    font-size: .64rem;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    padding-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .cal-day-num {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ivory-paper);
+    font-family: "Jost", sans-serif;
+    font-size: .75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.18s ease;
+  }
+
+  .cal-day-num:hover {
+    border-color: var(--gold-bright);
+    background: rgba(230, 198, 128, 0.18);
+  }
+
+  .cal-day-num.circled {
+    border: 1.5px solid var(--gold-bright) !important;
+    background: rgba(230, 198, 128, 0.22) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(230, 198, 128, 0.55);
+  }
+
+  .cal-day-num.has-dot::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+  }
+
+  .cal-footer-note {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(230, 198, 128, 0.28);
+  }
+
+  .cal-picked-label {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    color: var(--gold-bright);
+  }
+
+  .cal-picked-sub {
+    display: block;
+    font-size: .7rem;
+    color: rgba(251, 245, 238, 0.88);
+    margin: 2px 0 9px;
+  }
+
+  .cal-jump-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .btn-cal-pill {
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(230, 198, 128, 0.14);
+    border: 1px solid rgba(230, 198, 128, 0.5);
+    color: var(--gold-bright);
+    font-size: .56rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .btn-cal-pill:hover {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  .antique-clock-widget {
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    width: 88px;
+    height: 102px;
+    z-index: 16;
+    filter: drop-shadow(0 12px 18px rgba(38, 18, 21, 0.4));
+    pointer-events: none;
+  }
+
+  /* ===================================================================== */
+  /* 6. DUA ATAS: TWIN FILIGREE OVAL PHOTO FRAMES + JOURNEY MILESTONES     */
+  /* ===================================================================== */
+  .twin-oval-emblem-band {
+    padding: 36px 5% 64px;
+  }
+
+  .twin-emblem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .twin-ovals-stage {
+    position: relative;
+    padding: 20px 10px 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .oval-filigree-wrap {
+    position: relative;
+    width: 210px;
+    height: 280px;
+    border-radius: 50%;
+    padding: 9px;
+    background: linear-gradient(145deg, #e6c680 0%, #9c7432 50%, #f5dfb0 100%);
+    box-shadow:
+      0 0 0 3px var(--burgundy-main),
+      0 22px 44px rgba(38, 18, 21, 0.32);
+    transition: transform 0.35s ease;
+    cursor: pointer;
+  }
+
+  .oval-filigree-wrap:first-child {
+    transform: rotate(-4deg) translateX(12px);
+    z-index: 4;
+  }
+
+  .oval-filigree-wrap:nth-child(2) {
+    transform: rotate(4deg) translateX(-12px) translateY(16px);
+    z-index: 5;
+  }
+
+  .oval-filigree-wrap:hover {
+    transform: scale(1.04) translateY(-4px);
+    z-index: 10;
+  }
+
+  .oval-photo-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(circle at 35% 30%, #681727 0%, #2b060d 100%);
+    border: 2px solid var(--ivory-paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .oval-photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    transition: transform 0.5s ease;
+  }
+
+  .oval-filigree-wrap:hover .oval-photo-inner img {
+    transform: scale(1.06);
+  }
+
+  .oval-photo-pill {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: rgba(34, 6, 12, 0.88);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: .56rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 8;
+  }
+
+  .btn-oval-del {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(34, 6, 12, 0.88);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-size: .85rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 12;
+  }
+
+  .btn-oval-del.visible { display: inline-flex; }
+  .btn-oval-del:hover { background: #b91c1c; color: #fff; }
+
+  .olive-sash-svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 410px;
+    height: 92px;
+    z-index: 8;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 16px rgba(38, 18, 21, 0.32));
+  }
+
+  .emblem-itinerary-card {
+    position: relative;
+    background: var(--ivory-card);
+    border: 3px solid var(--gold-antique);
+    border-left: 10px solid var(--burgundy-main);
+    border-radius: 18px;
+    padding: 32px 30px;
+    box-shadow: 0 22px 48px rgba(38, 18, 21, 0.16);
+  }
+
+  .itinerary-heading {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.1rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--ink-espresso);
+    margin: 0 0 22px;
+  }
+
+  .emblem-row {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(180, 141, 70, 0.3);
+  }
+
+  .emblem-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .antique-emblem-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f5e6d3 0%, #dfd0bc 100%);
+    border: 2px solid var(--gold-antique);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--olive-dark);
+    box-shadow: 0 6px 14px rgba(38, 18, 21, 0.14);
+  }
+
+  .emblem-text-col small {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+    letter-spacing: .08em;
+  }
+
+  .emblem-text-col strong {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.22rem;
+    font-weight: 600;
+    color: var(--ink-espresso);
+  }
+
+  /* ===================================================================== */
+  /* 7. ROMANTIC EDITORIAL KEEPSAKE LETTERS, ARCHIVAL PASSES & CAMEO SEALS */
+  /* ===================================================================== */
+  .keepsake-editorial-section {
+    position: relative;
+    padding: 58px 5% 68px;
+    background:
+      radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.72) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(76, 88, 62, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(243, 232, 218, 0.75) 0%, rgba(247, 239, 229, 0.95) 100%);
+    border-top: 1.5px solid rgba(180, 141, 70, 0.45);
+    border-bottom: 1.5px solid rgba(180, 141, 70, 0.45);
+  }
+
+  .inner-1100 {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .editorial-ornament-header {
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  .editorial-ornament-header .eyebrow {
+    display: block;
+    font-size: .64rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .editorial-ornament-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(2.3rem, 4.4vw, 3.1rem);
+    font-weight: 600;
+    color: var(--burgundy-main);
+    margin: 0 0 8px;
+  }
+
+  .flourish-divider {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gold-antique);
+    font-size: .85rem;
+  }
+
+  .flourish-divider::before,
+  .flourish-divider::after {
+    content: "";
+    width: 68px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-antique), transparent);
+  }
+
+  /* Two Tilted Wax-Sealed Keepsake Letters */
+  .keepsake-letters-duo {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 36px;
+    align-items: start;
+    margin-bottom: 58px;
+  }
+
+  .keepsake-letter-card {
+    position: relative;
+    background:
+      radial-gradient(circle at top right, rgba(230, 198, 128, 0.14) 0%, transparent 50%),
+      var(--ivory-card);
+    border: 2px solid var(--gold-antique);
+    border-radius: 18px;
+    padding: 36px 32px 32px;
+    box-shadow:
+      0 22px 46px rgba(38, 18, 21, 0.14),
+      inset 0 0 0 6px rgba(180, 141, 70, 0.08);
+  }
+
+  .letter-tilt-left { transform: rotate(-1deg); }
+  .letter-tilt-right { transform: rotate(1.1deg); border-color: var(--olive-soft); }
+
+  .wax-seal-3d {
+    position: absolute;
+    top: -18px;
+    right: 26px;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #8e2339 0%, #591422 58%, #340811 100%);
+    border: 3px solid #751b2d;
+    box-shadow:
+      0 8px 18px rgba(38, 18, 21, 0.36),
+      inset 0 2px 5px rgba(255, 225, 200, 0.35),
+      inset 0 -3px 6px rgba(20, 3, 7, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    z-index: 12;
+  }
+
+  .wax-seal-olive {
+    background: radial-gradient(circle at 32% 30%, #6f7e5c 0%, #4c583e 58%, #2e3625 100%);
+    border-color: #5c6a4b;
+  }
+
+  .vintage-postage-stamp {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1.5px dashed var(--olive-main);
+    background: rgba(76, 88, 62, 0.08);
+    font-family: "Cinzel", serif;
+    font-size: .62rem;
+    letter-spacing: .16em;
+    color: var(--olive-dark);
+    margin-bottom: 14px;
+  }
+
+  .keepsake-letter-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.95rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+    margin: 0 0 8px;
+  }
+
+  .silk-ribbon-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #681727 0%, #470d19 100%);
+    color: var(--gold-bright);
+    border: 1px solid var(--gold-antique);
+    font-size: .64rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .silk-ribbon-olive {
+    background: linear-gradient(135deg, #566346 0%, #3b4530 100%);
+  }
+
+  .editorial-journal-entries {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    margin: 0 !important;
+    padding-left: 22px !important;
+  }
+
+  .editorial-journal-entries li {
+    display: list-item !important;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    line-height: 1.48;
+    color: var(--ink-espresso);
+    padding-bottom: 9px;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed rgba(180, 141, 70, 0.42);
+  }
+
+  .editorial-journal-entries li::marker {
+    color: var(--burgundy-main);
+    font-size: 1.15em;
+  }
+
+  .editorial-journal-entries li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  /* Archival Keepsake Passes */
+  .archival-passes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 68px;
+  }
+
+  .archival-pass-card {
+    position: relative;
+    background: var(--ivory-card);
+    border: 2px solid var(--gold-antique);
+    border-radius: 20px;
+    padding: 26px 22px 24px;
+    text-align: center;
+    box-shadow: 0 20px 44px rgba(38, 18, 21, 0.13);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .pass-velvet-header {
+    margin: -26px -22px 18px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #681727 0%, #420a15 100%);
+    border-bottom: 1.5px solid var(--gold-antique);
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: .66rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+  }
+
+  .pass-olive-header {
+    background: linear-gradient(135deg, #566346 0%, #38422c 100%);
+  }
+
+  .archival-pass-card h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.52rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--burgundy-main);
+    margin: 0 0 12px;
+  }
+
+  .pass-role-medallion {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(180, 141, 70, 0.15);
+    border: 1px solid var(--gold-antique);
+    font-size: .74rem;
+    font-weight: 500;
+    color: var(--ink-espresso);
+    margin-bottom: 14px;
+  }
+
+  .pass-bullet-list {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    text-align: left;
+    margin: 0 0 14px !important;
+    padding-left: 20px !important;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.06rem;
+    line-height: 1.42;
+    color: var(--ink-espresso);
+  }
+
+  .pass-bullet-list li {
+    display: list-item !important;
+    margin-bottom: 5px;
+  }
+
+  .pass-bullet-list li::marker { color: var(--gold-antique); }
+
+  .pass-date-seal {
+    display: block;
+    padding-top: 11px;
+    border-top: 1px dashed rgba(180, 141, 70, 0.5);
+    font-family: "Cinzel", serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--olive-dark);
+  }
+
+  /* Skills & Abilities Cameo Medallions */
+  .cameo-skills-ribbon {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .cameo-skill-medallion {
+    flex: 1 1 185px;
+    max-width: 205px;
+    background: radial-gradient(circle at 50% 25%, #fffdf9 0%, #f3e6d5 100%);
+    border: 2.5px solid var(--gold-antique);
+    border-radius: 110px 110px 24px 24px;
+    padding: 26px 14px 22px;
+    text-align: center;
+    box-shadow:
+      0 18px 36px rgba(38, 18, 21, 0.13),
+      inset 0 0 0 4px rgba(89, 20, 34, 0.06);
+  }
+
+  .cameo-inner-ring {
+    width: 66px;
+    height: 66px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #7a1e30 0%, #440b16 100%);
+    border: 3px solid var(--gold-bright);
+    box-shadow: 0 0 0 2px var(--burgundy-main), 0 8px 18px rgba(38, 18, 21, 0.25);
+    color: var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cameo-skill-medallion h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    font-weight: 600;
+    line-height: 1.28;
+    color: var(--burgundy-main);
+    margin: 0 0 6px;
+  }
+
+  .cameo-skill-medallion span {
+    display: inline-block;
+    font-size: .56rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    font-weight: 600;
+  }
+
+  /* ===================================================================== */
+  /* 8. PHOTO GALLERY (4 GAMBAR: 2 ATAS & 2 BAWAH), VIDEO & CLOSING ARCH   */
+  /* ===================================================================== */
+  .gallery-damask-band {
+    padding: 68px 5% 74px;
+  }
+
+  .gallery-two-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    max-width: 720px;
+    margin: 0 auto 64px;
+  }
+
+  .gallery-oval-card {
+    background: var(--ivory-card);
+    border: 2px solid var(--gold-antique);
+    border-radius: 22px;
+    padding: 22px 20px 26px;
+    text-align: center;
+    box-shadow: 0 20px 44px rgba(38, 18, 21, 0.14);
+  }
+
+  .gallery-oval-frame {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    border-radius: 50% / 44%;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #591422 0%, #2b060d 100%);
+    border: 4px solid var(--gold-antique);
+    box-shadow: 0 0 0 3px var(--burgundy-main);
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+
+  .gallery-oval-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    transition: transform 0.55s ease;
+  }
+
+  .gallery-oval-card:hover .gallery-oval-frame img { transform: scale(1.07); }
+
+  .btn-photo-change {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    z-index: 15;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: rgba(38, 18, 21, 0.88);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .btn-photo-change:hover {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  .btn-photo-del {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    z-index: 15;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(38, 18, 21, 0.88);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-size: .88rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .btn-photo-del.visible { display: inline-flex; }
+  .btn-photo-del:hover { background: #b91c1c; color: #fff; }
+
+  .empty-oval-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    text-align: center;
+    color: var(--gold-bright);
+  }
+
+  .plus-circle-gold {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: #fbf5ee;
+  }
+
+  .empty-oval-cta strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.05rem;
+    color: #fbf5ee;
+  }
+
+  .empty-oval-cta small {
+    font-size: .56rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  .gal-kicker {
+    display: block;
+    font-size: .62rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--olive-main);
+    font-weight: 600;
+  }
+
+  .gal-caption {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.32rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+    margin-top: 3px;
+  }
+
+  /* ===================================================================== */
+  /* EXPERIENCE VIDEO CHRONICLE SHOWCASE (HTML5 <video> ELEMENT)           */
+  /* ===================================================================== */
+  .video-chronicle-showcase {
+    max-width: 780px;
+    margin: 0 auto 64px;
+    text-align: center;
+  }
+
+  .video-chronicle-card {
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+    background:
+      radial-gradient(circle at top right, rgba(230, 198, 128, 0.16) 0%, transparent 55%),
+      var(--ivory-card);
+    border: 3px solid var(--gold-antique);
+    outline: 5px solid var(--burgundy-main);
+    border-radius: 190px 190px 24px 24px;
+    padding: 28px 22px 24px;
+    box-shadow:
+      0 26px 56px rgba(38, 18, 21, 0.22),
+      inset 0 0 0 5px rgba(89, 20, 34, 0.06);
+  }
+
+  .video-arch-crown {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #681727 0%, #420a15 100%);
+    border: 1px solid var(--gold-bright);
+    color: var(--gold-bright);
+    font-family: "Cinzel", serif;
+    font-size: .6rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .video-portrait-shell {
+    position: relative;
+    width: 100%;
+    border-radius: 155px 155px 16px 16px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #4d0f1c 0%, #1d0409 100%);
+    border: 3px solid var(--gold-antique);
+    box-shadow: 0 14px 32px rgba(24, 5, 9, 0.35);
+    margin-bottom: 16px;
+  }
+
+  .video-portrait-shell video {
+    width: 100%;
+    max-height: 560px;
+    display: block;
+    background: #1a0307;
+    object-fit: cover;
+  }
+
+  .video-fallback-notice {
+    display: none;
+    padding: 36px 20px;
+    text-align: center;
+    color: var(--ivory-paper);
+  }
+
+  .video-fallback-notice p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.15rem;
+    color: var(--gold-bright);
+    margin: 0 0 12px;
+  }
+
+  .video-meta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(180, 141, 70, 0.55);
+  }
+
+  .video-meta-title {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.28rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+    text-align: left;
+  }
+
+  .video-actions-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-video-pill {
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--olive-main);
+    color: var(--ivory-paper);
+    border: 1px solid var(--gold-antique);
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-video-pill:hover {
+    background: var(--burgundy-main);
+    color: var(--gold-bright);
+  }
+
+  .btn-video-tiktok {
+    background: var(--burgundy-main);
+    color: var(--gold-bright);
+  }
+
+  .btn-video-tiktok:hover {
+    background: var(--gold-bright);
+    color: var(--burgundy-dark);
+  }
+
+  .closing-burgundy-arch {
+    max-width: 460px;
+    margin: 0 auto;
+    background: radial-gradient(circle at 50% 25%, #6e192a 0%, #3b0a14 80%);
+    color: var(--ivory-paper);
+    border-radius: 230px 230px 18px 18px;
+    padding: 60px 36px 40px;
+    text-align: center;
+    border: 2px solid var(--gold-antique);
+    box-shadow: 0 26px 56px rgba(38, 18, 21, 0.28);
+  }
+
+  .closing-burgundy-arch h3 {
+    font-family: "Cinzel", serif;
+    font-size: 1.32rem;
+    letter-spacing: .16em;
+    line-height: 1.5;
+    color: var(--gold-bright);
+    margin: 0 0 14px;
+  }
+
+  /* ===================================================================== */
+  /* 9. RUBRIC-COMPLIANT FOOTER WITH SITE MAP                              */
+  /* ===================================================================== */
+  footer.rubric-footer {
+    background: var(--burgundy-dark) !important;
+    color: var(--ivory-paper) !important;
+    text-align: center !important;
+    padding: 36px 5% 28px !important;
+    border-top: 2px solid var(--gold-antique) !important;
+  }
+
+  footer.rubric-footer .footer-logo {
+    font-family: "Cinzel", serif;
+    font-size: 1.75rem;
+    letter-spacing: .16em;
+    color: var(--gold-bright);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  footer.rubric-footer .footer-logo i {
+    font-family: "Pinyon Script", cursive;
+    font-style: normal;
+  }
+
+  .footer-ownership {
+    margin: 10px auto 6px;
+    max-width: 780px;
+    font-size: 0.82rem;
+    color: #ead6c6;
+    line-height: 1.65;
+  }
+
+  .footer-dates {
+    margin: 6px 0 14px;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-bright);
+  }
+
+  .footer-sitemap {
+    margin: 14px auto;
+    padding: 12px 16px;
+    max-width: 780px;
+    border-top: 1px dashed rgba(230, 198, 128, 0.35);
+    border-bottom: 1px dashed rgba(230, 198, 128, 0.35);
+    font-size: 0.78rem;
+    line-height: 1.9;
+  }
+
+  .footer-sitemap a {
+    color: var(--ivory-paper);
+    margin: 0 8px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-sitemap a:hover {
+    color: var(--gold-bright);
+    text-decoration: underline;
+  }
+
+  .footer-access-note {
+    margin: 10px auto;
+    max-width: 760px;
+    font-size: 0.74rem;
+    color: #d7ba86;
+    line-height: 1.6;
+  }
+
+  .footer-access-note a {
+    color: #fff3d6;
+    text-decoration: underline;
+  }
+
+  footer.rubric-footer a {
+    color: var(--gold-bright);
+    text-decoration: none;
+    font-size: .8rem;
+  }
+
+  /* Lightbox */
+  .exp-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(24, 5, 9, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 22px;
+  }
+  .exp-lightbox.open { display: flex; }
+
+  .exp-lightbox-box {
+    background: var(--ivory-card);
+    border: 3px solid var(--gold-antique);
+    border-radius: 18px;
+    padding: 16px 16px 22px;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .exp-lightbox-box img {
+    width: 100%;
+    max-height: 68vh;
+    object-fit: contain;
+    background: #2b060d;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .exp-lb-cap {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--burgundy-main);
+  }
+
+  .exp-lb-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--burgundy-main);
+    color: var(--gold-bright);
+    border: 2px solid var(--gold-bright);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 980px) {
+    .two-col-editorial,
+    .music-cal-grid,
+    .twin-emblem-grid,
+    .keepsake-letters-duo,
+    .archival-passes-grid { grid-template-columns: 1fr; }
+    .pedestal-meta-row { grid-template-columns: 1fr; }
+    .letter-tilt-left, .letter-tilt-right { transform: none; }
+  }
+
+  @media (max-width: 650px) {
+    .gallery-two-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto 48px; }
+    .oval-filigree-wrap { width: 165px; height: 225px; }
+    .cameo-skill-medallion { max-width: 100%; }
+    .video-chronicle-card { border-radius: 140px 140px 20px 20px; }
+    .video-portrait-shell { border-radius: 115px 115px 14px 14px; }
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="editorial-sheet">
+ <!-- TOP UTILITY STRIP -->
+ <div class="top-utility-strip">
+  <div class="clock-date-capsule" aria-label="Live Clock and Date">
+   <span class="clock-pulse-dot"></span>
+   <span id="liveDateDisplay">SAT, 21 NOV 2026</span>
+   <span>&bull;</span>
+   <span id="liveClockDisplay">03:14:00 PM</span>
+  </div>
+
+  <div class="home-search-box">
+   <div class="home-search-field">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" id="homeSearchInput" placeholder="Search portfolio..." autocomplete="off">
+    <button type="button" class="home-search-clear" id="homeSearchClear" onclick="clearHomeSearch()">&times;</button>
+   </div>
+   <div class="home-search-dropdown" id="homeSearchDropdown"></div>
+  </div>
+
+  <div class="lang-pill-group" role="group" aria-label="Language Switcher">
+   <button type="button" class="lang-switch-btn active" data-lang="en" onclick="switchSiteLang('en')">EN</button>
+   <button type="button" class="lang-switch-btn" data-lang="bm" onclick="switchSiteLang('bm')">BM</button>
+  </div>
+ </div>
+
+ <!-- HEADER & NAVIGATION -->
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="../index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button type="button" onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button type="button" onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button type="button" onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button type="button" onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast" data-i18n="contrast">Contrast</button>
+   </div>
+  </div>
+  <nav>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" data-i18n="navAbout">About</a>
+   <a href="education.html" data-i18n="navEdu">Education</a>
+   <a href="experience.html" class="on" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <!-- TOP WARM CREAM MOVING MARQUEE RIBBON -->
+ <div class="experience-cream-marquee" role="region" aria-label="Experience Highlights Ticker">
+  <div class="cream-marquee-track" id="expCreamMarqueeTrack">
+   <div class="cream-marquee-group">
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>EXPERIENCE &amp; JOURNEY 2026</strong></span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PEJABAT DAERAH MERSING, JOHOR</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>FINANCIAL &amp; ADMINISTRATIVE INTERN</strong> (27 JUL &ndash; 18 SEP 2026)</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> OUTREACH PROGRAMME &bull; <strong>LEADER OF AJK LDK &amp; BOOTH</strong></span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> GOTONG-ROYONG PEMBERSIHAN MASJID (17 AUG 2026)</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>RECORDS MANAGEMENT</strong> &bull; APLUS SYSTEM &bull; EXCEL &bull; CANVA</span>
+   </div>
+   <div class="cream-marquee-group" aria-hidden="true">
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>EXPERIENCE &amp; JOURNEY 2026</strong></span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PEJABAT DAERAH MERSING, JOHOR</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>FINANCIAL &amp; ADMINISTRATIVE INTERN</strong> (27 JUL &ndash; 18 SEP 2026)</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> OUTREACH PROGRAMME &bull; <strong>LEADER OF AJK LDK &amp; BOOTH</strong></span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> GOTONG-ROYONG PEMBERSIHAN MASJID (17 AUG 2026)</span>
+    <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>RECORDS MANAGEMENT</strong> &bull; APLUS SYSTEM &bull; EXCEL &bull; CANVA</span>
+   </div>
+  </div>
+ </div>
+
+ <!-- =================================================================== -->
+ <!-- 1. THEATRICAL OPENING BURGUNDY CURTAINS, CHANDELIER & OLIVE TABLE   -->
+ <!-- =================================================================== -->
+ <section class="curtain-hero-stage" id="heroCurtainStage">
+  <div class="curtain-folds-bg"></div>
+
+  <div class="theater-curtain-panel theater-curtain-left"></div>
+  <div class="theater-curtain-panel theater-curtain-right"></div>
+  <div class="curtain-center-crest">N &amp; I &bull; 2026</div>
+
+  <canvas id="heroCandleCanvas"></canvas>
+
+  <div class="hero-center-stage">
+   <div class="edit-ribbon-hint">
+    <span data-i18n="editHint">&#10022; Click olive doors to open 3D archive &bull; Click any text or photo to customize</span>
+    <button type="button" class="btn-curtain-replay" onclick="replayStageCurtains()" data-i18n="replayCurtain">&#10022; Replay Curtain</button>
+    <button type="button" class="btn-reset-mini" onclick="resetTextEdits()" data-i18n="resetText">Reset Text</button>
+   </div>
+
+   <svg class="hero-chandelier-svg" viewBox="0 0 160 120" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+    <line x1="80" y1="0" x2="80" y2="28"/>
+    <path d="M58 28 C58 18, 102 18, 102 28 Z" fill="rgba(255,244,212,0.2)"/>
+    <path d="M80 28 C44 36, 22 56, 22 70 C38 70, 56 58, 80 44"/>
+    <path d="M80 28 C116 36, 138 56, 138 70 C122 70, 104 58, 80 44"/>
+    <path d="M80 44 L80 86"/>
+    <circle cx="22" cy="64" r="3" fill="#fff4d4"/>
+    <circle cx="52" cy="54" r="2.5" fill="#fff4d4"/>
+    <circle cx="108" cy="54" r="2.5" fill="#fff4d4"/>
+    <circle cx="138" cy="64" r="3" fill="#fff4d4"/>
+    <circle cx="80" cy="92" r="4" fill="#fff4d4"/>
+    <path d="M32 70 C50 96, 110 96, 128 70" stroke-dasharray="2 3"/>
+    <path d="M46 62 C62 82, 98 82, 114 62" stroke-dasharray="2 2"/>
+   </svg>
+
+   <h1 class="hero-serif-title">
+    <span contenteditable="true" data-edit="h_t1" data-i18n="h_t1">Experience</span>
+    <span class="amp">&amp;</span>
+    <span contenteditable="true" data-edit="h_t2" data-i18n="h_t2">Journey</span>
+   </h1>
+
+   <div class="hero-date-slash" contenteditable="true" data-edit="h_dates">
+    27 / 07 / 2026 &ndash; 18 / 09 / 2026
+   </div>
+
+   <p class="hero-subtitle-note" contenteditable="true" data-edit="h_desc" data-i18n="h_desc">
+    A collection of experiences, responsibilities, and things I've learned along the way.
+   </p>
+
+   <div class="olive-drape-pedestal">
+    <div class="pedestal-meta-row">
+     <div>
+      <small data-i18n="pedOrgLbl">Organisation</small>
+      <strong contenteditable="true" data-edit="p_org" data-i18n="p_org">Pejabat Daerah Mersing, Johor</strong>
+     </div>
+     <div>
+      <small data-i18n="pedRoleLbl">Department &amp; Role</small>
+      <strong contenteditable="true" data-edit="p_role" data-i18n="p_role">Financial &amp; Admin &bull; Intern</strong>
+     </div>
+     <div>
+      <small data-i18n="pedStatLbl">Status</small>
+      <strong contenteditable="true" data-edit="p_stat" data-i18n="p_stat">Completed (18 Sept 2026)</strong>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- 2. 3D OPENING OLIVE DOUBLE DOORS + LACE & SILK TULLE INVITATION CARD-->
+ <!-- =================================================================== -->
+ <section class="editorial-grid-band stage-3d">
+  <div class="two-col-editorial">
+   <div class="olive-doors-wrapper reveal-up">
+    <div class="doors-arch-crown">
+     <svg class="floral-arch-svg" viewBox="0 0 380 120" aria-hidden="true">
+      <path d="M26 105 C45 32, 335 32, 354 105" fill="none" stroke="#3c4630" stroke-width="6"/>
+      <ellipse cx="55" cy="72" rx="18" ry="8" transform="rotate(-35 55 72)" fill="#4c583e"/>
+      <ellipse cx="115" cy="44" rx="20" ry="8" transform="rotate(-15 115 44)" fill="#5d6b4c"/>
+      <ellipse cx="265" cy="44" rx="20" ry="8" transform="rotate(15 265 44)" fill="#5d6b4c"/>
+      <ellipse cx="325" cy="72" rx="18" ry="8" transform="rotate(35 325 72)" fill="#4c583e"/>
+      <circle cx="48" cy="84" r="14" fill="#6b1728"/>
+      <circle cx="76" cy="60" r="16" fill="#4f0e1c"/>
+      <circle cx="112" cy="46" r="14" fill="#7d1d31"/>
+      <circle cx="152" cy="36" r="15" fill="#591422"/>
+      <circle cx="228" cy="36" r="15" fill="#591422"/>
+      <circle cx="268" cy="46" r="14" fill="#7d1d31"/>
+      <circle cx="304" cy="60" r="16" fill="#4f0e1c"/>
+      <circle cx="332" cy="84" r="14" fill="#6b1728"/>
+      <circle cx="76" cy="60" r="3.5" fill="#e6c680"/>
+      <circle cx="152" cy="36" r="3.5" fill="#e6c680"/>
+      <circle cx="228" cy="36" r="3.5" fill="#e6c680"/>
+      <circle cx="304" cy="60" r="3.5" fill="#e6c680"/>
+     </svg>
+
+     <div class="doors-3d-frame" id="oliveDoubleDoors" onclick="toggleOliveDoors()">
+      <div class="doors-interior-dossier">
+       <span style="font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:var(--olive-main); margin-bottom:6px;" data-i18n="doorKicker">01 &bull; WORKPLACE TRAINING</span>
+       <h3 contenteditable="true" data-edit="door_org" data-i18n="door_org" onclick="event.stopPropagation()">Pejabat Daerah Mersing, Johor</h3>
+       <p contenteditable="true" data-edit="door_dept" data-i18n-html="door_dept" onclick="event.stopPropagation()">
+        <strong>Financial and Administrative Department</strong><br>
+        Position: Internship Student<br>
+        Period: 27 July 2026 &ndash; 18 September 2026
+       </p>
+       <span class="interior-badge-olive" data-i18n="doorBadge">Completed Successfully</span>
+      </div>
+
+      <div class="olive-door-leaf olive-door-left">
+       <div class="door-molding-box molding-tall"></div>
+       <div class="door-molding-box molding-short"></div>
+      </div>
+
+      <div class="olive-door-leaf olive-door-right">
+       <div class="door-molding-box molding-tall"></div>
+       <div class="door-molding-box molding-short"></div>
+      </div>
+
+      <div class="door-ribbon-tag">
+       18 / 09 / 2026
+      </div>
+     </div>
+    </div>
+
+    <button type="button" class="btn-door-toggle" onclick="toggleOliveDoors()" data-i18n="btnDoorToggle">
+     &#10022; Open / Close 3D Doors
+    </button>
+   </div>
+
+   <div class="lace-tulle-stage reveal-up">
+    <div class="silk-tulle-veil"></div>
+
+    <article class="lace-frame-card card-3d-tilt">
+     <div class="cameo-brooch-medallion" aria-hidden="true">
+      <svg width="34" height="42" viewBox="0 0 34 42" fill="#591422">
+       <circle cx="17" cy="14" r="6.5"/>
+       <path d="M7 35 C7 26, 27 26, 27 35 Z"/>
+      </svg>
+     </div>
+
+     <span class="lace-card-sub" contenteditable="true" data-edit="s1_kicker" data-i18n="s1_kicker">01 &bull; INTERNSHIP DOSSIER</span>
+     <h2 class="lace-card-heading" contenteditable="true" data-edit="s1_resp_lbl" data-i18n="s1_resp_lbl">Main Responsibilities</h2>
+
+     <ol class="vintage-resp-list">
+      <li><span class="lace-num-dot">1</span><span contenteditable="true" data-edit="s1_r1" data-i18n="s1_r1">Arranged, sorted and filed office documents.</span></li>
+      <li><span class="lace-num-dot">2</span><span contenteditable="true" data-edit="s1_r2" data-i18n="s1_r2">Entered invoice details and generated receipts using the Aplus system.</span></li>
+      <li><span class="lace-num-dot">3</span><span contenteditable="true" data-edit="s1_r3" data-i18n="s1_r3">Updated filing checklists and organized records.</span></li>
+      <li><span class="lace-num-dot">4</span><span contenteditable="true" data-edit="s1_r4" data-i18n="s1_r4">Assisted with customer service and administrative tasks.</span></li>
+      <li><span class="lace-num-dot">5</span><span contenteditable="true" data-edit="s1_r5" data-i18n="s1_r5">Prepared documents for follow-up purposes.</span></li>
+     </ol>
+    </article>
+   </div>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- 3. SHEET-MUSIC SPOTIFY SOUNDTRACK PLAYER + BURGUNDY CALENDAR & CLOCK  -->
+ <!-- =================================================================== -->
+ <section class="music-calendar-band stage-3d">
+  <div class="music-cal-grid">
+   <div class="sheet-music-backdrop reveal-up">
+    <div class="burgundy-player-card card-3d-tilt">
+     <span class="player-track-label" contenteditable="true" data-edit="music_lbl" data-i18n="music_lbl">
+      &#9835; My Internship Soundtrack
+     </span>
+
+     <div class="spotify-frame-shell">
+      <iframe data-testid="embed-iframe" style="border-radius:12px; display:block;" src="https://open.spotify.com/embed/track/0hzIdk9dIvDablVS6UW7Vi?utm_source=generator&si=ed5b7579ab1d486c" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+     </div>
+    </div>
+   </div>
+
+   <div class="silk-calendar-wrapper reveal-up">
+    <div class="pleated-silk-aura"></div>
+
+    <svg class="cal-rose-cluster" viewBox="0 0 100 100" aria-hidden="true">
+     <ellipse cx="64" cy="24" rx="16" ry="7" transform="rotate(-25 64 24)" fill="#4c583e"/>
+     <ellipse cx="26" cy="66" rx="16" ry="7" transform="rotate(-55 26 66)" fill="#4c583e"/>
+     <circle cx="38" cy="38" r="18" fill="#591422"/>
+     <circle cx="38" cy="38" r="10" fill="#7d1d31"/>
+     <circle cx="58" cy="28" r="13" fill="#fbf6ef" stroke="#d4c2ab" stroke-width="1.5"/>
+     <circle cx="28" cy="58" r="13" fill="#fbf6ef" stroke="#d4c2ab" stroke-width="1.5"/>
+     <circle cx="52" cy="52" r="12" fill="#4f0e1c"/>
+    </svg>
+
+    <div class="burgundy-calendar-card card-3d-tilt">
+     <div class="cal-nav-header">
+      <button type="button" class="cal-arrow" id="calPrevMonth" title="Previous Month">&lsaquo;</button>
+      <div class="cal-title-combo">
+       <span id="calMonthLabel">September</span>
+       <select id="calYearSelect" class="cal-year-sel" aria-label="Select Year"></select>
+      </div>
+      <button type="button" class="cal-arrow" id="calNextMonth" title="Next Month">&rsaquo;</button>
+     </div>
+
+     <div class="cal-days-grid" id="interactiveCalGrid"></div>
+
+     <div class="cal-footer-note">
+      <span class="cal-picked-label" id="calSelectedDateText">18 September 2026</span>
+      <span class="cal-picked-sub" id="calSelectedNoteText" contenteditable="true" title="Click to edit note">Completed Internship — Pejabat Daerah Mersing (18/9/2026)</span>
+      <div class="cal-jump-row">
+       <button type="button" class="btn-cal-pill" onclick="jumpCalendarTo(2026, 6, 27)" data-i18n="calJump1">27 Jul '26</button>
+       <button type="button" class="btn-cal-pill" onclick="jumpCalendarTo(2026, 7, 17)" data-i18n="calJump2">17 Aug '26</button>
+       <button type="button" class="btn-cal-pill" onclick="jumpCalendarTo(2026, 8, 18)" data-i18n="calJump3">18 Sep '26</button>
+       <button type="button" class="btn-cal-pill" onclick="jumpCalendarToday()" data-i18n="calToday">Today</button>
+      </div>
+     </div>
+    </div>
+
+    <svg class="antique-clock-widget" viewBox="0 0 100 115" aria-hidden="true">
+     <defs>
+      <radialGradient id="antiqueGoldDial" cx="35%" cy="30%" r="70%">
+       <stop offset="0%" stop-color="#f5dfb0"/>
+       <stop offset="60%" stop-color="#b48d46"/>
+       <stop offset="100%" stop-color="#6b4e1d"/>
+      </radialGradient>
+     </defs>
+     <path d="M22 104 L78 104 L72 92 L28 92 Z" fill="#6b4e1d"/>
+     <circle cx="50" cy="56" r="38" fill="url(#antiqueGoldDial)" stroke="#473210" stroke-width="2"/>
+     <circle cx="50" cy="56" r="29" fill="#fbf6ef" stroke="#8c692b" stroke-width="1.5"/>
+     <line id="clockHourHand" x1="50" y1="56" x2="50" y2="39" stroke="#261215" stroke-width="2.4" stroke-linecap="round"/>
+     <line id="clockMinHand" x1="50" y1="56" x2="66" y2="56" stroke="#591422" stroke-width="1.8" stroke-linecap="round"/>
+     <line id="clockSecHand" x1="50" y1="56" x2="50" y2="32" stroke="#b48d46" stroke-width="1.1" stroke-linecap="round"/>
+     <circle cx="50" cy="56" r="2.8" fill="#591422"/>
+    </svg>
+   </div>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- 4. DUA ATAS: TWIN OVAL PHOTO FRAMES (exp1 & exp2) + MILESTONES      -->
+ <!-- =================================================================== -->
+ <section class="twin-oval-emblem-band stage-3d">
+  <div class="twin-emblem-grid">
+   <div class="twin-ovals-stage reveal-up">
+    <!-- Atas Kiri: exp1 (Gambar Fail Pink) -->
+    <div class="oval-filigree-wrap" onclick="handlePhotoClick('ref_top_1')">
+     <button type="button" class="btn-oval-del" id="del_ref_top_1" onclick="event.stopPropagation(); removePhoto('ref_top_1')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_top_1" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_top_1')">
+     <div class="oval-photo-inner">
+      <img id="img_ref_top_1" data-fallback="../images/exp1.jpeg" data-caption="Filing & Documentation" alt="Filing & Documentation">
+      <div class="empty-oval-cta" id="empty_ref_top_1">
+       <div class="plus-circle-gold">+</div>
+       <strong data-i18n="topEmpty1">Photo 1</strong>
+       <small data-i18n="galUploadSub">Click to upload</small>
+      </div>
+      <span class="oval-photo-pill" data-i18n="topPill1">Photo 1</span>
+     </div>
+    </div>
+
+    <!-- Atas Kanan: exp2 (Gambar Berkumpulan Mesyuarat) -->
+    <div class="oval-filigree-wrap" onclick="handlePhotoClick('ref_top_2')">
+     <button type="button" class="btn-oval-del" id="del_ref_top_2" onclick="event.stopPropagation(); removePhoto('ref_top_2')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_top_2" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_top_2')">
+     <div class="oval-photo-inner">
+      <img id="img_ref_top_2" data-fallback="../images/exp2.jpeg" data-caption="Office & Team Briefing" alt="Office & Team Briefing">
+      <div class="empty-oval-cta" id="empty_ref_top_2">
+       <div class="plus-circle-gold">+</div>
+       <strong data-i18n="topEmpty2">Photo 2</strong>
+       <small data-i18n="galUploadSub">Click to upload</small>
+      </div>
+      <span class="oval-photo-pill" data-i18n="topPill2">Photo 2</span>
+     </div>
+    </div>
+
+    <svg class="olive-sash-svg" viewBox="0 0 400 95" aria-hidden="true">
+     <path d="M25 45 C110 85, 290 85, 375 45 C350 75, 280 90, 200 84 C120 90, 50 75, 25 45 Z" fill="#4c583e"/>
+     <path d="M55 38 C130 72, 270 72, 345 38 C320 62, 260 76, 200 72 C140 76, 80 62, 55 38 Z" fill="#637152"/>
+     <circle cx="48" cy="48" r="14" fill="#591422"/>
+     <circle cx="66" cy="58" r="11" fill="#fbf6ef"/>
+     <circle cx="352" cy="48" r="14" fill="#591422"/>
+     <circle cx="334" cy="58" r="11" fill="#fbf6ef"/>
+    </svg>
+   </div>
+
+   <article class="emblem-itinerary-card card-3d-tilt reveal-up">
+    <h2 class="itinerary-heading" contenteditable="true" data-edit="tl_title" data-i18n="tl_title">Journey Milestones</h2>
+
+    <div class="emblem-row">
+     <div class="antique-emblem-icon" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+       <path d="M6 2h12M6 22h12M7 2c0 6 5 8 5 10s-5 4-5 10M17 2c0 6-5 8-5 10s5 4 5 10"/>
+      </svg>
+     </div>
+     <div class="emblem-text-col">
+      <small contenteditable="true" data-edit="tl1_d" data-i18n="tl1_d">27 JULY 2026</small>
+      <strong contenteditable="true" data-edit="tl1_t" data-i18n="tl1_t">Started Internship at Pejabat Daerah Mersing</strong>
+     </div>
+    </div>
+
+    <div class="emblem-row">
+     <div class="antique-emblem-icon" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+       <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/>
+      </svg>
+     </div>
+     <div class="emblem-text-col">
+      <small contenteditable="true" data-edit="tl2_d" data-i18n="tl2_d">JULY &ndash; SEPTEMBER 2026</small>
+      <strong contenteditable="true" data-edit="tl2_t" data-i18n="tl2_t">Aplus System, Receipts &amp; Filing Checklists</strong>
+     </div>
+    </div>
+
+    <div class="emblem-row">
+     <div class="antique-emblem-icon" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+       <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z"/>
+      </svg>
+     </div>
+     <div class="emblem-text-col">
+      <small contenteditable="true" data-edit="tl3_d" data-i18n="tl3_d">17 AUGUST 2026 &amp; 2026</small>
+      <strong contenteditable="true" data-edit="tl3_t" data-i18n="tl3_t">Gotong-Royong Masjid &amp; Outreach LDK Leader</strong>
+     </div>
+    </div>
+
+    <div class="emblem-row">
+     <div class="antique-emblem-icon" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+       <path d="M20 6L9 17l-5-5"/>
+      </svg>
+     </div>
+     <div class="emblem-text-col">
+      <small contenteditable="true" data-edit="tl4_d" data-i18n="tl4_d">18 SEPTEMBER 2026</small>
+      <strong contenteditable="true" data-edit="tl4_t" data-i18n="tl4_t">Completed Industrial Training (18/9/2026)</strong>
+     </div>
+    </div>
+   </article>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- 5. WAX-SEALED KEEPSAKE LETTERS, ARCHIVAL PASSES & CAMEO MEDALLIONS  -->
+ <!-- =================================================================== -->
+ <section class="keepsake-editorial-section stage-3d">
+  <div class="inner-1100">
+   <div class="editorial-ornament-header reveal-up">
+    <span class="eyebrow" contenteditable="true" data-edit="s2_tag" data-i18n="s2_tag">02 &bull; INVOLVEMENT &amp; TEAMWORK</span>
+    <h2 contenteditable="true" data-edit="s2_title" data-i18n="s2_title">Leadership &amp; Activities</h2>
+    <div class="flourish-divider">&#10022;</div>
+   </div>
+
+   <div class="keepsake-letters-duo">
+    <article class="keepsake-letter-card letter-tilt-left card-3d-tilt reveal-up">
+     <div class="wax-seal-3d" aria-hidden="true">N&amp;I</div>
+     <h3 contenteditable="true" data-edit="s2_outreach" data-i18n="s2_outreach">Outreach Programme</h3>
+     <span class="silk-ribbon-badge" contenteditable="true" data-edit="s2_pos" data-i18n="s2_pos">Position: Leader of AJK LDK &amp; Booth</span>
+
+     <ul class="editorial-journal-entries">
+      <li><span contenteditable="true" data-edit="s2_r1" data-i18n="s2_r1">Led committee members for LDK activities.</span></li>
+      <li><span contenteditable="true" data-edit="s2_r2" data-i18n="s2_r2">Coordinated booth preparation and arrangements.</span></li>
+      <li><span contenteditable="true" data-edit="s2_r3" data-i18n="s2_r3">Assisted in managing programme activities.</span></li>
+      <li><span contenteditable="true" data-edit="s2_r4" data-i18n="s2_r4">Worked with team members to ensure smooth operations.</span></li>
+     </ul>
+    </article>
+
+    <article class="keepsake-letter-card letter-tilt-right card-3d-tilt reveal-up">
+     <div class="wax-seal-3d wax-seal-olive" aria-hidden="true">&#10022;</div>
+     <div class="vintage-postage-stamp" data-i18n="stampText">17 AUG 2026 &bull; MERSING</div>
+     <h3 contenteditable="true" data-edit="s2_other_h" data-i18n="s2_other_h">Other Activities</h3>
+     <span class="silk-ribbon-badge silk-ribbon-olive" contenteditable="true" data-edit="s2_other_tag" data-i18n="s2_other_tag">Community &amp; Office</span>
+
+     <ul class="editorial-journal-entries">
+      <li><span contenteditable="true" data-edit="s2_o1" data-i18n="s2_o1">Gotong-Royong Pembersihan Masjid (17 August 2026).</span></li>
+      <li><span contenteditable="true" data-edit="s2_o2" data-i18n="s2_o2">Participated in office meetings and administrative activities.</span></li>
+     </ul>
+    </article>
+   </div>
+
+   <div class="archival-passes-grid">
+    <article class="archival-pass-card card-3d-tilt reveal-up">
+     <div>
+      <div class="pass-velvet-header" contenteditable="true" data-edit="t1_1" data-i18n="t1_1">I &bull; Industrial Training</div>
+      <h4 contenteditable="true" data-edit="t1_2" data-i18n="t1_2">Pejabat Daerah Mersing, Johor</h4>
+      <span class="pass-role-medallion" contenteditable="true" data-edit="t1_3" data-i18n="t1_3">Internship Student</span>
+      <ul class="pass-bullet-list">
+       <li contenteditable="true" data-edit="t1_b1" data-i18n="t1_b1">Handled Aplus invoice entries, receipts, and daily document filing.</li>
+       <li contenteditable="true" data-edit="t1_b2" data-i18n="t1_b2">Supported front-desk customer service and administrative records.</li>
+      </ul>
+     </div>
+     <span class="pass-date-seal" contenteditable="true" data-edit="t1_4" data-i18n="t1_4">27 July 2026 &ndash; 18 September 2026</span>
+    </article>
+
+    <article class="archival-pass-card card-3d-tilt reveal-up">
+     <div>
+      <div class="pass-velvet-header pass-olive-header" contenteditable="true" data-edit="t2_1" data-i18n="t2_1">II &bull; Leadership</div>
+      <h4 contenteditable="true" data-edit="t2_2" data-i18n="t2_2">Outreach Programme</h4>
+      <span class="pass-role-medallion" contenteditable="true" data-edit="t2_3" data-i18n="t2_3">Leader of AJK LDK &amp; Booth</span>
+      <ul class="pass-bullet-list">
+       <li contenteditable="true" data-edit="t2_b1" data-i18n="t2_b1">Supervised LDK group modules and coordinated exhibition booth setup.</li>
+       <li contenteditable="true" data-edit="t2_b2" data-i18n="t2_b2">Facilitated participant engagement and smooth team delegation.</li>
+      </ul>
+     </div>
+     <span class="pass-date-seal" contenteditable="true" data-edit="t2_4" data-i18n="t2_4">2026</span>
+    </article>
+
+    <article class="archival-pass-card card-3d-tilt reveal-up">
+     <div>
+      <div class="pass-velvet-header" contenteditable="true" data-edit="t3_1" data-i18n="t3_1">III &bull; Community Activity</div>
+      <h4 contenteditable="true" data-edit="t3_2" data-i18n="t3_2">Gotong-Royong Pembersihan Masjid</h4>
+      <span class="pass-role-medallion" contenteditable="true" data-edit="t3_3" data-i18n="t3_3">Volunteer / Participant</span>
+      <ul class="pass-bullet-list">
+       <li contenteditable="true" data-edit="t3_b1" data-i18n="t3_b1">Collaborated with local community members in mosque cleaning efforts.</li>
+       <li contenteditable="true" data-edit="t3_b2" data-i18n="t3_b2">Fostered teamwork, volunteer spirit, and community bonding in Mersing.</li>
+      </ul>
+     </div>
+     <span class="pass-date-seal" contenteditable="true" data-edit="t3_4" data-i18n="t3_4">17 August 2026</span>
+    </article>
+   </div>
+
+   <div class="editorial-ornament-header reveal-up">
+    <span class="eyebrow" contenteditable="true" data-edit="s3_tag" data-i18n="s3_tag">03 &bull; COMPETENCIES</span>
+    <h2 contenteditable="true" data-edit="s3_title" data-i18n="s3_title">Skills &amp; Abilities</h2>
+    <div class="flourish-divider">&#10022;</div>
+   </div>
+
+   <div class="cameo-skills-ribbon">
+    <div class="cameo-skill-medallion card-3d-tilt reveal-up">
+     <div class="cameo-inner-ring">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg>
+     </div>
+     <h4 contenteditable="true" data-edit="sk_1" data-i18n="sk_1">Records Management</h4>
+     <span data-i18n="sk_sub1">Core Competency</span>
+    </div>
+
+    <div class="cameo-skill-medallion card-3d-tilt reveal-up">
+     <div class="cameo-inner-ring">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+     </div>
+     <h4 contenteditable="true" data-edit="sk_2" data-i18n="sk_2">Filing &amp; Documentation</h4>
+     <span data-i18n="sk_sub2">Administration</span>
+    </div>
+
+    <div class="cameo-skill-medallion card-3d-tilt reveal-up">
+     <div class="cameo-inner-ring">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+     </div>
+     <h4 contenteditable="true" data-edit="sk_3" data-i18n="sk_3">Microsoft Excel</h4>
+     <span data-i18n="sk_sub3">Data &amp; Finance</span>
+    </div>
+
+    <div class="cameo-skill-medallion card-3d-tilt reveal-up">
+     <div class="cameo-inner-ring">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+     </div>
+     <h4 contenteditable="true" data-edit="sk_4" data-i18n="sk_4">Canva &amp; Graphic Design</h4>
+     <span data-i18n="sk_sub4">Visual Creation</span>
+    </div>
+
+    <div class="cameo-skill-medallion card-3d-tilt reveal-up">
+     <div class="cameo-inner-ring">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+     </div>
+     <h4 contenteditable="true" data-edit="sk_5" data-i18n="sk_5">Communication &amp; Leadership Skills</h4>
+     <span data-i18n="sk_sub5">Teamwork</span>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- 6. PHOTO GALLERY (4 GAMBAR: 2 ATAS & 2 BAWAH), VIDEO & CLOSING ARCH -->
+ <!-- =================================================================== -->
+ <section class="gallery-damask-band stage-3d">
+  <div class="editorial-ornament-header reveal-up">
+   <span class="eyebrow" contenteditable="true" data-edit="s4_tag" data-i18n="s4_tag">04 &bull; VISUAL HIGHLIGHTS</span>
+   <h2 contenteditable="true" data-edit="s4_title" data-i18n="s4_title">Photo Gallery</h2>
+   <div class="flourish-divider">&#10022;</div>
+  </div>
+
+  <div class="gallery-two-grid">
+   <!-- Baris 1 Kiri: exp3 (Gambar Kaunter Pejabat Daerah Mersing) -->
+   <article class="gallery-oval-card card-3d-tilt reveal-up">
+    <div class="gallery-oval-frame" onclick="handlePhotoClick('ref_gal_3')">
+     <button type="button" class="btn-photo-change" onclick="event.stopPropagation(); triggerUpload('ref_gal_3')" data-i18n="galChangeBtn">Change</button>
+     <button type="button" class="btn-photo-del" id="del_ref_gal_3" onclick="event.stopPropagation(); removePhoto('ref_gal_3')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_gal_3" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_gal_3')">
+
+     <img id="img_ref_gal_3" data-fallback="../images/exp3.jpeg" alt="Pejabat Daerah Mersing Counter">
+     <div class="empty-oval-cta" id="empty_ref_gal_3">
+      <div class="plus-circle-gold">+</div>
+      <strong data-i18n="galEmpty3">Pejabat Daerah Mersing</strong>
+      <small data-i18n="galUploadSub">Click to upload</small>
+     </div>
+    </div>
+    <span class="gal-kicker" contenteditable="true" data-edit="g3_tag" data-i18n="g3_tag">PHOTO 01 &bull; WORKPLACE</span>
+    <span class="gal-caption" contenteditable="true" data-edit="g3_cap" data-i18n="g3_cap">Pejabat Daerah Mersing</span>
+   </article>
+
+   <!-- Baris 1 Kanan: exp4 (Gambar Selfie Gotong-Royong) -->
+   <article class="gallery-oval-card card-3d-tilt reveal-up">
+    <div class="gallery-oval-frame" onclick="handlePhotoClick('ref_gal_4')">
+     <button type="button" class="btn-photo-change" onclick="event.stopPropagation(); triggerUpload('ref_gal_4')" data-i18n="galChangeBtn">Change</button>
+     <button type="button" class="btn-photo-del" id="del_ref_gal_4" onclick="event.stopPropagation(); removePhoto('ref_gal_4')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_gal_4" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_gal_4')">
+
+     <img id="img_ref_gal_4" data-fallback="../images/exp4.jpeg" alt="Gotong-Royong Pembersihan Masjid">
+     <div class="empty-oval-cta" id="empty_ref_gal_4">
+      <div class="plus-circle-gold">+</div>
+      <strong data-i18n="galEmpty4">Gotong-Royong Masjid</strong>
+      <small data-i18n="galUploadSub">Click to upload</small>
+     </div>
+    </div>
+    <span class="gal-kicker" contenteditable="true" data-edit="g4_tag" data-i18n="g4_tag">PHOTO 02 &bull; COMMUNITY</span>
+    <span class="gal-caption" contenteditable="true" data-edit="g4_cap" data-i18n="g4_cap">Gotong-Royong Pembersihan Masjid</span>
+   </article>
+
+   <!-- Baris 2 Kiri: exp5 (Program MCMC - Reruai & Pameran) -->
+   <article class="gallery-oval-card card-3d-tilt reveal-up">
+    <div class="gallery-oval-frame" onclick="handlePhotoClick('ref_gal_5')">
+     <button type="button" class="btn-photo-change" onclick="event.stopPropagation(); triggerUpload('ref_gal_5')" data-i18n="galChangeBtn">Change</button>
+     <button type="button" class="btn-photo-del" id="del_ref_gal_5" onclick="event.stopPropagation(); removePhoto('ref_gal_5')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_gal_5" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_gal_5')">
+
+     <img id="img_ref_gal_5" data-fallback="../images/exp5.jpeg" alt="Program MCMC Booth & Exhibition">
+     <div class="empty-oval-cta" id="empty_ref_gal_5">
+      <div class="plus-circle-gold">+</div>
+      <strong data-i18n="galEmpty5">Program MCMC</strong>
+      <small data-i18n="galUploadSub">Click to upload</small>
+     </div>
+    </div>
+    <span class="gal-kicker" contenteditable="true" data-edit="g5_tag" data-i18n="g5_tag">PHOTO 03 &bull; PROGRAM MCMC</span>
+    <span class="gal-caption" contenteditable="true" data-edit="g5_cap" data-i18n="g5_cap">Program MCMC &bull; Exhibition Booth</span>
+   </article>
+
+   <!-- Baris 2 Kanan: exp6 (Program MCMC - Gambar Berkumpulan) -->
+   <article class="gallery-oval-card card-3d-tilt reveal-up">
+    <div class="gallery-oval-frame" onclick="handlePhotoClick('ref_gal_6')">
+     <button type="button" class="btn-photo-change" onclick="event.stopPropagation(); triggerUpload('ref_gal_6')" data-i18n="galChangeBtn">Change</button>
+     <button type="button" class="btn-photo-del" id="del_ref_gal_6" onclick="event.stopPropagation(); removePhoto('ref_gal_6')" title="Remove">&times;</button>
+     <input type="file" id="inp_ref_gal_6" accept="image/*" style="display:none;" onchange="handleFileUpload(event, 'ref_gal_6')">
+
+     <img id="img_ref_gal_6" data-fallback="../images/exp6.jpeg" alt="Program MCMC Committee Team">
+     <div class="empty-oval-cta" id="empty_ref_gal_6">
+      <div class="plus-circle-gold">+</div>
+      <strong data-i18n="galEmpty6">Program MCMC Team</strong>
+      <small data-i18n="galUploadSub">Click to upload</small>
+     </div>
+    </div>
+    <span class="gal-kicker" contenteditable="true" data-edit="g6_tag" data-i18n="g6_tag">PHOTO 04 &bull; PROGRAM MCMC</span>
+    <span class="gal-caption" contenteditable="true" data-edit="g6_cap" data-i18n="g6_cap">Program MCMC &bull; Committee Team</span>
+   </article>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 05 • VIDEO CHRONICLE SHOWCASE (HTML5 <video> ELEMENT)             -->
+  <!-- ================================================================= -->
+  <div class="video-chronicle-showcase reveal-up">
+   <div class="editorial-ornament-header" style="margin-bottom: 30px;">
+    <span class="eyebrow" contenteditable="true" data-edit="s5_tag" data-i18n="s5_tag">05 &bull; MULTIMEDIA ARCHIVE</span>
+    <h2 contenteditable="true" data-edit="s5_title" data-i18n="s5_title">Video Chronicle</h2>
+    <div class="flourish-divider">&#10022;</div>
+   </div>
+
+   <article class="video-chronicle-card card-3d-tilt">
+    <span class="video-arch-crown" data-i18n="vidCrown">&#10022; Experience Highlight Reel &#10022;</span>
+
+    <div class="video-portrait-shell">
+     <video id="expVideoPlayer" controls playsinline preload="metadata" poster="../images/exp1.jpeg" onerror="handleExpVideoError()">
+      <source src="../images/exp_video.mp4" type="video/mp4">
+      Your browser does not support the HTML5 video tag.
+     </video>
+
+     <div class="video-fallback-notice" id="expVideoFallback">
+      <p data-i18n="vidFallbackText">Save your video as <strong>exp_video.mp4</strong> inside the <strong>images</strong> folder, or load it directly below:</p>
+      <button type="button" class="btn-video-pill" onclick="document.getElementById('inp_exp_video').click()" data-i18n="vidSelectBtn">Select Video (.mp4)</button>
+     </div>
+    </div>
+
+    <input type="file" id="inp_exp_video" accept="video/mp4,video/*" style="display:none;" onchange="handleExpVideoUpload(event)">
+
+    <div class="video-meta-bar">
+     <span class="video-meta-title" contenteditable="true" data-edit="vid_cap" data-i18n="vid_cap">Internship &amp; Activity Memories</span>
+     <div class="video-actions-group">
+      <button type="button" class="btn-video-pill" onclick="document.getElementById('inp_exp_video').click()" data-i18n="vidChangeBtn">Load Video</button>
+      <a href="https://vt.tiktok.com/ZSs6H2Ey1/" target="_blank" rel="noopener" class="btn-video-pill btn-video-tiktok" data-i18n="vidSourceBtn">TikTok &nearr;</a>
+     </div>
+    </div>
+   </article>
+  </div>
+
+  <div class="closing-burgundy-arch reveal-up">
+   <h3 contenteditable="true" data-edit="close_msg" data-i18n="close_msg">THANK YOU FOR EXPLORING MY JOURNEY!</h3>
+   <svg width="220" height="32" viewBox="0 0 260 40" fill="none" stroke="rgba(230,198,128,0.85)" stroke-width="1.3" aria-hidden="true">
+    <path d="M10,24 C60,12 90,34 130,20 C170,6 195,34 250,18"/>
+    <path d="M95,22 C108,8 142,8 152,22 C160,33 125,36 112,24"/>
+   </svg>
+  </div>
+ </section>
+
+ <!-- RUBRIC-COMPLIANT FOOTER WITH SITE MAP -->
+ <footer class="rubric-footer">
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <p class="footer-ownership">
+   <strong>Statement of Responsibility &amp; Ownership:</strong> Developed by <u>Nur Nabiha Ibtisam Binti Abd Hadi</u> (Student ID: 2024250178) for <abbr title="Introduction to Web Content Management and Design">IMD318</abbr> Individual Project.
+   <em>Disclaimer: This website is created solely for educational purposes and is not the official website of <abbr title="Universiti Teknologi MARA">UiTM</abbr>.</em>
+  </p>
+
+  <p class="footer-dates">
+   Created: 15<sup>th</sup> Oct 2026 &bull; Last Updated: 21<sup>st</sup> Nov 2026 &bull; Data Collection: Oct &ndash; Nov 2026
+  </p>
+
+  <div class="footer-sitemap" aria-label="Site Map">
+   <strong style="color:var(--gold-bright); letter-spacing:0.15em; text-transform:uppercase;">Site Map:</strong><br>
+   <a href="../index.html">Home</a> |
+   <a href="about.html">About</a> |
+   <a href="education.html">Education</a> |
+   <a href="experience.html">Experience</a> |
+   <a href="family.html">Family</a> |
+   <a href="gallery.html">Gallery</a> |
+   <a href="contact.html">Contact</a>
+  </div>
+
+  <p class="footer-access-note">
+   Accessibility Support: Use the top-right <strong>A&minus; / A+ / Contrast</strong> tools or download free screen reader software at
+   <a href="https://www.nvaccess.org/" target="_blank" rel="noopener">NVDA Screen Reader</a>.
+   Best viewed on Google Chrome / Microsoft Edge (1920&times;1080).
+  </p>
+
+  <p data-i18n="footerCopy" style="margin-top: 12px;">&copy; 2026 Nabiha Ibtisam &bull; Personal Portfolio &amp; Journal</p>
+  <p style="margin-top: 8px;"><a href="#top" data-i18n="backTop">Back to top &uarr;</a></p>
+ </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="exp-lightbox" id="expLightbox" onclick="if(event.target===this) closeExpLightbox()">
+ <div class="exp-lightbox-box">
+  <button type="button" class="exp-lb-close" onclick="closeExpLightbox()" aria-label="Close">&times;</button>
+  <img id="expLbImg" src="" alt="">
+  <div class="exp-lb-cap" id="expLbCap"></div>
+ </div>
+</div>
+
+<script>
+  let activeLang = 'en';
+
+  const i18nExp = {
+    en: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Personal Journal",
+      contrast: "Contrast",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      searchPh: "Search portfolio...",
+      noSearchHit: "No matching page found.",
+      marqueeHtml: `
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>EXPERIENCE &amp; JOURNEY 2026</strong></span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PEJABAT DAERAH MERSING, JOHOR</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>FINANCIAL &amp; ADMINISTRATIVE INTERN</strong> (27 JUL &ndash; 18 SEP 2026)</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> OUTREACH PROGRAMME &bull; <strong>LEADER OF AJK LDK &amp; BOOTH</strong></span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PROGRAM MCMC &bull; GOTONG-ROYONG MASJID</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>RECORDS MANAGEMENT</strong> &bull; APLUS SYSTEM &bull; EXCEL &bull; CANVA</span>
+      `,
+      editHint: "✦ Click olive doors to open 3D archive • Click any text or photo to customize",
+      replayCurtain: "✦ Replay Curtain",
+      resetText: "Reset Text",
+      h_t1: "Experience",
+      h_t2: "Journey",
+      h_desc: "A collection of experiences, responsibilities, and things I've learned along the way.",
+      pedOrgLbl: "Organisation",
+      p_org: "Pejabat Daerah Mersing, Johor",
+      pedRoleLbl: "Department & Role",
+      p_role: "Financial & Admin • Intern",
+      pedStatLbl: "Status",
+      p_stat: "Completed (18 Sept 2026)",
+      doorKicker: "01 • WORKPLACE TRAINING",
+      door_org: "Pejabat Daerah Mersing, Johor",
+      door_dept: "<strong>Financial and Administrative Department</strong><br>Position: Internship Student<br>Period: 27 July 2026 &ndash; 18 September 2026",
+      doorBadge: "Completed Successfully",
+      btnDoorToggle: "✦ Open / Close 3D Doors",
+      s1_kicker: "01 • INTERNSHIP DOSSIER",
+      s1_resp_lbl: "Main Responsibilities",
+      s1_r1: "Arranged, sorted and filed office documents.",
+      s1_r2: "Entered invoice details and generated receipts using the Aplus system.",
+      s1_r3: "Updated filing checklists and organized records.",
+      s1_r4: "Assisted with customer service and administrative tasks.",
+      s1_r5: "Prepared documents for follow-up purposes.",
+      music_lbl: "♫ My Internship Soundtrack",
+      calJump1: "27 Jul '26",
+      calJump2: "17 Aug '26",
+      calJump3: "18 Sep '26",
+      calToday: "Today",
+      calNoteFallback: "Click here to write a note...",
+      topEmpty1: "Photo 1",
+      topPill1: "Photo 1",
+      topEmpty2: "Photo 2",
+      topPill2: "Photo 2",
+      tl_title: "Journey Milestones",
+      tl1_d: "27 JULY 2026",
+      tl1_t: "Started Internship at Pejabat Daerah Mersing",
+      tl2_d: "JULY – SEPTEMBER 2026",
+      tl2_t: "Aplus System, Receipts & Filing Checklists",
+      tl3_d: "17 AUGUST 2026 & 2026",
+      tl3_t: "Gotong-Royong Masjid & Outreach LDK Leader",
+      tl4_d: "18 SEPTEMBER 2026",
+      tl4_t: "Completed Industrial Training (18/9/2026)",
+      s2_tag: "02 • INVOLVEMENT & TEAMWORK",
+      s2_title: "Leadership & Activities",
+      s2_outreach: "Outreach Programme",
+      s2_pos: "Position: Leader of AJK LDK & Booth",
+      s2_r1: "Led committee members for LDK activities.",
+      s2_r2: "Coordinated booth preparation and arrangements.",
+      s2_r3: "Assisted in managing programme activities.",
+      s2_r4: "Worked with team members to ensure smooth operations.",
+      stampText: "17 AUG 2026 • MERSING",
+      s2_other_h: "Other Activities",
+      s2_other_tag: "Community & Office",
+      s2_o1: "Gotong-Royong Pembersihan Masjid (17 August 2026).",
+      s2_o2: "Participated in office meetings and administrative activities.",
+      t1_1: "I • Industrial Training",
+      t1_2: "Pejabat Daerah Mersing, Johor",
+      t1_3: "Internship Student",
+      t1_b1: "Handled Aplus invoice entries, receipts, and daily document filing.",
+      t1_b2: "Supported front-desk customer service and administrative records.",
+      t1_4: "27 July 2026 – 18 September 2026",
+      t2_1: "II • Leadership",
+      t2_2: "Outreach Programme",
+      t2_3: "Leader of AJK LDK & Booth",
+      t2_b1: "Supervised LDK group modules and coordinated exhibition booth setup.",
+      t2_b2: "Facilitated participant engagement and smooth team delegation.",
+      t2_4: "2026",
+      t3_1: "III • Community Activity",
+      t3_2: "Gotong-Royong Pembersihan Masjid",
+      t3_3: "Volunteer / Participant",
+      t3_b1: "Collaborated with local community members in mosque cleaning efforts.",
+      t3_b2: "Fostered teamwork, volunteer spirit, and community bonding in Mersing.",
+      t3_4: "17 August 2026",
+      s3_tag: "03 • COMPETENCIES",
+      s3_title: "Skills & Abilities",
+      sk_1: "Records Management",
+      sk_sub1: "Core Competency",
+      sk_2: "Filing & Documentation",
+      sk_sub2: "Administration",
+      sk_3: "Microsoft Excel",
+      sk_sub3: "Data & Finance",
+      sk_4: "Canva & Graphic Design",
+      sk_sub4: "Visual Creation",
+      sk_5: "Communication & Leadership Skills",
+      sk_sub5: "Teamwork",
+      s4_tag: "04 • VISUAL HIGHLIGHTS",
+      s4_title: "Photo Gallery",
+      galChangeBtn: "Change",
+      galUploadSub: "Click to upload",
+      galEmpty3: "Pejabat Daerah Mersing",
+      g3_tag: "PHOTO 01 • WORKPLACE",
+      g3_cap: "Pejabat Daerah Mersing",
+      galEmpty4: "Gotong-Royong Masjid",
+      g4_tag: "PHOTO 02 • COMMUNITY",
+      g4_cap: "Gotong-Royong Pembersihan Masjid",
+      galEmpty5: "Program MCMC",
+      g5_tag: "PHOTO 03 • PROGRAM MCMC",
+      g5_cap: "Program MCMC • Exhibition Booth",
+      galEmpty6: "Program MCMC Team",
+      g6_tag: "PHOTO 04 • PROGRAM MCMC",
+      g6_cap: "Program MCMC • Committee Team",
+      s5_tag: "05 • MULTIMEDIA ARCHIVE",
+      s5_title: "Video Chronicle",
+      vidCrown: "✦ Experience Highlight Reel ✦",
+      vidFallbackText: "Save your video as exp_video.mp4 inside the images folder, or load it directly below:",
+      vidSelectBtn: "Select Video (.mp4)",
+      vid_cap: "Internship & Activity Memories",
+      vidChangeBtn: "Load Video",
+      vidSourceBtn: "TikTok ↗",
+      close_msg: "THANK YOU FOR EXPLORING MY JOURNEY!",
+      footerCopy: "© 2026 Nabiha Ibtisam • Personal Portfolio & Journal",
+      backTop: "Back to top ↑"
+    },
+    bm: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Jurnal Peribadi",
+      contrast: "Kontras",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      searchPh: "Cari dalam portfolio...",
+      noSearchHit: "Tiada halaman yang sepadan ditemui.",
+      marqueeHtml: `
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>PENGALAMAN &amp; PERJALANAN 2026</strong></span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PEJABAT DAERAH MERSING, JOHOR</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>PELAJAR LATIHAN INDUSTRI KEWANGAN &amp; PENTADBIRAN</strong> (27 JUL &ndash; 18 SEP 2026)</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PROGRAM OUTREACH &bull; <strong>KETUA AJK LDK &amp; RERUAI</strong></span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> PROGRAM MCMC &bull; GOTONG-ROYONG MASJID</span>
+        <span class="cream-marquee-item"><span class="cream-marquee-star">&#10022;</span> <strong>PENGURUSAN REKOD</strong> &bull; SISTEM APLUS &bull; EXCEL &bull; CANVA</span>
+      `,
+      editHint: "✦ Klik pintu zaitun untuk buka arkib 3D • Klik mana-mana teks atau gambar untuk sunting",
+      replayCurtain: "✦ Main Semula Tirai",
+      resetText: "Tetapkan Semula Teks",
+      h_t1: "Pengalaman",
+      h_t2: "Perjalanan",
+      h_desc: "Himpunan pengalaman, tanggungjawab, dan ilmu yang telah saya pelajari sepanjang perjalanan ini.",
+      pedOrgLbl: "Organisasi",
+      p_org: "Pejabat Daerah Mersing, Johor",
+      pedRoleLbl: "Jabatan & Peranan",
+      p_role: "Kewangan & Pentadbiran • Pelajar Praktikal",
+      pedStatLbl: "Status",
+      p_stat: "Tamat Latihan (18 Sept 2026)",
+      doorKicker: "01 • LATIHAN INDUSTRI",
+      door_org: "Pejabat Daerah Mersing, Johor",
+      door_dept: "<strong>Bahagian Kewangan dan Pentadbiran</strong><br>Jawatan: Pelajar Latihan Industri<br>Tempoh: 27 Julai 2026 &ndash; 18 September 2026",
+      doorBadge: "Tamat Dengan Jayanya",
+      btnDoorToggle: "✦ Buka / Tutup Pintu 3D",
+      s1_kicker: "01 • REKOD LATIHAN INDUSTRI",
+      s1_resp_lbl: "Tanggungjawab Utama",
+      s1_r1: "Menyusun, mengisih dan memfailkan dokumen pejabat.",
+      s1_r2: "Memasukkan butiran invois dan menjana resit menggunakan sistem Aplus.",
+      s1_r3: "Mengemas kini senarai semak pemfailan dan menyusun rekod.",
+      s1_r4: "Membantu dalam urusan khidmat pelanggan dan tugasan pentadbiran.",
+      s1_r5: "Menyediakan dokumen untuk tujuan tindakan susulan.",
+      music_lbl: "♫ Lagu Pilihan Latihan Industri",
+      calJump1: "27 Jul '26",
+      calJump2: "17 Ogo '26",
+      calJump3: "18 Sep '26",
+      calToday: "Hari Ini",
+      calNoteFallback: "Klik di sini untuk menulis nota...",
+      topEmpty1: "Foto 1",
+      topPill1: "Foto 1",
+      topEmpty2: "Foto 2",
+      topPill2: "Foto 2",
+      tl_title: "Detik Penting Perjalanan",
+      tl1_d: "27 JULAI 2026",
+      tl1_t: "Memulakan Latihan Industri di Pejabat Daerah Mersing",
+      tl2_d: "JULAI – SEPTEMBER 2026",
+      tl2_t: "Sistem Aplus, Resit & Senarai Semak Pemfailan",
+      tl3_d: "17 OGOS 2026 & 2026",
+      tl3_t: "Gotong-Royong Masjid & Ketua AJK LDK Outreach",
+      tl4_d: "18 SEPTEMBER 2026",
+      tl4_t: "Menamatkan Latihan Industri (18/9/2026)",
+      s2_tag: "02 • PENGLIBATAN & KERJASAMA",
+      s2_title: "Kepimpinan & Aktiviti",
+      s2_outreach: "Program Outreach",
+      s2_pos: "Jawatan: Ketua AJK LDK & Reruai",
+      s2_r1: "Mengetuai ahli jawatankuasa bagi aktiviti LDK.",
+      s2_r2: "Menyelaras persiapan dan susun atur reruai.",
+      s2_r3: "Membantu menguruskan perjalanan aktiviti program.",
+      s2_r4: "Bekerjasama dengan ahli pasukan bagi memastikan kelancaran operasi.",
+      stampText: "17 OGO 2026 • MERSING",
+      s2_other_h: "Aktiviti Lain",
+      s2_other_tag: "Komuniti & Pejabat",
+      s2_o1: "Gotong-Royong Pembersihan Masjid (17 Ogos 2026).",
+      s2_o2: "Menyertai mesyuarat pejabat dan aktiviti pentadbiran.",
+      t1_1: "I • Latihan Industri",
+      t1_2: "Pejabat Daerah Mersing, Johor",
+      t1_3: "Pelajar Latihan Industri",
+      t1_b1: "Menguruskan kemasukan invois Aplus, resit, dan pemfailan dokumen harian.",
+      t1_b2: "Membantu khidmat pelanggan kaunter serta penyusunan rekod pentadbiran.",
+      t1_4: "27 Julai 2026 – 18 September 2026",
+      t2_1: "II • Kepimpinan",
+      t2_2: "Program Outreach",
+      t2_3: "Ketua AJK LDK & Reruai",
+      t2_b1: "Menyelia modul kumpulan LDK dan menyelaras persiapan reruai pameran.",
+      t2_b2: "Memudahkan penglibatan peserta serta agihan tugasan ahli jawatankuasa.",
+      t2_4: "2026",
+      t3_1: "III • Aktiviti Komuniti",
+      t3_2: "Gotong-Royong Pembersihan Masjid",
+      t3_3: "Sukarelawan / Peserta",
+      t3_b1: "Bekerjasama bersama komuniti setempat dalam usaha pembersihan masjid.",
+      t3_b2: "Memupuk semangat kerjasama, kesukarelawanan, dan silaturahim di Mersing.",
+      t3_4: "17 Ogos 2026",
+      s3_tag: "03 • KOMPETENSI",
+      s3_title: "Kemahiran & Kebolehan",
+      sk_1: "Pengurusan Rekod",
+      sk_sub1: "Kompetensi Teras",
+      sk_2: "Pemfailan & Dokumentasi",
+      sk_sub2: "Pentadbiran",
+      sk_3: "Microsoft Excel",
+      sk_sub3: "Data & Kewangan",
+      sk_4: "Canva & Reka Bentuk Grafik",
+      sk_sub4: "Kreativiti Visual",
+      sk_5: "Kemahiran Komunikasi & Kepimpinan",
+      sk_sub5: "Kerja Berpasukan",
+      s4_tag: "04 • SOROTAN VISUAL",
+      s4_title: "Galeri Foto",
+      galChangeBtn: "Tukar",
+      galUploadSub: "Klik untuk muat naik",
+      galEmpty3: "Pejabat Daerah Mersing",
+      g3_tag: "FOTO 01 • TEMPAT KERJA",
+      g3_cap: "Pejabat Daerah Mersing",
+      galEmpty4: "Gotong-Royong Masjid",
+      g4_tag: "FOTO 02 • KOMUNITI",
+      g4_cap: "Gotong-Royong Pembersihan Masjid",
+      galEmpty5: "Program MCMC",
+      g5_tag: "FOTO 03 • PROGRAM MCMC",
+      g5_cap: "Program MCMC • Reruai Pameran",
+      galEmpty6: "Pasukan Program MCMC",
+      g6_tag: "FOTO 04 • PROGRAM MCMC",
+      g6_cap: "Program MCMC • Jawatankuasa Program",
+      s5_tag: "05 • ARKIB MULTIMEDIA",
+      s5_title: "Kronik Video",
+      vidCrown: "✦ Sorotan Video Pengalaman ✦",
+      vidFallbackText: "Simpan fail video sebagai exp_video.mp4 di dalam folder images, atau muatkan terus di bawah:",
+      vidSelectBtn: "Pilih Video (.mp4)",
+      vid_cap: "Kenangan Latihan Industri & Aktiviti",
+      vidChangeBtn: "Muat Video",
+      vidSourceBtn: "TikTok ↗",
+      close_msg: "TERIMA KASIH KERANA MENEROKAI PERJALANAN SAYA!",
+      footerCopy: "© 2026 Nabiha Ibtisam • Portfolio & Jurnal Peribadi",
+      backTop: "Kembali ke atas ↑"
+    }
+  };
+
+  function switchSiteLang(lang) {
+    activeLang = lang;
+    document.querySelectorAll('.lang-switch-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    const dict = i18nExp[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+
+    const mTrack = document.getElementById('expCreamMarqueeTrack');
+    if (mTrack && dict.marqueeHtml) {
+      mTrack.innerHTML = `
+        <div class="cream-marquee-group">${dict.marqueeHtml}</div>
+        <div class="cream-marquee-group" aria-hidden="true">${dict.marqueeHtml}</div>
+      `;
+    }
+
+    document.getElementById('homeSearchInput').placeholder = dict.searchPh;
+    renderBurgundyCalendar(false);
+    updateClocks();
+  }
+
+  function openStageCurtains() {
+    const stage = document.getElementById('heroCurtainStage');
+    if (stage) stage.classList.add('curtains-parted');
+  }
+
+  function replayStageCurtains() {
+    const stage = document.getElementById('heroCurtainStage');
+    if (!stage) return;
+    stage.classList.remove('curtains-parted');
+    setTimeout(() => { stage.classList.add('curtains-parted'); }, 1550);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(openStageCurtains, 380);
+  });
+
+  function toggleOliveDoors() {
+    const doors = document.getElementById('oliveDoubleDoors');
+    if (doors) doors.classList.toggle('is-open');
+  }
+
+  const CAL_STATE_KEY = 'beyha_burgundy_cal_state';
+  const CAL_NOTES_KEY = 'beyha_burgundy_cal_notes';
+
+  const monthsByLang = {
+    en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    bm: ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember']
+  };
+
+  const dowByLang = {
+    en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    bm: ['Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab', 'Ahd']
+  };
+
+  const milestonesByLang = {
+    en: {
+      '2026-6-27': 'Start Internship — Pejabat Daerah Mersing (27/7/2026)',
+      '2026-7-17': 'Gotong-Royong Pembersihan Masjid (17/8/2026)',
+      '2026-8-18': 'Completed Internship — Pejabat Daerah Mersing (18/9/2026)'
+    },
+    bm: {
+      '2026-6-27': 'Mula Latihan Industri — Pejabat Daerah Mersing (27/7/2026)',
+      '2026-7-17': 'Gotong-Royong Pembersihan Masjid (17/8/2026)',
+      '2026-8-18': 'Tamat Latihan Industri — Pejabat Daerah Mersing (18/9/2026)'
+    }
+  };
+
+  let savedNotes = {};
+  try { savedNotes = JSON.parse(localStorage.getItem(CAL_NOTES_KEY) || '{}'); } catch (e) {}
+
+  let calState = { viewYear: 2026, viewMonth: 8, selYear: 2026, selMonth: 8, selDay: 18 };
+  try {
+    const st = JSON.parse(localStorage.getItem(CAL_STATE_KEY));
+    if (st && typeof st.viewYear === 'number') calState = st;
+  } catch (e) {}
+
+  const yrSel = document.getElementById('calYearSelect');
+  for (let y = 2024; y <= 2030; y++) {
+    const o = document.createElement('option');
+    o.value = y;
+    o.textContent = y;
+    yrSel.appendChild(o);
+  }
+
+  function dateKey(y, m, d) { return `${y}-${m}-${d}`; }
+
+  function updateCalInfo() {
+    const monthsTitle = monthsByLang[activeLang] || monthsByLang.en;
+    const milestones = milestonesByLang[activeLang] || milestonesByLang.en;
+    const fallback = (i18nExp[activeLang] || i18nExp.en).calNoteFallback;
+
+    document.getElementById('calSelectedDateText').textContent = `${calState.selDay} ${monthsTitle[calState.selMonth]} ${calState.selYear}`;
+    const k = dateKey(calState.selYear, calState.selMonth, calState.selDay);
+    document.getElementById('calSelectedNoteText').textContent =
+      savedNotes[k] !== undefined ? savedNotes[k] : (milestones[k] || fallback);
+  }
+
+  document.getElementById('calSelectedNoteText').addEventListener('input', function () {
+    const k = dateKey(calState.selYear, calState.selMonth, calState.selDay);
+    savedNotes[k] = this.textContent;
+    localStorage.setItem(CAL_NOTES_KEY, JSON.stringify(savedNotes));
+  });
+
+  function renderBurgundyCalendar(fade) {
+    const grid = document.getElementById('interactiveCalGrid');
+    const monthsTitle = monthsByLang[activeLang] || monthsByLang.en;
+    const dowList = dowByLang[activeLang] || dowByLang.en;
+    const milestones = milestonesByLang[activeLang] || milestonesByLang.en;
+
+    if (fade) {
+      grid.classList.add('fading');
+      setTimeout(() => grid.classList.remove('fading'), 150);
+    }
+    document.getElementById('calMonthLabel').textContent = monthsTitle[calState.viewMonth];
+    yrSel.value = calState.viewYear;
+
+    const head = dowList.map(d => `<span class="dow">${d}</span>`).join('');
+    const first = new Date(calState.viewYear, calState.viewMonth, 1).getDay();
+    const offset = first === 0 ? 6 : first - 1;
+    const total = new Date(calState.viewYear, calState.viewMonth + 1, 0).getDate();
+
+    let html = head;
+    for (let i = 0; i < offset; i++) html += '<span></span>';
+    for (let d = 1; d <= total; d++) {
+      const active = calState.viewYear === calState.selYear && calState.viewMonth === calState.selMonth && d === calState.selDay;
+      const k = dateKey(calState.viewYear, calState.viewMonth, d);
+      const hasDot = Boolean(milestones[k] || (savedNotes[k] && savedNotes[k].trim() !== ''));
+      html += `<button type="button" class="cal-day-num ${active ? 'circled' : ''} ${hasDot ? 'has-dot' : ''}" onclick="pickDate(${d})">${d}</button>`;
+    }
+    grid.innerHTML = html;
+    updateCalInfo();
+  }
+
+  function pickDate(d) {
+    calState.selYear = calState.viewYear;
+    calState.selMonth = calState.viewMonth;
+    calState.selDay = d;
+    localStorage.setItem(CAL_STATE_KEY, JSON.stringify(calState));
+    renderBurgundyCalendar(false);
+  }
+
+  function jumpCalendarTo(y, m, d) {
+    calState = { viewYear: y, viewMonth: m, selYear: y, selMonth: m, selDay: d };
+    localStorage.setItem(CAL_STATE_KEY, JSON.stringify(calState));
+    renderBurgundyCalendar(true);
+  }
+
+  function jumpCalendarToday() {
+    const n = new Date();
+    jumpCalendarTo(n.getFullYear(), n.getMonth(), n.getDate());
+  }
+
+  document.getElementById('calPrevMonth').addEventListener('click', (e) => {
+    e.stopPropagation();
+    calState.viewMonth--;
+    if (calState.viewMonth < 0) { calState.viewMonth = 11; calState.viewYear--; }
+    localStorage.setItem(CAL_STATE_KEY, JSON.stringify(calState));
+    renderBurgundyCalendar(true);
+  });
+
+  document.getElementById('calNextMonth').addEventListener('click', (e) => {
+    e.stopPropagation();
+    calState.viewMonth++;
+    if (calState.viewMonth > 11) { calState.viewMonth = 0; calState.viewYear++; }
+    localStorage.setItem(CAL_STATE_KEY, JSON.stringify(calState));
+    renderBurgundyCalendar(true);
+  });
+
+  yrSel.addEventListener('change', function (e) {
+    e.stopPropagation();
+    calState.viewYear = parseInt(this.value, 10);
+    localStorage.setItem(CAL_STATE_KEY, JSON.stringify(calState));
+    renderBurgundyCalendar(true);
+  });
+
+  renderBurgundyCalendar(false);
+
+  // =====================================================================
+  // PHOTO STORAGE: DUA ATAS & EMPAT BAWAH (exp1 hingga exp6)
+  // =====================================================================
+  const PHOTO_KEY = 'beyha_burgundy_photo_';
+  const TEXT_KEY = 'beyha_burgundy_text_';
+  const photoSlots = ['ref_top_1', 'ref_top_2', 'ref_gal_3', 'ref_gal_4', 'ref_gal_5', 'ref_gal_6'];
+
+  function compressImg(file, maxDim, quality, cb) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        let w = img.width, h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+          else { w = Math.round((w * maxDim) / h); h = maxDim; }
+        }
+        const c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        cb(c.toDataURL('image/jpeg', quality));
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function triggerUpload(id) {
+    const inp = document.getElementById('inp_' + id);
+    if (inp) inp.click();
+  }
+
+  function setSlotImg(id, url, custom) {
+    const img = document.getElementById('img_' + id);
+    const emp = document.getElementById('empty_' + id);
+    const del = document.getElementById('del_' + id);
+    if (!img) return;
+    img.src = url;
+    img.style.display = 'block';
+    if (emp) emp.style.display = 'none';
+    if (del) del.classList.toggle('visible', !!custom);
+  }
+
+  function setSlotEmpty(id) {
+    const img = document.getElementById('img_' + id);
+    const emp = document.getElementById('empty_' + id);
+    const del = document.getElementById('del_' + id);
+    if (img) img.style.display = 'none';
+    if (emp) emp.style.display = 'flex';
+    if (del) del.classList.remove('visible');
+  }
+
+  function handleFileUpload(ev, id) {
+    const file = ev.target.files[0];
+    if (!file) return;
+    compressImg(file, 760, 0.78, (url) => {
+      try { localStorage.setItem(PHOTO_KEY + id, url); } catch (e) {}
+      setSlotImg(id, url, true);
+    });
+    ev.target.value = '';
+  }
+
+  function removePhoto(id) {
+    localStorage.removeItem(PHOTO_KEY + id);
+    bootPhotoSlot(id);
+  }
+
+  function handlePhotoClick(id) {
+    const img = document.getElementById('img_' + id);
+    if (!img || img.style.display === 'none') { triggerUpload(id); return; }
+    const card = img.closest('.gallery-oval-card');
+    const cap = card ? card.querySelector('.gal-caption') : null;
+    document.getElementById('expLbImg').src = img.src;
+    document.getElementById('expLbCap').textContent = cap ? cap.textContent : (img.getAttribute('data-caption') || 'Pejabat Daerah Mersing');
+    document.getElementById('expLightbox').classList.add('open');
+  }
+
+  function closeExpLightbox() {
+    document.getElementById('expLightbox').classList.remove('open');
+  }
+
+  function bootPhotoSlot(id) {
+    const saved = localStorage.getItem(PHOTO_KEY + id);
+    if (saved) { setSlotImg(id, saved, true); return; }
+    const img = document.getElementById('img_' + id);
+    const fb = img ? img.getAttribute('data-fallback') : null;
+    if (!fb) { setSlotEmpty(id); return; }
+
+    const base = fb.replace(/\.(jpeg|jpg|png)$/i, '');
+    const candidates = [fb, base + '.jpg', base + '.png'];
+    let idx = 0;
+
+    function tryNext() {
+      if (idx >= candidates.length) { setSlotEmpty(id); return; }
+      const src = candidates[idx++];
+      const probe = new Image();
+      probe.onload = () => setSlotImg(id, src, false);
+      probe.onerror = tryNext;
+      probe.src = src;
+    }
+    tryNext();
+  }
+
+  photoSlots.forEach(bootPhotoSlot);
+
+  // =====================================================================
+  // EXPERIENCE VIDEO HANDLER (LOCAL FILE + LIVE PREVIEW FALLBACK)
+  // =====================================================================
+  function handleExpVideoError() {
+    const vid = document.getElementById('expVideoPlayer');
+    const fb = document.getElementById('expVideoFallback');
+    if (vid && !vid.getAttribute('data-custom-loaded')) {
+      vid.style.display = 'none';
+      if (fb) fb.style.display = 'block';
+    }
+  }
+
+  function handleExpVideoUpload(ev) {
+    const file = ev.target.files[0];
+    if (!file) return;
+    const vid = document.getElementById('expVideoPlayer');
+    const fb = document.getElementById('expVideoFallback');
+    const blobUrl = URL.createObjectURL(file);
+    vid.setAttribute('data-custom-loaded', 'true');
+    vid.src = blobUrl;
+    vid.style.display = 'block';
+    if (fb) fb.style.display = 'none';
+    vid.load();
+    ev.target.value = '';
+  }
+
+  // Live Inline Text Editing
+  document.querySelectorAll('[data-edit]').forEach(el => {
+    const key = TEXT_KEY + el.getAttribute('data-edit');
+    let saved = localStorage.getItem(key);
+    if (saved !== null) {
+      saved = saved
+        .replace(/01\s*\/\s*07\s*\/\s*2026/g, '27 / 07 / 2026')
+        .replace(/1 July 2026/g, '27 July 2026')
+        .replace(/1 JULY 2026/g, '27 JULY 2026');
+      localStorage.setItem(key, saved);
+      el.innerHTML = saved;
+    }
+    el.addEventListener('input', function () { localStorage.setItem(key, this.innerHTML); });
+  });
+
+  function resetTextEdits() {
+    const msg = activeLang === 'bm'
+      ? 'Tetapkan semula semua teks yang telah disunting kepada asal?'
+      : 'Reset all edited text back to default?';
+    if (!confirm(msg)) return;
+    Object.keys(localStorage).forEach(k => { if (k.startsWith(TEXT_KEY)) localStorage.removeItem(k); });
+    location.reload();
+  }
+
+  // Golden Candlelight Particles
+  (function () {
+    const canvas = document.getElementById('heroCandleCanvas');
+    const ctx = canvas.getContext('2d');
+    let w = 0, h = 0;
+    function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const motes = Array.from({ length: 42 }, () => ({
+      x: Math.random() * 1600,
+      y: Math.random() * 600,
+      r: Math.random() * 2.6 + 1,
+      vy: -(Math.random() * 0.45 + 0.15),
+      phase: Math.random() * Math.PI * 2
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (const m of motes) {
+        m.y += m.vy;
+        m.phase += 0.03;
+        if (m.y < -10) { m.y = h + 10; m.x = Math.random() * w; }
+        const a = 0.25 + 0.65 * ((Math.sin(m.phase) + 1) / 2);
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 232, 175, ${a})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // Smart 3D Card Tilt
+  document.querySelectorAll('.card-3d-tilt').forEach(card => {
+    card.addEventListener('mousemove', function (e) {
+      if (e.target.closest('button, select, input, iframe, video, a') || document.activeElement?.getAttribute('contenteditable') === 'true') {
+        this.style.transform = '';
+        return;
+      }
+      const r = this.getBoundingClientRect();
+      const px = e.clientX - r.left, py = e.clientY - r.top;
+      this.style.setProperty('--mx', px + 'px');
+      this.style.setProperty('--my', py + 'px');
+      const rx = -((py / r.height) - 0.5) * 6;
+      const ry = ((px / r.width) - 0.5) * 6;
+      this.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
+    });
+    card.addEventListener('mouseleave', function () { this.style.transform = ''; });
+  });
+
+  // Scroll Reveal
+  (function () {
+    const els = document.querySelectorAll('.reveal-up');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(el => obs.observe(el));
+    }
+    setTimeout(() => els.forEach(el => el.classList.add('visible')), 850);
+  })();
+
+  // Live Top Clock & Ticking Antique Mantel Clock Hands
+  function updateClocks() {
+    const now = new Date();
+    const locale = activeLang === 'bm' ? 'ms-MY' : 'en-GB';
+    document.getElementById('liveDateDisplay').textContent = now.toLocaleDateString(locale, {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+    }).toUpperCase();
+    document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    });
+
+    const sec = now.getSeconds();
+    const min = now.getMinutes();
+    const hr = now.getHours() % 12;
+    const secDeg = sec * 6;
+    const minDeg = min * 6 + sec * 0.1;
+    const hrDeg = hr * 30 + min * 0.5;
+
+    const sHand = document.getElementById('clockSecHand');
+    const mHand = document.getElementById('clockMinHand');
+    const hHand = document.getElementById('clockHourHand');
+    if (sHand) sHand.setAttribute('transform', `rotate(${secDeg} 50 56)`);
+    if (mHand) mHand.setAttribute('transform', `rotate(${minDeg} 50 56)`);
+    if (hHand) hHand.setAttribute('transform', `rotate(${hrDeg} 50 56)`);
+  }
+  setInterval(updateClocks, 1000);
+  updateClocks();
+
+  // Search Bar
+  const searchPages = [
+    { tag: "Home", title: "Home — Portfolio Stage", url: "../index.html", keys: "home utama index main" },
+    { tag: "About", title: "About Me — Biodata & Hobbies", url: "about.html", keys: "about tentang biodata beyha" },
+    { tag: "Education", title: "Education — UiTM Segamat", url: "education.html", keys: "education pendidikan uitm segamat" },
+    { tag: "Experience", title: "Experience — Pejabat Daerah Mersing & Program MCMC", url: "experience.html", keys: "experience pengalaman praktikal latihan industri internship mersing outreach mcmc video" },
+    { tag: "Family", title: "Family — Parents & Memories", url: "family.html", keys: "family keluarga parents" },
+    { tag: "Gallery", title: "Gallery — Visual Journal", url: "gallery.html", keys: "gallery galeri photos gambar" },
+    { tag: "Contact", title: "Contact — Socials & Message", url: "contact.html", keys: "contact hubungi email whatsapp" }
+  ];
+
+  const sInp = document.getElementById('homeSearchInput');
+  const sDrp = document.getElementById('homeSearchDropdown');
+  const sClr = document.getElementById('homeSearchClear');
+
+  sInp.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    sClr.style.display = q ? 'block' : 'none';
+    if (!q) { sDrp.classList.remove('open'); return; }
+    const hits = searchPages.filter(p => p.title.toLowerCase().includes(q) || p.keys.includes(q));
+    const emptyMsg = (i18nExp[activeLang] || i18nExp.en).noSearchHit;
+    sDrp.innerHTML = hits.length
+      ? hits.map(h => `<a href="${h.url}" class="search-result-link"><small>${h.tag}</small><strong>${h.title}</strong></a>`).join('')
+      : `<div style="padding:12px;font-size:.75rem;color:#e6c680;text-align:center;">${emptyMsg}</div>`;
+    sDrp.classList.add('open');
+  });
+
+  function clearHomeSearch() {
+    sInp.value = '';
+    sClr.style.display = 'none';
+    sDrp.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.home-search-box')) sDrp.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

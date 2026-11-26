@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<title>About | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* ===================================================================== */
+  /* 1. TOP UTILITY STRIP                                                  */
+  /* ===================================================================== */
+  .top-utility-strip {
+    background: #23070b;
+    border-bottom: 1px solid rgba(201, 166, 107, 0.35);
+    padding: 8px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 50;
+  }
+
+  .clock-date-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #f3ebe0;
+  }
+
+  .clock-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e7cb94;
+    box-shadow: 0 0 8px #e7cb94;
+    animation: dotBlink 1.5s infinite;
+  }
+
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.75); }
+  }
+
+  #liveDateDisplay { color: #e7cb94; }
+  #liveClockDisplay { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .home-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 330px;
+    min-width: 200px;
+  }
+
+  .home-search-field {
+    display: flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.07);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    border-radius: 999px;
+    padding: 4px 14px;
+  }
+
+  .home-search-field:focus-within {
+    background: rgba(245, 237, 224, 0.14);
+    border-color: #e7cb94;
+  }
+
+  .home-search-field svg { color: #e7cb94; margin-right: 8px; flex-shrink: 0; }
+
+  .home-search-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f3ebe0;
+    font-family: "Jost", sans-serif;
+    font-size: .72rem;
+    letter-spacing: .05em;
+  }
+
+  .home-search-field input::placeholder { color: rgba(231, 203, 148, 0.65); }
+
+  .home-search-clear {
+    background: none;
+    border: none;
+    color: #e7cb94;
+    cursor: pointer;
+    font-size: .85rem;
+    display: none;
+    padding: 0 2px;
+  }
+
+  .home-search-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    background: #f5ede0;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    display: none;
+    max-height: 270px;
+    overflow-y: auto;
+    z-index: 99;
+    text-align: left;
+  }
+
+  .home-search-dropdown.open { display: block; }
+
+  .search-result-link {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(59, 16, 22, 0.12);
+  }
+  .search-result-link:hover { background: #e8dcc8; }
+  .search-result-link small { display: block; font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: #7c5828; }
+  .search-result-link strong { font-family: "Cormorant Garamond", serif; font-size: 1.02rem; color: #3b1016; }
+
+  .lang-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-switch-btn {
+    background: transparent;
+    border: none;
+    color: #e7cb94;
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-switch-btn.active { background: #e7cb94; color: #23070b; font-weight: 600; }
+
+  /* ===================================================================== */
+  /* JALUR TEKS BERGERAK CREAM / BEIGE DI ATAS (MARQUEE TICKER)            */
+  /* ===================================================================== */
+  .beyha-marquee-strip {
+    background: linear-gradient(90deg, #f5ede0 0%, #ede0cc 50%, #f5ede0 100%);
+    border-top: 1px solid #c9a66b;
+    border-bottom: 1px solid #c9a66b;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    z-index: 15;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .beyha-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    animation: beyhaMarqueeMove 28s linear infinite;
+    font-size: .61rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #3b1016;
+  }
+
+  .beyha-marquee-strip:hover .beyha-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .beyha-marquee-track span.folio-mark {
+    color: #8f6528;
+    font-size: .86rem;
+  }
+
+  @keyframes beyhaMarqueeMove {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===================================================================== */
+  /* 2. MAIN ABOUT STAGE                                                   */
+  /* ===================================================================== */
+  .about-universe {
+    position: relative;
+    background:
+      radial-gradient(circle at 76% 16%, rgba(168, 44, 78, 0.48) 0%, transparent 48%),
+      radial-gradient(circle at 22% 24%, rgba(231, 203, 148, 0.16) 0%, transparent 45%),
+      radial-gradient(circle at 18% 65%, rgba(212, 175, 106, 0.12) 0%, transparent 55%),
+      linear-gradient(180deg, #290812 0%, #3a0f1c 42%, #1d050b 100%);
+    color: #e5d0be;
+    padding: 58px 6% 96px;
+    overflow: hidden;
+  }
+
+  #aboutGoldCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* DIRECT PHOTO / VIDEO UPLOAD CONTROLS */
+  .direct-swap-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 12;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(28, 6, 13, 0.84);
+    border: 1px solid rgba(246, 228, 191, 0.72);
+    color: #f6e4bf;
+    font-family: "Jost", sans-serif;
+    font-size: .54rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.22s ease;
+  }
+
+  .direct-swap-btn:hover { background: #f6e4bf; color: #23070b; transform: scale(1.05); }
+
+  .direct-clear-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 12;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(28, 6, 13, 0.84);
+    border: 1px solid rgba(246, 228, 191, 0.6);
+    color: #f6e4bf;
+    font-size: .75rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+  }
+
+  .direct-clear-btn.visible { display: inline-flex; }
+  .direct-clear-btn:hover { background: #b91c1c; color: #ffffff; border-color: #ffffff; }
+
+  /* HERO SPLIT */
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+    gap: 44px;
+    margin-bottom: 44px;
+  }
+
+  .about-left-editorial { max-width: 540px; position: relative; }
+
+  .hero-kicker-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: rgba(231, 203, 148, 0.1);
+    border: 1px solid rgba(231, 203, 148, 0.42);
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #f3dfb6;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-script-accent {
+    display: block;
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(2.2rem, 3.8vw, 3.1rem);
+    color: #e7cb94;
+    line-height: 0.95;
+    margin-bottom: 4px;
+    transform: rotate(-2deg);
+    transform-origin: left center;
+  }
+
+  .about-clean-name {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.8rem, 5vw, 4.35rem);
+    line-height: 1.08;
+    margin: 0 0 18px;
+    background: linear-gradient(135deg, #fff5e0 0%, #f1d399 48%, #c99748 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55));
+  }
+
+  .hero-vibe-rotator {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    backdrop-filter: blur(8px);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+  }
+
+  .hero-vibe-rotator:hover {
+    background: rgba(231, 203, 148, 0.12);
+    border-color: #f6e4bf;
+    transform: translateY(-1px);
+  }
+
+  .vibe-star-spin {
+    color: #e7cb94;
+    font-size: .9rem;
+    animation: slowStarSpin 8s linear infinite;
+  }
+
+  @keyframes slowStarSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  #heroDynamicRole {
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #f8e9ca;
+    font-weight: 500;
+  }
+
+  .about-concise-bio {
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: #ebd8c8;
+    margin: 0 0 28px;
+  }
+
+  .about-concise-bio strong { color: #f9e6be; font-weight: 500; }
+
+  .about-cta-group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  .about-primary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f6e4bf 0%, #cfa355 100%);
+    color: #23070b;
+    text-decoration: none;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease, filter 0.25s ease;
+  }
+
+  .about-primary-cta:hover { transform: translateY(-3px); filter: brightness(1.06); }
+
+  .about-secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    background: rgba(231, 203, 148, 0.08);
+    border: 1px solid rgba(231, 203, 148, 0.48);
+    color: #f3dfb6;
+    text-decoration: none;
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+  }
+
+  .about-secondary-cta:hover { background: rgba(231, 203, 148, 0.18); border-color: #fff2d6; transform: translateY(-2px); }
+
+  /* 3D SCRAPBOOK COLLAGE */
+  .hero-3d-collage-stage {
+    position: relative;
+    perspective: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 470px;
+    padding: 16px;
+  }
+
+  .collage-3d-rig {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    height: 445px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease-out;
+  }
+
+  .collage-aura-glow {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231, 203, 148, 0.28) 0%, rgba(168, 38, 74, 0.22) 48%, transparent 72%);
+    filter: blur(18px);
+    transform: translateZ(-30px);
+    pointer-events: none;
+  }
+
+  .portrait-orbit-ring {
+    position: absolute;
+    width: 410px;
+    height: 410px;
+    border-radius: 50%;
+    border: 1px dashed rgba(231, 203, 148, 0.42);
+    pointer-events: none;
+    animation: orbitPortraitSpin 22s linear infinite;
+  }
+
+  @keyframes orbitPortraitSpin {
+    0%   { transform: translateZ(-10px) rotateX(68deg) rotateY(-14deg) rotateZ(0deg); }
+    50%  { transform: translateZ(-10px) rotateX(60deg) rotateY(14deg) rotateZ(180deg); }
+    100% { transform: translateZ(-10px) rotateX(68deg) rotateY(-14deg) rotateZ(360deg); }
+  }
+
+  .arch-3d-frame {
+    position: relative;
+    width: 285px;
+    height: 395px;
+    border-radius: 160px 160px 18px 18px;
+    padding: 9px;
+    background: linear-gradient(155deg, rgba(246, 228, 191, 0.65), rgba(84, 22, 40, 0.92));
+    border: 1px solid rgba(246, 228, 191, 0.78);
+    box-shadow: 0 32px 68px rgba(0, 0, 0, 0.75), 0 0 42px rgba(231, 203, 148, 0.24);
+    transform: translateZ(20px);
+    transform-style: preserve-3d;
+  }
+
+  .arch-inner-window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 150px 150px 12px 12px;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 35%, #6e1c34 0%, #3a0c1a 58%, #21050d 100%);
+    border: 1px solid rgba(231, 203, 148, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arch-inner-window img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .collage-3d-rig:hover .arch-inner-window img { transform: scale(1.04); }
+
+  .arch-luminous-crest {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px 18px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 32%, rgba(246, 228, 191, 0.24) 0%, transparent 65%), linear-gradient(170deg, #591429 0%, #2b0712 100%);
+    color: #f6e4bf;
+    cursor: pointer;
+  }
+
+  .crest-halo {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(246, 228, 191, 0.7);
+    background: radial-gradient(circle at 35% 30%, rgba(246, 228, 191, 0.25), rgba(43, 7, 18, 0.85));
+    box-shadow: 0 0 30px rgba(231, 203, 148, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .crest-halo span { font-family: "Pinyon Script", cursive; font-size: 3.1rem; color: #fff2d6; line-height: 1; }
+  .arch-luminous-crest strong { font-family: "Cormorant Garamond", serif; font-size: 1rem; letter-spacing: .22em; text-transform: uppercase; color: #f6e4bf; margin-bottom: 8px; }
+
+  .upload-portrait-btn {
+    padding: 7px 15px;
+    border-radius: 999px;
+    background: rgba(246, 228, 191, 0.18);
+    border: 1px dashed rgba(246, 228, 191, 0.8);
+    color: #fff2d6;
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+  .upload-portrait-btn:hover { background: rgba(246, 228, 191, 0.34); }
+
+  .arch-bottom-swap-pill {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 5px 13px;
+    border-radius: 999px;
+    background: rgba(28, 6, 13, 0.84);
+    border: 1px solid rgba(246, 228, 191, 0.72);
+    color: #f6e4bf;
+    font-family: "Jost", sans-serif;
+    font-size: .52rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+    transition: all 0.22s ease;
+  }
+  .arch-bottom-swap-pill:hover { background: #f6e4bf; color: #23070b; }
+
+  .float-spotify-glass {
+    position: absolute;
+    top: 24px;
+    left: -10px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(20, 32, 24, 0.88);
+    border: 1px solid rgba(29, 185, 84, 0.65);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(10px);
+    transform: translateZ(58px) rotate(-3deg);
+    animation: floatCardA 4.8s ease-in-out infinite;
+  }
+
+  .fsg-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1DB954;
+    color: #0b1f12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .95rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .fsg-text { text-align: left; }
+  .fsg-text small { display: block; font-size: .46rem; letter-spacing: .2em; text-transform: uppercase; color: #65f798; }
+  .fsg-text strong { display: block; font-family: "Playfair Display", serif; font-style: italic; font-size: .78rem; color: #ffffff; }
+
+  .float-campus-pill {
+    position: absolute;
+    top: 42px;
+    right: -8px;
+    z-index: 6;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(58, 14, 28, 0.95), rgba(26, 5, 12, 0.98));
+    border: 1px solid rgba(246, 228, 191, 0.65);
+    color: #f6e4bf;
+    font-size: .56rem;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.65);
+    transform: translateZ(68px) rotate(3deg);
+    animation: floatCardB 5.2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  /* INTERACTIVE FLOATING MINI POLAROID (MERSING SEA) */
+  .float-mini-polaroid {
+    position: absolute;
+    bottom: 18px;
+    left: 2px;
+    z-index: 7;
+    width: 126px;
+    background: #faf3e6;
+    padding: 7px 7px 11px;
+    border-radius: 6px;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.72);
+    text-align: center;
+    transform: translateZ(78px) rotate(-6deg);
+    animation: floatCardB 5.5s 0.8s ease-in-out infinite;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .float-mini-polaroid:hover {
+    border-color: #8c5a18;
+    box-shadow: 0 24px 44px rgba(0, 0, 0, 0.85), 0 0 18px rgba(231, 203, 148, 0.45);
+  }
+
+  .fmp-art {
+    width: 100%;
+    height: 78px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 45%, #3b6978 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fmp-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .fmp-empty-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px;
+    color: #2c0912;
+    text-align: center;
+  }
+
+  .fmp-plus-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(44, 9, 18, 0.82);
+    color: #f6e4bf;
+    font-size: .95rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+  }
+
+  .fmp-empty-prompt small {
+    font-size: .46rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #2c0912;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 1px 6px;
+    border-radius: 999px;
+  }
+
+  .fmp-cam-tag {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    z-index: 8;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(28, 6, 13, 0.85);
+    border: 1px solid rgba(246, 228, 191, 0.75);
+    color: #f6e4bf;
+    font-size: .56rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .fmp-clear-mini {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 12;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(28, 6, 13, 0.86);
+    border: 1px solid rgba(246, 228, 191, 0.7);
+    color: #f6e4bf;
+    font-size: .68rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .fmp-clear-mini.visible { display: inline-flex; }
+  .fmp-clear-mini:hover { background: #b91c1c; color: #fff; }
+
+  .float-mini-polaroid span.fmp-caption {
+    display: block;
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.15rem;
+    color: #3b1016;
+    line-height: 1;
+    outline: none;
+    border-radius: 3px;
+  }
+
+  .float-mini-polaroid span.fmp-caption:focus {
+    background: rgba(201, 166, 107, 0.25);
+  }
+
+  .float-gold-badge-seal {
+    position: absolute;
+    bottom: 24px;
+    right: 6px;
+    z-index: 7;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f8e8c6 0%, #cfa355 70%, #9c7129 100%);
+    border: 2px solid #fff5df;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #23070b;
+    transform: translateZ(62px) rotate(10deg);
+    animation: floatCardA 4.6s 1.2s ease-in-out infinite;
+  }
+
+  .float-gold-badge-seal small { font-size: .44rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+  .float-gold-badge-seal strong { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; line-height: 1.05; }
+
+  @keyframes floatCardA { 0%, 100% { margin-top: 0px; } 50% { margin-top: -8px; } }
+  @keyframes floatCardB { 0%, 100% { margin-bottom: 0px; } 50% { margin-bottom: 8px; } }
+
+  .hero-editorial-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 13px 22px;
+    margin-bottom: 72px;
+    border-radius: 999px;
+    border: 1px solid rgba(231, 203, 148, 0.28);
+    background: rgba(245, 237, 224, 0.04);
+    font-size: .56rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #e7cb94;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  /* SECTION HEADINGS */
+  .about-issue-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .58rem;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: #e7cb94;
+    background: rgba(231, 203, 148, 0.08);
+    border: 1px solid rgba(231, 203, 148, 0.4);
+    padding: 6px 18px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .section-head-center { text-align: center; margin-bottom: 38px; }
+
+  .section-head-center h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 3.8vw, 2.9rem);
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #f7e7c4 0%, #e4c385 52%, #cfa359 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 6px 0 8px;
+  }
+
+  .section-head-center p {
+    font-size: .64rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #d7ba86;
+    margin: 0;
+  }
+
+  /* ===================================================================== */
+  /* NO. 01: 3D KEEPSAKE JOURNAL & VINTAGE STUDENT PASS                    */
+  /* ===================================================================== */
+  .flip-vault-wrapper {
+    max-width: 920px;
+    margin: 0 auto 96px;
+    perspective: 1800px;
+    scroll-margin-top: 90px;
+  }
+
+  .keepsake-tilt-shell { transform-style: preserve-3d; transition: transform 0.2s ease-out; }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 415px;
+    transform-style: preserve-3d;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+  }
+
+  .flip-card-inner.is-flipped { transform: rotateY(180deg); }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 34px 42px;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(231, 203, 148, 0.16) 0%, transparent 50%),
+      linear-gradient(145deg, rgba(68, 17, 32, 0.94) 0%, rgba(24, 5, 11, 0.98) 100%);
+    border: 1px solid rgba(231, 203, 148, 0.58);
+    box-shadow: 0 32px 68px rgba(0, 0, 0, 0.72), inset 0 0 40px rgba(231, 203, 148, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .corner-ornament { position: absolute; width: 26px; height: 26px; border-color: #e7cb94; border-style: solid; pointer-events: none; opacity: 0.75; }
+  .co-tl { top: 14px; left: 14px; border-width: 1.5px 0 0 1.5px; border-top-left-radius: 6px; }
+  .co-tr { top: 14px; right: 14px; border-width: 1.5px 1.5px 0 0; border-top-right-radius: 6px; }
+  .co-bl { bottom: 14px; left: 14px; border-width: 0 0 1.5px 1.5px; border-bottom-left-radius: 6px; }
+  .co-br { bottom: 14px; right: 14px; border-width: 0 1.5px 1.5px 0; border-bottom-right-radius: 6px; }
+
+  .flip-front-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(231, 203, 148, 0.25);
+    padding-bottom: 12px;
+    font-size: .58rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  .wax-seal-3d {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #a8243b 0%, #5e0d1c 65%, #38050f 100%);
+    border: 2px solid rgba(231, 203, 148, 0.75);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.65), inset 0 2px 6px rgba(255, 215, 160, 0.35), inset 0 -4px 10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #f6e4bf;
+    transform: translateZ(26px);
+  }
+
+  .flip-front-center { text-align: center; padding: 8px 0; }
+  .flip-front-center .pass-script { font-family: "Pinyon Script", cursive; font-size: clamp(2.8rem, 5vw, 4.1rem); color: #f6e4bf; line-height: 1.05; display: block; margin-bottom: 6px; text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5); }
+  .flip-front-center h3 { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; letter-spacing: .26em; text-transform: uppercase; color: #e7cb94; font-weight: 500; margin: 0 0 12px; }
+  .flip-front-center p { font-size: .92rem; color: #e5d0be; max-width: 540px; margin: 0 auto; line-height: 1.75; }
+
+  .flip-action-bar { display: flex; align-items: center; justify-content: center; padding-top: 8px; }
+
+  .flip-trigger-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f3dfb6 0%, #cfa55b 100%);
+    color: #23070b;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+    transition: transform 0.25s ease;
+  }
+
+  .flip-card-inner:hover .flip-trigger-pill { transform: scale(1.04); }
+  .flip-back { transform: rotateY(180deg); padding: 28px 36px; }
+
+  .editorial-dossier-spread {
+    display: grid;
+    grid-template-columns: 245px 1fr;
+    gap: 32px;
+    align-items: center;
+    margin: 10px 0;
+    text-align: left;
+  }
+
+  .vintage-id-card {
+    position: relative;
+    background: linear-gradient(160deg, #faf3e6 0%, #ecdec6 100%);
+    color: #2c0912;
+    border-radius: 12px;
+    padding: 16px 16px 14px;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
+    transform: rotate(-2.5deg);
+    transition: transform 0.35s ease;
+  }
+
+  .flip-back:hover .vintage-id-card { transform: rotate(-1deg) translateY(-3px); }
+
+  .vid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .48rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #6e182c;
+    border-bottom: 1px solid rgba(59, 16, 22, 0.2);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .vid-photo-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; text-align: left; }
+
+  .vid-avatar {
+    width: 64px;
+    height: 76px;
+    border-radius: 32px 32px 6px 6px;
+    overflow: hidden;
+    border: 1.5px solid #8a622a;
+    background: #3b101d;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f3dfb6;
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.4rem;
+  }
+
+  .vid-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .vid-identity small { display: block; font-size: .48rem; letter-spacing: .18em; text-transform: uppercase; color: #7c5828; }
+  .vid-identity strong { display: block; font-family: "Playfair Display", serif; font-style: italic; font-size: 1.25rem; color: #2c0912; line-height: 1.1; margin: 2px 0 4px; }
+  .vid-identity span { display: inline-block; font-size: .5rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; background: #3b1016; color: #f3dfb6; padding: 2px 8px; border-radius: 999px; }
+
+  .vid-sig-strip { display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px dashed rgba(59, 16, 22, 0.28); padding-top: 8px; }
+  .vid-signature { font-family: "Pinyon Script", cursive; font-size: 1.55rem; color: #5e1123; line-height: 0.9; }
+
+  .vid-round-stamp {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px dashed #8c1d35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .42rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #8c1d35;
+    line-height: 1.15;
+    transform: rotate(-12deg);
+    opacity: 0.85;
+  }
+
+  .ed-eyebrow { font-size: .54rem; letter-spacing: .28em; text-transform: uppercase; color: #d7ba86; margin-bottom: 4px; display: block; }
+  .ed-fullname { font-family: "Playfair Display", serif; font-style: italic; font-size: clamp(1.45rem, 2.5vw, 1.95rem); font-weight: 400; color: #faf0dc; line-height: 1.2; margin: 0 0 12px; }
+  .ed-narrative { font-size: .92rem; line-height: 1.75; color: #e6d2c0; margin: 0 0 18px; padding-left: 14px; border-left: 2px solid #e7cb94; }
+  .ed-narrative strong { color: #f6e4bf; font-weight: 500; }
+  .ed-keepsake-tokens { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+
+  .postage-origin-stamp { background: rgba(245, 237, 224, 0.08); border: 1.5px dashed rgba(231, 203, 148, 0.65); padding: 8px 14px; border-radius: 6px; transform: rotate(1.5deg); }
+  .postage-origin-stamp small { display: block; font-size: .46rem; letter-spacing: .24em; text-transform: uppercase; color: #d7ba86; }
+  .postage-origin-stamp strong { font-family: "Cormorant Garamond", serif; font-size: 1.05rem; color: #faf0dc; }
+
+  .lang-ribbon-tag { background: linear-gradient(135deg, rgba(231, 203, 148, 0.16), rgba(231, 203, 148, 0.05)); border: 1px solid rgba(231, 203, 148, 0.45); border-radius: 999px; padding: 8px 16px; }
+  .lang-ribbon-tag small { display: block; font-size: .46rem; letter-spacing: .24em; text-transform: uppercase; color: #d7ba86; }
+  .lang-ribbon-tag strong { font-family: "Cormorant Garamond", serif; font-size: 1.02rem; color: #f6e4bf; }
+
+  /* ===================================================================== */
+  /* NO. 02: THINGS I ENJOY                                                */
+  /* ===================================================================== */
+  .hobbies-section-wrap { margin-bottom: 92px; scroll-margin-top: 90px; }
+
+  .hobbies-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+
+  .hobby-card-3d {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(165deg, rgba(72, 20, 35, 0.94) 0%, rgba(25, 5, 11, 0.98) 100%);
+    border: 1px solid rgba(231, 203, 148, 0.48);
+    border-top: 3px solid #e7cb94;
+    border-radius: 16px;
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.65);
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s ease, border-color 0.38s ease;
+  }
+
+  .hobby-card-3d:hover {
+    transform: translateY(-10px);
+    border-color: #f9ebd0;
+    box-shadow: 0 30px 58px rgba(0, 0, 0, 0.82), 0 0 32px rgba(231, 203, 148, 0.25);
+  }
+
+  .hobby-card-topmeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(231, 203, 148, 0.22);
+    font-size: .54rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  .hobby-card-3d h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.52rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #f8e8c6;
+    margin: 0 0 14px;
+    min-height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hobby-visual-center {
+    position: relative;
+    width: 100%;
+    height: 185px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border: 1px solid rgba(231, 203, 148, 0.55);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    background: #140204;
+  }
+
+  .hobby-visual-center img.hobby-user-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 3;
+    transition: transform 0.5s ease;
+  }
+
+  /* Zoom masuk (scale 1.75) untuk potong bar hitam atas & bawah video TikTok */
+  .hobby-visual-center video.hobby-user-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.75);
+    z-index: 3;
+    transition: transform 0.5s ease;
+  }
+
+  .hobby-visual-center svg.hobby-art-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .hobby-card-3d:hover .hobby-visual-center img.hobby-user-photo,
+  .hobby-card-3d:hover .hobby-visual-center svg.hobby-art-svg {
+    transform: scale(1.04);
+  }
+
+  .hobby-card-3d:hover .hobby-visual-center video.hobby-user-video {
+    transform: scale(1.82);
+  }
+
+  .video-sound-toggle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 12;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(28, 6, 13, 0.85);
+    border: 1px solid rgba(246, 228, 191, 0.72);
+    color: #f6e4bf;
+    font-size: .72rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
+    transition: all 0.2s ease;
+  }
+
+  .video-sound-toggle.visible { display: inline-flex; }
+  .video-sound-toggle:hover { background: #f6e4bf; color: #23070b; transform: scale(1.08); }
+
+  .hobby-badge-pill {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 4;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: .5rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .badge-spotify { background: #1DB954; color: #081c0f; }
+  .badge-netflix { background: #E50914; color: #ffffff; }
+  .badge-court   { background: #f6e4bf; color: #23070b; }
+
+  .hobby-card-3d p {
+    font-size: .88rem;
+    line-height: 1.68;
+    color: #e3cec0;
+    margin: 0 0 16px;
+  }
+
+  .hobby-tags-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px solid rgba(231, 203, 148, 0.16);
+  }
+
+  .hobby-tag-chip {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    background: rgba(231, 203, 148, 0.06);
+    font-size: .5rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  /* ===================================================================== */
+  /* EDITORIAL QUOTE & VINYL SPOTIFY SHOWCASE ("me and my obsession")      */
+  /* ===================================================================== */
+  .obsession-music-showcase {
+    margin-top: 48px;
+    padding: 38px 30px 36px;
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(231, 203, 148, 0.18) 0%, transparent 58%),
+      radial-gradient(circle at 85% 90%, rgba(29, 185, 84, 0.12) 0%, transparent 50%),
+      linear-gradient(160deg, rgba(66, 17, 32, 0.96) 0%, rgba(20, 4, 9, 0.99) 100%);
+    border: 1px solid rgba(231, 203, 148, 0.55);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.72), inset 0 0 36px rgba(231, 203, 148, 0.06);
+  }
+
+  .obsession-quote-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 34px;
+    position: relative;
+  }
+
+  .obsession-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: rgba(29, 185, 84, 0.14);
+    border: 1px solid rgba(29, 185, 84, 0.45);
+    font-size: .54rem;
+    font-weight: 600;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: #7bf7a8;
+    margin-bottom: 14px;
+  }
+
+  .obsession-quote-stage {
+    position: relative;
+    display: inline-block;
+    padding: 4px 20px;
+  }
+
+  .quote-mark-ornament {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    line-height: 0.6;
+    color: rgba(231, 203, 148, 0.35);
+    vertical-align: middle;
+    user-select: none;
+  }
+
+  .obsession-quote-text {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    letter-spacing: .04em;
+    margin: 0 8px;
+    display: inline-block;
+    background: linear-gradient(135deg, #fff6e3 0%, #f1d399 50%, #c89444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.55));
+  }
+
+  .obsession-subline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 10px;
+    font-size: .58rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #d7ba86;
+  }
+
+  .obsession-subline::before,
+  .obsession-subline::after {
+    content: "";
+    width: 42px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(231, 203, 148, 0.65), transparent);
+  }
+
+  .spotify-tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 12px;
+  }
+
+  .vinyl-track-card {
+    position: relative;
+    background: linear-gradient(165deg, rgba(46, 11, 22, 0.92) 0%, rgba(16, 3, 7, 0.98) 100%);
+    border: 1px solid rgba(231, 203, 148, 0.42);
+    border-radius: 18px;
+    padding: 16px 16px 18px;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.65);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .vinyl-track-card:hover {
+    transform: translateY(-9px);
+    border-color: #f6e4bf;
+    box-shadow: 0 28px 54px rgba(0, 0, 0, 0.85), 0 0 26px rgba(29, 185, 84, 0.22);
+  }
+
+  .vinyl-disc-peeker {
+    position: absolute;
+    top: -18px;
+    right: 16px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, #18040a 0%, #18040a 16%, #cfa355 18%, #cfa355 28%, #111111 30%, #242424 44%, #101010 56%, #262626 68%, #0c0c0c 100%);
+    border: 1.5px solid rgba(231, 203, 148, 0.65);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spinVinylRecord 9s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .vinyl-disc-peeker::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff3db;
+  }
+
+  @keyframes spinVinylRecord {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .vtc-top-strip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(231, 203, 148, 0.2);
+    font-size: .54rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  .eq-mini-bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 11px;
+  }
+
+  .eq-mini-bars span {
+    width: 2.5px;
+    background: #1DB954;
+    border-radius: 2px;
+    animation: eqBounce 0.9s ease-in-out infinite alternate;
+  }
+
+  .eq-mini-bars span:nth-child(1) { height: 5px; animation-delay: 0s; }
+  .eq-mini-bars span:nth-child(2) { height: 11px; animation-delay: 0.25s; }
+  .eq-mini-bars span:nth-child(3) { height: 7px; animation-delay: 0.45s; }
+
+  @keyframes eqBounce {
+    0%   { height: 3px; }
+    100% { height: 11px; }
+  }
+
+  .vinyl-iframe-shell {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ===================================================================== */
+  /* NO. 03: CAPTURED MOMENTS (4 POLAROIDS WITH DIRECT UPLOAD & EDIT)      */
+  /* ===================================================================== */
+  .moments-section-wrap { scroll-margin-top: 90px; }
+
+  .polaroid-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .polaroid-card-item {
+    background: linear-gradient(175deg, #fbf5ea 0%, #efe3ce 100%);
+    padding: 12px 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.65);
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  }
+
+  .polaroid-card-item:nth-child(odd) { transform: rotate(-1.5deg); }
+  .polaroid-card-item:nth-child(even) { transform: rotate(1.5deg); }
+  .polaroid-card-item:hover { transform: rotate(0deg) translateY(-10px) scale(1.03); box-shadow: 0 30px 56px rgba(0, 0, 0, 0.8); z-index: 4; }
+
+  .polaroid-photo-box {
+    position: relative;
+    width: 100%;
+    height: 225px;
+    background: #2b0812;
+    border: 1px solid rgba(59, 16, 22, 0.25);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .polaroid-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .polaroid-empty-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    color: #f3dfb6;
+  }
+
+  .polaroid-plus-ring {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px dashed rgba(243, 223, 182, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #f3dfb6;
+  }
+
+  .polaroid-empty-prompt strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: .85rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #f3dfb6;
+  }
+
+  .polaroid-empty-prompt small {
+    font-size: .5rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(243, 223, 182, 0.75);
+  }
+
+  .polaroid-caption-edit {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.75rem;
+    color: #2d0912;
+    line-height: 1.1;
+    outline: none;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .polaroid-caption-edit:hover {
+    background: rgba(201, 166, 107, 0.14);
+  }
+
+  .polaroid-caption-edit:focus {
+    background: rgba(201, 166, 107, 0.25);
+  }
+
+  @media(max-width: 960px) {
+    .about-hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .about-left-editorial { max-width: 100%; margin: 0 auto; }
+    .hero-script-accent { transform-origin: center center; }
+    .about-cta-group { justify-content: center; }
+    .editorial-dossier-spread { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+    .vintage-id-card { max-width: 280px; margin: 0 auto; }
+    .ed-narrative { border-left: none; padding-left: 0; }
+    .ed-keepsake-tokens { justify-content: center; }
+    .hobbies-grid-3 { grid-template-columns: 1fr; }
+    .hobby-card-3d h3 { min-height: auto; }
+    .spotify-tracks-grid { grid-template-columns: 1fr; gap: 32px; }
+    .polaroid-grid-4 { grid-template-columns: 1fr 1fr; }
+    .flip-card-inner { min-height: 620px; }
+  }
+
+  @media(max-width: 560px) {
+    .polaroid-grid-4 { grid-template-columns: 1fr; }
+    .top-utility-strip { justify-content: center; }
+    .obsession-music-showcase { padding: 28px 16px 24px; }
+    .flip-face { padding: 26px 20px; }
+    .flip-back { padding: 24px 18px; }
+    .flip-card-inner { min-height: 650px; }
+  }
+
+  /* ===================================================================== */
+  /* 3. FOOTER WITH SITE MAP & UNDERLINE LINKS                             */
+  /* ===================================================================== */
+  footer.about-sitemap-footer {
+    background-color: #360913 !important;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 9px, transparent 10px) !important;
+    background-size: 56px 56px !important;
+    color: #f7efe5 !important;
+    text-align: center !important;
+    padding: 42px 20px 34px !important;
+    border-top: 1px solid rgba(230, 198, 128, 0.25) !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  footer.about-sitemap-footer .footer-logo {
+    font-family: "Cormorant Garamond", serif !important;
+    font-size: 1.55rem !important;
+    letter-spacing: .18em !important;
+    color: #f7efe5 !important;
+    display: block !important;
+    margin: 0 0 16px !important;
+  }
+
+  footer.about-sitemap-footer .footer-logo i {
+    font-family: "Pinyon Script", cursive !important;
+    font-style: normal !important;
+    color: #e6c680 !important;
+  }
+
+  footer.about-sitemap-footer .footer-sitemap,
+  footer.about-sitemap-footer .footer-meta,
+  footer.about-sitemap-footer .footer-copy {
+    font-family: "Jost", sans-serif !important;
+    font-size: .62rem !important;
+    letter-spacing: .15em !important;
+    text-transform: uppercase !important;
+    line-height: 1.95 !important;
+    margin: 4px auto !important;
+    color: rgba(247, 239, 229, 0.88) !important;
+  }
+
+  footer.about-sitemap-footer .footer-sitemap span {
+    color: #e6c680 !important;
+    margin-right: 8px !important;
+  }
+
+  footer.about-sitemap-footer .footer-sitemap a {
+    color: #f7efe5 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+    text-decoration-thickness: 1px !important;
+    margin: 0 8px !important;
+    transition: color 0.2s ease;
+  }
+
+  footer.about-sitemap-footer .footer-sitemap a:hover {
+    color: #e6c680 !important;
+  }
+
+  footer.about-sitemap-footer .footer-meta a {
+    color: #e6c680 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+  }
+
+  footer.about-sitemap-footer .back-top {
+    display: inline-block !important;
+    margin-top: 12px !important;
+    font-family: "Jost", sans-serif !important;
+    font-size: .66rem !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: #e6c680 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+  }
+</style>
+</head>
+<body id="top" class="subpage">
+
+<div class="page-sheet">
+ <!-- TOP UTILITY STRIP -->
+ <div class="top-utility-strip">
+  <div class="clock-date-capsule" aria-label="Live Clock and Date">
+   <span class="clock-pulse-dot"></span>
+   <span id="liveDateDisplay">MON, 16 NOV 2026</span>
+   <span>&bull;</span>
+   <span id="liveClockDisplay">11:28:00 PM</span>
+  </div>
+
+  <div class="home-search-box">
+   <div class="home-search-field">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <circle cx="11" cy="11" r="8"/>
+     <path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" id="homeSearchInput" placeholder="Search portfolio..." autocomplete="off">
+    <button type="button" class="home-search-clear" id="homeSearchClear" onclick="clearHomeSearch()">&times;</button>
+   </div>
+   <div class="home-search-dropdown" id="homeSearchDropdown"></div>
+  </div>
+
+  <div class="lang-pill-group" role="group" aria-label="Language Switcher">
+   <button type="button" class="lang-switch-btn active" data-lang="en" onclick="switchSiteLang('en')">EN</button>
+   <button type="button" class="lang-switch-btn" data-lang="bm" onclick="switchSiteLang('bm')">BM</button>
+  </div>
+ </div>
+
+ <!-- HEADER & NAVIGATION -->
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="../index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast" data-i18n="contrast">Contrast</button>
+   </div>
+  </div>
+  <nav>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" class="on" data-i18n="navAbout">About</a>
+   <a href="education.html" data-i18n="navEdu">Education</a>
+   <a href="experience.html" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <!-- JALUR TEKS BERGERAK CREAM / BEIGE DI ATAS (MARQUEE TICKER) -->
+ <div class="beyha-marquee-strip" aria-label="About Chapter Ticker">
+  <div class="beyha-marquee-track" id="aboutMarqueeTrack">
+   <span>CHAPTER 01 &bull; ABOUT BEYHA</span><span class="folio-mark">&sect;</span>
+   <span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span>
+   <span>DIPLOMA IN INFORMATION MANAGEMENT (IM110)</span><span class="folio-mark">&#10087;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span>
+   <!-- Ulang 2x supaya pusingan berterusan -->
+   <span>CHAPTER 01 &bull; ABOUT BEYHA</span><span class="folio-mark">&sect;</span>
+   <span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span>
+   <span>DIPLOMA IN INFORMATION MANAGEMENT (IM110)</span><span class="folio-mark">&#10087;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span>
+  </div>
+ </div>
+
+ <!-- MAIN ABOUT STAGE -->
+ <main class="about-universe">
+  <canvas id="aboutGoldCanvas"></canvas>
+
+  <div class="about-container">
+   <!-- HERO SPLIT -->
+   <section class="about-hero-grid">
+    <div class="about-left-editorial">
+     <span class="hero-kicker-pill" data-i18n="heroBadge">&#10022; Chapter 01 &bull; The Creator</span>
+     <span class="hero-script-accent" data-i18n="heroHello">Hello, I am</span>
+     <h1 class="about-clean-name">Nur Nabiha Ibtisam</h1>
+
+     <div class="hero-vibe-rotator" onclick="cycleHeroRole()" title="Click to switch role">
+      <span class="vibe-star-spin">&#10022;</span>
+      <span id="heroDynamicRole">Information Management Student &bull; UiTM Segamat</span>
+     </div>
+
+     <p class="about-concise-bio" data-i18n-html="heroBio">
+      Affectionately known as <strong>Beyha</strong>, I am a Diploma in Information Management student from <strong>Mersing, Johor</strong>. I love curating structured knowledge, capturing warm aesthetic moments, and building meaningful digital stories.
+     </p>
+
+     <div class="about-cta-group">
+      <a href="#keepsakeVault" class="about-primary-cta" data-i18n="btnBiodata">Open Student Pass &rarr;</a>
+      <a href="#hobbiesSection" class="about-secondary-cta" data-i18n="btnHobbies">Explore Passions</a>
+     </div>
+    </div>
+
+    <!-- RIGHT: 3D SCRAPBOOK COLLAGE -->
+    <div class="hero-3d-collage-stage">
+     <div class="collage-3d-rig" id="collage3dRig">
+      <div class="collage-aura-glow"></div>
+      <div class="portrait-orbit-ring"></div>
+
+      <!-- Floating Spotify Glass -->
+      <div class="float-spotify-glass">
+       <div class="fsg-icon">&#9835;</div>
+       <div class="fsg-text">
+        <small data-i18n="fsgLabel">On Repeat</small>
+        <strong data-i18n="fsgSub">Acoustic &amp; Indie</strong>
+       </div>
+      </div>
+
+      <!-- Floating Campus Pill -->
+      <div class="float-campus-pill">UiTM Segamat &bull; IM110</div>
+
+      <!-- Main Arch Portrait Frame -->
+      <div class="arch-3d-frame">
+       <div class="arch-inner-window">
+        <button type="button" class="direct-clear-btn" id="clear_aboutMain" onclick="event.stopPropagation(); clearSlotPhoto('aboutMain')" title="Remove photo">&times;</button>
+        <input type="file" id="picker_aboutMain" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'aboutMain')">
+
+        <img id="img_aboutMain" data-base="../images/about1" alt="Nur Nabiha Ibtisam Portrait">
+        <div class="arch-luminous-crest" id="prompt_aboutMain" onclick="triggerSlotPicker('aboutMain')">
+         <div class="crest-halo"><span>N&amp;I</span></div>
+         <strong data-i18n="crestTitle">Beyha Portrait</strong>
+         <span class="upload-portrait-btn" data-i18n="uploadPortraitBtn">+ Upload Photo</span>
+        </div>
+
+        <button type="button" class="arch-bottom-swap-pill" onclick="event.stopPropagation(); triggerSlotPicker('aboutMain')" data-i18n="archChangeBtn">&#128247; Change Photo</button>
+       </div>
+      </div>
+
+      <!-- Floating Mini Polaroid (Mersing Sea) -->
+      <div class="float-mini-polaroid" onclick="triggerSlotPicker('aboutMini')" title="Click to add or change Mersing Sea photo">
+       <div class="fmp-art">
+        <button type="button" class="fmp-clear-mini" id="clear_aboutMini" onclick="event.stopPropagation(); clearSlotPhoto('aboutMini')" title="Remove photo">&times;</button>
+        <input type="file" id="picker_aboutMini" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'aboutMini')">
+
+        <img id="img_aboutMini" data-base="../images/about2" alt="Mersing Sea">
+        <div class="fmp-empty-prompt" id="prompt_aboutMini">
+         <div class="fmp-plus-badge">+</div>
+         <small data-i18n="mersingSeaSmall">Mersing Sea</small>
+        </div>
+        <span class="fmp-cam-tag">&#128247;</span>
+       </div>
+       <span class="fmp-caption" contenteditable="true" id="cap_aboutMini" onclick="event.stopPropagation()" onblur="savePolaroidCaption('aboutMini')">Mersing Breeze</span>
+      </div>
+
+      <!-- Floating Gold Seal -->
+      <div class="float-gold-badge-seal">
+       <small>EST.</small>
+       <strong>2026</strong>
+       <small data-i18n="sealJournal">JOURNAL</small>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <div class="hero-editorial-divider">
+    <span>Mersing, Johor</span>
+    <span>&bull;</span>
+    <span data-i18n="divDiploma">Diploma in Information Management (IM110)</span>
+    <span>&bull;</span>
+    <span>Universiti Teknologi MARA</span>
+   </div>
+
+   <!-- ================================================================= -->
+   <!-- NO. 01: 3D KEEPSAKE JOURNAL & VINTAGE STUDENT PASS                -->
+   <!-- ================================================================= -->
+   <section class="flip-vault-wrapper" id="keepsakeVault">
+    <div class="section-head-center">
+     <span class="about-issue-pill" data-i18n="sec1Pill">&#10022; 01. Personal Dossier</span>
+     <h2 data-i18n="sec1Title">Identity &amp; Background</h2>
+     <p data-i18n="sec1Sub">Click the keepsake pass below to flip between cover &amp; details</p>
+    </div>
+
+    <div class="keepsake-tilt-shell" id="keepsakeTiltShell">
+     <div class="flip-card-inner" id="keepsakeFlipCard" onclick="this.classList.toggle('is-flipped')">
+      <!-- FRONT COVER -->
+      <div class="flip-face">
+       <span class="corner-ornament co-tl"></span>
+       <span class="corner-ornament co-tr"></span>
+       <span class="corner-ornament co-bl"></span>
+       <span class="corner-ornament co-br"></span>
+
+       <div class="flip-front-top">
+        <span data-i18n="passTopLeft">Official Student Dossier</span>
+        <span>No. 2024250178</span>
+       </div>
+
+       <div class="flip-front-center">
+        <div class="wax-seal-3d">N&amp;I</div>
+        <span class="pass-script" data-i18n="passScript">Personal Keepsake</span>
+        <h3>Nur Nabiha Ibtisam Binti Abd Hadi</h3>
+        <p data-i18n="passFrontDesc">A closer look into my roots in coastal Mersing, academic journey in Information Management, and personal values.</p>
+       </div>
+
+       <div class="flip-action-bar">
+        <span class="flip-trigger-pill" data-i18n="passFlipToBack">Tap to Flip Card &#8635;</span>
+       </div>
+      </div>
+
+      <!-- BACK DETAILS -->
+      <div class="flip-face flip-back">
+       <span class="corner-ornament co-tl"></span>
+       <span class="corner-ornament co-tr"></span>
+       <span class="corner-ornament co-bl"></span>
+       <span class="corner-ornament co-br"></span>
+
+       <div class="flip-front-top">
+        <span data-i18n="passBackCampus">UiTM Johor &bull; Segamat Campus</span>
+        <span data-i18n="passBackFaculty">Faculty of Information Science</span>
+       </div>
+
+       <div class="editorial-dossier-spread">
+        <div class="vintage-id-card">
+         <div class="vid-header">
+          <span data-i18n="vidTitle">Student Pass</span>
+          <span>IM110</span>
+         </div>
+         <div class="vid-photo-row">
+          <div class="vid-avatar" id="vidAvatarBox">N&amp;I</div>
+          <div class="vid-identity">
+           <small data-i18n="vidPrefLabel">Preferred Name</small>
+           <strong>Beyha</strong>
+           <span>Mersing, Johor</span>
+          </div>
+         </div>
+         <div class="vid-sig-strip">
+          <div class="vid-signature">Nabiha Ibtisam</div>
+          <div class="vid-round-stamp">UiTM<br>SEGAMAT<br>2026</div>
+         </div>
+        </div>
+
+        <div class="editorial-story-col">
+         <span class="ed-eyebrow" data-i18n="edEyebrow">Full Name &amp; Biography</span>
+         <h3 class="ed-fullname">Nur Nabiha Ibtisam Binti Abd Hadi</h3>
+         <p class="ed-narrative" data-i18n-html="edNarrative">
+          Born and raised in <strong>Mersing, Johor</strong>, I am currently pursuing my <strong>Diploma in Information Management</strong> at UiTM Segamat. I enjoy organizing records, designing clean digital layouts, and collaborating on campus community initiatives.
+         </p>
+         <div class="ed-keepsake-tokens">
+          <div class="postage-origin-stamp">
+           <small data-i18n="edHometownLabel">Hometown</small>
+           <strong>Mersing, Johor</strong>
+          </div>
+          <div class="lang-ribbon-tag">
+           <small data-i18n="edLangLabel">Languages</small>
+           <strong data-i18n="edLangVal">English &bull; Bahasa Melayu</strong>
+          </div>
+         </div>
+        </div>
+       </div>
+
+       <div class="flip-action-bar">
+        <span class="flip-trigger-pill" data-i18n="passFlipToFront">Tap to Flip Back &#8634;</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- ================================================================= -->
+   <!-- NO. 02: THINGS I ENJOY + "ME AND MY OBSESSION" VINYL PLAYLIST     -->
+   <!-- ================================================================= -->
+   <section class="hobbies-section-wrap" id="hobbiesSection">
+    <div class="section-head-center">
+     <span class="about-issue-pill" data-i18n="sec2Pill">&#10022; 02. Off-Campus Interests</span>
+     <h2 data-i18n="sec2Title">Things I Enjoy</h2>
+     <p data-i18n="sec2Sub">Simple joys that keep me inspired, relaxed, and energized</p>
+    </div>
+
+    <div class="hobbies-grid-3">
+     <!-- PASSION 01: SPOTIFY -->
+     <article class="hobby-card-3d">
+      <div>
+       <div class="hobby-card-topmeta">
+        <span data-i18n="pas1Label">Passion 01</span>
+        <span>&#9835; Spotify</span>
+       </div>
+       <h3 data-i18n="pas1Title">Listening to Music</h3>
+
+       <div class="hobby-visual-center" onclick="triggerSlotPicker('hobby1')">
+        <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('hobby1')" data-i18n="changeBtn">&#128247; Change</button>
+        <button type="button" class="direct-clear-btn" id="clear_hobby1" onclick="event.stopPropagation(); clearSlotPhoto('hobby1')" title="Reset graphic">&times;</button>
+        <input type="file" id="picker_hobby1" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'hobby1')">
+        <img class="hobby-user-photo" id="img_hobby1" data-base="../images/about_hobby1" style="display:none;" alt="Listening to Music">
+
+        <svg class="hobby-art-svg" viewBox="0 0 320 185" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+          <linearGradient id="spGrad" x1="0" y1="0" x2="1" y2="1">
+           <stop offset="0%" stop-color="#15803d"/>
+           <stop offset="100%" stop-color="#052e16"/>
+          </linearGradient>
+         </defs>
+         <rect width="320" height="185" fill="url(#spGrad)"/>
+         <circle cx="52" cy="52" r="24" fill="#1DB954"/>
+         <path d="M40 46 Q52 41 64 47" stroke="#052e16" stroke-width="3" fill="none" stroke-linecap="round"/>
+         <path d="M42 53 Q52 49 62 54" stroke="#052e16" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+         <path d="M44 60 Q52 57 60 61" stroke="#052e16" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+         <rect x="34" y="96" width="5" height="24" rx="2.5" fill="#4ade80"/>
+         <rect x="44" y="84" width="5" height="36" rx="2.5" fill="#4ade80"/>
+         <rect x="54" y="92" width="5" height="28" rx="2.5" fill="#4ade80"/>
+         <rect x="64" y="78" width="5" height="42" rx="2.5" fill="#4ade80"/>
+         <rect x="74" y="90" width="5" height="30" rx="2.5" fill="#4ade80"/>
+         <circle cx="222" cy="96" r="56" fill="#090d0b" stroke="#22c55e" stroke-width="2"/>
+         <circle cx="222" cy="96" r="38" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+         <circle cx="222" cy="96" r="22" fill="#1DB954"/>
+         <circle cx="222" cy="96" r="6" fill="#090d0b"/>
+        </svg>
+        <span class="hobby-badge-pill badge-spotify" data-i18n="pas1Badge">&#9656; Spotify Playlists</span>
+       </div>
+
+       <p data-i18n="pas1Desc">Exploring different genres of music &mdash; from soothing acoustic melodies and indie tracks to upbeat pop playlists during study sessions and quiet evenings.</p>
+      </div>
+
+      <div class="hobby-tags-row">
+       <span class="hobby-tag-chip" data-i18n="pas1Tag1">Acoustic</span>
+       <span class="hobby-tag-chip" data-i18n="pas1Tag2">Indie &amp; Pop</span>
+       <span class="hobby-tag-chip" data-i18n="pas1Tag3">Study Vibe</span>
+      </div>
+     </article>
+
+     <!-- PASSION 02: NETFLIX (ZOOMED VIDEO PLAYER) -->
+     <article class="hobby-card-3d">
+      <div>
+       <div class="hobby-card-topmeta">
+        <span data-i18n="pas2Label">Passion 02</span>
+        <span>&#10022; Netflix</span>
+       </div>
+       <h3 data-i18n="pas2Title">Watching Dramas &amp; Movies on Netflix</h3>
+
+       <div class="hobby-visual-center" onclick="triggerNetflixVideoPicker()">
+        <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerNetflixVideoPicker()" data-i18n="changeVideoBtn">&#127909; Video</button>
+        <button type="button" class="direct-clear-btn" id="clear_netflixVid" onclick="event.stopPropagation(); resetNetflixVideo()" title="Reset default video">&times;</button>
+        <button type="button" class="video-sound-toggle" id="muteBtn_netflixVid" onclick="event.stopPropagation(); toggleNetflixMute()" title="Toggle sound">&#128263;</button>
+        <input type="file" id="picker_netflixVid" accept="video/mp4,video/webm,video/*" style="display:none;" onchange="handleNetflixVideoUpload(event)">
+
+        <video class="hobby-user-video" id="vid_netflix" src="../images/netflix.mp4" autoplay muted loop playsinline style="display:none;"></video>
+
+        <svg class="hobby-art-svg" id="svg_netflixFallback" viewBox="0 0 320 185" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+          <linearGradient id="nfGrad" x1="0" y1="0" x2="1" y2="1">
+           <stop offset="0%" stop-color="#3b070c"/>
+           <stop offset="100%" stop-color="#140204"/>
+          </linearGradient>
+         </defs>
+         <rect width="320" height="185" fill="url(#nfGrad)"/>
+         <rect x="26" y="42" width="54" height="68" rx="10" fill="#0a0a0a" stroke="rgba(229,9,20,0.5)"/>
+         <path d="M41 94 V58 L65 94 V58" stroke="#E50914" stroke-width="6.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+         <rect x="104" y="34" width="186" height="98" rx="10" fill="#1f080c" stroke="#e7cb94" stroke-width="1.2"/>
+         <circle cx="152" cy="76" r="18" fill="#E50914" opacity="0.85"/>
+         <circle cx="242" cy="70" r="14" fill="#f6e4bf" opacity="0.9"/>
+         <circle cx="197" cy="83" r="16" fill="rgba(0,0,0,0.65)" stroke="#ffffff" stroke-width="1.5"/>
+         <polygon points="193,76 193,90 205,83" fill="#ffffff"/>
+        </svg>
+        <span class="hobby-badge-pill badge-netflix" data-i18n="pas2Badge">&#9733; Netflix Series</span>
+       </div>
+
+       <p data-i18n="pas2Desc">Unwinding with captivating dramas and films on Netflix, enjoying heartfelt storytelling, cinematography, and relaxing binge-watch sessions after classes.</p>
+      </div>
+
+      <div class="hobby-tags-row">
+       <span class="hobby-tag-chip" data-i18n="pas2Tag1">Drama</span>
+       <span class="hobby-tag-chip" data-i18n="pas2Tag2">Storytelling</span>
+       <span class="hobby-tag-chip" data-i18n="pas2Tag3">Cinema</span>
+      </div>
+     </article>
+
+     <!-- PASSION 03: BADMINTON -->
+     <article class="hobby-card-3d">
+      <div>
+       <div class="hobby-card-topmeta">
+        <span data-i18n="pas3Label">Passion 03</span>
+        <span>&#10022; Badminton</span>
+       </div>
+       <h3 data-i18n="pas3Title">Playing Badminton</h3>
+
+       <div class="hobby-visual-center" onclick="triggerSlotPicker('hobby3')">
+        <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('hobby3')" data-i18n="changeBtn">&#128247; Change</button>
+        <button type="button" class="direct-clear-btn" id="clear_hobby3" onclick="event.stopPropagation(); clearSlotPhoto('hobby3')" title="Reset graphic">&times;</button>
+        <input type="file" id="picker_hobby3" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'hobby3')">
+        <img class="hobby-user-photo" id="img_hobby3" data-base="../images/about_hobby3" style="display:none;" alt="Playing Badminton">
+
+        <svg class="hobby-art-svg" viewBox="0 0 320 185" xmlns="http://www.w3.org/2000/svg">
+         <defs>
+          <linearGradient id="bdGrad" x1="0" y1="0" x2="1" y2="1">
+           <stop offset="0%" stop-color="#134e4a"/>
+           <stop offset="100%" stop-color="#062825"/>
+          </linearGradient>
+         </defs>
+         <rect width="320" height="185" fill="url(#bdGrad)"/>
+         <rect x="26" y="48" width="268" height="90" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+         <line x1="160" y1="38" x2="160" y2="148" stroke="#f6e4bf" stroke-width="2" stroke-dasharray="4 3"/>
+         <ellipse cx="92" cy="76" rx="22" ry="29" transform="rotate(-32 92 76)" fill="none" stroke="#f6e4bf" stroke-width="2.5"/>
+         <line x1="108" y1="99" x2="136" y2="138" stroke="#f6e4bf" stroke-width="3.5" stroke-linecap="round"/>
+         <polygon points="236,52 252,44 256,64 238,64" fill="#ffffff"/>
+         <circle cx="236" cy="60" r="5" fill="#ef4444"/>
+        </svg>
+        <span class="hobby-badge-pill badge-court" data-i18n="pas3Badge">&#10022; Court &amp; Smash</span>
+       </div>
+
+       <p data-i18n="pas3Desc">Staying active and refreshed on the badminton court &mdash; a favourite sport that brings fun rallies, focus, and quality time with friends and family.</p>
+      </div>
+
+      <div class="hobby-tags-row">
+       <span class="hobby-tag-chip" data-i18n="pas3Tag1">Rallies</span>
+       <span class="hobby-tag-chip" data-i18n="pas3Tag2">Active Reset</span>
+       <span class="hobby-tag-chip" data-i18n="pas3Tag3">Friends &amp; Family</span>
+      </div>
+     </article>
+    </div>
+
+    <!-- EDITORIAL QUOTE & VINYL SPOTIFY SHOWCASE ("me and my obsession") -->
+    <div class="obsession-music-showcase">
+     <div class="obsession-quote-header">
+      <span class="obsession-kicker" data-i18n="obsKicker">&#9835; On Heavy Rotation &bull; Spotify</span>
+      <div>
+       <blockquote class="obsession-quote-stage" style="margin:0;">
+        <span class="quote-mark-ornament">&ldquo;</span>
+        <span class="obsession-quote-text">me and my obsession</span>
+        <span class="quote-mark-ornament">&rdquo;</span>
+       </blockquote>
+      </div>
+      <div class="obsession-subline" data-i18n="obsSubline">Curated Tracks &bull; Beyha's Soundscape</div>
+     </div>
+
+     <div class="spotify-tracks-grid">
+      <!-- TRACK 01 -->
+      <div class="vinyl-track-card">
+       <div class="vinyl-disc-peeker" aria-hidden="true"></div>
+       <div class="vtc-top-strip">
+        <div class="eq-mini-bars"><span></span><span></span><span></span></div>
+        <span data-i18n="track1Label">Track 01 &bull; Obsession I</span>
+       </div>
+       <div class="vinyl-iframe-shell">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5xYpEeGFXmkGMBQ22NfKfO?utm_source=generator&si=0c95455897bd45f5" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Track 01"></iframe>
+       </div>
+      </div>
+
+      <!-- TRACK 02 -->
+      <div class="vinyl-track-card">
+       <div class="vinyl-disc-peeker" aria-hidden="true"></div>
+       <div class="vtc-top-strip">
+        <div class="eq-mini-bars"><span></span><span></span><span></span></div>
+        <span data-i18n="track2Label">Track 02 &bull; Obsession II</span>
+       </div>
+       <div class="vinyl-iframe-shell">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6QKpHmO41jkd9pTp0FfmHs?utm_source=generator&si=05671729d2774617" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Track 02"></iframe>
+       </div>
+      </div>
+
+      <!-- TRACK 03 -->
+      <div class="vinyl-track-card">
+       <div class="vinyl-disc-peeker" aria-hidden="true"></div>
+       <div class="vtc-top-strip">
+        <div class="eq-mini-bars"><span></span><span></span><span></span></div>
+        <span data-i18n="track3Label">Track 03 &bull; Obsession III</span>
+       </div>
+       <div class="vinyl-iframe-shell">
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0UOG0zUn7t8m8QcxfzR7AH?utm_source=generator&si=e0320addb75c485b" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Track 03"></iframe>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- ================================================================= -->
+   <!-- NO. 03: CAPTURED MOMENTS (4 POLAROIDS WITH DIRECT UPLOAD)         -->
+   <!-- ================================================================= -->
+   <section class="moments-section-wrap" id="capturedMoments">
+    <div class="section-head-center">
+     <span class="about-issue-pill" data-i18n="sec3Pill">&#10022; 03. Personal Snapshots</span>
+     <h2 data-i18n="sec3Title">Captured Moments</h2>
+     <p data-i18n="sec3Sub">Click any frame to add or change your photo directly &bull; Click caption text to edit</p>
+    </div>
+
+    <div class="polaroid-grid-4">
+     <!-- POLAROID 01 -->
+     <div class="polaroid-card-item">
+      <div class="polaroid-photo-box" onclick="triggerSlotPicker('pol1')">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('pol1')" data-i18n="changeBtn">&#128247; Change</button>
+       <button type="button" class="direct-clear-btn" id="clear_pol1" onclick="event.stopPropagation(); clearSlotPhoto('pol1')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_pol1" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'pol1')">
+
+       <img id="img_pol1" data-base="../images/about_pol1" alt="Intern Memory">
+       <div class="polaroid-empty-prompt" id="prompt_pol1">
+        <div class="polaroid-plus-ring">+</div>
+        <strong data-i18n="insPhoto1">Insert Photo 01</strong>
+        <small data-i18n="clickUpload">Click here to upload</small>
+       </div>
+      </div>
+      <div class="polaroid-caption-edit" contenteditable="true" id="cap_pol1" onblur="savePolaroidCaption('pol1')">Intern Memory</div>
+     </div>
+
+     <!-- POLAROID 02 -->
+     <div class="polaroid-card-item">
+      <div class="polaroid-photo-box" onclick="triggerSlotPicker('pol2')">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('pol2')" data-i18n="changeBtn">&#128247; Change</button>
+       <button type="button" class="direct-clear-btn" id="clear_pol2" onclick="event.stopPropagation(); clearSlotPhoto('pol2')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_pol2" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'pol2')">
+
+       <img id="img_pol2" data-base="../images/about_pol2" alt="Class">
+       <div class="polaroid-empty-prompt" id="prompt_pol2">
+        <div class="polaroid-plus-ring">+</div>
+        <strong data-i18n="insPhoto2">Insert Photo 02</strong>
+        <small data-i18n="clickUpload">Click here to upload</small>
+       </div>
+      </div>
+      <div class="polaroid-caption-edit" contenteditable="true" id="cap_pol2" onblur="savePolaroidCaption('pol2')">Class</div>
+     </div>
+
+     <!-- POLAROID 03 -->
+     <div class="polaroid-card-item">
+      <div class="polaroid-photo-box" onclick="triggerSlotPicker('pol3')">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('pol3')" data-i18n="changeBtn">&#128247; Change</button>
+       <button type="button" class="direct-clear-btn" id="clear_pol3" onclick="event.stopPropagation(); clearSlotPhoto('pol3')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_pol3" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'pol3')">
+
+       <img id="img_pol3" data-base="../images/about_pol3" alt="Pantai Penyabong">
+       <div class="polaroid-empty-prompt" id="prompt_pol3">
+        <div class="polaroid-plus-ring">+</div>
+        <strong data-i18n="insPhoto3">Insert Photo 03</strong>
+        <small data-i18n="clickUpload">Click here to upload</small>
+       </div>
+      </div>
+      <div class="polaroid-caption-edit" contenteditable="true" id="cap_pol3" onblur="savePolaroidCaption('pol3')">Pantai Penyabong</div>
+     </div>
+
+     <!-- POLAROID 04 -->
+     <div class="polaroid-card-item">
+      <div class="polaroid-photo-box" onclick="triggerSlotPicker('pol4')">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerSlotPicker('pol4')" data-i18n="changeBtn">&#128247; Change</button>
+       <button type="button" class="direct-clear-btn" id="clear_pol4" onclick="event.stopPropagation(); clearSlotPhoto('pol4')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_pol4" accept="image/*" style="display:none;" onchange="handleSlotUpload(event, 'pol4')">
+
+       <img id="img_pol4" data-base="../images/about_pol4" alt="Friends">
+       <div class="polaroid-empty-prompt" id="prompt_pol4">
+        <div class="polaroid-plus-ring">+</div>
+        <strong data-i18n="insPhoto4">Insert Photo 04</strong>
+        <small data-i18n="clickUpload">Click here to upload</small>
+       </div>
+      </div>
+      <div class="polaroid-caption-edit" contenteditable="true" id="cap_pol4" onblur="savePolaroidCaption('pol4')">Friends</div>
+     </div>
+    </div>
+   </section>
+  </div>
+ </main>
+
+ <!-- FOOTER WITH SITE MAP & UNDERLINE LINKS -->
+ <footer class="about-sitemap-footer">
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <p class="footer-sitemap" aria-label="Site Map">
+   <span data-i18n="siteMapLabel">SITE MAP:</span>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" data-i18n="navAbout">About</a>
+   <a href="education.html" data-i18n="navEdu">Education</a>
+   <a href="experience.html" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" data-i18n="navCon">Contact</a>
+  </p>
+
+  <p class="footer-meta" data-i18n="footerDates">
+   CREATED: 12 OCTOBER 2026 &bull; LAST UPDATED: 20 NOVEMBER 2026 &bull; DATA COLLECTED: OCTOBER - NOVEMBER 2026
+  </p>
+
+  <p class="footer-meta" data-i18n-html="footerAccess">
+   ACCESSIBILITY SUPPORT: COMPATIBLE WITH <a href="https://www.nvaccess.org/" target="_blank" rel="noopener noreferrer">NVDA SCREEN READER</a> &amp; W3C WAI GUIDELINES
+  </p>
+
+  <p class="footer-copy" data-i18n="footerCopy">
+   &copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PERSONAL PORTFOLIO &amp; JOURNAL
+  </p>
+
+  <a href="#top" class="back-top" data-i18n="backTop">BACK TO TOP &uarr;</a>
+ </footer>
+</div>
+
+<script>
+  // =====================================================================
+  // 1. DIRECT PHOTO & NETFLIX VIDEO UPLOAD, AUTO-SAVE & CAPTIONS
+  // =====================================================================
+  const ABOUT_IMG_KEY = 'beyha_about_slot_';
+  const ABOUT_CAP_KEY = 'beyha_about_cap_';
+
+  function triggerSlotPicker(slotId) {
+    const input = document.getElementById('picker_' + slotId);
+    if (input) input.click();
+  }
+
+  // --- NETFLIX VIDEO HANDLER ---
+  const netflixVid = document.getElementById('vid_netflix');
+  const netflixFallbackSvg = document.getElementById('svg_netflixFallback');
+  const netflixMuteBtn = document.getElementById('muteBtn_netflixVid');
+  const netflixClearBtn = document.getElementById('clear_netflixVid');
+  let customNetflixBlobUrl = null;
+
+  function showNetflixVideoUI(isCustomUpload) {
+    if (netflixVid) netflixVid.style.display = 'block';
+    if (netflixFallbackSvg) netflixFallbackSvg.style.display = 'none';
+    if (netflixMuteBtn) netflixMuteBtn.classList.add('visible');
+    if (netflixClearBtn) netflixClearBtn.classList.toggle('visible', Boolean(isCustomUpload));
+  }
+
+  function showNetflixFallbackUI() {
+    if (netflixVid) netflixVid.style.display = 'none';
+    if (netflixFallbackSvg) netflixFallbackSvg.style.display = 'block';
+    if (netflixMuteBtn) netflixMuteBtn.classList.remove('visible');
+    if (netflixClearBtn) netflixClearBtn.classList.remove('visible');
+  }
+
+  if (netflixVid) {
+    netflixVid.addEventListener('loadeddata', function () {
+      showNetflixVideoUI(Boolean(customNetflixBlobUrl));
+      netflixVid.play().catch(() => {});
+    });
+    netflixVid.addEventListener('error', function () {
+      if (!customNetflixBlobUrl) showNetflixFallbackUI();
+    });
+  }
+
+  function triggerNetflixVideoPicker() {
+    const picker = document.getElementById('picker_netflixVid');
+    if (picker) picker.click();
+  }
+
+  function handleNetflixVideoUpload(event) {
+    const file = event.target.files[0];
+    if (!file || !netflixVid) return;
+    if (customNetflixBlobUrl) URL.revokeObjectURL(customNetflixBlobUrl);
+    customNetflixBlobUrl = URL.createObjectURL(file);
+    netflixVid.src = customNetflixBlobUrl;
+    netflixVid.muted = true;
+    if (netflixMuteBtn) netflixMuteBtn.innerHTML = '&#128263;';
+    netflixVid.load();
+    showNetflixVideoUI(true);
+    event.target.value = '';
+  }
+
+  function resetNetflixVideo() {
+    if (customNetflixBlobUrl) {
+      URL.revokeObjectURL(customNetflixBlobUrl);
+      customNetflixBlobUrl = null;
+    }
+    if (netflixVid) {
+      netflixVid.src = '../images/netflix.mp4';
+      netflixVid.load();
+    }
+    if (netflixClearBtn) netflixClearBtn.classList.remove('visible');
+  }
+
+  function toggleNetflixMute() {
+    if (!netflixVid || !netflixMuteBtn) return;
+    netflixVid.muted = !netflixVid.muted;
+    netflixMuteBtn.innerHTML = netflixVid.muted ? '&#128263;' : '&#128266;';
+  }
+
+  // --- PHOTO SLOTS HANDLER ---
+  function compressAboutImage(file, maxDim, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const temp = new Image();
+      temp.onload = function () {
+        let w = temp.width, h = temp.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+          else { w = Math.round((w * maxDim) / h); h = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(temp, 0, 0, w, h);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      temp.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function syncStudentPassAvatar(url) {
+    const vidAvatar = document.getElementById('vidAvatarBox');
+    if (!vidAvatar) return;
+    if (url) {
+      vidAvatar.innerHTML = `<img src="${url}" alt="Beyha Student Pass">`;
+    } else {
+      vidAvatar.textContent = 'N&I';
+    }
+  }
+
+  function applySlotPhoto(slotId, url, isCustom) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.src = url; img.style.display = 'block'; }
+    if (promptEl) promptEl.style.display = 'none';
+    if (clearBtn) clearBtn.classList.toggle('visible', Boolean(isCustom));
+    if (slotId === 'aboutMain') syncStudentPassAvatar(url);
+  }
+
+  function resetSlotEmpty(slotId) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.removeAttribute('src'); img.style.display = 'none'; }
+    if (promptEl) promptEl.style.display = 'flex';
+    if (clearBtn) clearBtn.classList.remove('visible');
+    if (slotId === 'aboutMain') syncStudentPassAvatar(null);
+  }
+
+  function probeSlotFolder(slotId, base) {
+    const exts = ['.jpeg', '.jpg', '.png', '.webp'];
+    let i = 0;
+    function next() {
+      if (i >= exts.length) { resetSlotEmpty(slotId); return; }
+      const src = base + exts[i++];
+      const t = new Image();
+      t.onload = function () { applySlotPhoto(slotId, src, false); };
+      t.onerror = next;
+      t.src = src;
+    }
+    next();
+  }
+
+  function handleSlotUpload(event, slotId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    compressAboutImage(file, 850, 0.82, function (dataUrl) {
+      try { localStorage.setItem(ABOUT_IMG_KEY + slotId, dataUrl); } catch (e) {}
+      applySlotPhoto(slotId, dataUrl, true);
+    });
+    event.target.value = '';
+  }
+
+  function clearSlotPhoto(slotId) {
+    localStorage.removeItem(ABOUT_IMG_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    const base = img ? img.getAttribute('data-base') : null;
+    if (base) probeSlotFolder(slotId, base);
+    else resetSlotEmpty(slotId);
+  }
+
+  function savePolaroidCaption(polId) {
+    const el = document.getElementById('cap_' + polId);
+    if (el) {
+      localStorage.setItem(ABOUT_CAP_KEY + polId, el.textContent.trim());
+    }
+  }
+
+  ['aboutMain', 'aboutMini', 'hobby1', 'hobby3', 'pol1', 'pol2', 'pol3', 'pol4'].forEach(function (slotId) {
+    const saved = localStorage.getItem(ABOUT_IMG_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    if (saved) applySlotPhoto(slotId, saved, true);
+    else if (img && img.getAttribute('data-base')) probeSlotFolder(slotId, img.getAttribute('data-base'));
+  });
+
+  ['aboutMini', 'pol1', 'pol2', 'pol3', 'pol4'].forEach(function (polId) {
+    const savedCap = localStorage.getItem(ABOUT_CAP_KEY + polId);
+    const el = document.getElementById('cap_' + polId);
+    if (savedCap && el) el.textContent = savedCap;
+  });
+
+  // =====================================================================
+  // 2. ROLE ROTATOR & 3D TILT INTERACTIONS
+  // =====================================================================
+  const heroRolesByLang = {
+    en: [
+      "Information Management Student • UiTM Segamat",
+      "Digital Archivist & Knowledge Enthusiast",
+      "Proudly Rooted in Mersing, Johor"
+    ],
+    bm: [
+      "Pelajar Pengurusan Maklumat • UiTM Segamat",
+      "Pencinta Arkib Digital & Pengurusan Ilmu",
+      "Berasal dari Mersing, Johor"
+    ]
+  };
+  let roleIdx = 0;
+
+  function cycleHeroRole() {
+    const list = heroRolesByLang[activeLang] || heroRolesByLang.en;
+    roleIdx = (roleIdx + 1) % list.length;
+    document.getElementById('heroDynamicRole').textContent = list[roleIdx];
+  }
+
+  const rig = document.getElementById('collage3dRig');
+  if (rig) {
+    rig.addEventListener('mousemove', (e) => {
+      const r = rig.getBoundingClientRect();
+      const rx = (((e.clientY - r.top) - r.height / 2) / (r.height / 2)) * -7;
+      const ry = (((e.clientX - r.left) - r.width / 2) / (r.width / 2)) * 7;
+      rig.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    });
+    rig.addEventListener('mouseleave', () => {
+      rig.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  }
+
+  const keepsakeShell = document.getElementById('keepsakeTiltShell');
+  const keepsakeCard = document.getElementById('keepsakeFlipCard');
+  if (keepsakeShell && keepsakeCard) {
+    keepsakeShell.addEventListener('mousemove', (e) => {
+      if (keepsakeCard.classList.contains('is-flipped')) {
+        keepsakeShell.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        return;
+      }
+      const r = keepsakeShell.getBoundingClientRect();
+      const rx = (((e.clientY - r.top) - r.height / 2) / (r.height / 2)) * -4.5;
+      const ry = (((e.clientX - r.left) - r.width / 2) / (r.width / 2)) * 4.5;
+      keepsakeShell.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    });
+    keepsakeShell.addEventListener('mouseleave', () => {
+      keepsakeShell.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  }
+
+  // =====================================================================
+  // 3. GOLD DUST PARTICLES CANVAS
+  // =====================================================================
+  (function () {
+    const canvas = document.getElementById('aboutGoldCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 45; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.8 + 0.6,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -Math.random() * 0.4 - 0.12,
+        alpha: Math.random() * 0.6 + 0.2
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(231, 203, 148, ${p.alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // =====================================================================
+  // 4. CLOCK, FULL BILINGUAL SWITCHER (EN / BM) & SEARCH
+  // =====================================================================
+  let activeLang = 'en';
+
+  function runLiveClock() {
+    const now = new Date();
+    const locales = { en: 'en-GB', bm: 'ms-MY' };
+    document.getElementById('liveDateDisplay').textContent = now.toLocaleDateString(locales[activeLang] || 'en-GB', {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+    });
+    document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    });
+  }
+  setInterval(runLiveClock, 1000);
+  runLiveClock();
+
+  const aboutMarqueeByLang = {
+    en: `<span>CHAPTER 01 &bull; ABOUT BEYHA</span><span class="folio-mark">&sect;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>DIPLOMA IN INFORMATION MANAGEMENT (IM110)</span><span class="folio-mark">&#10087;</span><span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span><span>CHAPTER 01 &bull; ABOUT BEYHA</span><span class="folio-mark">&sect;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>DIPLOMA IN INFORMATION MANAGEMENT (IM110)</span><span class="folio-mark">&#10087;</span><span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span>`,
+    bm: `<span>BAB 01 &bull; TENTANG BEYHA</span><span class="folio-mark">&sect;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>DIPLOMA PENGURUSAN MAKLUMAT (IM110)</span><span class="folio-mark">&#10087;</span><span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span><span>BAB 01 &bull; TENTANG BEYHA</span><span class="folio-mark">&sect;</span><span>NUR NABIHA IBTISAM</span><span class="folio-mark">&#10087;</span><span>MERSING, JOHOR</span><span class="folio-mark">&sect;</span><span>DIPLOMA PENGURUSAN MAKLUMAT (IM110)</span><span class="folio-mark">&#10087;</span><span>UITM SEGAMAT</span><span class="folio-mark">&sect;</span>`
+  };
+
+  const i18nAbout = {
+    en: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Personal Journal",
+      contrast: "Contrast",
+      searchPh: "Search portfolio...",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      heroBadge: "✦ Chapter 01 • The Creator",
+      heroHello: "Hello, I am",
+      heroBio: "Affectionately known as <strong>Beyha</strong>, I am a Diploma in Information Management student from <strong>Mersing, Johor</strong>. I love curating structured knowledge, capturing warm aesthetic moments, and building meaningful digital stories.",
+      btnBiodata: "Open Student Pass →",
+      btnHobbies: "Explore Passions",
+      fsgLabel: "On Repeat",
+      fsgSub: "Acoustic & Indie",
+      crestTitle: "Beyha Portrait",
+      uploadPortraitBtn: "+ Upload Photo",
+      archChangeBtn: "📷 Change Photo",
+      mersingSeaSmall: "Mersing Sea",
+      sealJournal: "JOURNAL",
+      divDiploma: "Diploma in Information Management (IM110)",
+      sec1Pill: "✦ 01. Personal Dossier",
+      sec1Title: "Identity & Background",
+      sec1Sub: "Click the keepsake pass below to flip between cover & details",
+      passTopLeft: "Official Student Dossier",
+      passScript: "Personal Keepsake",
+      passFrontDesc: "A closer look into my roots in coastal Mersing, academic journey in Information Management, and personal values.",
+      passFlipToBack: "Tap to Flip Card ↻",
+      passBackCampus: "UiTM Johor • Segamat Campus",
+      passBackFaculty: "Faculty of Information Science",
+      vidTitle: "Student Pass",
+      vidPrefLabel: "Preferred Name",
+      edEyebrow: "Full Name & Biography",
+      edNarrative: "Born and raised in <strong>Mersing, Johor</strong>, I am currently pursuing my <strong>Diploma in Information Management</strong> at UiTM Segamat. I enjoy organizing records, designing clean digital layouts, and collaborating on campus community initiatives.",
+      edHometownLabel: "Hometown",
+      edLangLabel: "Languages",
+      edLangVal: "English • Bahasa Melayu",
+      passFlipToFront: "Tap to Flip Back ↺",
+      sec2Pill: "✦ 02. Off-Campus Interests",
+      sec2Title: "Things I Enjoy",
+      sec2Sub: "Simple joys that keep me inspired, relaxed, and energized",
+      changeBtn: "📷 Change",
+      changeVideoBtn: "🎥 Video",
+      pas1Label: "Passion 01",
+      pas1Title: "Listening to Music",
+      pas1Badge: "▸ Spotify Playlists",
+      pas1Desc: "Exploring different genres of music — from soothing acoustic melodies and indie tracks to upbeat pop playlists during study sessions and quiet evenings.",
+      pas1Tag1: "Acoustic",
+      pas1Tag2: "Indie & Pop",
+      pas1Tag3: "Study Vibe",
+      pas2Label: "Passion 02",
+      pas2Title: "Watching Dramas & Movies on Netflix",
+      pas2Badge: "★ Netflix Series",
+      pas2Desc: "Unwinding with captivating dramas and films on Netflix, enjoying heartfelt storytelling, cinematography, and relaxing binge-watch sessions after classes.",
+      pas2Tag1: "Drama",
+      pas2Tag2: "Storytelling",
+      pas2Tag3: "Cinema",
+      pas3Label: "Passion 03",
+      pas3Title: "Playing Badminton",
+      pas3Badge: "✦ Court & Smash",
+      pas3Desc: "Staying active and refreshed on the badminton court — a favourite sport that brings fun rallies, focus, and quality time with friends and family.",
+      pas3Tag1: "Rallies",
+      pas3Tag2: "Active Reset",
+      pas3Tag3: "Friends & Family",
+      obsKicker: "♫ On Heavy Rotation • Spotify",
+      obsSubline: "Curated Tracks • Beyha's Soundscape",
+      track1Label: "Track 01 • Obsession I",
+      track2Label: "Track 02 • Obsession II",
+      track3Label: "Track 03 • Obsession III",
+      sec3Pill: "✦ 03. Personal Snapshots",
+      sec3Title: "Captured Moments",
+      sec3Sub: "Click any frame to add or change your photo directly • Click caption text to edit",
+      insPhoto1: "Insert Photo 01",
+      insPhoto2: "Insert Photo 02",
+      insPhoto3: "Insert Photo 03",
+      insPhoto4: "Insert Photo 04",
+      clickUpload: "Click here to upload",
+      siteMapLabel: "SITE MAP:",
+      footerDates: "CREATED: 12 OCTOBER 2026 • LAST UPDATED: 20 NOVEMBER 2026 • DATA COLLECTED: OCTOBER - NOVEMBER 2026",
+      footerAccess: "ACCESSIBILITY SUPPORT: COMPATIBLE WITH <a href=\"https://www.nvaccess.org/\" target=\"_blank\" rel=\"noopener noreferrer\">NVDA SCREEN READER</a> &amp; W3C WAI GUIDELINES",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PERSONAL PORTFOLIO & JOURNAL",
+      backTop: "BACK TO TOP ↑"
+    },
+    bm: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Jurnal Peribadi",
+      contrast: "Kontras",
+      searchPh: "Cari dalam portfolio...",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      heroBadge: "✦ Bab 01 • Pencipta",
+      heroHello: "Hai, Saya",
+      heroBio: "Mesra disapa sebagai <strong>Beyha</strong>, saya merupakan pelajar Diploma Pengurusan Maklumat dari <strong>Mersing, Johor</strong>. Saya gemar menyusun ilmu secara sistematik, merakam momen estetik, dan membina penceritaan digital yang bermakna.",
+      btnBiodata: "Buka Pas Pelajar →",
+      btnHobbies: "Terokai Minat",
+      fsgLabel: "Pilihan Utama",
+      fsgSub: "Akustik & Indie",
+      crestTitle: "Potret Beyha",
+      uploadPortraitBtn: "+ Muat Naik Foto",
+      archChangeBtn: "📷 Tukar Foto",
+      mersingSeaSmall: "Pantai Mersing",
+      sealJournal: "JURNAL",
+      divDiploma: "Diploma Pengurusan Maklumat (IM110)",
+      sec1Pill: "✦ 01. Profil Peribadi",
+      sec1Title: "Identiti & Latar Belakang",
+      sec1Sub: "Klik pas kenangan di bawah untuk membalikkan kad",
+      passTopLeft: "Dokumen Rasmi Pelajar",
+      passScript: "Kenangan Peribadi",
+      passFrontDesc: "Sorotan ringkas mengenai asal usul saya di Mersing, perjalanan pengajian dalam bidang Pengurusan Maklumat, serta nilai peribadi.",
+      passFlipToBack: "Klik untuk Balikkan Kad ↻",
+      passBackCampus: "UiTM Johor • Kampus Segamat",
+      passBackFaculty: "Fakulti Sains Maklumat",
+      vidTitle: "Pas Pelajar",
+      vidPrefLabel: "Nama Panggilan",
+      edEyebrow: "Nama Penuh & Biografi",
+      edNarrative: "Dilahirkan dan dibesarkan di <strong>Mersing, Johor</strong>, saya kini melanjutkan pengajian dalam <strong>Diploma Pengurusan Maklumat</strong> di UiTM Segamat. Saya gemar mengurus rekod, mereka bentuk susun atur digital yang kemas, dan menyertai program komuniti kampus.",
+      edHometownLabel: "Kampung Halaman",
+      edLangLabel: "Bahasa",
+      edLangVal: "Bahasa Inggeris • Bahasa Melayu",
+      passFlipToFront: "Klik untuk Kembali ↺",
+      sec2Pill: "✦ 02. Minat Luar Kampus",
+      sec2Title: "Perkara yang Saya Gemari",
+      sec2Sub: "Kegembiraan ringkas yang memberi inspirasi, ketenangan, dan tenaga",
+      changeBtn: "📷 Tukar",
+      changeVideoBtn: "🎥 Video",
+      pas1Label: "Minat 01",
+      pas1Title: "Mendengar Muzik",
+      pas1Badge: "▸ Senarai Main Spotify",
+      pas1Desc: "Meneroka pelbagai genre muzik — daripada melodi akustik yang menenangkan dan lagu indie hingga senarai main pop ketika mengulang kaji pelajaran dan waktu santai.",
+      pas1Tag1: "Akustik",
+      pas1Tag2: "Indie & Pop",
+      pas1Tag3: "Suasana Belajar",
+      pas2Label: "Minat 02",
+      pas2Title: "Menonton Drama & Filem di Netflix",
+      pas2Badge: "★ Siri Netflix",
+      pas2Desc: "Berehat sambil menonton drama dan filem menarik di Netflix, menghayati jalan cerita yang menyentuh hati, sinematografi, dan sesi santai selepas kelas.",
+      pas2Tag1: "Drama",
+      pas2Tag2: "Penceritaan",
+      pas2Tag3: "Sinema",
+      pas3Label: "Minat 03",
+      pas3Title: "Bermain Badminton",
+      pas3Badge: "✦ Gelanggang & Smash",
+      pas3Desc: "Kekal aktif dan cergas di gelanggang badminton — sukan kegemaran yang membawa rali menyeronokkan, fokus, serta masa berkualiti bersama rakan dan keluarga.",
+      pas3Tag1: "Rali",
+      pas3Tag2: "Aktif & Cergas",
+      pas3Tag3: "Rakan & Keluarga",
+      obsKicker: "♫ Lagu Pilihan Utama • Spotify",
+      obsSubline: "Lagu Pilihan • Dunia Muzik Beyha",
+      track1Label: "Trek 01 • Obsesi I",
+      track2Label: "Trek 02 • Obsesi II",
+      track3Label: "Trek 03 • Obsesi III",
+      sec3Pill: "✦ 03. Kenangan Terindah",
+      sec3Title: "Momen Terakam",
+      sec3Sub: "Klik mana-mana bingkai untuk menambah atau menukar foto • Klik teks kapsyen untuk menyunting",
+      insPhoto1: "Masukkan Foto 01",
+      insPhoto2: "Masukkan Foto 02",
+      insPhoto3: "Masukkan Foto 03",
+      insPhoto4: "Masukkan Foto 04",
+      clickUpload: "Klik di sini untuk muat naik",
+      siteMapLabel: "PETA LAMAN:",
+      footerDates: "DICIPTA: 12 OKTOBER 2026 • DIKEMAS KINI: 20 NOVEMBER 2026 • DATA DIKUMPUL: OKTOBER - NOVEMBER 2026",
+      footerAccess: "SOKONGAN KEBOLEHAKSESIAN: SERASI DENGAN <a href=\"https://www.nvaccess.org/\" target=\"_blank\" rel=\"noopener noreferrer\">PEMBACA SKRIN NVDA</a> &amp; GARIS PANDUAN W3C WAI",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PORTFOLIO & JURNAL PERIBADI",
+      backTop: "KEMBALI KE ATAS ↑"
+    }
+  };
+
+  function switchSiteLang(lang) {
+    activeLang = lang;
+    try { localStorage.setItem('beyha_site_lang', lang); } catch (e) {}
+
+    document.querySelectorAll('.lang-switch-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    const dict = i18nAbout[lang] || i18nAbout.en;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+
+    const mTrack = document.getElementById('aboutMarqueeTrack');
+    if (mTrack && aboutMarqueeByLang[lang]) {
+      mTrack.innerHTML = aboutMarqueeByLang[lang];
+    }
+
+    const roleList = heroRolesByLang[lang] || heroRolesByLang.en;
+    const roleEl = document.getElementById('heroDynamicRole');
+    if (roleEl) roleEl.textContent = roleList[roleIdx % roleList.length];
+
+    const searchInput = document.getElementById('homeSearchInput');
+    if (searchInput && dict.searchPh) searchInput.placeholder = dict.searchPh;
+
+    runLiveClock();
+  }
+
+  (function initSavedLang() {
+    const savedLang = localStorage.getItem('beyha_site_lang');
+    if (savedLang === 'bm' || savedLang === 'en') {
+      switchSiteLang(savedLang);
+    }
+  })();
+
+  const portfolioPages = [
+    { tag: "Home", title: "Home — 3D Interactive Portfolio Stage", url: "../index.html", keys: "home index main start" },
+    { tag: "About", title: "About Me — Biodata, Hobbies & Photos", url: "about.html", keys: "about biodata hobbies music netflix badminton beyha" },
+    { tag: "Education", title: "Education — UiTM Segamat (IM110)", url: "education.html", keys: "education uitm segamat diploma school academic" },
+    { tag: "Experience", title: "Experience — Pejabat Daerah Mersing & Outreach", url: "experience.html", keys: "experience internship mersing outreach ldk" },
+    { tag: "Family", title: "Family — Parents, Siblings & Memories", url: "family.html", keys: "family father mother siblings mersing johor" },
+    { tag: "Gallery", title: "Gallery — Visual Highlights & Editorial Grid", url: "gallery.html", keys: "gallery photos portraits campus visual" },
+    { tag: "Contact", title: "Contact — 3D iPhone & Socials", url: "contact.html", keys: "contact email instagram tiktok cloudiebey" }
+  ];
+
+  const sInput = document.getElementById('homeSearchInput');
+  const sDrop = document.getElementById('homeSearchDropdown');
+  const sClear = document.getElementById('homeSearchClear');
+
+  sInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    sClear.style.display = q ? 'block' : 'none';
+    if (!q) { sDrop.classList.remove('open'); return; }
+    const hits = portfolioPages.filter(p => p.title.toLowerCase().includes(q) || p.keys.includes(q));
+    sDrop.innerHTML = hits.length
+      ? hits.map(h => `<a href="${h.url}" class="search-result-link"><small>${h.tag}</small><strong>${h.title}</strong></a>`).join('')
+      : `<div style="padding:12px;font-size:.75rem;color:#3b1016;text-align:center;">No matching page found.</div>`;
+    sDrop.classList.add('open');
+  });
+
+  function clearHomeSearch() {
+    sInput.value = '';
+    sClear.style.display = 'none';
+    sDrop.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.home-search-box')) sDrop.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

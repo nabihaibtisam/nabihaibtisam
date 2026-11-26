@@ -1,0 +1,3047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<title>Education | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  :root {
+    --maroon-abyss: #260409;
+    --burgundy-deep: #4b0e18;
+    --burgundy-rich: #661422;
+    --olive-deep: #344119;
+    --olive-moss: #4d5e26;
+    --olive-sage: #6c8038;
+    --parchment-warm: #ede3d2;
+    --ivory-crisp: #fcf9f2;
+    --gold-antique: #cfa862;
+    --gold-bright: #f2dcb3;
+    --ink-burgundy: #2a070d;
+    --ink-olive: #38441c;
+  }
+
+  /* ===================================================================== */
+  /* 1. TOP UTILITY STRIP                                                  */
+  /* ===================================================================== */
+  .top-utility-strip {
+    background: var(--maroon-abyss);
+    border-bottom: 1px solid rgba(207, 168, 98, 0.5);
+    padding: 8px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 70;
+  }
+
+  .clock-date-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(77, 94, 38, 0.32);
+    border: 1px solid rgba(207, 168, 98, 0.55);
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ivory-crisp);
+  }
+
+  .clock-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--olive-sage);
+    border: 1px solid var(--gold-bright);
+    animation: pendulumPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pendulumPulse {
+    0%, 100% { transform: scale(1); background: var(--olive-sage); }
+    50% { transform: scale(1.25); background: var(--gold-bright); }
+  }
+
+  #liveDateDisplay { color: var(--gold-bright); }
+  #liveClockDisplay { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .home-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 330px;
+    min-width: 200px;
+  }
+
+  .home-search-field {
+    display: flex;
+    align-items: center;
+    background: rgba(252, 249, 242, 0.09);
+    border: 1px solid rgba(207, 168, 98, 0.5);
+    border-radius: 999px;
+    padding: 4px 14px;
+  }
+
+  .home-search-field:focus-within {
+    background: rgba(252, 249, 242, 0.16);
+    border-color: var(--gold-bright);
+  }
+
+  .home-search-field svg { color: var(--gold-bright); margin-right: 8px; flex-shrink: 0; }
+
+  .home-search-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--ivory-crisp);
+    font-family: "Jost", sans-serif;
+    font-size: .72rem;
+    letter-spacing: .05em;
+  }
+
+  .home-search-field input::placeholder { color: rgba(242, 220, 179, 0.75); }
+
+  .home-search-clear {
+    background: none;
+    border: none;
+    color: var(--gold-bright);
+    cursor: pointer;
+    font-size: .85rem;
+    display: none;
+    padding: 0 2px;
+  }
+
+  .home-search-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    background: var(--ivory-crisp);
+    border: 1.5px solid var(--gold-antique);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    display: none;
+    max-height: 270px;
+    overflow-y: auto;
+    z-index: 99;
+    text-align: left;
+  }
+
+  .home-search-dropdown.open { display: block; }
+
+  .search-result-link {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(75, 14, 24, 0.14);
+  }
+  .search-result-link:hover { background: var(--parchment-warm); }
+  .search-result-link small { display: block; font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(--olive-moss); font-weight: 600; }
+  .search-result-link strong { font-family: "Cormorant Garamond", serif; font-size: 1.04rem; color: var(--burgundy-deep); }
+
+  .lang-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(252, 249, 242, 0.08);
+    border: 1px solid rgba(207, 168, 98, 0.5);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-switch-btn {
+    background: transparent;
+    border: none;
+    color: var(--gold-bright);
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-switch-btn.active { background: var(--olive-moss); color: var(--ivory-crisp); border: 1px solid var(--gold-bright); font-weight: 600; }
+
+  /* ===================================================================== */
+  /* 2. DIRECT PHOTO UPLOAD CONTROLS                                       */
+  /* ===================================================================== */
+  .direct-swap-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 25;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(38, 4, 9, 0.92);
+    border: 1px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    font-family: "Jost", sans-serif;
+    font-size: .52rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.22s ease;
+  }
+
+  .direct-swap-btn:hover { background: var(--olive-moss); color: #ffffff; transform: scale(1.05); }
+
+  .direct-clear-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 25;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(38, 4, 9, 0.92);
+    border: 1px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    font-size: .78rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .direct-clear-btn.visible { display: inline-flex; }
+  .direct-clear-btn:hover { background: #b91c1c; color: #ffffff; }
+
+  /* ===================================================================== */
+  /* 3. HERO: LARGE SUNSET CAMPUS POLAROID + BESPOKE 3D LETTER DOSSIER     */
+  /* ===================================================================== */
+  .spatial-desk-hero {
+    position: relative;
+    background:
+      radial-gradient(circle at 20% 25%, rgba(102, 20, 34, 0.78) 0%, transparent 52%),
+      radial-gradient(circle at 82% 75%, rgba(77, 94, 38, 0.75) 0%, transparent 55%),
+      linear-gradient(145deg, #420b14 0%, #2c060c 52%, #2f3b16 100%);
+    padding: 52px 5% 84px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--gold-antique);
+    color: var(--ivory-crisp);
+  }
+
+  .spatial-desk-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(207, 168, 98, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(207, 168, 98, 0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+  }
+
+  .hero-kicker-top {
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 999px;
+    background: rgba(77, 94, 38, 0.55);
+    border: 1px solid var(--gold-antique);
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+
+  .hero-grand-title {
+    position: relative;
+    z-index: 3;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ivory-crisp);
+    margin: 0 0 10px;
+    line-height: 1.06;
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-grand-title i {
+    font-family: "Pinyon Script", cursive;
+    font-style: normal;
+    text-transform: none;
+    font-size: 1.32em;
+    color: var(--gold-bright);
+    letter-spacing: 0;
+  }
+
+  .calligraphy-nib-divider {
+    position: relative;
+    z-index: 3;
+    max-width: 340px;
+    height: 26px;
+    margin: 0 auto 30px;
+  }
+
+  .calligraphy-nib-divider svg { width: 100%; height: 100%; overflow: visible; }
+
+  .ink-stroke-path {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 280;
+    animation: drawCalligraphyLine 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes drawCalligraphyLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .desk-stage-grid {
+    position: relative;
+    z-index: 4;
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.78fr 1.22fr;
+    gap: 34px;
+    align-items: center;
+    perspective: 1800px;
+  }
+
+  .large-sunset-polaroid {
+    position: relative;
+    background: var(--ivory-crisp);
+    padding: 13px 13px 16px;
+    border: 2px solid var(--gold-antique);
+    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.55);
+    transform: rotate(-3.5deg) translateZ(30px);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .large-sunset-polaroid:hover {
+    transform: rotate(0deg) scale(1.03) translateZ(48px);
+  }
+
+  .sunset-photo-frame {
+    position: relative;
+    width: 100%;
+    height: 245px;
+    background: var(--olive-deep);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(75, 14, 24, 0.25);
+  }
+
+  .sunset-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .tucked-empty-txt {
+    color: var(--gold-bright);
+    font-size: .64rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .sunset-polaroid-caption {
+    padding-top: 11px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .sunset-polaroid-caption span.script-cap {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.48rem;
+    color: var(--burgundy-deep);
+    line-height: 1;
+  }
+
+  .sunset-polaroid-caption small {
+    font-size: .54rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--olive-moss);
+  }
+
+  .desk-envelope-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .desk-3d-rig {
+    position: relative;
+    width: 100%;
+    max-width: 530px;
+    height: 345px;
+    transform-style: preserve-3d;
+    transition: transform 0.18s ease-out;
+    cursor: pointer;
+  }
+
+  .env-3d-casing {
+    position: absolute;
+    inset: 0;
+    background: var(--maroon-abyss);
+    border: 1.5px solid var(--gold-antique);
+    border-radius: 6px;
+    transform: translateZ(0px);
+    box-shadow: 0 36px 70px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+  }
+
+  .env-3d-lining {
+    position: absolute;
+    inset: 8px;
+    background:
+      radial-gradient(ellipse at 30% 25%, #8ba14c 0%, #56682b 48%, #344119 100%);
+  }
+
+  .env-3d-letter {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+    height: 295px;
+    background:
+      radial-gradient(circle at 90% 88%, rgba(77, 94, 38, 0.12) 0%, transparent 45%),
+      linear-gradient(180deg, #fffdf9 0%, #f5ecdc 100%);
+    border: 2px solid var(--gold-antique);
+    padding: 18px 24px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+    transform: translateZ(16px) translateY(0px);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 4;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .env-3d-letter::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(75, 14, 24, 0.24);
+    pointer-events: none;
+  }
+
+  .desk-3d-rig.is-open .env-3d-letter {
+    transform: translateZ(46px) translateY(-138px);
+  }
+
+  .letter-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(207, 168, 98, 0.6);
+    padding-bottom: 6px;
+  }
+
+  .letter-top-bar span.folio-tag {
+    font-size: .52rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--olive-moss);
+  }
+
+  .letter-top-bar span.postmark-badge {
+    padding: 2px 9px;
+    border: 1px solid var(--burgundy-deep);
+    border-radius: 999px;
+    font-size: .5rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--burgundy-deep);
+  }
+
+  .letter-body-area h2 {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.38rem;
+    font-weight: 500;
+    color: var(--burgundy-deep);
+    margin: 6px 0 6px;
+  }
+
+  .letter-body-area p {
+    font-size: .78rem;
+    line-height: 1.62;
+    color: var(--ink-burgundy);
+    margin: 0;
+  }
+
+  .letter-signoff-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(77, 94, 38, 0.4);
+  }
+
+  .letter-signature {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.36rem;
+    color: var(--burgundy-deep);
+    line-height: 1;
+  }
+
+  .letter-action-pill {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--olive-moss);
+    color: var(--ivory-crisp);
+    text-decoration: none;
+    font-size: .54rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    border: 1px solid var(--burgundy-deep);
+  }
+
+  .env-3d-pocket {
+    position: absolute;
+    inset: 0;
+    transform: translateZ(34px);
+    z-index: 7;
+    pointer-events: none;
+  }
+
+  .env-3d-pocket::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #691423 0%, #440a14 100%);
+    clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 0 0 6px 6px;
+  }
+
+  .env-3d-pocket::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #540e1a 0%, #38070f 100%);
+    clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+    border-top: 1px solid rgba(242, 220, 179, 0.45);
+    border-radius: 0 0 6px 6px;
+  }
+
+  .env-3d-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 205px;
+    background: linear-gradient(180deg, #751727 0%, #4b0e18 100%);
+    clip-path: polygon(0 0, 100% 0, 50% 96%);
+    transform-origin: top center;
+    transform: translateZ(38px) rotateX(0deg);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), z-index 0.3s;
+    z-index: 10;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38);
+  }
+
+  .env-3d-flap::after {
+    content: "";
+    position: absolute;
+    inset: 6px 14px 18px;
+    border: 1px dashed rgba(242, 220, 179, 0.45);
+    clip-path: polygon(0 0, 100% 0, 50% 95%);
+  }
+
+  .desk-3d-rig.is-open .env-3d-flap {
+    transform: translateZ(2px) rotateX(180deg);
+    z-index: 2;
+  }
+
+  .wax-seal-3d {
+    position: absolute;
+    left: 50%;
+    top: 178px;
+    transform: translate(-50%, -50%) translateZ(64px);
+    width: 70px;
+    height: 80px;
+    border-radius: 50% 48% 52% 49% / 52% 50% 48% 50%;
+    background: radial-gradient(circle at 35% 30%, #fffdf9 0%, #f0e3cb 64%, #d6be96 100%);
+    box-shadow:
+      0 14px 28px rgba(0, 0, 0, 0.55),
+      inset 0 2px 4px rgba(255, 255, 255, 0.95),
+      inset 0 -3px 6px rgba(130, 108, 78, 0.45);
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: sealBreathe 3.2s ease-in-out infinite;
+  }
+
+  @keyframes sealBreathe {
+    0%, 100% { transform: translate(-50%, -50%) translateZ(64px) scale(1); }
+    50% { transform: translate(-50%, -50%) translateZ(72px) scale(1.06); }
+  }
+
+  .desk-3d-rig.is-open .wax-seal-3d {
+    animation: none;
+    transform: translate(-50%, 72px) scale(0.88) translateZ(64px);
+  }
+
+  .wax-seal-3d::before {
+    content: "";
+    width: 50px;
+    height: 58px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(77, 94, 38, 0.55);
+    position: absolute;
+  }
+
+  .wax-seal-3d span {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.45rem;
+    color: var(--burgundy-deep);
+    font-weight: 600;
+  }
+
+  .floating-academic-emblem {
+    position: absolute;
+    right: -76px;
+    top: -10px;
+    width: 155px;
+    height: 280px;
+    transform: translateZ(88px);
+    z-index: 18;
+    pointer-events: none;
+    filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.48));
+    animation: emblemHover 5s ease-in-out infinite;
+  }
+
+  @keyframes emblemHover {
+    0%, 100% { transform: translateZ(88px) translateY(0px); }
+    50% { transform: translateZ(96px) translateY(-7px); }
+  }
+
+  .tassel-sway-group {
+    transform-origin: 118px 66px;
+    animation: tasselSwing 3.4s ease-in-out infinite;
+  }
+
+  @keyframes tasselSwing {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(8deg); }
+  }
+
+  .envelope-prompt-btn {
+    margin-top: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--olive-moss);
+    border: 1.5px solid var(--gold-bright);
+    border-radius: 999px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ivory-crisp);
+    cursor: pointer;
+    padding: 10px 24px;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.38);
+    transition: all 0.25s ease;
+  }
+
+  .envelope-prompt-btn:hover {
+    background: var(--gold-bright);
+    color: var(--maroon-abyss);
+    transform: translateY(-2px);
+  }
+
+  /* ===================================================================== */
+  /* 4. OLIVE MOSS MARQUEE TICKER                                          */
+  /* ===================================================================== */
+  .edu-marquee-strip {
+    background: var(--olive-moss);
+    border-top: 1.5px solid var(--gold-antique);
+    border-bottom: 1.5px solid var(--gold-antique);
+    padding: 11px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .edu-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    animation: marqueeScroll 32s linear infinite;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--ivory-crisp);
+  }
+
+  .edu-marquee-track span.folio-mark { color: var(--gold-bright); font-size: .85rem; }
+
+  @keyframes marqueeScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===================================================================== */
+  /* 5. BAND A: DEEP BURGUNDY 3D STATIONERY CAROUSEL (3 INSTITUTIONS)       */
+  /* ===================================================================== */
+  .spatial-carousel-band {
+    position: relative;
+    background:
+      radial-gradient(circle at 80% 22%, rgba(77, 94, 38, 0.34) 0%, transparent 48%),
+      linear-gradient(170deg, #4b0e18 0%, #31070e 100%);
+    padding: 82px 5% 92px;
+    overflow: hidden;
+    border-bottom: 2px solid var(--gold-antique);
+  }
+
+  .section-script-header {
+    text-align: center;
+    margin-bottom: 42px;
+  }
+
+  .section-script-header span.script {
+    display: block;
+    font-family: "Pinyon Script", cursive;
+    font-size: 2.35rem;
+    line-height: 1;
+  }
+
+  .section-script-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin: 4px 0 8px;
+  }
+
+  .section-script-header p {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: .98rem;
+    margin: 0;
+  }
+
+  .header-on-dark span.script { color: var(--gold-bright); }
+  .header-on-dark h2 { color: var(--ivory-crisp); }
+  .header-on-dark p { color: rgba(252, 249, 242, 0.84); }
+
+  .header-on-parchment span.script { color: var(--olive-moss); }
+  .header-on-parchment h2 { color: var(--burgundy-deep); }
+  .header-on-parchment p { color: var(--ink-olive); }
+
+  .orbit-3d-stage {
+    position: relative;
+    max-width: 1080px;
+    height: 505px;
+    margin: 0 auto;
+    perspective: 1800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .orbit-card-3d {
+    position: absolute;
+    width: 100%;
+    max-width: 710px;
+    transform-style: preserve-3d;
+    transition:
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.6s ease,
+      filter 0.6s ease;
+    cursor: pointer;
+  }
+
+  .orbit-card-3d.pos-center {
+    transform: translate3d(0, 0, 60px) rotateY(0deg) scale(1);
+    opacity: 1;
+    z-index: 20;
+    filter: brightness(1);
+    cursor: default;
+  }
+
+  .orbit-card-3d.pos-left {
+    transform: translate3d(-44%, 14px, -180px) rotateY(26deg) scale(0.76);
+    opacity: 0.78;
+    z-index: 10;
+    filter: brightness(0.92);
+  }
+
+  .orbit-card-3d.pos-right {
+    transform: translate3d(44%, 14px, -180px) rotateY(-26deg) scale(0.76);
+    opacity: 0.78;
+    z-index: 10;
+    filter: brightness(0.92);
+  }
+
+  .orbit-card-3d.pos-left:hover,
+  .orbit-card-3d.pos-right:hover {
+    opacity: 1;
+    filter: brightness(1);
+  }
+
+  .diorama-split-body {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 24px;
+    align-items: center;
+    padding: 32px 34px;
+    border: 2px solid var(--gold-antique);
+    box-shadow: 0 34px 68px rgba(0, 0, 0, 0.5);
+  }
+
+  .diorama-ivory {
+    background: var(--ivory-crisp);
+    border-radius: 30px;
+    box-shadow:
+      inset 0 0 0 6px var(--ivory-crisp),
+      inset 0 0 0 8px var(--olive-moss),
+      0 34px 68px rgba(0, 0, 0, 0.52);
+    color: var(--ink-burgundy);
+  }
+
+  .diorama-olive {
+    background: linear-gradient(155deg, #56682b 0%, #374419 100%);
+    border-radius: 18px;
+    color: var(--ivory-crisp);
+  }
+
+  .diorama-burgundy {
+    background: linear-gradient(155deg, #641422 0%, #3a0810 100%);
+    border-radius: 26px;
+    color: var(--ivory-crisp);
+  }
+
+  .diorama-text small.stage-kicker {
+    display: block;
+    font-size: .56rem;
+    font-weight: 600;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .diorama-ivory small.stage-kicker { color: var(--olive-moss); }
+  .diorama-olive small.stage-kicker,
+  .diorama-burgundy small.stage-kicker { color: var(--gold-bright); }
+
+  .diorama-text h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.84rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    line-height: 1.15;
+  }
+
+  .diorama-ivory h3 { color: var(--burgundy-deep); }
+  .diorama-olive h3,
+  .diorama-burgundy h3 { color: #ffffff; }
+
+  .diorama-text p.sub-prog {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1rem;
+    margin: 0 0 12px;
+  }
+
+  .diorama-ivory p.sub-prog { color: var(--olive-moss); }
+  .diorama-olive p.sub-prog,
+  .diorama-burgundy p.sub-prog { color: var(--gold-bright); }
+
+  .diorama-text p.body-copy {
+    font-size: .88rem;
+    line-height: 1.75;
+    margin: 0 0 16px;
+  }
+
+  .uitm-portal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--burgundy-deep);
+    border: 1px solid var(--gold-antique);
+    color: var(--ivory-crisp);
+    text-decoration: none;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+  }
+
+  .diorama-burgundy .uitm-portal-btn { background: var(--olive-moss); }
+
+  .uitm-portal-btn:hover {
+    background: var(--gold-bright);
+    color: var(--maroon-abyss);
+  }
+
+  .diorama-polaroid {
+    position: relative;
+    background: #ffffff;
+    padding: 10px 10px 10px;
+    border: 1.5px solid var(--gold-antique);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.36);
+    transform: rotate(2.5deg) translateZ(26px);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .diorama-polaroid:hover {
+    transform: rotate(0deg) scale(1.04) translateZ(38px);
+  }
+
+  .diorama-photo-well {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    background: var(--maroon-abyss);
+    overflow: hidden;
+  }
+
+  .diorama-photo-well img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 3;
+    display: none;
+  }
+
+  .diorama-photo-well svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .diorama-polaroid-script {
+    padding-top: 8px;
+    text-align: center;
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.24rem;
+    color: var(--burgundy-deep);
+    line-height: 1.15;
+  }
+
+  .orbit-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .orbit-nav-btn {
+    padding: 9px 20px;
+    border-radius: 999px;
+    background: var(--olive-moss);
+    border: 1px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .orbit-nav-btn:hover {
+    background: var(--gold-bright);
+    color: var(--maroon-abyss);
+  }
+
+  .orbit-dot-pill {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(252, 249, 242, 0.12);
+    border: 1px solid var(--gold-antique);
+    color: var(--ivory-crisp);
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .orbit-dot-pill.active {
+    background: var(--ivory-crisp);
+    color: var(--burgundy-deep);
+    border-color: var(--gold-bright);
+  }
+
+  /* ===================================================================== */
+  /* 6. BAND B: RICH OLIVE MOSS + REAL GOOGLE MAPS (ROAD & SATELLITE)      */
+  /* ===================================================================== */
+  .olive-maps-band {
+    background:
+      radial-gradient(circle at 18% 20%, rgba(108, 128, 56, 0.45) 0%, transparent 55%),
+      linear-gradient(160deg, #435220 0%, #273111 100%);
+    border-bottom: 2px solid var(--gold-antique);
+    padding: 78px 6%;
+    color: var(--ivory-crisp);
+    scroll-margin-top: 85px;
+  }
+
+  .olive-band-max {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .olive-band-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(242, 220, 179, 0.35);
+  }
+
+  .olive-band-head small {
+    display: block;
+    font-size: .58rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 6px;
+  }
+
+  .olive-band-head h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 3.6vw, 2.9rem);
+    font-weight: 400;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .olive-band-head h2 i {
+    font-family: "Pinyon Script", cursive;
+    font-style: normal;
+    text-transform: none;
+    font-size: 1.25em;
+    color: var(--gold-bright);
+  }
+
+  .map-layer-pills {
+    display: inline-flex;
+    background: rgba(38, 4, 9, 0.45);
+    border: 1px solid var(--gold-antique);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 4px;
+  }
+
+  .map-layer-btn {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--gold-bright);
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .map-layer-btn.active {
+    background: var(--burgundy-deep);
+    color: var(--ivory-crisp);
+    border: 1px solid var(--gold-bright);
+  }
+
+  .real-map-layout {
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 24px;
+  }
+
+  .map-station-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .map-station-btn {
+    text-align: left;
+    padding: 16px 18px;
+    background: rgba(38, 4, 9, 0.35);
+    border: 1px solid rgba(207, 168, 98, 0.45);
+    color: var(--ivory-crisp);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: "Jost", sans-serif;
+  }
+
+  .map-station-btn:hover {
+    background: rgba(75, 14, 24, 0.65);
+    border-color: var(--gold-bright);
+  }
+
+  .map-station-btn.active {
+    background: var(--burgundy-deep);
+    border: 1.5px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45);
+  }
+
+  .map-station-btn small {
+    display: block;
+    font-size: .54rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 4px;
+  }
+
+  .map-station-btn strong {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.32rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .map-station-btn span.addr {
+    display: block;
+    font-size: .78rem;
+    opacity: 0.88;
+    margin-top: 2px;
+  }
+
+  .map-gps-box {
+    margin-top: auto;
+    padding: 14px 16px;
+    border: 1px solid var(--gold-antique);
+    background: rgba(38, 4, 9, 0.45);
+  }
+
+  .map-gps-box small {
+    display: block;
+    font-size: .54rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 4px;
+  }
+
+  .map-gps-box strong {
+    display: block;
+    font-size: .86rem;
+    margin-bottom: 10px;
+  }
+
+  .gmaps-direct-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--gold-bright);
+    color: var(--maroon-abyss);
+    text-decoration: none;
+    font-size: .58rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .real-gmaps-box {
+    border: 2px solid var(--gold-antique);
+    min-height: 410px;
+    background: var(--maroon-abyss);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.48);
+  }
+
+  .real-gmaps-box iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 410px;
+    border: 0;
+    display: block;
+  }
+
+  /* ===================================================================== */
+  /* 7. BAND C: 3D OPEN ARCHIVAL LEDGER + REAL INSTITUTION LOGOS IN TABLE  */
+  /* ===================================================================== */
+  .ledger-3d-band {
+    background:
+      radial-gradient(circle at 15% 15%, #f5ede0 0%, #e6d9c3 65%, #d9c8ac 100%);
+    padding: 84px 6% 96px;
+  }
+
+  .ledger-max {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .ledger-perspective-wrap {
+    perspective: 1800px;
+    margin-bottom: 78px;
+  }
+
+  .open-book-3d-spread {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    background: var(--ivory-crisp);
+    border: 2.5px solid var(--burgundy-deep);
+    box-shadow:
+      0 28px 60px rgba(42, 7, 13, 0.25),
+      0 6px 0 var(--olive-moss),
+      0 13px 0 var(--burgundy-deep);
+    transform-style: preserve-3d;
+    transition: transform 0.35s ease-out;
+  }
+
+  .open-book-3d-spread::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 36%;
+    width: 30px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent 0%, rgba(38, 4, 9, 0.14) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .book-left-crest-page {
+    background: linear-gradient(160deg, var(--burgundy-deep) 0%, var(--maroon-abyss) 100%);
+    padding: 32px 24px;
+    text-align: center;
+    color: var(--ivory-crisp);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid var(--gold-antique);
+  }
+
+  .book-left-crest-page h3 {
+    font-family: "Pinyon Script", cursive;
+    font-size: 2.25rem;
+    font-weight: 400;
+    color: var(--gold-bright);
+    margin: 0 0 4px;
+  }
+
+  .book-left-crest-page p {
+    font-size: .8rem;
+    color: #f3eadb;
+    margin: 0 0 18px;
+  }
+
+  .crest-map-holder {
+    display: inline-block;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid var(--gold-antique);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.35s ease;
+  }
+
+  .crest-map-holder:hover { transform: scale(1.04) rotate(-1deg); }
+
+  .crest-map-holder img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .book-right-table-page {
+    padding: 30px 28px;
+    overflow-x: auto;
+    perspective: 1200px;
+  }
+
+  .table-header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .table-header-controls h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--burgundy-deep);
+    margin: 0;
+  }
+
+  .table-3d-btns {
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ledger-action-btn {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--olive-moss);
+    border: 1px solid var(--burgundy-deep);
+    color: var(--ivory-crisp);
+    font-family: "Jost", sans-serif;
+    font-size: .56rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .ledger-action-btn:hover {
+    background: var(--burgundy-deep);
+    color: var(--gold-bright);
+  }
+
+  /* 3D ANIMATED ACADEMIC TABLE */
+  .stationery-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    font-size: .88rem;
+    color: var(--ink-burgundy);
+    min-width: 590px;
+    transform-style: preserve-3d;
+  }
+
+  .stationery-table thead th {
+    background: var(--burgundy-deep);
+    color: var(--gold-bright);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.02rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 13px 15px;
+    border: 1px solid var(--gold-antique);
+    text-align: left;
+  }
+
+  .stationery-table thead th.th-center {
+    text-align: center;
+  }
+
+  .stationery-table tbody tr {
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.45s ease;
+  }
+
+  .stationery-table.is-3d-active tbody tr:hover,
+  .stationery-table tbody tr.row-spotlight {
+    transform: translateZ(20px) scale(1.016);
+    box-shadow: 0 14px 26px rgba(42, 7, 13, 0.26);
+    position: relative;
+    z-index: 10;
+  }
+
+  .stationery-table tbody tr.row-flipping {
+    animation: ledgerPageTurn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes ledgerPageTurn {
+    0%   { transform: rotateX(-75deg) translateZ(10px); opacity: 0.2; }
+    60%  { transform: rotateX(10deg) translateZ(18px); opacity: 1; }
+    100% { transform: rotateX(0deg) translateZ(0px); opacity: 1; }
+  }
+
+  .stationery-table tbody td {
+    padding: 13px 15px;
+    border-top: 1px solid rgba(75, 14, 24, 0.28);
+    border-bottom: 1px solid rgba(75, 14, 24, 0.28);
+    border-right: 1px solid rgba(75, 14, 24, 0.2);
+    background: #ffffff;
+    color: var(--ink-burgundy);
+    transition: background 0.3s ease;
+  }
+
+  .stationery-table tbody tr:nth-child(even) td:not(.stage-group):not(.logo-crest-cell) {
+    background: #f6efe2;
+  }
+
+  .stationery-table tbody tr:hover td:not(.stage-group):not(.logo-crest-cell),
+  .stationery-table tbody tr.row-spotlight td:not(.stage-group):not(.logo-crest-cell) {
+    background: #f5e2ba !important;
+    border-color: var(--burgundy-deep);
+  }
+
+  .stationery-table tbody td.stage-group {
+    background: var(--olive-moss) !important;
+    color: #ffffff !important;
+    border-left: 1px solid var(--burgundy-deep);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .08em;
+  }
+
+  /* REAL INSTITUTION LOGO CELL (WHITE BACKGROUND) */
+  .logo-crest-cell {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 148px;
+    background: #ffffff !important;
+  }
+
+  .inst-crest-stack {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .inst-real-logo-box {
+    width: 128px;
+    height: 76px;
+    background: #ffffff;
+    border: 1px solid rgba(207, 168, 98, 0.65);
+    border-radius: 8px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(42, 7, 13, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .inst-real-logo-box.square-logo {
+    width: 82px;
+    height: 82px;
+  }
+
+  .stationery-table tbody tr:hover .inst-real-logo-box {
+    transform: scale(1.06);
+    box-shadow: 0 8px 18px rgba(42, 7, 13, 0.2);
+  }
+
+  .inst-real-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .inst-loc-tag {
+    display: block;
+    font-size: .64rem;
+    font-weight: 600;
+    letter-spacing: .05em;
+    color: var(--burgundy-deep);
+    line-height: 1.2;
+  }
+
+  .milestone-meter {
+    margin-top: 7px;
+    width: 100%;
+    height: 6px;
+    background: rgba(75, 14, 24, 0.14);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .milestone-meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--burgundy-deep) 0%, var(--olive-moss) 100%);
+    border-radius: 999px;
+  }
+
+  .stationery-table tfoot td {
+    background: var(--maroon-abyss);
+    color: var(--gold-bright);
+    font-weight: 500;
+    padding: 12px 15px;
+    border: 1px solid var(--gold-antique);
+    text-align: center;
+    font-size: .8rem;
+    letter-spacing: .1em;
+  }
+
+  /* 3D FLIP STATIONERY CARDS FOR KEY SKILLS */
+  .flip-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 64px;
+    perspective: 1400px;
+  }
+
+  .flip-skill-card {
+    height: 230px;
+    cursor: pointer;
+  }
+
+  .flip-skill-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .flip-skill-card:hover .flip-skill-inner,
+  .flip-skill-card.is-flipped .flip-skill-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 18px 34px rgba(42, 7, 13, 0.22);
+  }
+
+  .flip-skill-card:nth-child(odd) .flip-front {
+    background: linear-gradient(155deg, var(--burgundy-deep) 0%, var(--maroon-abyss) 100%);
+    border: 1.5px solid var(--gold-antique);
+    color: var(--ivory-crisp);
+  }
+
+  .flip-skill-card:nth-child(odd) .flip-back {
+    background: linear-gradient(155deg, var(--olive-moss) 0%, var(--olive-deep) 100%);
+    border: 1.5px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    transform: rotateY(180deg);
+  }
+
+  .flip-skill-card:nth-child(even) .flip-front {
+    background: linear-gradient(155deg, var(--olive-moss) 0%, var(--olive-deep) 100%);
+    border: 1.5px solid var(--gold-antique);
+    color: var(--ivory-crisp);
+  }
+
+  .flip-skill-card:nth-child(even) .flip-back {
+    background: linear-gradient(155deg, var(--burgundy-deep) 0%, var(--maroon-abyss) 100%);
+    border: 1.5px solid var(--gold-bright);
+    color: var(--ivory-crisp);
+    transform: rotateY(180deg);
+  }
+
+  .skill-crest-circle {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: rgba(252, 249, 242, 0.12);
+    border: 1.5px solid var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-bright);
+    font-size: 1.25rem;
+  }
+
+  .flip-front h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.38rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 8px;
+  }
+
+  .flip-front span.cue {
+    font-size: .56rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  .flip-back h5 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.24rem;
+    color: var(--gold-bright);
+    margin: 0 0 8px;
+  }
+
+  .flip-back p {
+    font-size: .84rem;
+    line-height: 1.65;
+    color: var(--ivory-crisp);
+    margin: 0;
+  }
+
+  /* ===================================================================== */
+  /* SCULPTED BOXLESS EDITORIAL LISTS (<ol> & <ul>)                        */
+  /* ===================================================================== */
+  .editorial-syllabus-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items: start;
+    padding-top: 16px;
+  }
+
+  .editorial-col-head {
+    margin-bottom: 20px;
+  }
+
+  .editorial-col-head span.script-sub {
+    display: block;
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.85rem;
+    color: var(--olive-moss);
+    line-height: 1;
+  }
+
+  .editorial-col-head h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.72rem;
+    font-weight: 700;
+    color: var(--burgundy-deep);
+    margin: 2px 0 0;
+  }
+
+  .sculpted-ordered-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: folioStep;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sculpted-ordered-list li {
+    counter-increment: folioStep;
+    position: relative;
+    padding: 14px 22px 14px 62px;
+    background: rgba(252, 249, 242, 0.85);
+    border-radius: 999px;
+    border-bottom: 2px solid var(--olive-moss);
+    color: var(--ink-burgundy);
+    font-size: .9rem;
+    line-height: 1.55;
+    box-shadow: 0 10px 22px rgba(42, 7, 13, 0.08);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+  }
+
+  .sculpted-ordered-list li:hover {
+    transform: translateX(8px) translateY(-2px);
+    background: var(--ivory-crisp);
+  }
+
+  .sculpted-ordered-list li::before {
+    content: "0" counter(folioStep);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--burgundy-deep) 0%, var(--maroon-abyss) 100%);
+    border: 1.5px solid var(--gold-antique);
+    color: var(--gold-bright);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .open-botanical-list {
+    margin: 0;
+    padding: 4px 0 4px 28px;
+    list-style: none;
+    border-left: 3px solid var(--burgundy-deep);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .open-botanical-list li {
+    position: relative;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(77, 94, 38, 0.45);
+    color: var(--ink-burgundy);
+    font-size: .92rem;
+    line-height: 1.65;
+    transition: transform 0.3s ease;
+  }
+
+  .open-botanical-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .open-botanical-list li:hover {
+    transform: translateX(6px);
+  }
+
+  .open-botanical-list li::before {
+    content: "\2767";
+    position: absolute;
+    left: -39px;
+    top: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--olive-moss);
+    color: var(--gold-bright);
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ivory-crisp);
+  }
+
+  /* ===================================================================== */
+  /* 8. INLINE FOOTER SITE MAP & METADATA                                  */
+  /* ===================================================================== */
+  footer .footer-sitemap {
+    margin: 14px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+  }
+
+  footer .footer-sitemap span {
+    color: var(--gold-antique);
+    font-weight: 500;
+  }
+
+  footer .footer-sitemap a {
+    color: rgba(252, 249, 242, 0.9);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  footer .footer-sitemap a:hover,
+  footer .footer-sitemap a.on {
+    color: var(--gold-bright);
+  }
+
+  footer .footer-meta-line {
+    margin: 6px auto;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242, 220, 179, 0.85);
+    line-height: 1.7;
+  }
+
+  @media(max-width: 960px) {
+    .desk-stage-grid { grid-template-columns: 1fr; max-width: 540px; }
+    .large-sunset-polaroid { transform: rotate(0deg); }
+    .orbit-3d-stage { height: auto; flex-direction: column; gap: 22px; perspective: none; }
+    .orbit-card-3d { position: relative; transform: none !important; opacity: 1 !important; filter: none !important; max-width: 100%; }
+    .orbit-controls-bar { display: none; }
+    .real-map-layout { grid-template-columns: 1fr; }
+    .open-book-3d-spread { grid-template-columns: 1fr; }
+    .open-book-3d-spread::after { display: none; }
+    .flip-skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .editorial-syllabus-layout { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  @media(max-width: 680px) {
+    .floating-academic-emblem { display: none; }
+    .desk-3d-rig { height: 295px; }
+    .wax-seal-3d { top: 150px; }
+    .diorama-split-body { grid-template-columns: 1fr; padding: 24px 20px; }
+    .flip-skills-grid { grid-template-columns: 1fr; }
+    .sculpted-ordered-list li { border-radius: 22px; }
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="page-sheet">
+ <!-- TOP UTILITY STRIP -->
+ <div class="top-utility-strip">
+  <div class="clock-date-capsule" aria-label="Live Clock and Date">
+   <span class="clock-pulse-dot"></span>
+   <span id="liveDateDisplay">WED, 25 NOV 2026</span>
+   <span>&bull;</span>
+   <span id="liveClockDisplay">10:57:00 PM</span>
+  </div>
+
+  <div class="home-search-box">
+   <div class="home-search-field">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <circle cx="11" cy="11" r="8"/>
+     <path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" id="homeSearchInput" placeholder="Search portfolio..." autocomplete="off">
+    <button type="button" class="home-search-clear" id="homeSearchClear" onclick="clearHomeSearch()">&times;</button>
+   </div>
+   <div class="home-search-dropdown" id="homeSearchDropdown"></div>
+  </div>
+
+  <div class="lang-pill-group" role="group" aria-label="Language Switcher">
+   <button type="button" class="lang-switch-btn active" data-lang="en" onclick="switchSiteLang('en')">EN</button>
+   <button type="button" class="lang-switch-btn" data-lang="bm" onclick="switchSiteLang('bm')">BM</button>
+  </div>
+ </div>
+
+ <!-- HEADER & NAVIGATION -->
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="../index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast" data-i18n="contrast">Contrast</button>
+   </div>
+  </div>
+  <nav>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" data-i18n="navAbout">About</a>
+   <a href="education.html" class="on" data-i18n="navEdu">Education</a>
+   <a href="experience.html" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <!-- =================================================================== -->
+ <!-- HERO: LARGE SUNSET POLAROID + BESPOKE 3D LETTER DOSSIER             -->
+ <!-- =================================================================== -->
+ <section class="spatial-desk-hero">
+  <span class="hero-kicker-top" data-i18n="issueBadge">Chapter 02 &bull; Academic Chronicle</span>
+  <h1 class="hero-grand-title" data-i18n-html="heroTitle">Academic <i>Journey</i> &amp; Milestones</h1>
+
+  <!-- Animated Fountain Pen Calligraphy Stroke Divider -->
+  <div class="calligraphy-nib-divider" aria-hidden="true">
+   <svg viewBox="0 0 340 28" xmlns="http://www.w3.org/2000/svg">
+    <path class="ink-stroke-path" d="M20,18 Q95,6 170,16 T320,14" fill="none" stroke="#f2dcb3" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="170" cy="16" r="4" fill="#6c8038" stroke="#f2dcb3" stroke-width="1.2"/>
+    <path d="M152,16 L160,12 L160,20 Z" fill="#f2dcb3"/>
+    <path d="M188,16 L180,12 L180,20 Z" fill="#f2dcb3"/>
+   </svg>
+  </div>
+
+  <div class="desk-stage-grid">
+   <!-- LEFT: LARGE FEATURED SUNSET CAMPUS POLAROID (edu1) -->
+   <div class="large-sunset-polaroid" onclick="triggerEduPicker('eduMain')" title="Click to upload or change campus sunset photo">
+    <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerEduPicker('eduMain')" data-i18n="photoMiniBtn">&#128247; Photo</button>
+    <button type="button" class="direct-clear-btn" id="clear_eduMain" onclick="event.stopPropagation(); clearEduSlot('eduMain')">&times;</button>
+    <input type="file" id="picker_eduMain" accept="image/*" style="display:none;" onchange="handleEduUpload(event, 'eduMain')">
+
+    <div class="sunset-photo-frame">
+     <img id="img_eduMain" data-base="../images/edu1" alt="Evening Sunset at UiTM Segamat Residential College">
+     <div class="tucked-empty-txt" id="prompt_eduMain" data-i18n="eduEmptyUpload">+ Upload Sunset Campus Photo</div>
+    </div>
+    <div class="sunset-polaroid-caption">
+     <span class="script-cap">Kolej Kediaman &bull; Dusk</span>
+     <small data-i18n="polaroidSubTag">Segamat Campus</small>
+    </div>
+   </div>
+
+   <!-- RIGHT: 3D VELVET ENVELOPE & BESPOKE JOURNAL REFLECTION LETTER -->
+   <div class="desk-envelope-col">
+    <div class="desk-3d-rig" id="desk3DRig" onclick="toggle3DEnvelope()">
+     <div class="env-3d-casing">
+      <div class="env-3d-lining"></div>
+     </div>
+
+     <!-- Bespoke Ornate Letter -->
+     <div class="env-3d-letter" onclick="event.stopPropagation()">
+      <div class="letter-top-bar">
+       <span class="folio-tag" data-i18n="letterFolioTag">Personal Reflection &bull; Folio 02</span>
+       <span class="postmark-badge">IM<sub>110</sub> &bull; Segamat</span>
+      </div>
+
+      <div class="letter-body-area">
+       <h2 data-i18n="letterHeading">Notes from Dusk at Campus</h2>
+       <p data-i18n-html="letterEssay">
+        Every evening sunset over the residential college reminds me how far quiet persistence can carry a student from a coastal town. Studying <strong><u>Information Management</u></strong> has taught me that preserving knowledge is both a technical craft and a lifelong discipline.
+       </p>
+      </div>
+
+      <div class="letter-signoff-row">
+       <span class="letter-signature">Nur Nabiha Ibtisam</span>
+       <a href="#spatial3DCarousel" class="letter-action-pill" data-i18n="letterCta">Explore 3D Stage &darr;</a>
+      </div>
+     </div>
+
+     <div class="env-3d-pocket"></div>
+     <div class="env-3d-flap"></div>
+
+     <div class="wax-seal-3d" title="Click wax seal to unfold 3D envelope">
+      <span>N&amp;I</span>
+     </div>
+
+     <!-- Academic Mortarboard & Olive Branch Emblem -->
+     <svg class="floating-academic-emblem" viewBox="0 0 175 305" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M98,132 Q115,195 100,285" stroke="#7d9444" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="88" cy="168" rx="12" ry="6" transform="rotate(-32 88 168)" fill="#6c8038"/>
+      <ellipse cx="112" cy="186" rx="12" ry="6" transform="rotate(28 112 186)" fill="#8aa14c"/>
+      <ellipse cx="89" cy="212" rx="12" ry="6" transform="rotate(-28 89 212)" fill="#56682b"/>
+      <ellipse cx="111" cy="234" rx="11" ry="5.5" transform="rotate(30 111 234)" fill="#7d9444"/>
+      <ellipse cx="92" cy="258" rx="10" ry="5" transform="rotate(-24 92 258)" fill="#6c8038"/>
+      <rect x="44" y="96" width="88" height="24" rx="4" fill="#661422" stroke="#f2dcb3" stroke-width="1.5"/>
+      <rect x="48" y="101" width="80" height="14" rx="2" fill="#fcf9f2"/>
+      <line x1="54" y1="106" x2="122" y2="106" stroke="#cfa862" stroke-width="1"/>
+      <line x1="54" y1="110" x2="112" y2="110" stroke="#4d5e26" stroke-width="1"/>
+      <polygon points="88,36 146,62 88,88 30,62" fill="#4b0e18" stroke="#f2dcb3" stroke-width="1.8"/>
+      <path d="M56,74 L56,90 C56,98 120,98 120,90 L120,74" fill="#360810" stroke="#cfa862" stroke-width="1.2"/>
+      <circle cx="88" cy="62" r="4.5" fill="#f2dcb3"/>
+      <g class="tassel-sway-group">
+       <path d="M88,62 L118,66 L122,114" fill="none" stroke="#f2dcb3" stroke-width="2.4" stroke-linecap="round"/>
+       <rect x="118" y="112" width="8" height="16" rx="3" fill="#cfa862"/>
+      </g>
+     </svg>
+    </div>
+
+    <button type="button" class="envelope-prompt-btn" onclick="toggle3DEnvelope()" data-i18n="clickEnvCue">
+     Click wax seal to unfold 3D envelope &amp; read note &sect;
+    </button>
+   </div>
+  </div>
+ </section>
+
+ <!-- OLIVE MOSS MARQUEE TICKER -->
+ <div class="edu-marquee-strip" aria-label="Academic Highlights Ticker">
+  <div class="edu-marquee-track" id="eduMarqueeTrack">
+   <span data-i18n="mqDean">DEAN'S LIST ACHIEVER</span><span class="folio-mark">&sect;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span>
+   <span data-i18n="mqDip">DIPLOMA IN INFORMATION MANAGEMENT</span><span class="folio-mark">&sect;</span>
+   <span>SMK UNGKU HUSIN</span><span class="folio-mark">&#10087;</span>
+   <span>SEKOLAH RENDAH TERIANG</span><span class="folio-mark">&sect;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&#10087;</span>
+   <span data-i18n="mqDean">DEAN'S LIST ACHIEVER</span><span class="folio-mark">&sect;</span>
+   <span>UITM SEGAMAT</span><span class="folio-mark">&#10087;</span>
+   <span data-i18n="mqDip">DIPLOMA IN INFORMATION MANAGEMENT</span><span class="folio-mark">&sect;</span>
+   <span>SMK UNGKU HUSIN</span><span class="folio-mark">&#10087;</span>
+   <span>SEKOLAH RENDAH TERIANG</span><span class="folio-mark">&sect;</span>
+   <span>MERSING, JOHOR</span><span class="folio-mark">&#10087;</span>
+  </div>
+ </div>
+
+ <!-- =================================================================== -->
+ <!-- BAND A: DEEP BURGUNDY 3D STATIONERY CAROUSEL (3 INSTITUTIONS)       -->
+ <!-- =================================================================== -->
+ <section class="spatial-carousel-band" id="spatial3DCarousel" style="scroll-margin-top: 85px;">
+  <div class="section-script-header header-on-dark">
+   <span class="script" data-i18n="suiteScript">The 3D Stationery Stage</span>
+   <h2 data-i18n="suiteTitle">Educational Milestones</h2>
+   <p data-i18n="suiteSub">Rotate the 3D stationery stage or click any Polaroid frame to upload your photo</p>
+  </div>
+
+  <div class="orbit-3d-stage" id="orbit3DStage">
+   <!-- SLIDE 0 (CENTER): UiTM Segamat -->
+   <article class="orbit-card-3d pos-center" data-orbit="0" onclick="focusOrbitSlide(0)">
+    <div class="diorama-split-body diorama-ivory">
+     <div class="diorama-text">
+      <small class="stage-kicker" data-i18n-html="t1Era">03<sup>rd</sup> Stage &bull; Tertiary Education &bull; Dean's List</small>
+      <h3>Universiti Teknologi MARA (<abbr title="Universiti Teknologi MARA">UiTM</abbr>) Johor, Kampus Segamat</h3>
+      <p class="sub-prog" data-i18n-html="t1Prog">Diploma in Information Management (IM<sub>110</sub>)</p>
+      <p class="body-copy" data-i18n-html="t1Desc">
+       Specializing in electronic records governance, metadata indexing, and semantic web architecture (IMD318) while sustaining Dean's List distinction across semesters.
+      </p>
+      <a href="https://johor.uitm.edu.my/" target="_blank" rel="noopener" class="uitm-portal-btn" title="Visit Official UiTM Johor Portal" onclick="event.stopPropagation()">
+       <span data-i18n="uitmLinkLabel">Official UiTM Johor Portal &nearr;</span>
+      </a>
+     </div>
+
+     <div class="diorama-polaroid" onclick="event.stopPropagation(); triggerEduPicker('bentoUitm')" title="Click to upload UiTM photo">
+      <div class="diorama-photo-well">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerEduPicker('bentoUitm')" data-i18n="photoMiniBtn">&#128247; Photo</button>
+       <button type="button" class="direct-clear-btn" id="clear_bentoUitm" onclick="event.stopPropagation(); clearEduSlot('bentoUitm')">&times;</button>
+       <input type="file" id="picker_bentoUitm" accept="image/*" style="display:none;" onchange="handleEduUpload(event, 'bentoUitm')">
+       <img id="img_bentoUitm" data-base="../images/edu_uitm" alt="UiTM Segamat">
+
+       <svg viewBox="0 0 360 190" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="190" fill="#4b0e18"/>
+        <polygon points="180,38 248,68 180,98 112,68" fill="#f2dcb3"/>
+        <rect x="142" y="86" width="76" height="22" rx="4" fill="#4d5e26"/>
+        <text x="180" y="150" text-anchor="middle" fill="#fcf9f2" font-family="serif" font-size="13" letter-spacing="3.5">UITM SEGAMAT &bull; IM110</text>
+       </svg>
+      </div>
+      <div class="diorama-polaroid-script">UiTM Kampus Segamat</div>
+     </div>
+    </div>
+   </article>
+
+   <!-- SLIDE 1 (RIGHT): SMK Ungku Husin -->
+   <article class="orbit-card-3d pos-right" data-orbit="1" onclick="focusOrbitSlide(1)">
+    <div class="diorama-split-body diorama-olive">
+     <div class="diorama-text">
+      <small class="stage-kicker" data-i18n-html="t2Era">02<sup>nd</sup> Stage &bull; Secondary School &bull; Mersing</small>
+      <h3>SMK Ungku Husin</h3>
+      <p class="sub-prog" data-i18n-html="t2Prog"><abbr title="Sijil Pelajaran Malaysia">SPM</abbr> Graduate &amp; Co-Curricular Years</p>
+      <p class="body-copy" data-i18n="t2Desc">
+       Completed my secondary education in Mersing, Johor &mdash; cultivating disciplined study habits, club leadership, and collaborative communication skills.
+      </p>
+      <a href="#realGoogleMapAtlas" class="uitm-portal-btn" onclick="event.stopPropagation(); selectRealMapPlace(1, document.querySelectorAll('.map-station-btn')[1])" data-i18n="locateSchoolBtn">
+       View on Johor Map &darr;
+      </a>
+     </div>
+
+     <div class="diorama-polaroid" onclick="event.stopPropagation(); triggerEduPicker('bentoSmk')" title="Click to upload SMK Ungku Husin photo">
+      <div class="diorama-photo-well">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerEduPicker('bentoSmk')" data-i18n="photoMiniBtn">&#128247; Photo</button>
+       <button type="button" class="direct-clear-btn" id="clear_bentoSmk" onclick="event.stopPropagation(); clearEduSlot('bentoSmk')">&times;</button>
+       <input type="file" id="picker_bentoSmk" accept="image/*" style="display:none;" onchange="handleEduUpload(event, 'bentoSmk')">
+       <img id="img_bentoSmk" data-base="../images/edu_smk" alt="SMK Ungku Husin">
+
+       <svg viewBox="0 0 360 190" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="190" fill="#374419"/>
+        <rect x="125" y="40" width="110" height="68" rx="6" fill="none" stroke="#f2dcb3" stroke-width="2"/>
+        <line x1="180" y1="40" x2="180" y2="108" stroke="#f2dcb3" stroke-width="1.5"/>
+        <text x="180" y="150" text-anchor="middle" fill="#fcf9f2" font-family="serif" font-size="13" letter-spacing="3.5">SMK UNGKU HUSIN</text>
+       </svg>
+      </div>
+      <div class="diorama-polaroid-script">SMK Ungku Husin &bull; Mersing</div>
+     </div>
+    </div>
+   </article>
+
+   <!-- SLIDE 2 (LEFT): Sekolah Rendah Teriang -->
+   <article class="orbit-card-3d pos-left" data-orbit="2" onclick="focusOrbitSlide(2)">
+    <div class="diorama-split-body diorama-burgundy">
+     <div class="diorama-text">
+      <small class="stage-kicker" data-i18n-html="t3Era">01<sup>st</sup> Stage &bull; Primary School &bull; Mersing</small>
+      <h3>Sekolah Rendah Teriang</h3>
+      <p class="sub-prog" data-i18n="t3Prog">Early Foundation &amp; Curiosity</p>
+      <p class="body-copy" data-i18n="t3Desc">
+       Where my fondness for reading, curiosity, and structured classroom learning first began &mdash; shaped by dedicated teachers in Mersing, Johor.
+      </p>
+      <a href="#realGoogleMapAtlas" class="uitm-portal-btn" onclick="event.stopPropagation(); selectRealMapPlace(2, document.querySelectorAll('.map-station-btn')[2])" data-i18n="locateSchoolBtn">
+       View on Johor Map &darr;
+      </a>
+     </div>
+
+     <div class="diorama-polaroid" onclick="event.stopPropagation(); triggerEduPicker('bentoSr')" title="Click to upload Sekolah Rendah Teriang photo">
+      <div class="diorama-photo-well">
+       <button type="button" class="direct-swap-btn" onclick="event.stopPropagation(); triggerEduPicker('bentoSr')" data-i18n="photoMiniBtn">&#128247; Photo</button>
+       <button type="button" class="direct-clear-btn" id="clear_bentoSr" onclick="event.stopPropagation(); clearEduSlot('bentoSr')">&times;</button>
+       <input type="file" id="picker_bentoSr" accept="image/*" style="display:none;" onchange="handleEduUpload(event, 'bentoSr')">
+       <img id="img_bentoSr" data-base="../images/edu_sr" alt="Sekolah Rendah Teriang">
+
+       <svg viewBox="0 0 360 190" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="190" fill="#260409"/>
+        <rect x="132" y="42" width="96" height="62" rx="4" fill="#4d5e26" stroke="#f2dcb3" stroke-width="1.5"/>
+        <line x1="180" y1="42" x2="180" y2="104" stroke="#f2dcb3" stroke-width="1.5"/>
+        <text x="180" y="150" text-anchor="middle" fill="#fcf9f2" font-family="serif" font-size="12.5" letter-spacing="3">SEKOLAH RENDAH TERIANG</text>
+       </svg>
+      </div>
+      <div class="diorama-polaroid-script">Sekolah Rendah Teriang</div>
+     </div>
+    </div>
+   </article>
+  </div>
+
+  <!-- 3D Carousel Navigation Pills -->
+  <div class="orbit-controls-bar">
+   <button type="button" class="orbit-nav-btn" onclick="stepOrbit(-1)" data-i18n="prevBtn">&larr; Prev</button>
+   <button type="button" class="orbit-dot-pill active" id="orbitPill0" onclick="focusOrbitSlide(0)">03. UiTM Segamat</button>
+   <button type="button" class="orbit-dot-pill" id="orbitPill1" onclick="focusOrbitSlide(1)">02. SMK Ungku Husin</button>
+   <button type="button" class="orbit-dot-pill" id="orbitPill2" onclick="focusOrbitSlide(2)">01. SR Teriang</button>
+   <button type="button" class="orbit-nav-btn" onclick="stepOrbit(1)" data-i18n="nextBtn">Next &rarr;</button>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- BAND B: RICH OLIVE MOSS + REAL GOOGLE MAPS (ROAD & SATELLITE)       -->
+ <!-- =================================================================== -->
+ <section class="olive-maps-band" id="realGoogleMapAtlas">
+  <span id="johorMapSection"></span>
+  <div class="olive-band-max">
+   <div class="olive-band-head">
+    <div>
+     <small data-i18n="mapKicker">02 &bull; Real Interactive Google Maps</small>
+     <h2 data-i18n-html="mapTitle">Johor <i>Campus</i> &amp; School Atlas</h2>
+    </div>
+
+    <div class="map-layer-pills" role="group" aria-label="Google Maps Layer">
+     <button type="button" class="map-layer-btn active" id="btnMapRoad" onclick="setGoogleMapLayer('m')" data-i18n="btnRoad">Road Map</button>
+     <button type="button" class="map-layer-btn" id="btnMapSat" onclick="setGoogleMapLayer('k')" data-i18n="btnSat">Satellite View</button>
+    </div>
+   </div>
+
+   <div class="real-map-layout">
+    <div class="map-station-list">
+     <button type="button" class="map-station-btn active" onclick="selectRealMapPlace(0, this)">
+      <small data-i18n="pin0Stage">03. Tertiary Campus (Current)</small>
+      <strong>UiTM Cawangan Johor, Kampus Segamat</strong>
+      <span class="addr">KM 12, Jalan Muar, 85000 Segamat, Johor</span>
+     </button>
+
+     <button type="button" class="map-station-btn" onclick="selectRealMapPlace(1, this)">
+      <small data-i18n="pin1Stage">02. Secondary School</small>
+      <strong>SMK Ungku Husin</strong>
+      <span class="addr">Jalan Endau, 86800 Mersing, Johor</span>
+     </button>
+
+     <button type="button" class="map-station-btn" onclick="selectRealMapPlace(2, this)">
+      <small data-i18n="pin2Stage">01. Primary School</small>
+      <strong>Sekolah Rendah Teriang (SK Teriang)</strong>
+      <span class="addr">Kampung Teriang, 86800 Mersing, Johor</span>
+     </button>
+
+     <div class="map-gps-box">
+      <small data-i18n="gpsLabel">GPS Coordinates &amp; Region</small>
+      <strong id="atlasCoordText">2.4879&deg; N, 102.7293&deg; E &bull; Segamat, Johor</strong>
+      <a id="atlasExternalLink" href="https://www.google.com/maps/search/?api=1&query=UiTM+Cawangan+Johor+Kampus+Segamat" target="_blank" rel="noopener" class="gmaps-direct-btn" data-i18n="openGmapsBtn">
+       Open in Google Maps &nearr;
+      </a>
+     </div>
+    </div>
+
+    <div class="real-gmaps-box">
+     <iframe
+      id="realGoogleMapIframe"
+      title="Real Google Map of Educational Institutions in Johor"
+      src="https://maps.google.com/maps?q=UiTM+Cawangan+Johor+Kampus+Segamat&t=m&z=15&ie=UTF8&iwloc=&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+     </iframe>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- =================================================================== -->
+ <!-- BAND C: 3D OPEN ARCHIVAL LEDGER + REAL INSTITUTION LOGOS IN TABLE   -->
+ <!-- =================================================================== -->
+ <section class="ledger-3d-band">
+  <div class="ledger-max">
+   <div class="section-script-header header-on-parchment">
+    <span class="script" data-i18n="hnScript">Official Archival Ledger</span>
+    <h2 data-i18n="hnHeading">Academic Matrix &amp; Seal</h2>
+    <p data-i18n="hnSub">Click any quadrant of the IM110 crest on the left page to elevate that coursework row in 3D</p>
+   </div>
+
+   <!-- 3D Open Hardcover Ledger Spread -->
+   <div class="ledger-perspective-wrap" id="ledgerPerspectiveWrap">
+    <div class="open-book-3d-spread" id="openBook3DSpread">
+     <!-- Left Page: Interactive Crest Image Map (<map> & <area>) -->
+     <div class="book-left-crest-page">
+      <h3 data-i18n="crestTitle">IM110 Crest</h3>
+      <p data-i18n="crestSub">Click a quadrant below to elevate the coursework record in 3D</p>
+      <div class="crest-map-holder">
+       <img id="im110CrestImg" alt="IM110 Information Management Interactive Crest Map" width="275" height="275" usemap="#im110CrestMap">
+       <map name="im110CrestMap" id="im110CrestMap">
+        <area shape="rect" coords="10,10,137,137" href="#rowCourse1" onclick="spotlightTranscriptRow('rowCourse1')" alt="Web Design IMD318" title="Web Content Management (IMD318)">
+        <area shape="rect" coords="137,10,265,137" href="#rowCourse2" onclick="spotlightTranscriptRow('rowCourse2')" alt="Records & Metadata" title="Electronic Records & Metadata">
+        <area shape="rect" coords="10,137,137,265" href="#rowSec" onclick="spotlightTranscriptRow('rowSec')" alt="SMK Ungku Husin" title="Secondary Education — SMK Ungku Husin">
+        <area shape="rect" coords="137,137,265,265" href="#rowPri" onclick="spotlightTranscriptRow('rowPri')" alt="Sekolah Rendah Teriang" title="Primary Education — Sekolah Rendah Teriang">
+       </map>
+      </div>
+     </div>
+
+     <!-- Right Page: 3D Interactive Complex Academic Table with Original Institution Logos -->
+     <div class="book-right-table-page">
+      <div class="table-header-controls">
+       <h3 data-i18n="tblTitle">Academic Record &amp; IM110 Matrix</h3>
+       <div class="table-3d-btns">
+        <button type="button" class="ledger-action-btn" onclick="triggerTable3DCascade()" data-i18n="btnCascade">3D Page Flip Cascade &#8635;</button>
+        <button type="button" class="ledger-action-btn" id="btnToggleTable3D" onclick="toggleTable3DMode()" data-i18n="btn3DOn">3D Elevation: ON</button>
+       </div>
+      </div>
+
+      <table class="stationery-table is-3d-active" id="academic3DTable">
+       <thead>
+        <tr>
+         <th data-i18n="thStage">Academic Stage</th>
+         <th data-i18n="thInst">Institution &amp; Focus Area</th>
+         <th class="th-center" data-i18n="thLoc">Institution Logo &amp; Location</th>
+         <th data-i18n="thHighlight">Key Academic Milestone</th>
+        </tr>
+       </thead>
+       <tbody>
+        <!-- ROW 1 & 2: UiTM SEGAMAT (logo_uitm) -->
+        <tr id="rowCourse1">
+         <td rowspan="2" class="stage-group" data-i18n="tdTertiary">Tertiary (IM110)</td>
+         <td>
+          <strong>UiTM Johor, Kampus Segamat</strong> &mdash; Web Content Management (IMD318) &amp; Database Systems
+          <div class="milestone-meter"><div class="milestone-meter-fill" style="width: 95%;"></div></div>
+         </td>
+         <td rowspan="2" class="logo-crest-cell">
+          <div class="inst-crest-stack" title="Universiti Teknologi MARA (UiTM) Cawangan Johor">
+           <div class="inst-real-logo-box">
+            <img id="uitmRealLogoImg" src="../images/logo_uitm.jpg" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='../images/logo_uitm.jpeg';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='../images/logo_uitm.png';}" alt="Universiti Teknologi MARA (UiTM) Official Logo">
+           </div>
+           <span class="inst-loc-tag">Segamat, Johor</span>
+          </div>
+         </td>
+         <td data-i18n="tdDean1">Dean's List Achiever &bull; Responsive HTML5/CSS3</td>
+        </tr>
+        <tr id="rowCourse2">
+         <td>
+          <strong>UiTM Johor, Kampus Segamat</strong> &mdash; Electronic Records, Cataloging &amp; Metadata
+          <div class="milestone-meter"><div class="milestone-meter-fill" style="width: 92%;"></div></div>
+         </td>
+         <td data-i18n="tdDean2">Archival Governance &amp; Information Retrieval</td>
+        </tr>
+
+        <!-- ROW 3: SMK UNGKU HUSIN (logo_smkuh) -->
+        <tr id="rowSec">
+         <td class="stage-group" data-i18n="tdSec">Secondary</td>
+         <td>
+          <strong>SMK Ungku Husin</strong> &mdash; SPM Graduate &amp; School Co-Curricular Leadership
+          <div class="milestone-meter"><div class="milestone-meter-fill" style="width: 88%;"></div></div>
+         </td>
+         <td class="logo-crest-cell">
+          <div class="inst-crest-stack" title="SMK Ungku Husin, Endau Mersing">
+           <div class="inst-real-logo-box square-logo">
+            <img src="../images/logo_smkuh.jpeg" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='../images/logo_smkuh.jpg';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='../images/logo_smkuh.png';}" alt="SMK Ungku Husin Official Logo">
+           </div>
+           <span class="inst-loc-tag">Mersing, Johor</span>
+          </div>
+         </td>
+         <td data-i18n="tdSecMile">Academic Discipline &amp; Club Teamwork</td>
+        </tr>
+
+        <!-- ROW 4: SEKOLAH RENDAH TERIANG (logo_sk) -->
+        <tr id="rowPri">
+         <td class="stage-group" data-i18n="tdPri">Primary</td>
+         <td>
+          <strong>Sekolah Rendah Teriang</strong> &mdash; Early Literacy &amp; Foundational Studies
+          <div class="milestone-meter"><div class="milestone-meter-fill" style="width: 85%;"></div></div>
+         </td>
+         <td class="logo-crest-cell">
+          <div class="inst-crest-stack" title="S.K. Teriang Endau Mersing">
+           <div class="inst-real-logo-box">
+            <img src="../images/logo_sk.jpeg" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='../images/logo_sk.jpg';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='../images/logo_sk.png';}" alt="S.K. Teriang Endau Mersing Official Logo">
+           </div>
+           <span class="inst-loc-tag">Mersing, Johor</span>
+          </div>
+         </td>
+         <td data-i18n="tdPriMile">Early Curiosity &amp; Reading Foundation</td>
+        </tr>
+       </tbody>
+       <tfoot>
+        <tr>
+         <td colspan="4" data-i18n="tfootNote">Academic Chronicle of Nur Nabiha Ibtisam Binti Abd Hadi &bull; Mersing to Segamat, Johor</td>
+        </tr>
+       </tfoot>
+      </table>
+     </div>
+    </div>
+   </div>
+
+   <!-- 3D Flip Competency Cards (Alternating Burgundy & Olive) -->
+   <div class="section-script-header header-on-parchment">
+    <span class="script" data-i18n="modScript">Academic Toolkit</span>
+    <h2 data-i18n="modHeading">Key Skills Developed</h2>
+    <p data-i18n="modSub">Hover or tap any burgundy &amp; olive stationery card to flip in 3D</p>
+   </div>
+
+   <div class="flip-skills-grid">
+    <div class="flip-skill-card" onclick="this.classList.toggle('is-flipped')">
+     <div class="flip-skill-inner">
+      <div class="flip-face flip-front">
+       <div class="skill-crest-circle">&#128193;</div>
+       <h4 data-i18n="sk1Title">Records Governance</h4>
+       <span class="cue" data-i18n="flipCue">Flip Card &circlearrowright;</span>
+      </div>
+      <div class="flip-face flip-back">
+       <h5 data-i18n="sk1Title">Records Governance</h5>
+       <p data-i18n="sk1Desc">Classification schemes, file indexing, and lifecycle retention scheduling.</p>
+      </div>
+     </div>
+    </div>
+
+    <div class="flip-skill-card" onclick="this.classList.toggle('is-flipped')">
+     <div class="flip-skill-inner">
+      <div class="flip-face flip-front">
+       <div class="skill-crest-circle">&#128187;</div>
+       <h4 data-i18n="sk2Title">Web Architecture</h4>
+       <span class="cue" data-i18n="flipCue">Flip Card &circlearrowright;</span>
+      </div>
+      <div class="flip-face flip-back">
+       <h5 data-i18n="sk2Title">Web Architecture</h5>
+       <p data-i18n="sk2Desc">Crafting clean, structured HTML5/CSS3 web journals and interactive pages.</p>
+      </div>
+     </div>
+    </div>
+
+    <div class="flip-skill-card" onclick="this.classList.toggle('is-flipped')">
+     <div class="flip-skill-inner">
+      <div class="flip-face flip-front">
+       <div class="skill-crest-circle">&#128269;</div>
+       <h4 data-i18n="sk3Title">Metadata &amp; Search</h4>
+       <span class="cue" data-i18n="flipCue">Flip Card &circlearrowright;</span>
+      </div>
+      <div class="flip-face flip-back">
+       <h5 data-i18n="sk3Title">Metadata &amp; Search</h5>
+       <p data-i18n="sk3Desc">Organizing bibliographic descriptions for accurate information retrieval.</p>
+      </div>
+     </div>
+    </div>
+
+    <div class="flip-skill-card" onclick="this.classList.toggle('is-flipped')">
+     <div class="flip-skill-inner">
+      <div class="flip-face flip-front">
+       <div class="skill-crest-circle">&#127891;</div>
+       <h4 data-i18n="sk4Title">Academic Discipline</h4>
+       <span class="cue" data-i18n="flipCue">Flip Card &circlearrowright;</span>
+      </div>
+      <div class="flip-face flip-back">
+       <h5 data-i18n="sk4Title">Academic Discipline</h5>
+       <p data-i18n="sk4Desc">Consistent Dean's List performance, research writing, and team facilitation.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <!-- SCULPTED BOXLESS EDITORIAL LISTS (<ol> & <ul>) -->
+   <div class="editorial-syllabus-layout">
+    <div>
+     <div class="editorial-col-head">
+      <span class="script-sub" data-i18n="olScript">Diploma Curriculum</span>
+      <h3 data-i18n="olTitle">Semester Focus Progression</h3>
+     </div>
+     <ol class="sculpted-ordered-list">
+      <li data-i18n-html="ol1"><strong>Foundational Records &amp; Indexing</strong> &mdash; Mastering classification systems, registry workflows, and document preservation standards.</li>
+      <li data-i18n-html="ol2"><strong>Database &amp; Metadata Architecture</strong> &mdash; Structuring relational schemas, subject cataloging, and precision search retrieval.</li>
+      <li data-i18n-html="ol3"><strong>Digital Curation &amp; Web Design</strong> &mdash; Building accessible, responsive web portfolios (IMD318) and preparing for industry practicum.</li>
+     </ol>
+    </div>
+
+    <div>
+     <div class="editorial-col-head">
+      <span class="script-sub" data-i18n="ulScript">Scholarly Ethos</span>
+      <h3 data-i18n="ulTitle">Academic Values &amp; Standards</h3>
+     </div>
+     <ul class="open-botanical-list">
+      <li data-i18n="ul1"><strong>Information Integrity</strong> &mdash; Ensuring accuracy, authenticity, and ethical stewardship in every archival record.</li>
+      <li data-i18n="ul2"><strong>Inclusive Accessibility</strong> &mdash; Designing web interfaces aligned with W3C readability and screen-reader standards.</li>
+      <li data-i18n="ul3"><strong>Consistent Scholarship</strong> &mdash; Upholding Dean's List discipline through structured time management and peer collaboration.</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- FOOTER WITH INLINE SITE MAP & METADATA -->
+ <footer id="footerSiteMap">
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <div class="footer-sitemap" aria-label="Site Map">
+   <span data-i18n="siteMapLabel">SITE MAP:</span>
+   <a href="../index.html" data-i18n="navHome">HOME</a>
+   <a href="about.html" data-i18n="navAbout">ABOUT</a>
+   <a href="education.html" class="on" data-i18n="navEdu">EDUCATION</a>
+   <a href="experience.html" data-i18n="navExp">EXPERIENCE</a>
+   <a href="family.html" data-i18n="navFam">FAMILY</a>
+   <a href="gallery.html" data-i18n="navGal">GALLERY</a>
+   <a href="contact.html" data-i18n="navCon">CONTACT</a>
+  </div>
+
+  <p class="footer-meta-line" data-i18n="footerDates">
+   CREATED: 12 OCTOBER 2026 &nbsp;&nbsp; LAST UPDATED: 25 NOVEMBER 2026 &nbsp;&nbsp; DATA COLLECTED: OCTOBER &ndash; NOVEMBER 2026
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerA11y">
+   ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER &amp; W3C WAI GUIDELINES
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerCopy">
+   &copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PERSONAL PORTFOLIO &amp; JOURNAL
+  </p>
+
+  <p style="margin-top: 10px;"><a href="#top" data-i18n="backTop">BACK TO TOP &uarr;</a></p>
+ </footer>
+</div>
+
+<script>
+  // =====================================================================
+  // 1. DIRECT PHOTO UPLOAD & AUTO-SAVE (ALL 4 SLOTS PRESERVED)
+  // =====================================================================
+  const EDU_IMG_KEY = 'beyha_edu_v2_';
+
+  function triggerEduPicker(slotId) {
+    const input = document.getElementById('picker_' + slotId);
+    if (input) input.click();
+  }
+
+  function compressEduImage(file, maxDim, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const temp = new Image();
+      temp.onload = function () {
+        let w = temp.width, h = temp.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+          else { w = Math.round((w * maxDim) / h); h = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(temp, 0, 0, w, h);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      temp.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function applyEduSlotPhoto(slotId, url, isCustom) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.src = url; img.style.display = 'block'; }
+    if (promptEl) promptEl.style.display = 'none';
+    if (clearBtn) clearBtn.classList.toggle('visible', Boolean(isCustom));
+  }
+
+  function resetEduSlotEmpty(slotId) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.removeAttribute('src'); img.style.display = 'none'; }
+    if (promptEl) promptEl.style.display = 'flex';
+    if (clearBtn) clearBtn.classList.remove('visible');
+  }
+
+  function probeEduFolder(slotId, base) {
+    const exts = ['.jpeg', '.jpg', '.png', '.webp'];
+    let i = 0;
+    function next() {
+      if (i >= exts.length) { resetEduSlotEmpty(slotId); return; }
+      const src = base + exts[i++];
+      const t = new Image();
+      t.onload = function () { applyEduSlotPhoto(slotId, src, false); };
+      t.onerror = next;
+      t.src = src;
+    }
+    next();
+  }
+
+  function handleEduUpload(event, slotId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    compressEduImage(file, 900, 0.82, function (dataUrl) {
+      try { localStorage.setItem(EDU_IMG_KEY + slotId, dataUrl); } catch (e) {}
+      applyEduSlotPhoto(slotId, dataUrl, true);
+    });
+    event.target.value = '';
+  }
+
+  function clearEduSlot(slotId) {
+    localStorage.removeItem(EDU_IMG_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    const base = img ? img.getAttribute('data-base') : null;
+    if (base) probeEduFolder(slotId, base);
+    else resetEduSlotEmpty(slotId);
+  }
+
+  ['eduMain', 'bentoUitm', 'bentoSmk', 'bentoSr'].forEach(function (slotId) {
+    const saved = localStorage.getItem(EDU_IMG_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    if (saved) applyEduSlotPhoto(slotId, saved, true);
+    else if (img && img.getAttribute('data-base')) probeEduFolder(slotId, img.getAttribute('data-base'));
+  });
+
+  // =====================================================================
+  // 1B. TUKAR LATAR HITAM LOGO UiTM KEPADA LATAR PUTIH BERSIH TANPA UBAH LOGO
+  // =====================================================================
+  (function makeUitmLogoWhiteBg() {
+    const uitmImg = document.getElementById('uitmRealLogoImg');
+    if (!uitmImg) return;
+
+    function convertBlackToWhite() {
+      try {
+        const w = uitmImg.naturalWidth;
+        const h = uitmImg.naturalHeight;
+        if (!w || !h) return;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(uitmImg, 0, 0);
+
+        const imgData = ctx.getImageData(0, 0, w, h);
+        const data = imgData.data;
+
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          if (r < 24 && g < 24 && b < 24) {
+            data[i] = 255;
+            data[i + 1] = 255;
+            data[i + 2] = 255;
+          }
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        uitmImg.onload = null;
+        uitmImg.src = canvas.toDataURL('image/png');
+      } catch (e) {}
+    }
+
+    if (uitmImg.complete && uitmImg.naturalWidth > 0) {
+      convertBlackToWhite();
+    } else {
+      uitmImg.onload = convertBlackToWhite;
+    }
+  })();
+
+  // =====================================================================
+  // 2. 3D MULTI-LAYER PARALLAX DESK & WAX-SEALED ENVELOPE
+  // =====================================================================
+  function toggle3DEnvelope() {
+    const rig = document.getElementById('desk3DRig');
+    if (rig) rig.classList.toggle('is-open');
+  }
+
+  (function init3DDeskParallax() {
+    const rig = document.getElementById('desk3DRig');
+    const hero = document.querySelector('.spatial-desk-hero');
+    if (!rig || !hero) return;
+    hero.addEventListener('mousemove', function (e) {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      rig.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`;
+    });
+    hero.addEventListener('mouseleave', function () {
+      rig.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  })();
+
+  // =====================================================================
+  // 3. 3D SPATIAL STATIONERY CAROUSEL CONTROLLER
+  // =====================================================================
+  let currentOrbitIndex = 0;
+
+  function focusOrbitSlide(targetIdx) {
+    currentOrbitIndex = ((targetIdx % 3) + 3) % 3;
+    const slides = document.querySelectorAll('.orbit-card-3d');
+    slides.forEach((slide, idx) => {
+      slide.classList.remove('pos-center', 'pos-right', 'pos-left');
+      const diff = (idx - currentOrbitIndex + 3) % 3;
+      if (diff === 0) slide.classList.add('pos-center');
+      else if (diff === 1) slide.classList.add('pos-right');
+      else slide.classList.add('pos-left');
+    });
+
+    [0, 1, 2].forEach(i => {
+      const pill = document.getElementById('orbitPill' + i);
+      if (pill) pill.classList.toggle('active', i === currentOrbitIndex);
+    });
+  }
+
+  function stepOrbit(delta) {
+    focusOrbitSlide(currentOrbitIndex + delta);
+  }
+
+  // =====================================================================
+  // 4. REAL GOOGLE MAPS JOHOR CONTROLLER (ROAD MAP & SATELLITE VIEW)
+  // =====================================================================
+  const realJohorLocations = [
+    {
+      query: 'UiTM+Cawangan+Johor+Kampus+Segamat',
+      coords: '2.4879° N, 102.7293° E • Segamat, Johor',
+      extUrl: 'https://www.google.com/maps/search/?api=1&query=UiTM+Cawangan+Johor+Kampus+Segamat'
+    },
+    {
+      query: 'SMK+Ungku+Husin+Mersing+Johor',
+      coords: '2.4312° N, 103.8365° E • Mersing, Johor',
+      extUrl: 'https://www.google.com/maps/search/?api=1&query=SMK+Ungku+Husin+Mersing+Johor'
+    },
+    {
+      query: 'Sekolah+Kebangsaan+Teriang+Mersing+Johor',
+      coords: '2.4735° N, 103.8211° E • Teriang, Mersing, Johor',
+      extUrl: 'https://www.google.com/maps/search/?api=1&query=Sekolah+Kebangsaan+Teriang+Mersing+Johor'
+    }
+  ];
+
+  let currentMapIdx = 0;
+  let currentMapLayer = 'm';
+
+  function updateRealGoogleMap() {
+    const loc = realJohorLocations[currentMapIdx] || realJohorLocations[0];
+    const iframe = document.getElementById('realGoogleMapIframe');
+    const coordEl = document.getElementById('atlasCoordText');
+    const extEl = document.getElementById('atlasExternalLink');
+    if (iframe) {
+      iframe.src = `https://maps.google.com/maps?q=${loc.query}&t=${currentMapLayer}&z=15&ie=UTF8&iwloc=&output=embed`;
+    }
+    if (coordEl) coordEl.textContent = loc.coords;
+    if (extEl) extEl.href = loc.extUrl;
+  }
+
+  function selectRealMapPlace(idx, btn) {
+    currentMapIdx = idx;
+    document.querySelectorAll('.map-station-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    updateRealGoogleMap();
+  }
+
+  function setGoogleMapLayer(layer) {
+    currentMapLayer = layer;
+    document.getElementById('btnMapRoad').classList.toggle('active', layer === 'm');
+    document.getElementById('btnMapSat').classList.toggle('active', layer === 'k');
+    updateRealGoogleMap();
+  }
+
+  // =====================================================================
+  // 5. IM110 CREST IMAGE MAP (<map> & <area>) + 3D TABLE ANIMATIONS
+  // =====================================================================
+  (function buildIm110CrestImageMap() {
+    const crestImg = document.getElementById('im110CrestImg');
+    if (!crestImg) return;
+
+    const S = 275, scale = 2;
+    const canvas = document.createElement('canvas');
+    canvas.width = S * scale;
+    canvas.height = S * scale;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+
+    ctx.fillStyle = '#260409';
+    ctx.fillRect(0, 0, S, S);
+
+    const quads = [
+      { x: 10,  y: 10,  bg: '#4b0e18', tag: 'IMD318', title: 'Web Design' },
+      { x: 141, y: 10,  bg: '#4d5e26', tag: 'IM110',  title: 'Records & Data' },
+      { x: 10,  y: 141, bg: '#4d5e26', tag: 'SPM',    title: 'SMK Ungku Husin' },
+      { x: 141, y: 141, bg: '#4b0e18', tag: 'PRIMARY',title: 'SR Teriang' }
+    ];
+
+    quads.forEach(q => {
+      ctx.fillStyle = q.bg;
+      ctx.strokeStyle = '#cfa862';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(q.x, q.y, 124, 124, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#f2dcb3';
+      ctx.font = 'bold 10px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(q.tag, q.x + 62, q.y + 49);
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 12.5px Georgia, serif';
+      ctx.fillText(q.title, q.x + 62, q.y + 71);
+
+      ctx.fillStyle = 'rgba(252,249,242,0.82)';
+      ctx.font = 'italic 10px Georgia, serif';
+      ctx.fillText('Click quadrant', q.x + 62, q.y + 91);
+    });
+
+    ctx.beginPath();
+    ctx.arc(S / 2, S / 2, 31, 0, Math.PI * 2);
+    ctx.fillStyle = '#fcf9f2';
+    ctx.fill();
+    ctx.strokeStyle = '#cfa862';
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    ctx.fillStyle = '#4b0e18';
+    ctx.font = 'bold 12px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('IM110', S / 2, S / 2 + 4);
+
+    crestImg.src = canvas.toDataURL('image/png');
+  })();
+
+  function spotlightTranscriptRow(rowId) {
+    document.querySelectorAll('.stationery-table tbody tr').forEach(r => r.classList.remove('row-spotlight'));
+    const row = document.getElementById(rowId);
+    if (!row) return;
+    row.classList.add('row-spotlight');
+    setTimeout(() => row.classList.remove('row-spotlight'), 2800);
+  }
+
+  function triggerTable3DCascade() {
+    const rows = document.querySelectorAll('#academic3DTable tbody tr');
+    rows.forEach((row, idx) => {
+      row.classList.remove('row-flipping');
+      void row.offsetWidth;
+      row.style.animationDelay = `${idx * 130}ms`;
+      row.classList.add('row-flipping');
+    });
+  }
+
+  let isTable3DEnabled = true;
+  function toggleTable3DMode() {
+    isTable3DEnabled = !isTable3DEnabled;
+    const tbl = document.getElementById('academic3DTable');
+    const btn = document.getElementById('btnToggleTable3D');
+    const spread = document.getElementById('openBook3DSpread');
+    if (tbl) tbl.classList.toggle('is-3d-active', isTable3DEnabled);
+    if (!isTable3DEnabled && spread) spread.style.transform = 'none';
+    if (btn) {
+      const dict = i18nEdu[activeLang] || i18nEdu.en;
+      btn.textContent = isTable3DEnabled ? dict.btn3DOn : dict.btn3DOff;
+    }
+  }
+
+  (function initLedger3DTilt() {
+    const wrap = document.getElementById('ledgerPerspectiveWrap');
+    const spread = document.getElementById('openBook3DSpread');
+    if (!wrap || !spread) return;
+    wrap.addEventListener('mousemove', function (e) {
+      if (!isTable3DEnabled) return;
+      const rect = wrap.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      spread.style.transform = `rotateY(${x * 5}deg) rotateX(${-y * 4}deg)`;
+    });
+    wrap.addEventListener('mouseleave', function () {
+      spread.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  })();
+
+  // =====================================================================
+  // 6. CLOCK, FULL BILINGUAL SWITCHER (EN / BM) & SEARCH
+  // =====================================================================
+  let activeLang = 'en';
+
+  function runLiveClock() {
+    const now = new Date();
+    const locales = { en: 'en-GB', bm: 'ms-MY' };
+    document.getElementById('liveDateDisplay').textContent = now.toLocaleDateString(locales[activeLang] || 'en-GB', {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+    });
+    document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    });
+  }
+  setInterval(runLiveClock, 1000);
+  runLiveClock();
+
+  const i18nEdu = {
+    en: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Personal Journal",
+      contrast: "Contrast",
+      searchPh: "Search portfolio...",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      issueBadge: "Chapter 02 • Academic Chronicle",
+      heroTitle: "Academic <i>Journey</i> &amp; Milestones",
+      photoMiniBtn: "📷 Photo",
+      eduEmptyUpload: "+ Upload Sunset Campus Photo",
+      polaroidSubTag: "Segamat Campus",
+      letterFolioTag: "Personal Reflection • Folio 02",
+      letterHeading: "Notes from Dusk at Campus",
+      letterEssay: "Every evening sunset over the residential college reminds me how far quiet persistence can carry a student from a coastal town. Studying <strong><u>Information Management</u></strong> has taught me that preserving knowledge is both a technical craft and a lifelong discipline.",
+      letterCta: "Explore 3D Stage ↓",
+      clickEnvCue: "Click wax seal to unfold 3D envelope & read note §",
+      mqDean: "DEAN'S LIST ACHIEVER",
+      mqDip: "DIPLOMA IN INFORMATION MANAGEMENT",
+      suiteScript: "The 3D Stationery Stage",
+      suiteTitle: "Educational Milestones",
+      suiteSub: "Rotate the 3D stationery stage or click any Polaroid frame to upload your photo",
+      t1Era: "03<sup>rd</sup> Stage &bull; Tertiary Education &bull; Dean's List",
+      t1Prog: "Diploma in Information Management (IM<sub>110</sub>)",
+      t1Desc: "Specializing in electronic records governance, metadata indexing, and semantic web architecture (IMD318) while sustaining Dean's List distinction across semesters.",
+      uitmLinkLabel: "Official UiTM Johor Portal ↗",
+      t2Era: "02<sup>nd</sup> Stage &bull; Secondary School &bull; Mersing",
+      t2Prog: "<abbr title=\"Sijil Pelajaran Malaysia\">SPM</abbr> Graduate &amp; Co-Curricular Years",
+      t2Desc: "Completed my secondary education in Mersing, Johor — cultivating disciplined study habits, club leadership, and collaborative communication skills.",
+      locateSchoolBtn: "View on Johor Map ↓",
+      t3Era: "01<sup>st</sup> Stage &bull; Primary School &bull; Mersing",
+      t3Prog: "Early Foundation & Curiosity",
+      t3Desc: "Where my fondness for reading, curiosity, and structured classroom learning first began — shaped by dedicated teachers in Mersing, Johor.",
+      prevBtn: "← Prev",
+      nextBtn: "Next →",
+      mapKicker: "02 • Real Interactive Google Maps",
+      mapTitle: "Johor <i>Campus</i> &amp; School Atlas",
+      btnRoad: "Road Map",
+      btnSat: "Satellite View",
+      pin0Stage: "03. Tertiary Campus (Current)",
+      pin1Stage: "02. Secondary School",
+      pin2Stage: "01. Primary School",
+      gpsLabel: "GPS Coordinates & Region",
+      openGmapsBtn: "Open in Google Maps ↗",
+      hnScript: "Official Archival Ledger",
+      hnHeading: "Academic Matrix & Seal",
+      hnSub: "Click any quadrant of the IM110 crest on the left page to elevate that coursework row in 3D",
+      crestTitle: "IM110 Crest",
+      crestSub: "Click a quadrant below to elevate the coursework record in 3D",
+      tblTitle: "Academic Record & IM110 Matrix",
+      btnCascade: "3D Page Flip Cascade ↻",
+      btn3DOn: "3D Elevation: ON",
+      btn3DOff: "3D Elevation: OFF",
+      thStage: "Academic Stage",
+      thInst: "Institution & Focus Area",
+      thLoc: "Institution Logo & Location",
+      thHighlight: "Key Academic Milestone",
+      tdTertiary: "Tertiary (IM110)",
+      tdDean1: "Dean's List Achiever • Responsive HTML5/CSS3",
+      tdDean2: "Archival Governance & Information Retrieval",
+      tdSec: "Secondary",
+      tdSecMile: "Academic Discipline & Club Teamwork",
+      tdPri: "Primary",
+      tdPriMile: "Early Curiosity & Reading Foundation",
+      tfootNote: "Academic Chronicle of Nur Nabiha Ibtisam Binti Abd Hadi • Mersing to Segamat, Johor",
+      modScript: "Academic Toolkit",
+      modHeading: "Key Skills Developed",
+      modSub: "Hover or tap any burgundy & olive stationery card to flip in 3D",
+      flipCue: "Flip Card ↻",
+      sk1Title: "Records Governance",
+      sk1Desc: "Classification schemes, file indexing, and lifecycle retention scheduling.",
+      sk2Title: "Web Architecture",
+      sk2Desc: "Crafting clean, structured HTML5/CSS3 web journals and interactive pages.",
+      sk3Title: "Metadata & Search",
+      sk3Desc: "Organizing bibliographic descriptions for accurate information retrieval.",
+      sk4Title: "Academic Discipline",
+      sk4Desc: "Consistent Dean's List performance, research writing, and team facilitation.",
+      olScript: "Diploma Curriculum",
+      olTitle: "Semester Focus Progression",
+      ol1: "<strong>Foundational Records &amp; Indexing</strong> &mdash; Mastering classification systems, registry workflows, and document preservation standards.",
+      ol2: "<strong>Database &amp; Metadata Architecture</strong> &mdash; Structuring relational schemas, subject cataloging, and precision search retrieval.",
+      ol3: "<strong>Digital Curation &amp; Web Design</strong> &mdash; Building accessible, responsive web portfolios (IMD318) and preparing for industry practicum.",
+      ulScript: "Scholarly Ethos",
+      ulTitle: "Academic Values & Standards",
+      ul1: "Information Integrity — Ensuring accuracy, authenticity, and ethical stewardship in every archival record.",
+      ul2: "Inclusive Accessibility — Designing web interfaces aligned with W3C readability and screen-reader standards.",
+      ul3: "Consistent Scholarship — Upholding Dean's List discipline through structured time management and peer collaboration.",
+      siteMapLabel: "SITE MAP:",
+      footerDates: "CREATED: 12 OCTOBER 2026   LAST UPDATED: 25 NOVEMBER 2026   DATA COLLECTED: OCTOBER – NOVEMBER 2026",
+      footerA11y: "ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER & W3C WAI GUIDELINES",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PERSONAL PORTFOLIO & JOURNAL",
+      backTop: "BACK TO TOP ↑"
+    },
+    bm: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Jurnal Peribadi",
+      contrast: "Kontras",
+      searchPh: "Cari dalam portfolio...",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      issueBadge: "Bab 02 • Kronologi Akademik",
+      heroTitle: "Perjalanan <i>Akademik</i> &amp; Pencapaian",
+      photoMiniBtn: "📷 Foto",
+      eduEmptyUpload: "+ Muat Naik Foto Senja Kampus",
+      polaroidSubTag: "Kampus Segamat",
+      letterFolioTag: "Refleksi Peribadi • Folio 02",
+      letterHeading: "Catatan Senja di Kolej Kediaman",
+      letterEssay: "Setiap kali menyaksikan matahari terbenam dari kolej kediaman, ia mengingatkan saya betapa jauh ketekunan mampu membawa anak jati daerah pesisir pantai ini. Pengajian <strong><u>Pengurusan Maklumat</u></strong> mengajar saya bahawa memelihara ilmu adalah gabungan seni teknikal dan disiplin berterusan.",
+      letterCta: "Teroka Pentas 3D ↓",
+      clickEnvCue: "Klik mohor lilin untuk buka sampul 3D & baca catatan §",
+      mqDean: "PENERIMA ANUGERAH DEKAN",
+      mqDip: "DIPLOMA PENGURUSAN MAKLUMAT",
+      suiteScript: "Pentas Alat Tulis 3D",
+      suiteTitle: "Pencapaian Pendidikan",
+      suiteSub: "Putar pentas alat tulis 3D atau klik mana-mana bingkai Polaroid untuk memuat naik gambar anda",
+      t1Era: "Fasa ke-03 &bull; Pengajian Tinggi &bull; Anugerah Dekan",
+      t1Prog: "Diploma Pengurusan Maklumat (IM<sub>110</sub>)",
+      t1Desc: "Mengkhusus dalam tadbir urus rekod elektronik, pengindeksan metadata, dan seni bina web semantik (IMD318) sambil mengekalkan kecemerlangan Anugerah Dekan setiap semester.",
+      uitmLinkLabel: "Portal Rasmi UiTM Johor ↗",
+      t2Era: "Fasa ke-02 &bull; Sekolah Menengah &bull; Mersing",
+      t2Prog: "Lepasan <abbr title=\"Sijil Pelajaran Malaysia\">SPM</abbr> &amp; Tahun Kokurikulum",
+      t2Desc: "Menamatkan pendidikan menengah di Mersing, Johor — memupuk tabiat belajar berdisiplin, kepimpinan kelab sekolah, dan kemahiran komunikasi berpasukan.",
+      locateSchoolBtn: "Lihat di Peta Johor ↓",
+      t3Era: "Fasa ke-01 &bull; Sekolah Rendah &bull; Mersing",
+      t3Prog: "Asas Awal & Minat Membaca",
+      t3Desc: "Tempat bermulanya minat mendalam terhadap pembacaan, rasa ingin tahu, dan pembelajaran berstruktur — dibentuk oleh guru-guru berdedikasi di Mersing, Johor.",
+      prevBtn: "← Sebelum",
+      nextBtn: "Seterusnya →",
+      mapKicker: "02 • Peta Google Maps Sebenar",
+      mapTitle: "Atlas <i>Kampus</i> &amp; Sekolah Johor",
+      btnRoad: "Peta Jalan",
+      btnSat: "Paparan Satelit",
+      pin0Stage: "03. Kampus Universiti (Semasa)",
+      pin1Stage: "02. Sekolah Menengah",
+      pin2Stage: "01. Sekolah Rendah",
+      gpsLabel: "Koordinat GPS & Daerah",
+      openGmapsBtn: "Buka di Google Maps ↗",
+      hnScript: "Buku Lejar Rasmi",
+      hnHeading: "Matriks Akademik & Mohor",
+      hnSub: "Klik mana-mana bahagian lencana IM110 di halaman kiri untuk mengangkat baris kursus tersebut dalam 3D",
+      crestTitle: "Lencana IM110",
+      crestSub: "Klik bahagian lencana di bawah untuk menyorot rekod kursus dalam 3D",
+      tblTitle: "Matriks Rekod Akademik & Kursus IM110",
+      btnCascade: "Animasi Selak Halaman 3D ↻",
+      btn3DOn: "Efek 3D Jadual: AKTIF",
+      btn3DOff: "Efek 3D Jadual: RATA",
+      thStage: "Peringkat Pengajian",
+      thInst: "Institusi & Bidang Tumpuan",
+      thLoc: "Logo Institusi & Lokasi",
+      thHighlight: "Pencapaian Utama",
+      tdTertiary: "Pengajian Tinggi (IM110)",
+      tdDean1: "Penerima Anugerah Dekan • HTML5/CSS3 Responsif",
+      tdDean2: "Tadbir Urus Arkib & Capaian Maklumat",
+      tdSec: "Menengah",
+      tdSecMile: "Disiplin Akademik & Kerja Berpasukan Kelab",
+      tdPri: "Rendah",
+      tdPriMile: "Asas Literasi & Minat Membaca Awal",
+      tfootNote: "Kronologi Akademik Nur Nabiha Ibtisam Binti Abd Hadi • Mersing ke Segamat, Johor",
+      modScript: "Kemahiran Akademik",
+      modHeading: "Kemahiran Utama Dibina",
+      modSub: "Sentuh atau klik kad burgundy & olive untuk memusingkannya dalam 3D",
+      flipCue: "Pusing Kad ↻",
+      sk1Title: "Tadbir Urus Rekod",
+      sk1Desc: "Skim pengelasan, pengindeksan fail, dan penjadualan kitaran hayat penyimpanan rekod.",
+      sk2Title: "Seni Bina Web",
+      sk2Desc: "Membina jurnal web HTML5/CSS3 yang kemas, berstruktur, dan halaman interaktif.",
+      sk3Title: "Metadata & Carian",
+      sk3Desc: "Menyusun deskripsi bibliografi untuk capaian maklumat yang tepat dan pantas.",
+      sk4Title: "Disiplin Akademik",
+      sk4Desc: "Prestasi Anugerah Dekan yang konsisten, penulisan penyelidikan, dan fasilitasi berpasukan.",
+      olScript: "Kurikulum Diploma",
+      olTitle: "Fasa Pengajian Semester",
+      ol1: "<strong>Asas Rekod &amp; Pengindeksan</strong> &mdash; Menguasai sistem pengelasan fail, aliran kerja registri, dan pemeliharaan dokumen.",
+      ol2: "<strong>Seni Bina Pangkalan Data &amp; Metadata</strong> &mdash; Menyusun skema hubungan data, pengkatalogan subjek, dan carian maklumat tepat.",
+      ol3: "<strong>Kurasi Digital &amp; Reka Bentuk Web</strong> &mdash; Membina portfolio web responsif (IMD318) serta persediaan latihan industri.",
+      ulScript: "Etika Kesepaduan Ilmu",
+      ulTitle: "Nilai & Piawaian Akademik",
+      ul1: "Integriti Maklumat — Memastikan ketepatan, kesahihan, dan amanah etika dalam setiap rekod arkib.",
+      ul2: "Aksesibiliti Inklusif — Mereka bentuk antara muka web yang mematuhi garis panduan pembaca skrin W3C.",
+      ul3: "Kesarjanaan Konsisten — Mengekalkan disiplin Anugerah Dekan melalui pengurusan masa dan kerjasama berpasukan.",
+      siteMapLabel: "PETA LAMAN:",
+      footerDates: "DICIPTA: 12 OKTOBER 2026   KEMAS KINI TERAKHIR: 25 NOVEMBER 2026   DATA DIKUMPUL: OKTOBER – NOVEMBER 2026",
+      footerA11y: "SOKONGAN KEBOLEHAKSESAN: SERASI DENGAN PEMBACA SKRIN NVDA & GARIS PANDUAN W3C WAI",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PORTFOLIO & JURNAL PERIBADI",
+      backTop: "KEMBALI KE ATAS ↑"
+    }
+  };
+
+  function switchSiteLang(lang) {
+    activeLang = lang;
+    try { localStorage.setItem('beyha_site_lang', lang); } catch (e) {}
+
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    document.querySelectorAll('.lang-switch-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    const dict = i18nEdu[lang] || i18nEdu.en;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+
+    const btn3D = document.getElementById('btnToggleTable3D');
+    if (btn3D) btn3D.textContent = isTable3DEnabled ? dict.btn3DOn : dict.btn3DOff;
+
+    const searchInput = document.getElementById('homeSearchInput');
+    if (searchInput && dict.searchPh) searchInput.placeholder = dict.searchPh;
+
+    runLiveClock();
+  }
+
+  (function initSavedLang() {
+    const savedLang = localStorage.getItem('beyha_site_lang');
+    if (savedLang === 'bm' || savedLang === 'en') {
+      switchSiteLang(savedLang);
+    }
+  })();
+
+  const portfolioPages = [
+    { tag: "Home", title: "Home — 3D Interactive Portfolio Stage", url: "../index.html", keys: "home index main start" },
+    { tag: "About", title: "About Me — Nur Nabiha Ibtisam (Beyha)", url: "about.html", keys: "about biodata profile beyha nabiha" },
+    { tag: "Education", title: "Education — UiTM Segamat (IM110) & Sekolah Rendah Teriang", url: "education.html", keys: "education uitm segamat diploma smk ungku husin teriang dean" },
+    { tag: "Experience", title: "Experience — Activities & Leadership", url: "experience.html", keys: "experience leadership skills teamwork activities" },
+    { tag: "Family", title: "Family — Parents & Siblings (Mersing, Johor)", url: "family.html", keys: "family father mother siblings mersing johor raya" },
+    { tag: "Gallery", title: "Gallery — 3D Visual Journal & Photos", url: "gallery.html", keys: "gallery photos portraits campus visual 3d" },
+    { tag: "Contact", title: "Contact — Email, WhatsApp & Socials", url: "contact.html", keys: "contact email phone whatsapp instagram tiktok cloudiebey" },
+    { tag: "Footer", title: "Site Map & Accessibility Information", url: "#footerSiteMap", keys: "sitemap site map peta laman accessibility" }
+  ];
+
+  const sInput = document.getElementById('homeSearchInput');
+  const sDrop = document.getElementById('homeSearchDropdown');
+  const sClear = document.getElementById('homeSearchClear');
+
+  sInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    sClear.style.display = q ? 'block' : 'none';
+    if (!q) { sDrop.classList.remove('open'); return; }
+    const hits = portfolioPages.filter(p => p.title.toLowerCase().includes(q) || p.keys.includes(q));
+    sDrop.innerHTML = hits.length
+      ? hits.map(h => `<a href="${h.url}" class="search-result-link"><small>${h.tag}</small><strong>${h.title}</strong></a>`).join('')
+      : `<div style="padding:12px;font-size:.75rem;color:#3b1016;text-align:center;">No matching page found.</div>`;
+    sDrop.classList.add('open');
+  });
+
+  function clearHomeSearch() {
+    sInput.value = '';
+    sClear.style.display = 'none';
+    sDrop.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.home-search-box')) sDrop.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

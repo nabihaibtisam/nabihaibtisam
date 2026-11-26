@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<title>Gallery | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* ===================================================================== */
+  /* 1. JALUR UTILITY ATAS                                                 */
+  /* ===================================================================== */
+  .top-utility-strip {
+    background: #23070b;
+    border-bottom: 1px solid rgba(201, 166, 107, 0.35);
+    padding: 8px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 50;
+  }
+
+  .clock-date-capsule {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #f3ebe0;
+  }
+
+  .clock-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e7cb94;
+    box-shadow: 0 0 8px #e7cb94;
+    animation: dotBlink 1.5s infinite;
+  }
+
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.75); }
+  }
+
+  #liveDateDisplay { color: #e7cb94; }
+  #liveClockDisplay { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .home-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 330px;
+    min-width: 200px;
+  }
+
+  .home-search-field {
+    display: flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.07);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    border-radius: 999px;
+    padding: 4px 14px;
+  }
+
+  .home-search-field:focus-within {
+    background: rgba(245, 237, 224, 0.14);
+    border-color: #e7cb94;
+  }
+
+  .home-search-field svg {
+    color: #e7cb94;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .home-search-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f3ebe0;
+    font-family: "Jost", sans-serif;
+    font-size: .72rem;
+    letter-spacing: .05em;
+  }
+
+  .home-search-field input::placeholder {
+    color: rgba(231, 203, 148, 0.65);
+  }
+
+  .home-search-clear {
+    background: none;
+    border: none;
+    color: #e7cb94;
+    cursor: pointer;
+    font-size: .85rem;
+    display: none;
+    padding: 0 2px;
+  }
+
+  .home-search-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    background: #f5ede0;
+    border: 1px solid #c9a66b;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    display: none;
+    max-height: 270px;
+    overflow-y: auto;
+    z-index: 99;
+    text-align: left;
+  }
+
+  .home-search-dropdown.open { display: block; }
+
+  .search-result-link {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(59, 16, 22, 0.12);
+  }
+
+  .search-result-link:hover { background: #e8dcc8; }
+
+  .search-result-link small {
+    display: block;
+    font-size: .52rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #7c5828;
+  }
+
+  .search-result-link strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.02rem;
+    color: #3b1016;
+  }
+
+  .lang-pill-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.05);
+    border: 1px solid rgba(201, 166, 107, 0.42);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  .lang-switch-btn {
+    background: transparent;
+    border: none;
+    color: #e7cb94;
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-switch-btn.active {
+    background: #e7cb94;
+    color: #23070b;
+    font-weight: 600;
+  }
+
+  /* ===================================================================== */
+  /* 2. PENTAS LUAR BURGUNDY & LEMBARAN EDITORIAL CREAM                     */
+  /* ===================================================================== */
+  .gallery-outer-stage {
+    position: relative;
+    background:
+      radial-gradient(circle at 12% 25%, rgba(168, 42, 74, 0.28) 0%, transparent 45%),
+      radial-gradient(circle at 88% 65%, rgba(231, 203, 148, 0.12) 0%, transparent 45%),
+      linear-gradient(180deg, #24060c 0%, #320b15 50%, #1d0409 100%);
+    padding: 36px 5% 84px;
+    overflow: hidden;
+  }
+
+  #galleryStarCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .gallery-cream-canvas {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255, 252, 245, 0.9) 0%, transparent 55%),
+      linear-gradient(180deg, #f3ebe0 0%, #eadfce 100%);
+    border: 1px solid rgba(201, 166, 107, 0.65);
+    box-shadow: 0 34px 76px rgba(0, 0, 0, 0.72);
+    padding: 46px 42px 58px;
+  }
+
+  /* ===================================================================== */
+  /* 3. HEADER BESAR "VISUAL" + 4 BULATAN PENUH (STORY HIGHLIGHT CIRCLES)  */
+  /* ===================================================================== */
+  .visual-editorial-masthead {
+    text-align: center;
+    margin-bottom: 34px;
+  }
+
+  .visual-hero-word {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3.4rem, 7vw, 5.4rem);
+    font-weight: 500;
+    letter-spacing: .16em;
+    line-height: 0.95;
+    color: #541020;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+  }
+
+  .visual-sub-banner {
+    display: inline-block;
+    padding: 5px 22px;
+    background: rgba(84, 16, 32, 0.08);
+    border-top: 1px solid rgba(84, 16, 32, 0.22);
+    border-bottom: 1px solid rgba(84, 16, 32, 0.22);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #4a121f;
+    letter-spacing: .06em;
+  }
+
+  /* 4 BULATAN PENUH */
+  .highlight-circles-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin: 0 auto 38px;
+  }
+
+  .story-circle-item {
+    position: relative;
+    width: 142px;
+    height: 142px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #c9a66b;
+    box-shadow:
+      0 0 0 4px #f5ede0,
+      0 0 0 5px rgba(84, 16, 32, 0.25),
+      0 14px 28px rgba(43, 9, 18, 0.22);
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    background: radial-gradient(circle at center, #5c1224 0%, #3a0814 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-circle-item:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow:
+      0 0 0 4px #f5ede0,
+      0 0 0 5px #541020,
+      0 20px 36px rgba(43, 9, 18, 0.32);
+  }
+
+  .circle-split-half {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+  }
+
+  .circle-split-photo {
+    position: relative;
+    background: #3d0916;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .circle-split-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .circle-split-label {
+    background: #541020;
+    color: #f6e4bf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+
+  .circle-full-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .circle-solid-burgundy {
+    background: radial-gradient(circle at 35% 30%, #6b152b 0%, #430a18 100%);
+    color: #f6e4bf;
+    font-family: "Cormorant Garamond", serif;
+    font-size: .95rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px;
+    outline: none;
+    cursor: text;
+  }
+
+  .circle-center-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: .2em;
+    color: #fff6e5;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .circle-mini-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #f6e4bf;
+    padding: 8px;
+    gap: 3px;
+  }
+
+  .circle-mini-prompt span {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .circle-mini-prompt small {
+    font-size: .48rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  .circle-mini-swap {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(29, 7, 13, 0.86);
+    border: 1px solid rgba(246, 228, 191, 0.75);
+    color: #f6e4bf;
+    font-size: .45rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .story-circle-item:hover .circle-mini-swap {
+    opacity: 1;
+  }
+
+  /* ===================================================================== */
+  /* 4. BUTANG PENUKAR MOD: EDITORIAL 3x3 GRID vs 3D ROTATING STAGE        */
+  /* ===================================================================== */
+  .gallery-mode-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 34px;
+  }
+
+  .gmode-btn {
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gmode-btn.active {
+    background: #591122;
+    color: #f6e4bf;
+    border: 1.5px solid #591122;
+    box-shadow: 0 10px 24px rgba(89, 17, 34, 0.32);
+  }
+
+  .gmode-btn:not(.active) {
+    background: rgba(255, 255, 255, 0.5);
+    color: #4a0e1d;
+    border: 1px solid rgba(89, 17, 34, 0.38);
+  }
+
+  .gmode-btn:not(.active):hover {
+    background: rgba(89, 17, 34, 0.1);
+    border-color: #591122;
+  }
+
+  /* ===================================================================== */
+  /* 5. BUTANG TUKAR & PADAM GAMBAR TERUS                                  */
+  /* ===================================================================== */
+  .gal-swap-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 16;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(31, 6, 13, 0.85);
+    border: 1px solid rgba(246, 228, 191, 0.78);
+    color: #f6e4bf;
+    font-family: "Jost", sans-serif;
+    font-size: .5rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    transition: all 0.22s ease;
+  }
+
+  .gal-swap-btn:hover {
+    background: #f6e4bf;
+    color: #23070b;
+    transform: scale(1.06);
+  }
+
+  .gal-clear-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 16;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(31, 6, 13, 0.85);
+    border: 1px solid rgba(246, 228, 191, 0.65);
+    color: #f6e4bf;
+    font-size: .78rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+    transition: all 0.2s ease;
+  }
+
+  .gal-clear-btn.visible { display: inline-flex; }
+  .gal-clear-btn:hover { background: #b91c1c; color: #ffffff; border-color: #ffffff; }
+
+  /* ===================================================================== */
+  /* 6. EDITORIAL 3x3 GRID                                                 */
+  /* ===================================================================== */
+  .editorial-grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .ed-grid-tile {
+    position: relative;
+    background: #f6efe4;
+    border: 1px solid rgba(89, 17, 34, 0.22);
+    padding: 12px;
+    min-height: 315px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12px 28px rgba(43, 9, 18, 0.08);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .ed-grid-tile:hover {
+    transform: translateY(-5px);
+    border-color: #b88c46;
+    box-shadow: 0 20px 38px rgba(43, 9, 18, 0.16);
+  }
+
+  /* TILE 1: POSTER TIPOGRAFI BEY / HA */
+  .beyha-poster-tile {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(201, 166, 107, 0.14) 0%, transparent 65%),
+      #f6efe4;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px 18px;
+    overflow: hidden;
+  }
+
+  .beyha-poster-tile::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(89, 17, 34, 0.18);
+    pointer-events: none;
+  }
+
+  .beyha-big-word {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3rem, 4.5vw, 3.85rem);
+    font-weight: 400;
+    letter-spacing: .16em;
+    color: #541020;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .beyha-mid-sub {
+    font-size: .52rem;
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #7c5828;
+    margin: 14px 0;
+    padding: 6px 0;
+    border-top: 1px solid rgba(89, 17, 34, 0.16);
+    border-bottom: 1px solid rgba(89, 17, 34, 0.16);
+    width: 86%;
+  }
+
+  /* TILE 3: KAD BURGUNDY PENUH DENGAN TEKS MENEGAK "aesthetic" */
+  .burgundy-aesthetic-tile {
+    background: linear-gradient(160deg, #5c1224 0%, #3d0916 100%);
+    border-color: #c9a66b;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .burgundy-vertical-rail {
+    width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .burgundy-vertical-rail span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    letter-spacing: .18em;
+    color: #f6e4bf;
+  }
+
+  /* SLOT GAMBAR BURGUNDY DI DALAM TILE */
+  .gal-photo-well {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 288px;
+    background: radial-gradient(circle at center, #5c1224 0%, #3d0916 100%);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(201, 166, 107, 0.35);
+  }
+
+  .gal-photo-well.compact-well {
+    min-height: 205px;
+    height: 205px;
+  }
+
+  .gal-photo-well img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    transition: transform 0.55s ease;
+  }
+
+  .ed-grid-tile:hover .gal-photo-well img {
+    transform: scale(1.05);
+  }
+
+  .tile-center-watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.85rem;
+    font-weight: 500;
+    letter-spacing: .24em;
+    color: rgba(255, 246, 229, 0.9);
+    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.65);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .gal-empty-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #f3dfb6;
+    transition: background 0.25s ease;
+  }
+
+  .gal-photo-well:hover .gal-empty-prompt {
+    background: rgba(231, 203, 148, 0.1);
+  }
+
+  .gal-plus-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(246, 228, 191, 0.72);
+    background: rgba(231, 203, 148, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #f9ebd0;
+  }
+
+  .gal-empty-prompt strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: .84rem;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #f6e4bf;
+    line-height: 1.45;
+  }
+
+  .gal-empty-prompt small {
+    font-size: .54rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #d7ba86;
+    border-bottom: 1px dashed rgba(231, 203, 148, 0.55);
+    padding-bottom: 2px;
+  }
+
+  .ed-caption-note {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: .82rem;
+    line-height: 1.55;
+    color: #4a1922;
+    margin: 2px 2px 12px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    outline: none;
+    cursor: text;
+  }
+
+  .ed-caption-note:hover,
+  .ed-caption-note:focus {
+    background: rgba(201, 166, 107, 0.22);
+  }
+
+  .ed-tile-heading {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1.12;
+    color: #541020;
+    margin: 4px 4px 12px;
+    outline: none;
+    cursor: text;
+  }
+
+  .burgundy-manifesto-tile {
+    background:
+      radial-gradient(circle at 80% 20%, rgba(231, 203, 148, 0.14) 0%, transparent 55%),
+      linear-gradient(155deg, #591122 0%, #380814 100%);
+    border-color: #c9a66b;
+    color: #f6e4bf;
+    padding: 26px 22px;
+    justify-content: flex-end;
+    text-align: left;
+  }
+
+  .burgundy-manifesto-tile h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.95rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    color: #fff3d6;
+    margin: 0 0 12px;
+    outline: none;
+    cursor: text;
+  }
+
+  .burgundy-manifesto-tile p {
+    font-size: .78rem;
+    line-height: 1.68;
+    color: #e6d2be;
+    margin: 0;
+    outline: none;
+    cursor: text;
+  }
+
+  .burgundy-manifesto-tile h3:hover,
+  .burgundy-manifesto-tile p:hover {
+    background: rgba(231, 203, 148, 0.12);
+    border-radius: 4px;
+  }
+
+  /* ===================================================================== */
+  /* 7. MOD 2: 3D ROTATING STAGE (KARUSEL 3D INTERAKTIF)                   */
+  /* ===================================================================== */
+  .stage-3d-wrapper {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0 18px;
+  }
+
+  .stage-3d-wrapper.active {
+    display: flex;
+  }
+
+  .carousel-3d-viewport {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    perspective: 1350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .carousel-3d-ring {
+    position: relative;
+    width: 215px;
+    height: 285px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .carousel-3d-card {
+    position: absolute;
+    inset: 0;
+    background: #fffaf0;
+    padding: 10px 10px 14px;
+    border: 1.5px solid #c9a66b;
+    border-radius: 10px;
+    box-shadow: 0 22px 46px rgba(43, 9, 18, 0.38);
+    text-align: center;
+    cursor: pointer;
+    backface-visibility: visible;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .carousel-3d-card:hover {
+    box-shadow: 0 28px 56px rgba(89, 17, 34, 0.55);
+  }
+
+  .c3d-img-box {
+    width: 100%;
+    height: 222px;
+    background: radial-gradient(circle at center, #5c1224 0%, #380814 100%);
+    overflow: hidden;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .c3d-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .c3d-empty-label {
+    font-family: "Cormorant Garamond", serif;
+    font-size: .78rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #f3dfb6;
+    padding: 10px;
+  }
+
+  .c3d-caption {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: .92rem;
+    color: #4a0e1d;
+  }
+
+  .stage-3d-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .s3d-ctrl-btn {
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: #591122;
+    color: #f6e4bf;
+    border: 1px solid #c9a66b;
+    font-family: "Jost", sans-serif;
+    font-size: .56rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.22s ease;
+  }
+
+  .s3d-ctrl-btn:hover {
+    background: #380814;
+    transform: translateY(-2px);
+  }
+
+  /* ===================================================================== */
+  /* 8. INLINE FOOTER SITE MAP & METADATA                                  */
+  /* ===================================================================== */
+  footer .footer-sitemap {
+    margin: 14px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e7cb94;
+  }
+
+  footer .footer-sitemap span {
+    color: #c9a66b;
+    font-weight: 500;
+  }
+
+  footer .footer-sitemap a {
+    color: rgba(245, 237, 224, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  footer .footer-sitemap a:hover,
+  footer .footer-sitemap a.on {
+    color: #e7cb94;
+  }
+
+  footer .footer-meta-line {
+    margin: 6px auto;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(231, 203, 148, 0.78);
+    line-height: 1.7;
+  }
+
+  /* ===================================================================== */
+  /* 9. LIGHTBOX PAPARAN PENUH                                             */
+  /* ===================================================================== */
+  .gal-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 4, 8, 0.93);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 24px;
+  }
+
+  .gal-lightbox.open { display: flex; }
+
+  .gal-lightbox-box {
+    background: #f5ede0;
+    border: 2px solid #c9a66b;
+    padding: 16px 16px 22px;
+    max-width: 620px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+  }
+
+  .gal-lightbox-box img {
+    width: 100%;
+    max-height: 68vh;
+    object-fit: contain;
+    background: #23070b;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .gal-lb-title {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #3b1016;
+  }
+
+  .gal-lb-close {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #3b1016;
+    color: #e7cb94;
+    border: 1.5px solid #c9a66b;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .gal-lb-nav {
+    position: absolute;
+    top: 46%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(43, 9, 18, 0.9);
+    color: #f6e4bf;
+    border: 1px solid #c9a66b;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .gal-lb-prev { left: -18px; }
+  .gal-lb-next { right: -18px; }
+
+  @media(max-width: 900px) {
+    .gallery-cream-canvas { padding: 34px 22px 42px; }
+    .editorial-grid-3x3 { grid-template-columns: repeat(2, 1fr); }
+    .story-circle-item { width: 120px; height: 120px; }
+  }
+
+  @media(max-width: 600px) {
+    .top-utility-strip { justify-content: center; }
+    .editorial-grid-3x3 { grid-template-columns: 1fr; }
+    .highlight-circles-row { gap: 14px; }
+    .story-circle-item { width: 105px; height: 105px; }
+    .carousel-3d-ring { width: 175px; height: 240px; }
+    .c3d-img-box { height: 185px; }
+  }
+</style>
+</head>
+<body id="top">
+
+<div class="page-sheet">
+ <!-- JALUR UTILITY ATAS -->
+ <div class="top-utility-strip">
+  <div class="clock-date-capsule" aria-label="Live Clock and Date">
+   <span class="clock-pulse-dot"></span>
+   <span id="liveDateDisplay">SUN, 22 NOV 2026</span>
+   <span>&bull;</span>
+   <span id="liveClockDisplay">02:29:00 PM</span>
+  </div>
+
+  <div class="home-search-box">
+   <div class="home-search-field">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+     <circle cx="11" cy="11" r="8"/>
+     <path d="M21 21l-4.35-4.35"/>
+    </svg>
+    <input type="text" id="homeSearchInput" placeholder="Search portfolio..." autocomplete="off">
+    <button type="button" class="home-search-clear" id="homeSearchClear" onclick="clearHomeSearch()">&times;</button>
+   </div>
+   <div class="home-search-dropdown" id="homeSearchDropdown"></div>
+  </div>
+
+  <div class="lang-pill-group" role="group" aria-label="Language Switcher">
+   <button type="button" class="lang-switch-btn active" data-lang="en" onclick="switchSiteLang('en')">EN</button>
+   <button type="button" class="lang-switch-btn" data-lang="bm" onclick="switchSiteLang('bm')">BM</button>
+  </div>
+ </div>
+
+ <!-- HEADER & NAVIGATION -->
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="../index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast" data-i18n="contrast">Contrast</button>
+   </div>
+  </div>
+  <nav>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" data-i18n="navAbout">About</a>
+   <a href="education.html" data-i18n="navEdu">Education</a>
+   <a href="experience.html" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" class="on" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <!-- =================================================================== -->
+ <!-- PENTAS GALERI UTAMA                                                 -->
+ <!-- =================================================================== -->
+ <main class="gallery-outer-stage">
+  <canvas id="galleryStarCanvas"></canvas>
+
+  <div class="gallery-cream-canvas">
+   <!-- TAJUK UTAMA VISUAL -->
+   <header class="visual-editorial-masthead">
+    <h1 class="visual-hero-word" data-i18n="visualTitle">VISUAL</h1>
+    <div class="visual-sub-banner" data-i18n="visualSub">Curated Aesthetics &amp; Timeless Moments</div>
+   </header>
+
+   <!-- 4 BULATAN PENUH (STORY HIGHLIGHT CIRCLES) -->
+   <section class="highlight-circles-row" aria-label="Featured Story Circles">
+    <!-- BULATAN 1: SPLIT PHOTO + BURGUNDY LABEL (circ1) -->
+    <div class="story-circle-item" onclick="handleCircleClick('circ1')">
+     <input type="file" id="picker_circ1" accept="image/*" style="display:none;" onchange="handleCircleUpload(event, 'circ1')">
+     <button type="button" class="circle-mini-swap" onclick="event.stopPropagation(); triggerCirclePicker('circ1')">&#128247; <span class="swap-lbl">Change</span></button>
+
+     <div class="circle-split-half">
+      <div class="circle-split-photo">
+       <img id="img_circ1" data-base="../images/circ1" alt="Portraits">
+       <div class="circle-mini-prompt" id="prompt_circ1">
+        <span>+</span>
+        <small data-i18n="circPhoto">Photo</small>
+       </div>
+      </div>
+      <div class="circle-split-label" data-i18n-html="circTraits">POR-<br>TRAITS</div>
+     </div>
+    </div>
+
+    <!-- BULATAN 2: FULL PHOTO CIRCLE (circ2) -->
+    <div class="story-circle-item" onclick="handleCircleClick('circ2')">
+     <input type="file" id="picker_circ2" accept="image/*" style="display:none;" onchange="handleCircleUpload(event, 'circ2')">
+     <button type="button" class="circle-mini-swap" onclick="event.stopPropagation(); triggerCirclePicker('circ2')">&#128247; <span class="swap-lbl">Change</span></button>
+
+     <img class="circle-full-photo" id="img_circ2" data-base="../images/circ2" alt="Campus Highlight">
+     <div class="circle-mini-prompt" id="prompt_circ2">
+      <span>+</span>
+      <small data-i18n="circHighlight02">Highlight 02</small>
+     </div>
+    </div>
+
+    <!-- BULATAN 3: SOLID BURGUNDY SERIF CIRCLE -->
+    <div class="story-circle-item circle-solid-burgundy" id="circle3Editable" contenteditable="true" data-gal-note="circle3_txt" data-i18n="circMemories" spellcheck="false">
+     MEMORIES
+    </div>
+
+    <!-- BULATAN 4: PHOTO CIRCLE + BEYHA WATERMARK (circ4) -->
+    <div class="story-circle-item" onclick="handleCircleClick('circ4')">
+     <input type="file" id="picker_circ4" accept="image/*" style="display:none;" onchange="handleCircleUpload(event, 'circ4')">
+     <button type="button" class="circle-mini-swap" onclick="event.stopPropagation(); triggerCirclePicker('circ4')">&#128247; <span class="swap-lbl">Change</span></button>
+
+     <img class="circle-full-photo" id="img_circ4" data-base="../images/circ4" alt="Beyha Archive">
+     <div class="circle-center-watermark">BEYHA</div>
+    </div>
+   </section>
+
+   <!-- BUTANG PENUKAR MOD -->
+   <div class="gallery-mode-switcher" role="tablist">
+    <button type="button" class="gmode-btn active" id="btnModeGrid" onclick="switchGalleryMode('grid')" data-i18n="modeGrid">EDITORIAL 3&times;3 GRID</button>
+    <button type="button" class="gmode-btn" id="btnMode3D" onclick="switchGalleryMode('3d')" data-i18n="mode3D">3D ROTATING STAGE &#8635;</button>
+   </div>
+
+   <!-- ================================================================= -->
+   <!-- MOD 1: EDITORIAL 3x3 GRID                                         -->
+   <!-- ================================================================= -->
+   <section class="editorial-grid-3x3" id="editorialGridSection" aria-label="Editorial 3x3 Photo Grid">
+    <!-- TILE 1: BEY / HA TYPOGRAPHY POSTER -->
+    <article class="ed-grid-tile beyha-poster-tile">
+     <div class="beyha-big-word">BEY</div>
+     <div class="beyha-mid-sub" data-i18n="posterSub">VISUAL STORIES &amp; MOMENTS</div>
+     <div class="beyha-big-word">HA</div>
+    </article>
+
+    <!-- TILE 2: PHOTO 01 (gal1) -->
+    <article class="ed-grid-tile">
+     <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal1')">&#128247; <span class="swap-lbl">Change</span></button>
+     <button type="button" class="gal-clear-btn" id="clear_gal1" onclick="clearGalPhoto('gal1')" title="Remove photo">&times;</button>
+     <input type="file" id="picker_gal1" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal1')">
+
+     <div class="gal-photo-well" onclick="handleGalFrameClick('gal1', 0)">
+      <img class="gal-managed-img" id="img_gal1" data-slot="gal1" data-base="../images/gal1" alt="Portrait">
+      <div class="gal-empty-prompt" id="prompt_gal1">
+       <div class="gal-plus-circle">+</div>
+       <strong data-i18n="p01Title">PHOTO 01: PORTRAIT</strong>
+       <small class="upload-hint-lbl">Click here to upload photo</small>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 3: FULL BURGUNDY TILE + VERTICAL "aesthetic" + PHOTO 02 (gal2) -->
+    <article class="ed-grid-tile burgundy-aesthetic-tile">
+     <div class="burgundy-vertical-rail"><span data-i18n="vertAesthetic">aesthetic</span></div>
+     <div style="position:relative; flex:1;">
+      <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal2')">&#128247; <span class="swap-lbl">Change</span></button>
+      <button type="button" class="gal-clear-btn" id="clear_gal2" onclick="clearGalPhoto('gal2')" title="Remove photo">&times;</button>
+      <input type="file" id="picker_gal2" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal2')">
+
+      <div class="gal-photo-well" onclick="handleGalFrameClick('gal2', 1)">
+       <img class="gal-managed-img" id="img_gal2" data-slot="gal2" data-base="../images/gal2" alt="Aesthetic Shot">
+       <div class="gal-empty-prompt" id="prompt_gal2">
+        <div class="gal-plus-circle">+</div>
+        <strong data-i18n-html="p02Title">PHOTO 02:<br>AESTHETIC SHOT</strong>
+        <small class="upload-hint-lbl">Click here to upload photo</small>
+       </div>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 4: EDITORIAL CAPTION + PHOTO 03 (gal3) -->
+    <article class="ed-grid-tile">
+     <p class="ed-caption-note" contenteditable="true" data-gal-note="note1" spellcheck="false" data-i18n="note1">
+      A visual journal capturing university chapters, quiet study hours, and creative growth.
+     </p>
+
+     <div style="position:relative;">
+      <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal3')">&#128247; <span class="swap-lbl">Change</span></button>
+      <button type="button" class="gal-clear-btn" id="clear_gal3" onclick="clearGalPhoto('gal3')" title="Remove photo">&times;</button>
+      <input type="file" id="picker_gal3" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal3')">
+
+      <div class="gal-photo-well compact-well" onclick="handleGalFrameClick('gal3', 2)">
+       <img class="gal-managed-img" id="img_gal3" data-slot="gal3" data-base="../images/gal3" alt="Campus Life">
+       <div class="gal-empty-prompt" id="prompt_gal3">
+        <div class="gal-plus-circle">+</div>
+        <strong data-i18n="p03Title">PHOTO 03: CAMPUS LIFE</strong>
+        <small class="upload-hint-lbl">Click here to upload photo</small>
+       </div>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 5: PHOTO 04 (gal4) + BEYHA WATERMARK -->
+    <article class="ed-grid-tile">
+     <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal4')">&#128247; <span class="swap-lbl">Change</span></button>
+     <button type="button" class="gal-clear-btn" id="clear_gal4" onclick="clearGalPhoto('gal4')" title="Remove photo">&times;</button>
+     <input type="file" id="picker_gal4" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal4')">
+
+     <div class="gal-photo-well" onclick="handleGalFrameClick('gal4', 3)">
+      <img class="gal-managed-img" id="img_gal4" data-slot="gal4" data-base="../images/gal4" alt="Favourite Moment">
+      <div class="tile-center-watermark">BEYHA</div>
+      <div class="gal-empty-prompt" id="prompt_gal4" style="justify-content: flex-end; padding-bottom: 24px;">
+       <strong data-i18n="p04Title">PHOTO 04: FAVOURITE MOMENT</strong>
+       <small class="upload-hint-lbl">Click here to upload photo</small>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 6: EDITORIAL CAPTION + PHOTO 05 (gal5) -->
+    <article class="ed-grid-tile">
+     <p class="ed-caption-note" contenteditable="true" data-gal-note="note2" spellcheck="false" data-i18n-html="note2">
+      Every frame holds a small story &mdash; thoughtful details, warm tones, and timeless memories.
+     </p>
+
+     <div style="position:relative;">
+      <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal5')">&#128247; <span class="swap-lbl">Change</span></button>
+      <button type="button" class="gal-clear-btn" id="clear_gal5" onclick="clearGalPhoto('gal5')" title="Remove photo">&times;</button>
+      <input type="file" id="picker_gal5" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal5')">
+
+      <div class="gal-photo-well compact-well" onclick="handleGalFrameClick('gal5', 4)">
+       <img class="gal-managed-img" id="img_gal5" data-slot="gal5" data-base="../images/gal5" alt="Everyday Detail">
+       <div class="gal-empty-prompt" id="prompt_gal5">
+        <div class="gal-plus-circle">+</div>
+        <strong data-i18n="p05Title">PHOTO 05: EVERYDAY DETAIL</strong>
+        <small class="upload-hint-lbl">Click here to upload photo</small>
+       </div>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 7: PHOTO 06 (gal6) -->
+    <article class="ed-grid-tile">
+     <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal6')">&#128247; <span class="swap-lbl">Change</span></button>
+     <button type="button" class="gal-clear-btn" id="clear_gal6" onclick="clearGalPhoto('gal6')" title="Remove photo">&times;</button>
+     <input type="file" id="picker_gal6" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal6')">
+
+     <div class="gal-photo-well" onclick="handleGalFrameClick('gal6', 5)">
+      <img class="gal-managed-img" id="img_gal6" data-slot="gal6" data-base="../images/gal6" alt="Golden Hour">
+      <div class="gal-empty-prompt" id="prompt_gal6">
+       <div class="gal-plus-circle">+</div>
+       <strong data-i18n="p06Title">PHOTO 06: GOLDEN HOUR</strong>
+       <small class="upload-hint-lbl">Click here to upload photo</small>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 8: HEADING "New Chapter" + PHOTO 07 (gal7) -->
+    <article class="ed-grid-tile">
+     <h2 class="ed-tile-heading" contenteditable="true" data-gal-note="tile8_head" spellcheck="false" data-i18n-html="tile8Head">
+      New<br>Chapter
+     </h2>
+
+     <div style="position:relative;">
+      <button type="button" class="gal-swap-btn" onclick="triggerGalPicker('gal7')">&#128247; <span class="swap-lbl">Change</span></button>
+      <button type="button" class="gal-clear-btn" id="clear_gal7" onclick="clearGalPhoto('gal7')" title="Remove photo">&times;</button>
+      <input type="file" id="picker_gal7" accept="image/*" style="display:none;" onchange="handleGalUpload(event, 'gal7')">
+
+      <div class="gal-photo-well compact-well" onclick="handleGalFrameClick('gal7', 6)">
+       <img class="gal-managed-img" id="img_gal7" data-slot="gal7" data-base="../images/gal7" alt="Weekend Escape">
+       <div class="gal-empty-prompt" id="prompt_gal7">
+        <div class="gal-plus-circle">+</div>
+        <strong data-i18n="p07Title">PHOTO 07: WEEKEND ESCAPE</strong>
+        <small class="upload-hint-lbl">Click here to upload photo</small>
+       </div>
+      </div>
+     </div>
+    </article>
+
+    <!-- TILE 9: BURGUNDY EDITORIAL MANIFESTO CARD -->
+    <article class="ed-grid-tile burgundy-manifesto-tile">
+     <h3 contenteditable="true" data-gal-note="tile9_head" spellcheck="false">BEYHA</h3>
+     <p contenteditable="true" data-gal-note="tile9_body" spellcheck="false" data-i18n-html="tile9Body">
+      Curating quiet moments, coastal breezes of Mersing, and creative chapters &mdash; preserving memories that speak without words and remain timeless.
+     </p>
+    </article>
+   </section>
+
+   <!-- ================================================================= -->
+   <!-- MOD 2: 3D ROTATING STAGE (KARUSEL 3D)                             -->
+   <!-- ================================================================= -->
+   <section class="stage-3d-wrapper" id="stage3DSection" aria-label="3D Rotating Photo Stage">
+    <div class="carousel-3d-viewport">
+     <div class="carousel-3d-ring" id="carousel3DRing"></div>
+    </div>
+
+    <div class="stage-3d-controls">
+     <button type="button" class="s3d-ctrl-btn" id="btnPrev3D" onclick="rotateStage3D(-1)" data-i18n="btnPrev3D">&larr; Prev</button>
+     <button type="button" class="s3d-ctrl-btn" id="btnAutoSpin" onclick="toggleAutoSpin()">Pause Rotation</button>
+     <button type="button" class="s3d-ctrl-btn" id="btnNext3D" onclick="rotateStage3D(1)" data-i18n="btnNext3D">Next &rarr;</button>
+    </div>
+   </section>
+  </div>
+ </main>
+
+ <!-- FOOTER WITH INLINE SITE MAP & METADATA -->
+ <footer id="footerSiteMap">
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <div class="footer-sitemap" aria-label="Site Map">
+   <span data-i18n="siteMapLabel">SITE MAP:</span>
+   <a href="../index.html" data-i18n="navHome">HOME</a>
+   <a href="about.html" data-i18n="navAbout">ABOUT</a>
+   <a href="education.html" data-i18n="navEdu">EDUCATION</a>
+   <a href="experience.html" data-i18n="navExp">EXPERIENCE</a>
+   <a href="family.html" data-i18n="navFam">FAMILY</a>
+   <a href="gallery.html" class="on" data-i18n="navGal">GALLERY</a>
+   <a href="contact.html" data-i18n="navCon">CONTACT</a>
+  </div>
+
+  <p class="footer-meta-line" data-i18n-html="footerDates">
+   CREATED: 12 OCTOBER 2026 &nbsp;&nbsp; LAST UPDATED: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA COLLECTED: OCTOBER &ndash; NOVEMBER 2026
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerA11y">
+   ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER &amp; W3C WAI GUIDELINES
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerCopy">
+   &copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PERSONAL PORTFOLIO &amp; JOURNAL
+  </p>
+
+  <p style="margin-top: 10px;"><a href="#top" data-i18n="backTop">BACK TO TOP &uarr;</a></p>
+ </footer>
+</div>
+
+<!-- LIGHTBOX PAPARAN PENUH -->
+<div class="gal-lightbox" id="galLightbox" onclick="if(event.target===this) closeGalLightbox()">
+ <div class="gal-lightbox-box">
+  <button type="button" class="gal-lb-close" onclick="closeGalLightbox()" aria-label="Close">&times;</button>
+  <button type="button" class="gal-lb-nav gal-lb-prev" onclick="stepGalLightbox(-1)" aria-label="Previous">&#10094;</button>
+  <button type="button" class="gal-lb-nav gal-lb-next" onclick="stepGalLightbox(1)" aria-label="Next">&#10095;</button>
+  <img id="galLbImg" src="" alt="">
+  <div class="gal-lb-title" id="galLbTitle"></div>
+ </div>
+</div>
+
+<script>
+  // =====================================================================
+  // 1. DIRECT PHOTO UPLOAD & AUTO-SAVE (HIGHLIGHT CIRCLES + 3x3 GRID)
+  // =====================================================================
+  const GAL_PHOTO_PREFIX = 'beyha_gal_photo_';
+  const GAL_NOTE_PREFIX = 'beyha_gal_note_';
+  const galMeta = [
+    { id: 'gal1', en: 'Photo 01 • Portrait', bm: 'Foto 01 • Potret' },
+    { id: 'gal2', en: 'Photo 02 • Aesthetic Shot', bm: 'Foto 02 • Shot Estetika' },
+    { id: 'gal3', en: 'Photo 03 • Campus Life', bm: 'Foto 03 • Kehidupan Kampus' },
+    { id: 'gal4', en: 'Photo 04 • Favourite Moment', bm: 'Foto 04 • Momen Kegemaran' },
+    { id: 'gal5', en: 'Photo 05 • Everyday Detail', bm: 'Foto 05 • Perincian Harian' },
+    { id: 'gal6', en: 'Photo 06 • Golden Hour', bm: 'Foto 06 • Waktu Keemasan' },
+    { id: 'gal7', en: 'Photo 07 • Weekend Escape', bm: 'Foto 07 • Percutian Hujung Minggu' }
+  ];
+  let currentGalLbIndex = 0;
+  let activeLang = 'en';
+
+  function triggerGalPicker(slotId) {
+    const input = document.getElementById('picker_' + slotId);
+    if (input) input.click();
+  }
+
+  function triggerCirclePicker(circId) {
+    const input = document.getElementById('picker_' + circId);
+    if (input) input.click();
+  }
+
+  function compressGalleryImage(file, maxDim, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const tempImg = new Image();
+      tempImg.onload = function () {
+        let w = tempImg.width;
+        let h = tempImg.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(tempImg, 0, 0, w, h);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      tempImg.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // --- CIRCLE HIGHLIGHTS ---
+  function showCircleImage(circId, url) {
+    const img = document.getElementById('img_' + circId);
+    const promptEl = document.getElementById('prompt_' + circId);
+    if (img) {
+      img.src = url;
+      img.style.display = 'block';
+    }
+    if (promptEl) promptEl.style.display = 'none';
+  }
+
+  function handleCircleUpload(event, circId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    compressGalleryImage(file, 450, 0.8, function (dataUrl) {
+      try { localStorage.setItem(GAL_PHOTO_PREFIX + circId, dataUrl); } catch (e) {}
+      showCircleImage(circId, dataUrl);
+    });
+    event.target.value = '';
+  }
+
+  function handleCircleClick(circId) {
+    const img = document.getElementById('img_' + circId);
+    if (!img || img.style.display === 'none' || !img.src) {
+      triggerCirclePicker(circId);
+      return;
+    }
+    const dict = i18nData[activeLang] || i18nData.en;
+    document.getElementById('galLbImg').src = img.src;
+    document.getElementById('galLbTitle').textContent = dict.visualHighlightLb;
+    document.getElementById('galLightbox').classList.add('open');
+  }
+
+  // --- GRID SLOTS ---
+  function showGalImage(slotId, url, isCustom) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) {
+      img.src = url;
+      img.style.display = 'block';
+    }
+    if (promptEl) promptEl.style.display = 'none';
+    if (clearBtn) {
+      clearBtn.classList.toggle('visible', Boolean(isCustom));
+    }
+    rebuild3DCarousel();
+  }
+
+  function showGalEmptyPrompt(slotId) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) {
+      img.removeAttribute('src');
+      img.style.display = 'none';
+    }
+    if (promptEl) promptEl.style.display = 'flex';
+    if (clearBtn) clearBtn.classList.remove('visible');
+    rebuild3DCarousel();
+  }
+
+  function probeLocalFolderImage(slotId, base, isCircle) {
+    const exts = ['.jpeg', '.jpg', '.png', '.webp'];
+    let idx = 0;
+
+    function tryNext() {
+      if (idx >= exts.length) {
+        if (!isCircle) showGalEmptyPrompt(slotId);
+        return;
+      }
+      const candidate = base + exts[idx];
+      idx++;
+      const tester = new Image();
+      tester.onload = function () {
+        if (isCircle) showCircleImage(slotId, candidate);
+        else showGalImage(slotId, candidate, false);
+      };
+      tester.onerror = tryNext;
+      tester.src = candidate;
+    }
+
+    tryNext();
+  }
+
+  function handleGalUpload(event, slotId) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    compressGalleryImage(file, 840, 0.8, function (dataUrl) {
+      try {
+        localStorage.setItem(GAL_PHOTO_PREFIX + slotId, dataUrl);
+        showGalImage(slotId, dataUrl, true);
+      } catch (err) {
+        compressGalleryImage(file, 580, 0.68, function (smallerUrl) {
+          try {
+            localStorage.setItem(GAL_PHOTO_PREFIX + slotId, smallerUrl);
+          } catch (e2) {}
+          showGalImage(slotId, smallerUrl, true);
+        });
+      }
+    });
+    event.target.value = '';
+  }
+
+  function clearGalPhoto(slotId) {
+    localStorage.removeItem(GAL_PHOTO_PREFIX + slotId);
+    const img = document.getElementById('img_' + slotId);
+    const base = img ? img.getAttribute('data-base') : null;
+    if (base) {
+      probeLocalFolderImage(slotId, base, false);
+    } else {
+      showGalEmptyPrompt(slotId);
+    }
+  }
+
+  function openGalLightboxByIndex(idx) {
+    const meta = galMeta[idx];
+    const img = document.getElementById('img_' + meta.id);
+    if (!img || img.style.display === 'none' || !img.src) return false;
+
+    currentGalLbIndex = idx;
+    document.getElementById('galLbImg').src = img.src;
+    document.getElementById('galLbTitle').textContent = meta[activeLang] || meta.en;
+    document.getElementById('galLightbox').classList.add('open');
+    return true;
+  }
+
+  function handleGalFrameClick(slotId, idx) {
+    const img = document.getElementById('img_' + slotId);
+    if (!img || img.style.display === 'none' || !img.src) {
+      triggerGalPicker(slotId);
+      return;
+    }
+    openGalLightboxByIndex(idx);
+  }
+
+  function stepGalLightbox(dir) {
+    for (let step = 1; step <= galMeta.length; step++) {
+      const nextIdx = (currentGalLbIndex + dir * step + galMeta.length) % galMeta.length;
+      if (openGalLightboxByIndex(nextIdx)) return;
+    }
+  }
+
+  function closeGalLightbox() {
+    document.getElementById('galLightbox').classList.remove('open');
+  }
+
+  // =====================================================================
+  // 2. MODE SWITCHER (EDITORIAL 3x3 GRID vs 3D ROTATING STAGE)
+  // =====================================================================
+  let stageAngle = 0;
+  let autoSpinActive = true;
+  let autoSpinTimer = null;
+
+  function switchGalleryMode(mode) {
+    const isGrid = mode === 'grid';
+    document.getElementById('btnModeGrid').classList.toggle('active', isGrid);
+    document.getElementById('btnMode3D').classList.toggle('active', !isGrid);
+    document.getElementById('editorialGridSection').style.display = isGrid ? 'grid' : 'none';
+    document.getElementById('stage3DSection').classList.toggle('active', !isGrid);
+
+    if (!isGrid) {
+      rebuild3DCarousel();
+      startAutoSpin();
+    } else {
+      stopAutoSpin();
+    }
+  }
+
+  function rebuild3DCarousel() {
+    const ring = document.getElementById('carousel3DRing');
+    if (!ring) return;
+    const total = galMeta.length;
+    const stepDeg = 360 / total;
+    const radius = window.innerWidth < 600 ? 235 : 315;
+    const dict = i18nData[activeLang] || i18nData.en;
+
+    ring.innerHTML = galMeta.map((item, idx) => {
+      const img = document.getElementById('img_' + item.id);
+      const hasPhoto = img && img.style.display !== 'none' && img.src;
+      const angle = idx * stepDeg;
+      const label = item[activeLang] || item.en;
+
+      return `
+        <div class="carousel-3d-card"
+             style="transform: rotateY(${angle}deg) translateZ(${radius}px);"
+             onclick="handleGalFrameClick('${item.id}', ${idx})">
+          <div class="c3d-img-box">
+            ${hasPhoto
+              ? `<img src="${img.src}" alt="${label}">`
+              : `<div class="c3d-empty-label">${label}<br><small style="opacity:.75;">${dict.clickUploadShort}</small></div>`}
+          </div>
+          <div class="c3d-caption">${label}</div>
+        </div>
+      `;
+    }).join('');
+    applyRingRotation();
+  }
+
+  function applyRingRotation() {
+    const ring = document.getElementById('carousel3DRing');
+    if (ring) ring.style.transform = `rotateY(${stageAngle}deg)`;
+  }
+
+  function rotateStage3D(dir) {
+    stageAngle -= dir * (360 / galMeta.length);
+    applyRingRotation();
+  }
+
+  function startAutoSpin() {
+    stopAutoSpin();
+    if (!autoSpinActive) return;
+    autoSpinTimer = setInterval(() => {
+      stageAngle -= 0.45;
+      applyRingRotation();
+    }, 30);
+  }
+
+  function stopAutoSpin() {
+    if (autoSpinTimer) {
+      clearInterval(autoSpinTimer);
+      autoSpinTimer = null;
+    }
+  }
+
+  function toggleAutoSpin() {
+    autoSpinActive = !autoSpinActive;
+    const btn = document.getElementById('btnAutoSpin');
+    const dict = i18nData[activeLang] || i18nData.en;
+    btn.textContent = autoSpinActive ? dict.pauseRot : dict.resumeRot;
+    if (autoSpinActive) startAutoSpin();
+    else stopAutoSpin();
+  }
+
+  // =====================================================================
+  // 3. BINTANG HALUS BERKILAU DI LATAR BELAKANG BURGUNDY
+  // =====================================================================
+  (function () {
+    const canvas = document.getElementById('galleryStarCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 65; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.9 + 0.6,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.03 + 0.01
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        s.phase += s.speed;
+        const alpha = 0.25 + (Math.sin(s.phase) + 1) * 0.35;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(231, 203, 148, ${alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // =====================================================================
+  // 4. LIVE CLOCK & DATE
+  // =====================================================================
+  function runLiveClock() {
+    const now = new Date();
+    const locales = { en: 'en-GB', bm: 'ms-MY' };
+    document.getElementById('liveDateDisplay').textContent = now.toLocaleDateString(locales[activeLang] || 'en-GB', {
+      weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+    }).toUpperCase();
+    document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    });
+  }
+  setInterval(runLiveClock, 1000);
+  runLiveClock();
+
+  // =====================================================================
+  // 5. FULL BILINGUAL LANGUAGE SWITCHER (EN / BM)
+  // =====================================================================
+  const i18nData = {
+    en: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Personal Journal",
+      contrast: "Contrast",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      searchPh: "Search portfolio...",
+      visualTitle: "VISUAL",
+      visualSub: "Curated Aesthetics & Timeless Moments",
+      circPhoto: "Photo",
+      circTraits: "POR-<br>TRAITS",
+      circHighlight02: "Highlight 02",
+      circMemories: "MEMORIES",
+      visualHighlightLb: "Visual Highlight",
+      modeGrid: "EDITORIAL 3×3 GRID",
+      mode3D: "3D ROTATING STAGE ↻",
+      posterSub: "VISUAL STORIES & MOMENTS",
+      p01Title: "PHOTO 01: PORTRAIT",
+      p02Title: "PHOTO 02:<br>AESTHETIC SHOT",
+      p03Title: "PHOTO 03: CAMPUS LIFE",
+      p04Title: "PHOTO 04: FAVOURITE MOMENT",
+      p05Title: "PHOTO 05: EVERYDAY DETAIL",
+      p06Title: "PHOTO 06: GOLDEN HOUR",
+      p07Title: "PHOTO 07: WEEKEND ESCAPE",
+      vertAesthetic: "aesthetic",
+      note1: "A visual journal capturing university chapters, quiet study hours, and creative growth.",
+      note2: "Every frame holds a small story &mdash; thoughtful details, warm tones, and timeless memories.",
+      tile8Head: "New<br>Chapter",
+      tile9Body: "Curating quiet moments, coastal breezes of Mersing, and creative chapters &mdash; preserving memories that speak without words and remain timeless.",
+      swapLabel: "Change",
+      uploadHint: "Click here to upload photo",
+      clickUploadShort: "Click to upload",
+      btnPrev3D: "← Prev",
+      btnNext3D: "Next →",
+      pauseRot: "Pause Rotation",
+      resumeRot: "Resume Rotation",
+      siteMapLabel: "SITE MAP:",
+      footerDates: "CREATED: 12 OCTOBER 2026 &nbsp;&nbsp; LAST UPDATED: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA COLLECTED: OCTOBER &ndash; NOVEMBER 2026",
+      footerA11y: "ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER & W3C WAI GUIDELINES",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PERSONAL PORTFOLIO & JOURNAL",
+      backTop: "BACK TO TOP ↑"
+    },
+    bm: {
+      brandSub: "Est. 2026 • Portfolio",
+      logoTag: "Jurnal Peribadi",
+      contrast: "Kontras",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      searchPh: "Cari dalam portfolio...",
+      visualTitle: "VISUAL",
+      visualSub: "Estetika Terpilih & Momen Abadi",
+      circPhoto: "Foto",
+      circTraits: "POR-<br>TRET",
+      circHighlight02: "Sorotan 02",
+      circMemories: "KENANGAN",
+      visualHighlightLb: "Sorotan Visual",
+      modeGrid: "GRID EDITORIAL 3×3",
+      mode3D: "PENTAS BERPUTAR 3D ↻",
+      posterSub: "KISAH VISUAL & MOMEN",
+      p01Title: "FOTO 01: POTRET",
+      p02Title: "FOTO 02:<br>SHOT ESTETIKA",
+      p03Title: "FOTO 03: KEHIDUPAN KAMPUS",
+      p04Title: "FOTO 04: MOMEN KEGEMARAN",
+      p05Title: "FOTO 05: PERINCIAN HARIAN",
+      p06Title: "FOTO 06: WAKTU KEEMASAN",
+      p07Title: "FOTO 07: PERCUTIAN HUJUNG MINGGU",
+      vertAesthetic: "estetika",
+      note1: "Jurnal visual yang merakam bab pengajian di universiti, saat ulang kaji yang tenang, dan perkembangan kreatif.",
+      note2: "Setiap bingkai menyimpan kisah kecil &mdash; perincian bermakna, rona hangat, dan kenangan yang abadi.",
+      tile8Head: "Bab<br>Baharu",
+      tile9Body: "Menghimpunkan detik tenang, bayu pantai Mersing, dan bab kreatif &mdash; mengabadikan kenangan yang berbicara tanpa kata serta kekal abadi.",
+      swapLabel: "Tukar",
+      uploadHint: "Klik di sini untuk muat naik gambar",
+      clickUploadShort: "Klik untuk muat naik",
+      btnPrev3D: "← Sebelum",
+      btnNext3D: "Seterusnya →",
+      pauseRot: "Henti Putaran",
+      resumeRot: "Sambung Putaran",
+      siteMapLabel: "PETA LAMAN:",
+      footerDates: "DICIPTA: 12 OKTOBER 2026 &nbsp;&nbsp; KEMAS KINI TERAKHIR: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA DIKUMPUL: OKTOBER &ndash; NOVEMBER 2026",
+      footerA11y: "SOKONGAN KEBOLEHAKSESAN: SERASI DENGAN PEMBACA SKRIN NVDA & GARIS PANDUAN W3C WAI",
+      footerCopy: "© 2026 NUR NABIHA IBTISAM BINTI ABD HADI • PORTFOLIO & JURNAL PERIBADI",
+      backTop: "KEMBALI KE ATAS ↑"
+    }
+  };
+
+  function switchSiteLang(lang) {
+    activeLang = lang;
+    try { localStorage.setItem('beyha_site_lang', lang); } catch (e) {}
+
+    document.documentElement.lang = lang === 'bm' ? 'ms' : 'en';
+    document.querySelectorAll('.lang-switch-btn').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    const dict = i18nData[lang] || i18nData.en;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const noteKey = el.getAttribute('data-gal-note');
+      if (noteKey && localStorage.getItem(GAL_NOTE_PREFIX + noteKey)) return;
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.textContent = dict[k];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const noteKey = el.getAttribute('data-gal-note');
+      if (noteKey && localStorage.getItem(GAL_NOTE_PREFIX + noteKey)) return;
+      const k = el.getAttribute('data-i18n-html');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+
+    document.querySelectorAll('.swap-lbl').forEach(el => {
+      el.textContent = dict.swapLabel;
+    });
+    document.querySelectorAll('.upload-hint-lbl').forEach(el => {
+      el.textContent = dict.uploadHint;
+    });
+
+    const spinBtn = document.getElementById('btnAutoSpin');
+    if (spinBtn) {
+      spinBtn.textContent = autoSpinActive ? dict.pauseRot : dict.resumeRot;
+    }
+
+    const searchInput = document.getElementById('homeSearchInput');
+    if (searchInput) searchInput.placeholder = dict.searchPh;
+
+    rebuild3DCarousel();
+    runLiveClock();
+  }
+
+  // Muatkan gambar tersimpan, nota editorial & pilihan bahasa semasa halaman dibuka
+  (function initGalleryPage() {
+    ['circ1', 'circ2', 'circ4'].forEach(cid => {
+      const saved = localStorage.getItem(GAL_PHOTO_PREFIX + cid);
+      const img = document.getElementById('img_' + cid);
+      if (saved) {
+        showCircleImage(cid, saved);
+      } else if (img) {
+        probeLocalFolderImage(cid, img.getAttribute('data-base'), true);
+      }
+    });
+
+    document.querySelectorAll('.gal-managed-img').forEach(img => {
+      const slotId = img.getAttribute('data-slot');
+      const saved = localStorage.getItem(GAL_PHOTO_PREFIX + slotId);
+      if (saved) {
+        showGalImage(slotId, saved, true);
+      } else {
+        probeLocalFolderImage(slotId, img.getAttribute('data-base'), false);
+      }
+    });
+
+    document.querySelectorAll('[data-gal-note]').forEach(el => {
+      const key = GAL_NOTE_PREFIX + el.getAttribute('data-gal-note');
+      const savedNote = localStorage.getItem(key);
+      if (savedNote) el.textContent = savedNote;
+
+      el.addEventListener('input', () => {
+        localStorage.setItem(key, el.textContent);
+      });
+    });
+
+    const savedLang = localStorage.getItem('beyha_site_lang');
+    if (savedLang === 'bm' || savedLang === 'en') {
+      switchSiteLang(savedLang);
+    }
+  })();
+
+  // =====================================================================
+  // 6. SEARCH BAR FUNCTIONALITY
+  // =====================================================================
+  const portfolioPages = [
+    { tag: "Home", title: "Home — 3D Interactive Portfolio Stage", url: "../index.html", keys: "home index main start" },
+    { tag: "About", title: "About Me — Biodata, Hobbies, Spotify & Photos", url: "about.html", keys: "about biodata hobbies music netflix badminton spotify photos beyha" },
+    { tag: "Education", title: "Education — UiTM Segamat (IM110)", url: "education.html", keys: "education uitm segamat diploma school academic" },
+    { tag: "Experience", title: "Experience — Pejabat Daerah Mersing & Outreach", url: "experience.html", keys: "experience internship mersing aplus outreach ldk booth" },
+    { tag: "Family", title: "Family — Parents, Siblings & Memories Storybook", url: "family.html", keys: "family father mother siblings mersing johor raya syawal memories" },
+    { tag: "Gallery", title: "Gallery — Visual Highlights & Editorial 3×3 Grid", url: "gallery.html", keys: "gallery photos portraits aesthetic campus visual 3d" },
+    { tag: "Contact", title: "Contact — 3D iPhone & Socials", url: "contact.html", keys: "contact email phone whatsapp instagram tiktok cloudiebey" },
+    { tag: "Footer", title: "Site Map & Accessibility Information", url: "#footerSiteMap", keys: "sitemap site map peta laman accessibility" }
+  ];
+
+  const sInput = document.getElementById('homeSearchInput');
+  const sDrop = document.getElementById('homeSearchDropdown');
+  const sClear = document.getElementById('homeSearchClear');
+
+  sInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+    sClear.style.display = q ? 'block' : 'none';
+    if (!q) {
+      sDrop.classList.remove('open');
+      return;
+    }
+    const hits = portfolioPages.filter(p =>
+      p.title.toLowerCase().includes(q) || p.keys.includes(q)
+    );
+    sDrop.innerHTML = hits.length
+      ? hits.map(h => `<a href="${h.url}" class="search-result-link"><small>${h.tag}</small><strong>${h.title}</strong></a>`).join('')
+      : `<div style="padding:12px;font-size:.75rem;color:#3b1016;text-align:center;">No matching page found.</div>`;
+    sDrop.classList.add('open');
+  });
+
+  function clearHomeSearch() {
+    sInput.value = '';
+    sClear.style.display = 'none';
+    sDrop.classList.remove('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.home-search-box')) sDrop.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

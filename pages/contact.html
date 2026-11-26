@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nur Nabiha Ibtisam Binti Abd Hadi">
+<title>Contact | Beyha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  :root {
+    --con-burgundy: #3b1016;
+    --con-burgundy-deep: #24070b;
+    --con-parchment: #efe5d5;
+    --con-champagne: #f5ede0;
+    --con-olive: #424938;
+    --con-olive-dark: #2f3527;
+    --con-gold: #c9a66b;
+    --con-gold-light: #e7cb94;
+    --con-ink: #241214;
+  }
+
+  /* ===================================================================== */
+  /* BAR UTILITI ATAS (LIVE CLOCK, SEARCH BAR & EN/BM SWITCHER)            */
+  /* ===================================================================== */
+  .utility-strip {
+    background: var(--con-burgundy-deep);
+    color: var(--con-champagne);
+    border-bottom: 1px solid rgba(201, 166, 107, 0.4);
+    padding: 8px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-family: "Jost", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .util-clock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--con-gold-light);
+    white-space: nowrap;
+  }
+
+  .util-clock-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+    display: inline-block;
+  }
+
+  .util-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .util-search-form {
+    display: flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.08);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    border-radius: 999px;
+    padding: 3px 6px 3px 12px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .util-search-form:focus-within {
+    border-color: var(--con-gold-light);
+    background: rgba(245, 237, 224, 0.14);
+  }
+
+  .util-search-form input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--con-champagne);
+    font-family: "Jost", sans-serif;
+    font-size: 0.72rem;
+    width: 155px;
+  }
+
+  .util-search-form input::placeholder {
+    color: rgba(245, 237, 224, 0.6);
+  }
+
+  .util-search-form button {
+    background: var(--con-gold);
+    color: var(--con-burgundy-deep);
+    border: none;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-family: "Jost", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .util-search-form button:hover {
+    background: var(--con-gold-light);
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(245, 237, 224, 0.08);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    border-radius: 999px;
+    padding: 2px;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--con-champagne);
+    font-family: "Jost", sans-serif;
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-btn.active {
+    background: var(--con-gold);
+    color: var(--con-burgundy-deep);
+    font-weight: 600;
+  }
+
+  .contact-canvas {
+    background: radial-gradient(circle at 50% 25%, #424938 0%, #2b3123 100%);
+    padding: 36px 4% 85px;
+    position: relative;
+  }
+
+  .contact-sheet {
+    max-width: 1020px;
+    margin: 0 auto;
+    background: var(--con-parchment);
+    border: 1px solid rgba(201, 166, 107, 0.55);
+    box-shadow: 0 28px 65px rgba(20, 6, 9, 0.55);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ANIMASI SCROLL, LEVITATION, FOIL SHIMMER & MARQUEE */
+  .reveal-sec {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-sec.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes botanicalSway {
+    0%, 100% { transform: rotate(0deg) translateY(0px); }
+    50% { transform: rotate(3deg) translateY(-7px); }
+  }
+
+  @keyframes botanicalSwayAlt {
+    0%, 100% { transform: scaleX(-1) rotate(0deg) translateY(0px); }
+    50% { transform: scaleX(-1) rotate(3deg) translateY(-7px); }
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes pulseSeal {
+    0%, 100% { box-shadow: 0 10px 24px rgba(36, 7, 11, 0.45), 0 0 0 0 rgba(201, 166, 107, 0.5); }
+    50% { box-shadow: 0 14px 30px rgba(36, 7, 11, 0.55), 0 0 0 10px rgba(201, 166, 107, 0); }
+  }
+
+  @keyframes foilSweep {
+    0% { transform: translateX(-150%) rotate(25deg); }
+    45%, 100% { transform: translateX(250%) rotate(25deg); }
+  }
+
+  @keyframes marqueeRun {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* GOLD WAX SEAL */
+  .gold-seal {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, #edd39a 0%, #c9a66b 55%, #8f6b29 100%);
+    border: 3px solid #e2c484;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #462f0b;
+    font-size: 1rem;
+    animation: pulseSeal 3s infinite;
+  }
+
+  /* 1. HERO + OVERLAPPING LUXURY CALLING CARD */
+  .con-hero {
+    background: radial-gradient(circle at 50% 40%, #521720 0%, var(--con-burgundy) 65%, var(--con-burgundy-deep) 100%);
+    color: var(--con-champagne);
+    padding: 68px 7% 130px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--con-gold);
+  }
+
+  .botanical-svg {
+    position: absolute;
+    width: 250px;
+    height: auto;
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 1;
+  }
+
+  .botanical-left {
+    top: -12px;
+    left: -20px;
+    animation: botanicalSway 6.8s ease-in-out infinite;
+  }
+
+  .botanical-right {
+    bottom: 20px;
+    right: -20px;
+    animation: botanicalSwayAlt 7.4s ease-in-out infinite;
+  }
+
+  .con-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .con-top-kicker {
+    display: block;
+    font-size: .62rem;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    margin-bottom: 8px;
+  }
+
+  .con-hero-name {
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(4.5rem, 9vw, 6.8rem);
+    font-weight: 400;
+    color: var(--con-champagne);
+    line-height: 0.92;
+    margin: 4px 0 12px;
+    text-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+  }
+
+  .con-hero-tagline {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.3vw, 1.55rem);
+    color: var(--con-gold-light);
+    margin: 0 0 14px;
+  }
+
+  .con-hero-meta {
+    font-size: .64rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(245, 237, 224, 0.82);
+  }
+
+  /* OVERLAPPING FLOATING CALLING CARD */
+  .calling-card-bridge {
+    max-width: 720px;
+    margin: -88px auto 48px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+    animation: floatCard 5.5s ease-in-out infinite;
+  }
+
+  .calling-card-inner {
+    background: linear-gradient(150deg, var(--con-champagne) 0%, #e4d5be 100%);
+    border: 2px solid var(--con-gold);
+    padding: 36px 38px 34px;
+    text-align: center;
+    box-shadow: 0 24px 55px rgba(24, 6, 9, 0.35);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .calling-card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(154, 114, 46, 0.55);
+    pointer-events: none;
+  }
+
+  .calling-card-inner::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -60%;
+    width: 50%;
+    height: 180%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: foilSweep 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .bridge-seal {
+    margin: 0 auto 14px;
+  }
+
+  .calling-card-inner h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--con-burgundy);
+    margin: 0 0 8px;
+  }
+
+  .calling-card-inner p {
+    font-size: .95rem;
+    line-height: 1.75;
+    color: #4a3135;
+    max-width: 500px;
+    margin: 0 auto 22px;
+  }
+
+  /* DUAL SOCIAL ARCH CARDS (INSTAGRAM & TIKTOK) */
+  .social-arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .social-arch-card {
+    background: var(--con-burgundy);
+    color: var(--con-champagne);
+    border: 1px solid var(--con-gold);
+    border-radius: 60px 60px 8px 8px;
+    padding: 22px 18px 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+  }
+
+  .social-arch-card:hover {
+    transform: translateY(-6px);
+    background: #521720;
+    box-shadow: 0 16px 32px rgba(36, 7, 11, 0.32);
+  }
+
+  .social-arch-card small {
+    font-size: .56rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    margin-bottom: 4px;
+  }
+
+  .social-arch-card strong {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--con-champagne);
+    margin-bottom: 6px;
+  }
+
+  .social-arch-card span {
+    font-size: .58rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--con-burgundy-deep);
+    background: var(--con-gold-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  /* RIBEN EMAS BERGERAK (GOLD MARQUEE) */
+  .gold-ticker-bar {
+    background: var(--con-gold);
+    color: var(--con-burgundy-deep);
+    padding: 9px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: .62rem;
+    font-weight: 500;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--con-burgundy);
+    border-bottom: 1px solid var(--con-burgundy);
+  }
+
+  .gold-ticker-track {
+    display: inline-block;
+    animation: marqueeRun 22s linear infinite;
+  }
+
+  /* 2. OLIVE SAGE 4-CARD INTERACTIVE CONTACT DIRECTORY */
+  .olive-info-band {
+    background: linear-gradient(160deg, var(--con-olive) 0%, var(--con-olive-dark) 100%);
+    color: var(--con-champagne);
+    padding: 62px 6% 64px;
+    text-align: center;
+    position: relative;
+  }
+
+  .olive-band-kicker {
+    display: block;
+    font-size: .6rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    margin-bottom: 6px;
+  }
+
+  .olive-band-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 3.6vw, 2.7rem);
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--con-champagne);
+    margin: 0 0 8px;
+  }
+
+  .olive-4-cards {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .dir-card {
+    background: rgba(245, 237, 224, 0.06);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    padding: 26px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .dir-card::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201, 166, 107, 0.22);
+    pointer-events: none;
+  }
+
+  .dir-card:hover {
+    transform: translateY(-7px);
+    background: rgba(245, 237, 224, 0.12);
+    border-color: var(--con-gold-light);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.3);
+  }
+
+  .dir-icon-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--con-gold);
+    background: rgba(201, 166, 107, 0.12);
+    color: var(--con-gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: transform 0.4s ease;
+  }
+
+  .dir-card:hover .dir-icon-ring {
+    transform: rotateY(180deg);
+  }
+
+  .dir-label {
+    font-size: .58rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    margin-bottom: 6px;
+  }
+
+  .dir-val {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.08rem;
+    line-height: 1.38;
+    color: var(--con-champagne);
+    word-break: break-word;
+    margin-bottom: 12px;
+  }
+
+  .dir-action-pill {
+    font-size: .54rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    border-bottom: 1px dashed rgba(228, 200, 144, 0.6);
+    padding-bottom: 2px;
+  }
+
+  .copy-banner {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 7px 22px;
+    border-radius: 999px;
+    background: rgba(24, 7, 11, 0.35);
+    border: 1px solid rgba(201, 166, 107, 0.4);
+    font-size: .6rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+  }
+
+  /* 3. A FEW OF MY FAVOURITE MOMENTS — INTERACTIVE FANNED POLAROID DECK (DIRECT UPLOAD) */
+  .moments-strip-sec {
+    background: var(--con-parchment);
+    color: var(--con-ink);
+    padding: 72px 7% 76px;
+    text-align: center;
+    position: relative;
+  }
+
+  .moments-kicker {
+    display: block;
+    font-size: .64rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--con-olive);
+    margin-bottom: 4px;
+  }
+
+  .moments-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.1rem, 3.8vw, 2.9rem);
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--con-burgundy);
+    margin: 0 0 8px;
+  }
+
+  .moments-hint {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #5c4246;
+    margin-bottom: 36px;
+  }
+
+  .fanned-polaroids-3 {
+    max-width: 860px;
+    margin: 0 auto 38px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .fan-polaroid {
+    background: var(--con-champagne);
+    padding: 10px 10px 18px;
+    border: 1px solid var(--con-gold);
+    box-shadow: 0 18px 36px rgba(36, 18, 20, 0.16);
+    cursor: pointer;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+  }
+
+  .fan-polaroid:nth-child(1) { transform: rotate(-3deg) translateY(6px); }
+  .fan-polaroid:nth-child(2) { transform: rotate(0deg) translateY(-6px); z-index: 2; }
+  .fan-polaroid:nth-child(3) { transform: rotate(3deg) translateY(6px); }
+
+  .fan-polaroid:hover {
+    transform: rotate(0deg) translateY(-12px) scale(1.04);
+    box-shadow: 0 26px 48px rgba(36, 18, 20, 0.25);
+    z-index: 4;
+  }
+
+  .moment-pic {
+    width: 100%;
+    height: 235px;
+    background: var(--con-burgundy);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .moment-pic img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    transition: transform 0.55s ease;
+  }
+
+  .fan-polaroid:hover .moment-pic img {
+    transform: scale(1.06);
+  }
+
+  .moment-empty-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 14px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: .14em;
+    color: var(--con-gold-light);
+    font-size: .78rem;
+    line-height: 1.5;
+    transition: background 0.25s ease;
+  }
+
+  .moment-pic:hover .moment-empty-box {
+    background: rgba(231, 203, 148, 0.1);
+  }
+
+  .moment-empty-box small {
+    font-family: "Jost", sans-serif;
+    font-size: .52rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--con-champagne);
+    border-bottom: 1px dashed rgba(231, 203, 148, 0.6);
+    padding-bottom: 2px;
+  }
+
+  .moment-swap-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(36, 7, 11, 0.86);
+    border: 1px solid var(--con-gold);
+    color: var(--con-gold-light);
+    font-family: "Jost", sans-serif;
+    font-size: .48rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .moment-swap-btn:hover {
+    background: var(--con-gold-light);
+    color: var(--con-burgundy-deep);
+  }
+
+  .moment-clear-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(36, 7, 11, 0.86);
+    border: 1px solid var(--con-gold);
+    color: var(--con-gold-light);
+    font-size: .75rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .moment-clear-btn.visible {
+    display: inline-flex;
+  }
+
+  .moment-clear-btn:hover {
+    background: #991b1b;
+    color: #fff;
+  }
+
+  .fan-polaroid > span {
+    font-family: "Pinyon Script", cursive;
+    font-size: 1.65rem;
+    color: var(--con-burgundy);
+    line-height: 1.1;
+  }
+
+  .gallery-cta-btn {
+    display: inline-block;
+    padding: 13px 32px;
+    background: var(--con-burgundy);
+    color: var(--con-champagne);
+    border: 1px solid var(--con-gold);
+    text-decoration: none;
+    font-size: .64rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .gallery-cta-btn:hover {
+    background: var(--con-gold);
+    color: var(--con-burgundy-deep);
+    transform: translateY(-3px);
+  }
+
+  /* ===================================================================== */
+  /* 4. BAHAGIAN BAWAH: 3D IPHONE INTERAKTIF                               */
+  /* ===================================================================== */
+  .rsvp-note-sec {
+    background: radial-gradient(circle at 50% 35%, #541721 0%, var(--con-burgundy) 68%, var(--con-burgundy-deep) 100%);
+    color: var(--con-champagne);
+    padding: 72px 7% 72px;
+    text-align: center;
+    border-top: 1px solid var(--con-gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .iphone-sec-kicker {
+    display: inline-block;
+    font-size: .58rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+    border: 1px solid rgba(201, 166, 107, 0.45);
+    padding: 5px 16px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  .rsvp-note-sec h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.1rem, 3.8vw, 2.9rem);
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--con-champagne);
+    margin: 0 0 8px;
+  }
+
+  .rsvp-note-sub {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--con-gold-light);
+    margin: 0 auto 38px;
+    max-width: 540px;
+  }
+
+  .ip3d-stage {
+    perspective: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .ip3d-glow {
+    position: absolute;
+    width: 340px;
+    height: 540px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231, 203, 148, 0.2) 0%, transparent 70%);
+    filter: blur(22px);
+    pointer-events: none;
+  }
+
+  .ip3d-body {
+    position: relative;
+    width: 314px;
+    height: 632px;
+    transform-style: preserve-3d;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 2;
+  }
+
+  .ip3d-body.is-flipped {
+    transform: rotateY(180deg) !important;
+  }
+
+  /* Butang Fizikal Sisi Titanium Emas */
+  .ip3d-btn-l1, .ip3d-btn-l2, .ip3d-btn-l3, .ip3d-btn-r {
+    position: absolute;
+    background: linear-gradient(180deg, #f3dfb6, #9d7434, #e7cb94);
+    border-radius: 3px;
+  }
+  .ip3d-btn-l1 { left: -4px; top: 108px; width: 4px; height: 24px; }
+  .ip3d-btn-l2 { left: -4px; top: 148px; width: 4px; height: 44px; }
+  .ip3d-btn-l3 { left: -4px; top: 202px; width: 4px; height: 44px; }
+  .ip3d-btn-r  { right: -4px; top: 165px; width: 4px; height: 64px; }
+
+  .ip3d-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 48px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 11px;
+    background: linear-gradient(145deg, #f3dfb6 0%, #a87e3c 35%, #4a1423 70%, #e7cb94 100%);
+    box-shadow:
+      0 32px 68px rgba(0, 0, 0, 0.78),
+      inset 0 0 4px rgba(255, 255, 255, 0.6);
+  }
+
+  .ip3d-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 38px;
+    background: linear-gradient(180deg, #1b040a 0%, #2d0914 55%, #160308 100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0b0204;
+    text-align: left;
+  }
+
+  /* Pantulan Kaca Skrin */
+  .ip3d-screen::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -40%;
+    width: 90%;
+    height: 140%;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 45%, transparent 60%);
+    transform: rotate(18deg);
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .ip3d-status {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px 6px;
+    font-size: .65rem;
+    font-weight: 600;
+    color: #f6e7cb;
+  }
+
+  .ip3d-island {
+    margin: 0 auto 8px;
+    width: 118px;
+    height: 25px;
+    border-radius: 999px;
+    background: #070103;
+    border: 1px solid rgba(231, 203, 148, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 11px;
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+  }
+
+  .ip3d-island.expanded {
+    width: 242px;
+    border-color: var(--con-gold-light);
+  }
+
+  .ip3d-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    flex-shrink: 0;
+  }
+
+  .ip3d-island-txt {
+    font-size: .54rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #f3dfb6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ip3d-lens-front {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #2b4c7e, #060913);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    flex-shrink: 0;
+  }
+
+  .ip3d-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 2px 14px 8px;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(231, 203, 148, 0.24);
+  }
+
+  .ip3d-tab {
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    padding: 5px 8px;
+    font-family: "Jost", sans-serif;
+    font-size: .58rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #d7ba86;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .ip3d-tab.active {
+    background: linear-gradient(135deg, #f3dfb6 0%, #cfa55b 100%);
+    color: #23070b;
+    font-weight: 600;
+  }
+
+  .ip3d-pane {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0 14px 12px;
+  }
+  .ip3d-pane.active { display: flex; }
+
+  .ip3d-chat-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: rgba(231, 203, 148, 0.08);
+    border: 1px solid rgba(231, 203, 148, 0.22);
+    margin-bottom: 10px;
+  }
+
+  .ip3d-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f3dfb6, #b8873d);
+    color: #23070b;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: .85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ip3d-stream {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-right: 2px;
+  }
+
+  .ip3d-stream::-webkit-scrollbar { width: 3px; }
+  .ip3d-stream::-webkit-scrollbar-thumb { background: rgba(231, 203, 148, 0.35); border-radius: 4px; }
+
+  .ip3d-msg-in {
+    align-self: flex-start;
+    max-width: 84%;
+    padding: 9px 12px;
+    border-radius: 16px 16px 16px 4px;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(231, 203, 148, 0.22);
+    font-size: .72rem;
+    line-height: 1.5;
+    color: #f3e8da;
+  }
+
+  .ip3d-msg-out {
+    align-self: flex-end;
+    max-width: 84%;
+    padding: 9px 12px;
+    border-radius: 16px 16px 4px 16px;
+    background: linear-gradient(135deg, #f3dfb6 0%, #cfa55b 100%);
+    font-size: .72rem;
+    line-height: 1.5;
+    color: #23070b;
+    font-weight: 500;
+  }
+
+  .ip3d-chips {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }
+  .ip3d-chips::-webkit-scrollbar { display: none; }
+
+  .ip3d-chip {
+    background: rgba(231, 203, 148, 0.1);
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    color: #e7cb94;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: .56rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .ip3d-chip:hover { background: rgba(231, 203, 148, 0.24); }
+
+  .ip3d-input-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    border-radius: 999px;
+    padding: 4px 6px 4px 12px;
+  }
+
+  .ip3d-input-row input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #faf2e4;
+    font-family: "Jost", sans-serif;
+    font-size: .72rem;
+  }
+
+  .ip3d-send {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #f3dfb6, #cfa55b);
+    color: #23070b;
+    font-weight: 700;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .ip3d-social-card {
+    text-align: center;
+    padding: 14px 12px;
+    border-radius: 18px;
+    background: linear-gradient(155deg, rgba(84, 22, 40, 0.85), rgba(32, 7, 14, 0.92));
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    margin-bottom: 9px;
+  }
+
+  .ip3d-link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(231, 203, 148, 0.28);
+    color: #faf2e4;
+    text-decoration: none;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .ip3d-link-row:hover { background: rgba(231, 203, 148, 0.16); }
+
+  .ip3d-badge {
+    font-size: .54rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #23070b;
+    background: #e7cb94;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .ip3d-home-bar {
+    width: 108px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(243, 223, 182, 0.45);
+    margin: 4px auto 8px;
+  }
+
+  /* Belakang iPhone 16 Pro */
+  .ip3d-back { transform: rotateY(180deg); }
+  .ip3d-back-glass {
+    width: 100%;
+    height: 100%;
+    border-radius: 38px;
+    background: linear-gradient(155deg, #3b0e1b 0%, #22060e 52%, #150308 100%);
+    border: 1px solid rgba(231, 203, 148, 0.35);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ip3d-cam-box {
+    width: 124px;
+    height: 124px;
+    border-radius: 28px;
+    background: rgba(24, 5, 11, 0.96);
+    border: 1.5px solid rgba(231, 203, 148, 0.55);
+    position: relative;
+  }
+
+  .ip3d-lens {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #283c5f 0%, #090c14 65%, #000 100%);
+    border: 3px solid #d7ba86;
+  }
+  .ip3d-l1 { top: 12px; left: 12px; }
+  .ip3d-l2 { bottom: 12px; left: 12px; }
+  .ip3d-l3 { top: 40px; right: 12px; }
+
+  .ip3d-flip-btn {
+    margin-top: 22px;
+    padding: 11px 24px;
+    border-radius: 999px;
+    background: rgba(231, 203, 148, 0.12);
+    border: 1px solid rgba(231, 203, 148, 0.55);
+    color: var(--con-gold-light);
+    font-family: "Jost", sans-serif;
+    font-size: .6rem;
+    font-weight: 500;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .ip3d-flip-btn:hover {
+    background: var(--con-gold-light);
+    color: var(--con-burgundy-deep);
+    font-weight: 600;
+  }
+
+  .closing-note-bar {
+    background: var(--con-parchment);
+    color: var(--con-burgundy);
+    padding: 20px 24px;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    border-top: 1px solid var(--con-gold);
+  }
+
+  /* ===================================================================== */
+  /* 5. INLINE FOOTER SITE MAP & METADATA (SEPERTI INDEX.HTML)             */
+  /* ===================================================================== */
+  footer .footer-sitemap {
+    margin: 14px auto 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--con-gold-light);
+  }
+
+  footer .footer-sitemap span {
+    color: var(--con-gold);
+    font-weight: 500;
+  }
+
+  footer .footer-sitemap a {
+    color: rgba(245, 237, 224, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  footer .footer-sitemap a:hover,
+  footer .footer-sitemap a.on {
+    color: var(--con-gold-light);
+  }
+
+  footer .footer-meta-line {
+    margin: 6px auto;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(231, 203, 148, 0.78);
+    line-height: 1.7;
+  }
+
+  /* LIGHTBOX */
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 6, 9, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 24px;
+  }
+
+  .lightbox-overlay.open { display: flex; }
+
+  .lightbox-box {
+    background: var(--con-champagne);
+    border: 1px solid var(--con-gold);
+    padding: 14px 14px 22px;
+    max-width: 620px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .lightbox-box img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    background: var(--con-burgundy-deep);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .lightbox-title {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--con-burgundy);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 36px;
+    height: 36px;
+    background: var(--con-burgundy);
+    color: var(--con-gold-light);
+    border: 1px solid var(--con-gold);
+    font-size: 1.15rem;
+    cursor: pointer;
+  }
+
+  @media(max-width: 840px) {
+    .utility-strip { justify-content: center; }
+    .util-right { margin-left: 0; justify-content: center; }
+    .olive-4-cards { grid-template-columns: 1fr 1fr; }
+    .social-arch-grid, .fanned-polaroids-3 { grid-template-columns: 1fr; }
+    .fan-polaroid:nth-child(1), .fan-polaroid:nth-child(2), .fan-polaroid:nth-child(3) {
+      transform: none;
+    }
+    .botanical-svg { width: 150px; opacity: 0.55; }
+    .calling-card-inner { padding: 28px 20px; }
+    .ip3d-body { width: 294px; height: 604px; }
+  }
+</style>
+</head>
+<body id="top" class="subpage">
+
+<div class="page-sheet">
+ <!-- TOP UTILITY STRIP: LIVE CLOCK/DATE, SEARCH & EN/BM SWITCHER -->
+ <div class="utility-strip" role="region" aria-label="Utility Bar">
+  <div class="util-clock">
+   <span class="util-clock-dot" aria-hidden="true"></span>
+   <span id="liveDateTime">Loading time...</span>
+  </div>
+  <div class="util-right">
+   <form class="util-search-form" onsubmit="handleSiteSearch(event)">
+    <input type="search" id="siteSearchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search portfolio..." aria-label="Search portfolio">
+    <button type="submit" data-i18n="searchBtn">Search</button>
+   </form>
+   <div class="lang-switch" role="group" aria-label="Language Switcher">
+    <button type="button" class="lang-btn active" id="btnLangEN" onclick="setLanguage('en')">EN</button>
+    <button type="button" class="lang-btn" id="btnLangBM" onclick="setLanguage('bm')">BM</button>
+   </div>
+  </div>
+ </div>
+
+ <header class="topbar">
+  <div class="top-row">
+   <span class="brand-sub" data-i18n="brandSub">Est. 2026 &bull; Portfolio</span>
+   <a class="logo" href="../index.html">
+    <span class="logo-main">N <i>&amp;</i> I</span>
+    <span class="logo-tag" data-i18n="logoTag">Personal Journal</span>
+   </a>
+   <div class="tools" aria-label="Accessibility Controls">
+    <button onclick="document.documentElement.style.fontSize='92%'" title="Decrease text">A&minus;</button>
+    <button onclick="document.documentElement.style.fontSize='100%'" title="Reset text">A</button>
+    <button onclick="document.documentElement.style.fontSize='112%'" title="Increase text">A+</button>
+    <button onclick="document.body.classList.toggle('contrast')" title="Toggle high contrast">Contrast</button>
+   </div>
+  </div>
+  <nav>
+   <a href="../index.html" data-i18n="navHome">Home</a>
+   <a href="about.html" data-i18n="navAbout">About</a>
+   <a href="education.html" data-i18n="navEdu">Education</a>
+   <a href="experience.html" data-i18n="navExp">Experience</a>
+   <a href="family.html" data-i18n="navFam">Family</a>
+   <a href="gallery.html" data-i18n="navGal">Gallery</a>
+   <a href="contact.html" class="on" data-i18n="navCon">Contact</a>
+  </nav>
+ </header>
+
+ <div class="contact-canvas">
+  <div class="contact-sheet">
+
+   <!-- 1. HERO SECTION — DEEP BURGUNDY + BOTANICAL LILIES -->
+   <section class="con-hero reveal-sec">
+    <svg class="botanical-svg botanical-left" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+     <path d="M10 260 C60 190, 95 130, 155 60" stroke="#7d8768" stroke-width="3" fill="none"/>
+     <path d="M75 170 C35 155, 18 130, 32 110 C55 122, 72 145, 75 170 Z" fill="#5e684b" stroke="#c9a66b" stroke-width="0.8"/>
+     <path d="M110 120 C145 125, 175 108, 178 88 C152 88, 125 100, 110 120 Z" fill="#4f583e" stroke="#c9a66b" stroke-width="0.8"/>
+     <path d="M150 65 C125 25, 145 -5, 175 18 C185 38, 172 58, 150 65 Z" fill="#efe5d5" stroke="#8a6838" stroke-width="1"/>
+     <path d="M152 66 C185 32, 222 42, 212 72 C192 84, 168 78, 152 66 Z" fill="#e4d6c1" stroke="#8a6838" stroke-width="1"/>
+     <path d="M150 68 C178 96, 168 132, 138 122 C130 102, 138 80, 150 68 Z" fill="#efe5d5" stroke="#8a6838" stroke-width="1"/>
+     <path d="M148 66 C112 85, 82 65, 96 42 C116 38, 136 48, 148 66 Z" fill="#dfd0b8" stroke="#8a6838" stroke-width="1"/>
+     <circle cx="152" cy="66" r="5" fill="#c9a66b"/>
+     <path d="M40 230 C95 210, 145 235, 195 190" stroke="#78202c" stroke-width="8" stroke-linecap="round" opacity="0.85"/>
+     <path d="M40 230 C95 210, 145 235, 195 190" stroke="#c9a66b" stroke-width="1" stroke-dasharray="4 4"/>
+    </svg>
+
+    <svg class="botanical-svg botanical-right" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+     <path d="M10 260 C60 190, 95 130, 155 60" stroke="#7d8768" stroke-width="3" fill="none"/>
+     <path d="M75 170 C35 155, 18 130, 32 110 C55 122, 72 145, 75 170 Z" fill="#5e684b" stroke="#c9a66b" stroke-width="0.8"/>
+     <path d="M150 65 C125 25, 145 -5, 175 18 C185 38, 172 58, 150 65 Z" fill="#efe5d5" stroke="#8a6838" stroke-width="1"/>
+     <path d="M152 66 C185 32, 222 42, 212 72 C192 84, 168 78, 152 66 Z" fill="#e4d6c1" stroke="#8a6838" stroke-width="1"/>
+     <path d="M150 68 C178 96, 168 132, 138 122 C130 102, 138 80, 150 68 Z" fill="#efe5d5" stroke="#8a6838" stroke-width="1"/>
+     <path d="M148 66 C112 85, 82 65, 96 42 C116 38, 136 48, 148 66 Z" fill="#dfd0b8" stroke="#8a6838" stroke-width="1"/>
+     <circle cx="152" cy="66" r="5" fill="#c9a66b"/>
+    </svg>
+
+    <div class="con-hero-inner">
+     <span class="con-top-kicker" data-i18n="heroKicker">Contact / Let&rsquo;s Connect</span>
+     <h1 class="con-hero-name">Beyha</h1>
+     <p class="con-hero-tagline" data-i18n="heroTagline">Just a click away, let&rsquo;s be mutuals!</p>
+     <div class="con-hero-meta" data-i18n="heroMeta">Mersing, Johor &bull; Est. 2026</div>
+    </div>
+   </section>
+
+   <!-- OVERLAPPING LUXURY CALLING CARD + SOCIAL ARCHES -->
+   <div class="calling-card-bridge reveal-sec">
+    <div class="calling-card-inner">
+     <div class="gold-seal bridge-seal">N&amp;I</div>
+     <h2 data-i18n="cardTitle">Find Me Elsewhere</h2>
+     <p data-i18n="cardDesc">Whether it&rsquo;s for academic discussions, creative ideas, or simply connecting online, feel free to reach out on my socials.</p>
+
+     <div class="social-arch-grid">
+      <a href="https://www.instagram.com/cloudiebey_/" target="_blank" rel="noopener" class="social-arch-card">
+       <small>Instagram</small>
+       <strong>@cloudiebey_</strong>
+       <span data-i18n="visitProfile">Visit Profile &rarr;</span>
+      </a>
+
+      <a href="https://www.tiktok.com/@usernotavailable2610" target="_blank" rel="noopener" class="social-arch-card">
+       <small>TikTok</small>
+       <strong>@usernotavailable2610</strong>
+       <span data-i18n="visitProfile">Visit Profile &rarr;</span>
+      </a>
+     </div>
+    </div>
+   </div>
+
+   <!-- RIBEN TEKS BERGERAK (GOLD MARQUEE) -->
+   <div class="gold-ticker-bar" aria-hidden="true">
+    <div class="gold-ticker-track" data-i18n="tickerText">
+     LET&rsquo;S CONNECT &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; DIPLOMA IN INFORMATION MANAGEMENT STUDENT &bull; LET&rsquo;S CONNECT &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; DIPLOMA IN INFORMATION MANAGEMENT STUDENT &bull;
+    </div>
+   </div>
+
+   <!-- 2. CONTACT INFORMATION — 4 INTERACTIVE OLIVE CARDS -->
+   <section class="olive-info-band reveal-sec">
+    <span class="olive-band-kicker" data-i18n="dirKicker">Direct Directory</span>
+    <h2 class="olive-band-title" data-i18n="dirTitle">Contact Information</h2>
+
+    <div class="olive-4-cards">
+     <div class="dir-card" onclick="copyContact('2024250178@student.uitm.edu.my', 'email')">
+      <div class="dir-icon-ring">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="M3 7l9 6 9-6"/>
+       </svg>
+      </div>
+      <div class="dir-label" data-i18n="dirEmailLabel">Student Email</div>
+      <div class="dir-val">2024250178@student.uitm.edu.my</div>
+      <span class="dir-action-pill" data-i18n="tapCopy">Tap to Copy</span>
+     </div>
+
+     <div class="dir-card" onclick="copyContact('@cloudiebey_', 'ig')">
+      <div class="dir-icon-ring">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1"/>
+       </svg>
+      </div>
+      <div class="dir-label">Instagram</div>
+      <div class="dir-val">@cloudiebey_</div>
+      <span class="dir-action-pill" data-i18n="tapCopy">Tap to Copy</span>
+     </div>
+
+     <div class="dir-card" onclick="copyContact('Mersing, Johor, Malaysia', 'loc')">
+      <div class="dir-icon-ring">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M12 21s-7-6.2-7-11a7 7 0 1114 0c0 4.8-7 11-7 11z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+       </svg>
+      </div>
+      <div class="dir-label" data-i18n="dirHomeLabel">Hometown</div>
+      <div class="dir-val">Mersing, Johor, Malaysia</div>
+      <span class="dir-action-pill" data-i18n="tapCopy">Tap to Copy</span>
+     </div>
+
+     <div class="dir-card" onclick="copyContact('UiTM Segamat (IM110)', 'campus')">
+      <div class="dir-icon-ring">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M2 9l10-5 10 5-10 5-10-5z"/>
+        <path d="M6 11.5v5c0 1.8 2.7 3 6 3s6-1.2 6-3v-5"/>
+       </svg>
+      </div>
+      <div class="dir-label" data-i18n="dirCampusLabel">Campus &amp; Course</div>
+      <div class="dir-val">UiTM Segamat &bull; IM110</div>
+      <span class="dir-action-pill" data-i18n="tapCopy">Tap to Copy</span>
+     </div>
+    </div>
+
+    <div class="copy-banner" id="copyStatusBanner" data-i18n="copyHint">Click any card above to copy details</div>
+   </section>
+
+   <!-- 3. A FEW OF MY FAVOURITE MOMENTS — INTERACTIVE FANNED POLAROID DECK (DIRECT UPLOAD) -->
+   <section class="moments-strip-sec reveal-sec">
+    <span class="moments-kicker" data-i18n="momKicker">A Few Of</span>
+    <h2 class="moments-title" data-i18n="momTitle">My Favourite Moments</h2>
+    <p class="moments-hint" data-i18n="momHint">Hover or tap any snapshot to inspect</p>
+
+    <div class="fanned-polaroids-3">
+     <!-- POLAROID 01 (con1) -->
+     <div class="fan-polaroid">
+      <div class="moment-pic" onclick="handleMomentClick('con1', 'mom1')">
+       <button type="button" class="moment-swap-btn" onclick="event.stopPropagation(); triggerMomentPicker('con1')" data-i18n="btnChange">&#128247; Change</button>
+       <button type="button" class="moment-clear-btn" id="clear_con1" onclick="event.stopPropagation(); clearMomentPhoto('con1')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_con1" accept="image/*" style="display:none;" onchange="handleMomentUpload(event, 'con1')">
+
+       <img id="img_con1" data-slot="con1" data-base="../images/con1" alt="Personal Portrait">
+       <div class="moment-empty-box" id="prompt_con1">
+        <span data-i18n="slot1Title">INSERT PHOTO 01:<br>PERSONAL PORTRAIT</span>
+        <small data-i18n="slotUpload">+ Click to upload photo</small>
+       </div>
+      </div>
+      <span data-i18n="mom1Cap">Personal Portrait</span>
+     </div>
+
+     <!-- POLAROID 02 (con2) -->
+     <div class="fan-polaroid">
+      <div class="moment-pic" onclick="handleMomentClick('con2', 'mom2')">
+       <button type="button" class="moment-swap-btn" onclick="event.stopPropagation(); triggerMomentPicker('con2')" data-i18n="btnChange">&#128247; Change</button>
+       <button type="button" class="moment-clear-btn" id="clear_con2" onclick="event.stopPropagation(); clearMomentPhoto('con2')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_con2" accept="image/*" style="display:none;" onchange="handleMomentUpload(event, 'con2')">
+
+       <img id="img_con2" data-slot="con2" data-base="../images/con2" alt="University Memories">
+       <div class="moment-empty-box" id="prompt_con2">
+        <span data-i18n="slot2Title">INSERT PHOTO 02:<br>UNIVERSITY MEMORIES</span>
+        <small data-i18n="slotUpload">+ Click to upload photo</small>
+       </div>
+      </div>
+      <span data-i18n="mom2Cap">University Memories</span>
+     </div>
+
+     <!-- POLAROID 03 (con3) -->
+     <div class="fan-polaroid">
+      <div class="moment-pic" onclick="handleMomentClick('con3', 'mom3')">
+       <button type="button" class="moment-swap-btn" onclick="event.stopPropagation(); triggerMomentPicker('con3')" data-i18n="btnChange">&#128247; Change</button>
+       <button type="button" class="moment-clear-btn" id="clear_con3" onclick="event.stopPropagation(); clearMomentPhoto('con3')" title="Remove photo">&times;</button>
+       <input type="file" id="picker_con3" accept="image/*" style="display:none;" onchange="handleMomentUpload(event, 'con3')">
+
+       <img id="img_con3" data-slot="con3" data-base="../images/con3" alt="Favourite Everyday Moments">
+       <div class="moment-empty-box" id="prompt_con3">
+        <span data-i18n="slot3Title">INSERT PHOTO 03:<br>EVERYDAY MOMENTS</span>
+        <small data-i18n="slotUpload">+ Click to upload photo</small>
+       </div>
+      </div>
+      <span data-i18n="mom3Cap">Favourite Everyday Moments</span>
+     </div>
+    </div>
+
+    <a href="gallery.html" class="gallery-cta-btn" data-i18n="viewGalleryBtn">View Full Gallery &rarr;</a>
+   </section>
+
+   <!-- 4. INTERACTIVE 3D IPHONE SECTION -->
+   <section class="rsvp-note-sec reveal-sec">
+    <span class="iphone-sec-kicker" data-i18n="phoneKicker">Interactive Device</span>
+    <h2 data-i18n="phoneTitle">Leave A Quick Note</h2>
+    <p class="rsvp-note-sub" data-i18n="phoneSub">Tap inside the screen to send a message or switch between Beyha&rsquo;s direct socials.</p>
+
+    <div class="ip3d-stage">
+     <div class="ip3d-glow"></div>
+
+     <div class="ip3d-body" id="ip3dPhoneBody">
+      <!-- Physical Titanium Side Buttons -->
+      <span class="ip3d-btn-l1"></span>
+      <span class="ip3d-btn-l2"></span>
+      <span class="ip3d-btn-l3"></span>
+      <span class="ip3d-btn-r"></span>
+
+      <!-- FRONT SCREEN -->
+      <div class="ip3d-face">
+       <div class="ip3d-screen">
+        <div class="ip3d-status">
+         <span id="ip3dStatusTime">12:00</span>
+         <span>5G &bull; 100%</span>
+        </div>
+
+        <div class="ip3d-island" id="ip3dDynamicIsland">
+         <span class="ip3d-dot"></span>
+         <span class="ip3d-island-txt" id="ip3dIslandText" data-i18n="islandOnline">Beyha Online</span>
+         <span class="ip3d-lens-front"></span>
+        </div>
+
+        <div class="ip3d-tabs">
+         <button type="button" class="ip3d-tab active" id="tabPhoneMsg" onclick="switchPhonePane('msg')" data-i18n="tabMsg">Message</button>
+         <button type="button" class="ip3d-tab" id="tabPhoneSoc" onclick="switchPhonePane('soc')" data-i18n="tabSoc">Socials</button>
+        </div>
+
+        <!-- PANE 1: MESSAGE CHAT -->
+        <div class="ip3d-pane active" id="panePhoneMsg">
+         <div class="ip3d-chat-head">
+          <div class="ip3d-avatar">N&amp;I</div>
+          <div>
+           <strong style="display:block;font-size:.76rem;color:#f6e7cb;">Nabiha Ibtisam (Beyha)</strong>
+           <small style="font-size:.58rem;color:#d7ba86;" data-i18n="chatActive">Mersing, Johor &bull; Active Now</small>
+          </div>
+         </div>
+
+         <div class="ip3d-stream" id="ip3dChatStream">
+          <div class="ip3d-msg-in" data-i18n="chatWelcome">Hi there! Welcome to my portfolio. Leave a quick note or question below!</div>
+         </div>
+
+         <div class="ip3d-chips">
+          <button type="button" class="ip3d-chip" onclick="sendQuickChip('hi')" data-i18n="chipHi">Say Hi</button>
+          <button type="button" class="ip3d-chip" onclick="sendQuickChip('mutuals')" data-i18n="chipMutuals">Be Mutuals</button>
+          <button type="button" class="ip3d-chip" onclick="sendQuickChip('academic')" data-i18n="chipAcademic">Academic</button>
+         </div>
+
+         <form class="ip3d-input-row" onsubmit="sendCustomPhoneMsg(event)">
+          <input type="text" id="ip3dMsgInput" data-i18n-placeholder="chatPlaceholder" placeholder="Write a message..." autocomplete="off">
+          <button type="submit" class="ip3d-send" aria-label="Send">&uarr;</button>
+         </form>
+        </div>
+
+        <!-- PANE 2: SOCIAL LINKS -->
+        <div class="ip3d-pane" id="panePhoneSoc">
+         <div class="ip3d-social-card">
+          <strong style="display:block;font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#f6e4bf;" data-i18n="socCardTitle">Beyha&rsquo;s Social Card</strong>
+          <small style="font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#d7ba86;" data-i18n="socCardSub">Tap any link below to connect</small>
+         </div>
+
+         <a href="https://www.instagram.com/cloudiebey_/" target="_blank" rel="noopener" class="ip3d-link-row">
+          <div>
+           <strong style="display:block;font-size:.75rem;">Instagram</strong>
+           <small style="font-size:.6rem;color:#d7ba86;">@cloudiebey_</small>
+          </div>
+          <span class="ip3d-badge" data-i18n="badgeFollow">Follow</span>
+         </a>
+
+         <a href="https://www.tiktok.com/@usernotavailable2610" target="_blank" rel="noopener" class="ip3d-link-row">
+          <div>
+           <strong style="display:block;font-size:.75rem;">TikTok</strong>
+           <small style="font-size:.6rem;color:#d7ba86;">@usernotavailable2610</small>
+          </div>
+          <span class="ip3d-badge" data-i18n="badgeWatch">Watch</span>
+         </a>
+
+         <div class="ip3d-link-row" onclick="copyContact('2024250178@student.uitm.edu.my', 'email')">
+          <div>
+           <strong style="display:block;font-size:.75rem;">UiTM Email</strong>
+           <small style="font-size:.58rem;color:#d7ba86;">2024250178@student.uitm.edu.my</small>
+          </div>
+          <span class="ip3d-badge" data-i18n="badgeCopy">Copy</span>
+         </div>
+        </div>
+
+        <div class="ip3d-home-bar"></div>
+       </div>
+      </div>
+
+      <!-- BACK GLASS -->
+      <div class="ip3d-face ip3d-back">
+       <div class="ip3d-back-glass">
+        <div class="ip3d-cam-box">
+         <span class="ip3d-lens ip3d-l1"></span>
+         <span class="ip3d-lens ip3d-l2"></span>
+         <span class="ip3d-lens ip3d-l3"></span>
+        </div>
+        <div style="text-align:center;">
+         <div class="gold-seal" style="margin:0 auto 10px;">N&amp;I</div>
+         <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.24em;font-size:.85rem;color:#e7cb94;">BEYHA EDITION</div>
+        </div>
+        <div style="text-align:center;font-size:.55rem;letter-spacing:.2em;color:rgba(231,203,148,0.65);">DESIGNED IN MERSING &bull; 2026</div>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <button type="button" class="ip3d-flip-btn" onclick="document.getElementById('ip3dPhoneBody').classList.toggle('is-flipped')" data-i18n="flipBtn">
+     Flip Device &#8635;
+    </button>
+   </section>
+
+   <div class="closing-note-bar" data-i18n="closingNote">
+    Thank you for visiting my personal journal &mdash; looking forward to connecting with you.
+   </div>
+
+  </div>
+ </div>
+
+ <footer id="footerSiteMap">
+  <span class="footer-logo">N <i>&amp;</i> I</span>
+
+  <div class="footer-sitemap" aria-label="Site Map">
+   <span data-i18n="siteMapLabel">SITE MAP:</span>
+   <a href="../index.html" data-i18n="navHome">HOME</a>
+   <a href="about.html" data-i18n="navAbout">ABOUT</a>
+   <a href="education.html" data-i18n="navEdu">EDUCATION</a>
+   <a href="experience.html" data-i18n="navExp">EXPERIENCE</a>
+   <a href="family.html" data-i18n="navFam">FAMILY</a>
+   <a href="gallery.html" data-i18n="navGal">GALLERY</a>
+   <a href="contact.html" class="on" data-i18n="navCon">CONTACT</a>
+  </div>
+
+  <p class="footer-meta-line" data-i18n="footerDates">
+   CREATED: 12 OCTOBER 2026 &nbsp;&nbsp; LAST UPDATED: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA COLLECTED: OCTOBER &ndash; NOVEMBER 2026
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerA11y">
+   ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER &amp; W3C WAI GUIDELINES
+  </p>
+
+  <p class="footer-meta-line" data-i18n="footerCopy">
+   &copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PERSONAL PORTFOLIO &amp; JOURNAL
+  </p>
+
+  <p style="margin-top: 10px;"><a href="#top" data-i18n="backTop">BACK TO TOP &uarr;</a></p>
+ </footer>
+</div>
+
+<!-- LIGHTBOX INSPECT SNAPSHOT -->
+<div class="lightbox-overlay" id="conLightbox" onclick="if(event.target===this) closeLightbox()">
+ <div class="lightbox-box">
+  <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <img id="conLightboxImg" src="" alt="">
+  <div class="lightbox-title" id="conLightboxTitle"></div>
+ </div>
+</div>
+
+<script>
+  // =====================================================================
+  // 0. KAMUS DWI-BAHASA (EN / BM) & PENUKAR BAHASA
+  // =====================================================================
+  const i18nCon = {
+    en: {
+      searchPlaceholder: "Search portfolio...",
+      searchBtn: "Search",
+      brandSub: "Est. 2026 &bull; Portfolio",
+      logoTag: "Personal Journal",
+      navHome: "Home",
+      navAbout: "About",
+      navEdu: "Education",
+      navExp: "Experience",
+      navFam: "Family",
+      navGal: "Gallery",
+      navCon: "Contact",
+      heroKicker: "Contact / Let&rsquo;s Connect",
+      heroTagline: "Just a click away, let&rsquo;s be mutuals!",
+      heroMeta: "Mersing, Johor &bull; Est. 2026",
+      cardTitle: "Find Me Elsewhere",
+      cardDesc: "Whether it&rsquo;s for academic discussions, creative ideas, or simply connecting online, feel free to reach out on my socials.",
+      visitProfile: "Visit Profile &rarr;",
+      tickerText: "LET&rsquo;S CONNECT &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; DIPLOMA IN INFORMATION MANAGEMENT STUDENT &bull; LET&rsquo;S CONNECT &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; DIPLOMA IN INFORMATION MANAGEMENT STUDENT &bull;",
+      dirKicker: "Direct Directory",
+      dirTitle: "Contact Information",
+      dirEmailLabel: "Student Email",
+      dirHomeLabel: "Hometown",
+      dirCampusLabel: "Campus &amp; Course",
+      tapCopy: "Tap to Copy",
+      copyHint: "Click any card above to copy details",
+      copiedEmail: "Email copied!",
+      copiedIg: "Instagram handle copied!",
+      copiedLoc: "Location copied!",
+      copiedCampus: "Campus info copied!",
+      momKicker: "A Few Of",
+      momTitle: "My Favourite Moments",
+      momHint: "Hover or tap any snapshot to inspect",
+      btnChange: "&#128247; Change",
+      slot1Title: "INSERT PHOTO 01:<br>PERSONAL PORTRAIT",
+      slot2Title: "INSERT PHOTO 02:<br>UNIVERSITY MEMORIES",
+      slot3Title: "INSERT PHOTO 03:<br>EVERYDAY MOMENTS",
+      slotUpload: "+ Click to upload photo",
+      mom1Cap: "Personal Portrait",
+      mom2Cap: "University Memories",
+      mom3Cap: "Favourite Everyday Moments",
+      viewGalleryBtn: "View Full Gallery &rarr;",
+      phoneKicker: "Interactive Device",
+      phoneTitle: "Leave A Quick Note",
+      phoneSub: "Tap inside the screen to send a message or switch between Beyha&rsquo;s direct socials.",
+      islandOnline: "Beyha Online",
+      islandSent: "Note Sent to Beyha",
+      tabMsg: "Message",
+      tabSoc: "Socials",
+      chatActive: "Mersing, Johor &bull; Active Now",
+      chatWelcome: "Hi there! Welcome to my portfolio. Leave a quick note or question below!",
+      chipHi: "Say Hi",
+      chipMutuals: "Be Mutuals",
+      chipAcademic: "Academic",
+      chipMsgHi: "Hi Beyha! Love your portfolio.",
+      chipMsgMutuals: "Let’s be mutuals on Instagram!",
+      chipMsgAcademic: "Inquiry about IM110 / Internship",
+      chatPlaceholder: "Write a message...",
+      chatAutoReply: "Thank you so much for your note! Feel free to connect with me on Instagram @cloudiebey_ too.",
+      socCardTitle: "Beyha&rsquo;s Social Card",
+      socCardSub: "Tap any link below to connect",
+      badgeFollow: "Follow",
+      badgeWatch: "Watch",
+      badgeCopy: "Copy",
+      flipBtn: "Flip Device &#8635;",
+      closingNote: "Thank you for visiting my personal journal &mdash; looking forward to connecting with you.",
+      siteMapLabel: "SITE MAP:",
+      footerDates: "CREATED: 12 OCTOBER 2026 &nbsp;&nbsp; LAST UPDATED: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA COLLECTED: OCTOBER &ndash; NOVEMBER 2026",
+      footerA11y: "ACCESSIBILITY SUPPORT: COMPATIBLE WITH NVDA SCREEN READER &amp; W3C WAI GUIDELINES",
+      footerCopy: "&copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PERSONAL PORTFOLIO &amp; JOURNAL",
+      backTop: "BACK TO TOP &uarr;",
+      searchNoMatch: "No matching page found. Try keywords like: home, about, education, experience, family, gallery, sitemap."
+    },
+    bm: {
+      searchPlaceholder: "Cari dalam portfolio...",
+      searchBtn: "Cari",
+      brandSub: "Ditubuhkan 2026 &bull; Portfolio",
+      logoTag: "Jurnal Peribadi",
+      navHome: "Utama",
+      navAbout: "Tentang",
+      navEdu: "Pendidikan",
+      navExp: "Pengalaman",
+      navFam: "Keluarga",
+      navGal: "Galeri",
+      navCon: "Hubungi",
+      heroKicker: "Hubungi / Mari Berhubung",
+      heroTagline: "Hanya satu klik sahaja, mari jadi kenalan!",
+      heroMeta: "Mersing, Johor &bull; Ditubuhkan 2026",
+      cardTitle: "Temui Saya Di Platform Lain",
+      cardDesc: "Sama ada untuk perbincangan akademik, idea kreatif, atau sekadar berhubung secara dalam talian, jangan segan untuk hubungi media sosial saya.",
+      visitProfile: "Lawati Profil &rarr;",
+      tickerText: "MARI BERHUBUNG &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; PELAJAR DIPLOMA PENGURUSAN MAKLUMAT &bull; MARI BERHUBUNG &bull; @CLOUDIEBEY_ &bull; @USERNOTAVAILABLE2610 &bull; MERSING, JOHOR &bull; PELAJAR DIPLOMA PENGURUSAN MAKLUMAT &bull;",
+      dirKicker: "Direktori Terus",
+      dirTitle: "Maklumat Perhubungan",
+      dirEmailLabel: "E-mel Pelajar",
+      dirHomeLabel: "Kampung Halaman",
+      dirCampusLabel: "Kampus &amp; Kursus",
+      tapCopy: "Tekan untuk Salin",
+      copyHint: "Klik mana-mana kad di atas untuk salin maklumat",
+      copiedEmail: "E-mel berjaya disalin!",
+      copiedIg: "Nama pengguna Instagram disalin!",
+      copiedLoc: "Lokasi berjaya disalin!",
+      copiedCampus: "Maklumat kampus disalin!",
+      momKicker: "Sebahagian Daripada",
+      momTitle: "Detik Kegemaran Saya",
+      momHint: "Sentuh atau klik mana-mana foto untuk melihat dengan lebih jelas",
+      btnChange: "&#128247; Tukar",
+      slot1Title: "MASUKKAN FOTO 01:<br>POTRET PERIBADI",
+      slot2Title: "MASUKKAN FOTO 02:<br>KENANGAN UNIVERSITI",
+      slot3Title: "MASUKKAN FOTO 03:<br>DETIK HARIAN",
+      slotUpload: "+ Klik untuk muat naik gambar",
+      mom1Cap: "Potret Peribadi",
+      mom2Cap: "Kenangan Universiti",
+      mom3Cap: "Detik Harian Kegemaran",
+      viewGalleryBtn: "Lihat Galeri Penuh &rarr;",
+      phoneKicker: "Peranti Interaktif",
+      phoneTitle: "Tinggalkan Nota Ringkas",
+      phoneSub: "Sentuh skrin di bawah untuk menghantar mesej atau beralih ke pautan sosial terus Beyha.",
+      islandOnline: "Beyha Dalam Talian",
+      islandSent: "Nota Dihantar kepada Beyha",
+      tabMsg: "Mesej",
+      tabSoc: "Sosial",
+      chatActive: "Mersing, Johor &bull; Aktif Sekarang",
+      chatWelcome: "Hai! Selamat datang ke portfolio saya. Tinggalkan nota ringkas atau soalan di bawah!",
+      chipHi: "Ucap Hai",
+      chipMutuals: "Jadi Kenalan",
+      chipAcademic: "Akademik",
+      chipMsgHi: "Hai Beyha! Suka sangat dengan portfolio awak.",
+      chipMsgMutuals: "Mari jadi kenalan di Instagram!",
+      chipMsgAcademic: "Pertanyaan mengenai IM110 / Latihan Industri",
+      chatPlaceholder: "Tulis mesej...",
+      chatAutoReply: "Terima kasih atas nota anda! Jangan lupa berhubung dengan saya di Instagram @cloudiebey_ juga.",
+      socCardTitle: "Kad Sosial Beyha",
+      socCardSub: "Tekan mana-mana pautan di bawah untuk berhubung",
+      badgeFollow: "Ikuti",
+      badgeWatch: "Tonton",
+      badgeCopy: "Salin",
+      flipBtn: "Pusing Peranti &#8635;",
+      closingNote: "Terima kasih kerana melawat jurnal peribadi saya &mdash; tidak sabar untuk berhubung dengan anda.",
+      siteMapLabel: "PETA LAMAN:",
+      footerDates: "DICIPTA: 12 OKTOBER 2026 &nbsp;&nbsp; KEMAS KINI TERAKHIR: 22 NOVEMBER 2026 &nbsp;&nbsp; DATA DIKUMPUL: OKTOBER &ndash; NOVEMBER 2026",
+      footerA11y: "SOKONGAN KEBOLEHAKSESAN: SERASI DENGAN PEMBACA SKRIN NVDA &amp; GARIS PANDUAN W3C WAI",
+      footerCopy: "&copy; 2026 NUR NABIHA IBTISAM BINTI ABD HADI &bull; PORTFOLIO &amp; JURNAL PERIBADI",
+      backTop: "KEMBALI KE ATAS &uarr;",
+      searchNoMatch: "Tiada halaman sepadan ditemui. Cuba kata kunci seperti: utama, tentang, pendidikan, pengalaman, keluarga, galeri, peta laman."
+    }
+  };
+
+  let currentLang = localStorage.getItem('beyha_lang') || 'en';
+
+  function setLanguage(lang) {
+    currentLang = (lang === 'bm') ? 'bm' : 'en';
+    localStorage.setItem('beyha_lang', currentLang);
+    document.documentElement.lang = currentLang === 'bm' ? 'ms' : 'en';
+
+    document.getElementById('btnLangEN').classList.toggle('active', currentLang === 'en');
+    document.getElementById('btnLangBM').classList.toggle('active', currentLang === 'bm');
+
+    const dict = i18nCon[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key]) el.setAttribute('placeholder', dict[key]);
+    });
+
+    updateLiveClock();
+  }
+
+  // =====================================================================
+  // 0B. JAM & TARIKH LIVE + CARIAN HALAMAN
+  // =====================================================================
+  function updateLiveClock() {
+    const now = new Date();
+    const locale = currentLang === 'bm' ? 'ms-MY' : 'en-MY';
+    const datePart = now.toLocaleDateString(locale, {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+    const timePart = now.toLocaleTimeString(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    const liveEl = document.getElementById('liveDateTime');
+    if (liveEl) liveEl.textContent = datePart + ' • ' + timePart;
+
+    const statusEl = document.getElementById('ip3dStatusTime');
+    if (statusEl) {
+      statusEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+    }
+  }
+  setInterval(updateLiveClock, 1000);
+  updateLiveClock();
+
+  function handleSiteSearch(e) {
+    e.preventDefault();
+    const q = document.getElementById('siteSearchInput').value.trim().toLowerCase();
+    if (!q) return;
+
+    const routes = [
+      { keys: ['sitemap', 'site map', 'peta laman', 'directory', 'direktori'], url: '#footerSiteMap' },
+      { keys: ['home', 'utama', 'index', 'main'], url: '../index.html' },
+      { keys: ['about', 'tentang', 'biodata', 'profile', 'profil', 'beyha', 'nabiha'], url: 'about.html' },
+      { keys: ['edu', 'education', 'pendidikan', 'study', 'belajar', 'uitm', 'diploma', 'im110', 'school', 'sekolah'], url: 'education.html' },
+      { keys: ['exp', 'experience', 'pengalaman', 'work', 'kerja', 'intern', 'club', 'kelab', 'skill'], url: 'experience.html' },
+      { keys: ['fam', 'family', 'keluarga', 'parents', 'ibu', 'ayah', 'siblings', 'adik'], url: 'family.html' },
+      { keys: ['gal', 'gallery', 'galeri', 'photo', 'gambar', 'memories', 'kenangan'], url: 'gallery.html' },
+      { keys: ['con', 'contact', 'hubungi', 'email', 'instagram', 'tiktok', 'social', 'sosial', 'mersing'], url: '#top' }
+    ];
+
+    const match = routes.find(r => r.keys.some(k => q.includes(k) || k.includes(q)));
+    if (match) {
+      if (match.url.startsWith('#')) {
+        const targetEl = document.querySelector(match.url);
+        if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = match.url;
+      }
+    } else {
+      alert(i18nCon[currentLang].searchNoMatch);
+    }
+  }
+
+  // =====================================================================
+  // 1. DIRECT PHOTO UPLOAD & AUTO-SAVE UNTUK 3 POLAROID FAVOURITE MOMENTS
+  // =====================================================================
+  const CON_KEY = 'beyha_contact_polaroid_';
+
+  function triggerMomentPicker(slotId) {
+    const input = document.getElementById('picker_' + slotId);
+    if (input) input.click();
+  }
+
+  function compressMomentImg(file, maxDim, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const temp = new Image();
+      temp.onload = function () {
+        let w = temp.width, h = temp.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+          else { w = Math.round((w * maxDim) / h); h = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(temp, 0, 0, w, h);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      temp.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showMomentImg(slotId, url, isCustom) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.src = url; img.style.display = 'block'; }
+    if (promptEl) promptEl.style.display = 'none';
+    if (clearBtn) clearBtn.classList.toggle('visible', Boolean(isCustom));
+  }
+
+  function showMomentEmpty(slotId) {
+    const img = document.getElementById('img_' + slotId);
+    const promptEl = document.getElementById('prompt_' + slotId);
+    const clearBtn = document.getElementById('clear_' + slotId);
+    if (img) { img.removeAttribute('src'); img.style.display = 'none'; }
+    if (promptEl) promptEl.style.display = 'flex';
+    if (clearBtn) clearBtn.classList.remove('visible');
+  }
+
+  function probeFolderImg(slotId, base) {
+    const exts = ['.jpeg', '.jpg', '.png', '.webp'];
+    let i = 0;
+    function next() {
+      if (i >= exts.length) { showMomentEmpty(slotId); return; }
+      const src = base + exts[i++];
+      const t = new Image();
+      t.onload = function () { showMomentImg(slotId, src, false); };
+      t.onerror = next;
+      t.src = src;
+    }
+    next();
+  }
+
+  function handleMomentUpload(event, slotId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    compressMomentImg(file, 800, 0.82, function (dataUrl) {
+      try { localStorage.setItem(CON_KEY + slotId, dataUrl); } catch (e) {}
+      showMomentImg(slotId, dataUrl, true);
+    });
+    event.target.value = '';
+  }
+
+  function clearMomentPhoto(slotId) {
+    localStorage.removeItem(CON_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    const base = img ? img.getAttribute('data-base') : null;
+    if (base) probeFolderImg(slotId, base);
+    else showMomentEmpty(slotId);
+  }
+
+  function handleMomentClick(slotId, momKey) {
+    const img = document.getElementById('img_' + slotId);
+    if (!img || img.style.display === 'none' || !img.src) {
+      triggerMomentPicker(slotId);
+      return;
+    }
+    const titleMap = {
+      mom1: i18nCon[currentLang].mom1Cap,
+      mom2: i18nCon[currentLang].mom2Cap,
+      mom3: i18nCon[currentLang].mom3Cap
+    };
+    document.getElementById('conLightboxImg').src = img.src;
+    document.getElementById('conLightboxTitle').textContent = titleMap[momKey] || '';
+    document.getElementById('conLightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('conLightbox').classList.remove('open');
+  }
+
+  ['con1', 'con2', 'con3'].forEach(function (slotId) {
+    const saved = localStorage.getItem(CON_KEY + slotId);
+    const img = document.getElementById('img_' + slotId);
+    if (saved) showMomentImg(slotId, saved, true);
+    else if (img) probeFolderImg(slotId, img.getAttribute('data-base'));
+  });
+
+  // =====================================================================
+  // 2. COPY DIRECTORY DETAILS
+  // =====================================================================
+  function copyContact(text, typeKey) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    }
+    const dict = i18nCon[currentLang];
+    const labelMap = {
+      email: dict.copiedEmail,
+      ig: dict.copiedIg,
+      loc: dict.copiedLoc,
+      campus: dict.copiedCampus
+    };
+    const label = labelMap[typeKey] || 'Copied!';
+    const banner = document.getElementById('copyStatusBanner');
+    if (banner) {
+      banner.textContent = label + ' (' + text + ')';
+      setTimeout(() => {
+        banner.textContent = i18nCon[currentLang].copyHint;
+      }, 3000);
+    }
+  }
+
+  // =====================================================================
+  // 3. INTERACTIVE 3D IPHONE CHAT & TABS
+  // =====================================================================
+  function switchPhonePane(pane) {
+    const isMsg = pane === 'msg';
+    document.getElementById('tabPhoneMsg').classList.toggle('active', isMsg);
+    document.getElementById('tabPhoneSoc').classList.toggle('active', !isMsg);
+    document.getElementById('panePhoneMsg').classList.toggle('active', isMsg);
+    document.getElementById('panePhoneSoc').classList.toggle('active', !isMsg);
+  }
+
+  function triggerIslandNotice(text) {
+    const island = document.getElementById('ip3dDynamicIsland');
+    const label = document.getElementById('ip3dIslandText');
+    label.textContent = text;
+    island.classList.add('expanded');
+    setTimeout(() => {
+      island.classList.remove('expanded');
+      label.textContent = i18nCon[currentLang].islandOnline;
+    }, 2600);
+  }
+
+  function appendChatBubble(text) {
+    const stream = document.getElementById('ip3dChatStream');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'ip3d-msg-out';
+    userDiv.textContent = text;
+    stream.appendChild(userDiv);
+    stream.scrollTop = stream.scrollHeight;
+    triggerIslandNotice(i18nCon[currentLang].islandSent);
+
+    setTimeout(() => {
+      const replyDiv = document.createElement('div');
+      replyDiv.className = 'ip3d-msg-in';
+      replyDiv.textContent = i18nCon[currentLang].chatAutoReply;
+      stream.appendChild(replyDiv);
+      stream.scrollTop = stream.scrollHeight;
+    }, 650);
+  }
+
+  function sendQuickChip(chipKey) {
+    const dict = i18nCon[currentLang];
+    const msgMap = {
+      hi: dict.chipMsgHi,
+      mutuals: dict.chipMsgMutuals,
+      academic: dict.chipMsgAcademic
+    };
+    appendChatBubble(msgMap[chipKey] || chipKey);
+  }
+
+  function sendCustomPhoneMsg(e) {
+    e.preventDefault();
+    const input = document.getElementById('ip3dMsgInput');
+    const val = input.value.trim();
+    if (!val) return;
+    appendChatBubble(val);
+    input.value = '';
+  }
+
+  // =====================================================================
+  // 4. SCROLL REVEAL ANIMATION & INIT LANGUAGE
+  // =====================================================================
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal-sec').forEach(sec => revealObserver.observe(sec));
+
+  setLanguage(currentLang);
+</script>
+
+</body>
+</html>
